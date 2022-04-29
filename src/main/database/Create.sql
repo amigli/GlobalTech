@@ -26,11 +26,6 @@ CREATE TABLE Telefonia (
     fotocamera_anteriore float,
     cpu_nome varchar(20),
     cpu_hertz float not null,
-
-
-
-
-
 )
 
 
