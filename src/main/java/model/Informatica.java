@@ -2,7 +2,7 @@ package model;
 
 public class Informatica extends Prodotto{
 
-    private String tipologia, so, tipoRam, gpu, cpu_nome, schermo;
+    private String tipologia, so, tipoRam, gpu, cpuNome, schermo;
     private float hertzCpu;
     private boolean batteria;
     private int quantitaRam;
@@ -42,12 +42,12 @@ public class Informatica extends Prodotto{
         this.gpu = gpu;
     }
 
-    public String getCpu_nome() {
-        return cpu_nome;
+    public String getCpuNome() {
+        return cpuNome;
     }
 
-    public void setCpu_nome(String cpu_nome) {
-        this.cpu_nome = cpu_nome;
+    public void setCpuNome(String cpuNome) {
+        this.cpuNome = cpuNome;
     }
 
     public String getSchermo() {
