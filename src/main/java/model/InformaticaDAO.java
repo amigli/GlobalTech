@@ -19,7 +19,6 @@ public class InformaticaDAO {
                 Informatica i = this.creaInformatica(res);
 
                 list.add(i);
-
             }
 
             return list;
@@ -29,6 +28,21 @@ public class InformaticaDAO {
         }
     }
 
+    public Informatica doRetrieveById(int id){
+        try(Connection con = ConPool.getConnection()){
+            String sql ="SELECT * from prodotto p join informatica i on i.id_prodotto=p.id WHERE id ="+ id ;
+            Statement statement = con.createStatement();
+
+            ResultSet res =  statement.executeQuery(sql);
+            res.next();
+
+            Informatica i =  this.creaInformatica(res);
+
+            return i;
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
     private Informatica creaInformatica(ResultSet res) throws SQLException {
         int id = res.getInt("id");
         String nome = res.getString("nome");
@@ -65,11 +79,7 @@ public class InformaticaDAO {
         p.setHertzCpu(cpu_hertz);
         p.setBatteria(batteria);
         p.setSchermo(schermo);
-        
+
         return p;
-
-
-
-
     }
 }
