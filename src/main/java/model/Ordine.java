@@ -3,14 +3,13 @@ package model;
 import java.util.GregorianCalendar;
 
 public class Ordine {
-    private int id, idUtente;
+    private int id;
     private double prezzoTotale, speseSpedizione;
     private GregorianCalendar data;
     private String modalitaPagamento, stato;
 
-    public Ordine(int id, int idUtente, double prezzoTotale, double speseSpedizione, GregorianCalendar data, String modalitaPagamento, String stato) {
+    public Ordine(int id, double prezzoTotale, double speseSpedizione, GregorianCalendar data, String modalitaPagamento, String stato) {
         this.id = id;
-        this.idUtente = idUtente;
         this.prezzoTotale = prezzoTotale;
         this.speseSpedizione = speseSpedizione;
         this.data = data;
@@ -18,8 +17,7 @@ public class Ordine {
         this.stato = stato;
     }
 
-    public Ordine(int idUtente, double prezzoTotale, double speseSpedizione, GregorianCalendar data, String modalitaPagamento, String stato) {
-        this.idUtente = idUtente;
+    public Ordine(double prezzoTotale, double speseSpedizione, GregorianCalendar data, String modalitaPagamento, String stato) {
         this.prezzoTotale = prezzoTotale;
         this.speseSpedizione = speseSpedizione;
         this.data = data;
@@ -33,14 +31,6 @@ public class Ordine {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdUtente() {
-        return idUtente;
-    }
-
-    public void setIdUtente(int idUtente) {
-        this.idUtente = idUtente;
     }
 
     public double getPrezzoTotale() {
