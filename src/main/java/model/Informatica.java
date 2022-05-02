@@ -1,6 +1,6 @@
 package model;
 
-public class Informatica {
+public class Informatica extends Prodotto{
 
     private String tipologia, so, tipoRam, gpu, cpu_nome, schermo;
     private float hertzCpu;
