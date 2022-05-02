@@ -13,7 +13,7 @@ public class ConPool {
 	public static Connection getConnection() throws SQLException {
 		if (datasource == null) {
 			PoolProperties p = new PoolProperties();
-			p.setUrl("jdbc:mysql://localhost:3306/tswProjectW?serverTimezone=" + TimeZone.getDefault().getID());
+			p.setUrl("jdbc:mysql://localhost:3306/progettotsw?serverTimezone=" + TimeZone.getDefault().getID());
 			p.setDriverClassName("com.mysql.cj.jdbc.Driver");
 			p.setUsername("projectUser");
 			p.setPassword("project");
