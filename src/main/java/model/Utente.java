@@ -3,13 +3,13 @@ package model;
 import java.util.GregorianCalendar;
 
 public class Utente {
-    private int ID, numAcquisti;
+    private int id, numAcquisti;
     private String nomeUtente, password, nome, cognome, indirizzo;
     private GregorianCalendar dataNascita;
     private boolean admin;
 
-    public Utente (int ID, String nomeUtente, String password, GregorianCalendar dataNascita, String nome, String cognome, String indirizzo, int numAcquisti, boolean admin){
-        this.ID = ID;
+    public Utente (int id, String nomeUtente, String password, GregorianCalendar dataNascita, String nome, String cognome, String indirizzo, int numAcquisti, boolean admin){
+        this.id = id;
         this.nomeUtente = nomeUtente;
         this.password = password;
         this.dataNascita = dataNascita;
@@ -32,7 +32,11 @@ public class Utente {
     }
 
     public int getID() {
-        return ID;
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPassword(String password) {
