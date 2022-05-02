@@ -6,7 +6,7 @@ use progettoTSW;
 
 CREATE TABLE Prodotto(
     id integer auto_increment primary key,
-    nome char(50) not null,
+    nome varchar(50) not null,
     marca varchar(50) not null,
     colore varchar(50) not null,
     prezzoListino float not null,
