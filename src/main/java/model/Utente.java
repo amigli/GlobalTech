@@ -8,27 +8,7 @@ public class Utente {
     private GregorianCalendar dataNascita;
     private boolean admin;
 
-    public Utente (int id, String nomeUtente, String password, GregorianCalendar dataNascita, String nome, String cognome, String indirizzo, int numAcquisti, boolean admin){
-        this.id = id;
-        this.nomeUtente = nomeUtente;
-        this.password = password;
-        this.dataNascita = dataNascita;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.indirizzo = indirizzo;
-        this.numAcquisti = numAcquisti;
-        this.admin = admin;
-    }
-
-    public Utente (String nomeUtente, String password, GregorianCalendar dataNascita, String nome, String cognome, String indirizzo, int numAcquisti, boolean admin){
-        this.nomeUtente = nomeUtente;
-        this.password = password;
-        this.dataNascita = dataNascita;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.indirizzo = indirizzo;
-        this.numAcquisti = numAcquisti;
-        this.admin = admin;
+    public Utente() {
     }
 
     public int getID() {
