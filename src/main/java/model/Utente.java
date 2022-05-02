@@ -47,6 +47,22 @@ public class Utente {
         return password;
     }
 
+    public void setDataNascita(GregorianCalendar dataNascita) {
+        this.dataNascita = dataNascita;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setNumAcquisti(int numAcquisti) {
+        this.numAcquisti = numAcquisti;
+    }
+
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
