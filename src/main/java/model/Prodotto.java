@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Prodotto{
+public abstract class Prodotto  {
     int id, quantita;
     String nome, marca, colore, descrizione;
     ArrayList<String> immagini;
