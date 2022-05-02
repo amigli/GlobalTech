@@ -44,7 +44,9 @@ CREATE TABLE Informatica(
     cpu_nome varchar(20),
     cpu_hertz float not null,
     batteria boolean not null,
-    schermo varchar(30) not null
+    schermo varchar(30) not null,
+
+    primary key(id_prodotto)
 );
 
 CREATE TABLE Accessorio(
