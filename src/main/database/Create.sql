@@ -9,7 +9,7 @@ CREATE TABLE Prodotto(
     nome varchar(50) not null,
     marca varchar(50) not null,
     colore varchar(50) not null,
-    prezzoListino float not null,
+    prezzo_listino float not null,
     descrizione text
 );
 
