@@ -3,10 +3,10 @@ package model;
 import java.util.ArrayList;
 
 public abstract class Prodotto  {
-    int id, quantita;
-    String nome, marca, colore, descrizione;
-    ArrayList<String> immagini;
-    double prezzoListino;
+    private int id, quantita;
+    private String nome, marca, colore, descrizione;
+    private ArrayList<String> immagini;
+    private double prezzoListino;
 
     public Prodotto() {
     }
