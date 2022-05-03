@@ -10,7 +10,31 @@ CREATE TABLE Prodotto(
     marca varchar(50) not null,
     colore varchar(50) not null,
     prezzoListino float not null,
-    descrizione text
+    descrizione char(50),
+    batteria_tipo varchar(20),
+    batteria_capacita float,
+    ram_tipo varchar(20),
+    ram_quantita float(20),
+    so varchar(20),
+    fotocamera_posteriore float,
+    fotocamera_anteriore float,
+    cpu_nome varchar(20),
+    cpu_hertz float,
+    gpu varchar(20),
+    schermo varchar(30),
+    autonomia int
+
+);
+
+CREATE TABLE Categoria(
+  id integer auto_increment primary key,
+  nome char(50) not null,
+  descrizione char(50)
+);
+
+CREATE TABLE Appartenere(
+    id_categoria int references Categoria(id),
+    id_prodotto int references Prodotto(id)
 );
 
 CREATE TABLE Foto (
@@ -20,40 +44,6 @@ CREATE TABLE Foto (
 
     primary key(numero, id_prodotto)
 );
-
-CREATE TABLE Telefonia (
-   id_prodotto int not null primary key  references  Prodotto(id) ,
-   batteria_tipo varchar(20) not null,
-   batteria_capacita float not null,
-   ram_tipo varchar(20) not null,
-   ram_quantita float(20) not null,
-   so varchar(20) not null,
-   fotocamera_posteriore float,
-   fotocamera_anteriore float,
-   cpu_nome varchar(20),
-   cpu_hertz float not null
-);
-
-CREATE TABLE Informatica(
-    id_prodotto int not null references  Prodotto(id),
-    tipologia varchar(20) not null,
-    so varchar(20),
-    ram_tipo varchar(20) not null,
-    ram_quantita float(20) not null,
-    gpu varchar(20) not null,
-    cpu_nome varchar(20),
-    cpu_hertz float not null,
-    batteria boolean not null,
-    schermo varchar(30) not null
-);
-
-CREATE TABLE Accessorio(
-    id_prodotto int not null primary key references Prodotto(id) ,
-    tipologia varchar(30) not null,
-    autonomia int,
-    connessione varchar(20) not null
-);
-
 
 CREATE TABLE Utente (
     id int auto_increment primary key,
