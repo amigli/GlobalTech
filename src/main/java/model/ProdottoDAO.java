@@ -1,5 +1,6 @@
 package model;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,16 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InformaticaDAO {
-    public List<Informatica> doRetrieveAll(){
+public class ProdottoDAO {
+    public List<Prodotto> doRetrieveAll(){
         try(Connection con = ConPool.getConnection()){
             String sql ="SELECT * from prodotto p join informatica i on i.id_prodotto=p.id";
             Statement stmt = con.createStatement();
 
             ResultSet res =  stmt.executeQuery(sql);
-            List<Informatica> list =  new ArrayList<>();
+            List<Prodotto> list =  new ArrayList<>();
             while(res.next()){
-                Informatica i = this.creaInformatica(res);
+                Prodotto i = this.creaInformatica(res);
 
                 list.add(i);
             }
@@ -28,22 +29,22 @@ public class InformaticaDAO {
         }
     }
 
-    public Informatica doRetrieveById(int id){
+    public Prodotto doRetrieveById(int id){
         try(Connection con = ConPool.getConnection()){
-            String sql ="SELECT * from prodotto p join informatica i on i.id_prodotto=p.id WHERE id ="+ id ;
+            String sql ="SELECT * from prodotto" ;
             Statement statement = con.createStatement();
 
             ResultSet res =  statement.executeQuery(sql);
             res.next();
 
-            Informatica i =  this.creaInformatica(res);
+            Prodotto i =  this.creaInformatica(res);
 
             return i;
         } catch (SQLException e) {
             throw new RuntimeException();
         }
     }
-    private Informatica creaInformatica(ResultSet res) throws SQLException {
+    private Prodotto creaInformatica(ResultSet res) throws SQLException {
         int id = res.getInt("id");
         String nome = res.getString("nome");
         String marca = res.getString("marca");
@@ -61,7 +62,7 @@ public class InformaticaDAO {
         boolean batteria =  res.getBoolean("batteria");
         String schermo = res.getString("schermo");
 
-        Informatica p = new Informatica();
+        Prodotto p = new Prodotto();
 
         p.setId(id);
         p.setNome(nome);
@@ -70,7 +71,6 @@ public class InformaticaDAO {
         p.setPrezzoListino(prezzoListino);
         p.setDescrizione(descrizione);
 
-        p.setTipologia(tipologia);
         p.setSo(so);
         p.setTipoRam(ram_tipo);
         p.setQuantitaRam(ram_quantita);
