@@ -112,7 +112,9 @@ CREATE TABLE Magazzino (
 CREATE TABLE Riserva(
     idProdotto int not null references Prodotto(id),
     idMagazzino int not null references Magazzino(id),
-    quantita int not null
+    quantita int not null,
+
+    primary key (idProdotto, idMagazzino)
 );
 
 CREATE TABLE Cliente(
