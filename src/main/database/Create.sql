@@ -41,7 +41,9 @@ CREATE TABLE Categoria(
 
 CREATE TABLE Appartenere(
     id_categoria int references Categoria(id),
-    id_prodotto int references Prodotto(id)
+    id_prodotto int references Prodotto(id),
+
+    primary key (id_prodotto, id_categoria)
 );
 
 
