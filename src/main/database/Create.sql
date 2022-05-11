@@ -41,7 +41,9 @@ CREATE TABLE Categoria(
 
 CREATE TABLE Appartenere(
     id_categoria int references Categoria(id),
-    id_prodotto int references Prodotto(id)
+    id_prodotto int references Prodotto(id),
+
+    primary key (id_prodotto, id_categoria)
 );
 
 
@@ -110,7 +112,9 @@ CREATE TABLE Magazzino (
 CREATE TABLE Riserva(
     idProdotto int not null references Prodotto(id),
     idMagazzino int not null references Magazzino(id),
-    quantita int not null
+    quantita int not null,
+
+    primary key (idProdotto, idMagazzino)
 );
 
 CREATE TABLE Cliente(
