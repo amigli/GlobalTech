@@ -22,7 +22,9 @@ CREATE TABLE Prodotto(
      cpuHertz float,
      gpu varchar(20),
      schermo varchar(30),
-     autonomia int
+     autonomia int,
+
+     disponibilita int not null
 );
 
 CREATE TABLE Foto (
@@ -34,14 +36,14 @@ CREATE TABLE Foto (
 );
 
 CREATE TABLE Categoria(
-  id integer auto_increment primary key,
+  id integer not null auto_increment primary key,
   nome char(50) not null,
   descrizione char(50)
 );
 
 CREATE TABLE Appartenere(
-    id_categoria int references Categoria(id),
-    id_prodotto int references Prodotto(id),
+    id_categoria int references Categoria(id) not null,
+    id_prodotto int references Prodotto(id) not null,
 
     primary key (id_prodotto, id_categoria)
 );
@@ -54,7 +56,13 @@ CREATE TABLE Utente (
     dataNascita date not null,
     nome char (30) not null,
     cognome char (30) not null,
-    admin boolean not null
+    admin boolean not null,
+    viaC char (30),
+    civico int,
+    citta char (30),
+    cap int,
+    numAcquisti int not null, -- Bisogna inserire la query che calcola il numero di oridini effettuati
+    numeroTelefono char(10)
 );
 
 CREATE TABLE Carrello (
@@ -63,10 +71,10 @@ CREATE TABLE Carrello (
 );
 
 CREATE TABLE Ordine (
-    id int auto_increment primary key,
+    id int auto_increment primary key not null,
     prezzoTotale float not null,
     tracking char (20),
-    dataO date not null,
+    dataOrdine date not null,
     speseSpedizione float not null,
     modalitaPagamento char (30) not null,
     stato char (30) not null,
@@ -96,33 +104,10 @@ CREATE TABLE Applicare(
 
 
 CREATE TABLE Comporre(
-    idUtente int not null references  Utente(id) ,
+    IDCarrello int not null references  Carrello(idUtente) ,
     idProdotto int not null references prodotto(id),
     quantita int not null,
     prezzo double not null,
 
-    primary key(idUtente, idProdotto)
-);
-
-CREATE TABLE Magazzino (
-    id int not null primary key,
-    citta char (30)
-);
-
-CREATE TABLE Riserva(
-    idProdotto int not null references Prodotto(id),
-    idMagazzino int not null references Magazzino(id),
-    quantita int not null,
-
-    primary key (idProdotto, idMagazzino)
-);
-
-CREATE TABLE Cliente(
-    idUtente int not null primary key references Utente(id),
-    viaC char (30) not null,
-    civico int not null,
-    citta char (30) not null,
-    cap int not null,
-    numAcquisti int not null,
-    numeroTelefono char(10) not null
+    primary key(IDCarrello, idProdotto)
 );
