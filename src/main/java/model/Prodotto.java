@@ -3,14 +3,14 @@ package model;
 import java.util.ArrayList;
 
 public class Prodotto  {
-    private int id, quantita;
-    private String nome, marca, colore, descrizione;
+    private int id, disponibilita, quantitaRam;
+    private String nome, marca, colore, descrizione,
+            sistemaOperativo, tipoRam, cpuNome, tipologia;
+
     private ArrayList<String> immagini;
-    private double prezzoListino;
-    private String so, tipoRam, gpu, cpuNome, schermo;
-    private float hertzCpu;
+    private float hertzCpu, prezzoListino;
+
     private boolean batteria;
-    private int quantitaRam;
 
     public Prodotto() {
     }
@@ -23,12 +23,20 @@ public class Prodotto  {
         this.id = id;
     }
 
-    public int getQuantita() {
-        return quantita;
+    public int getDisponibilita() {
+        return disponibilita;
     }
 
-    public void setQuantita(int quantita) {
-        this.quantita = quantita;
+    public void setDisponibilita(int disponibilita) {
+        this.disponibilita = disponibilita;
+    }
+
+    public int getQuantitaRam() {
+        return quantitaRam;
+    }
+
+    public void setQuantitaRam(int quantitaRam) {
+        this.quantitaRam = quantitaRam;
     }
 
     public String getNome() {
@@ -63,28 +71,12 @@ public class Prodotto  {
         this.descrizione = descrizione;
     }
 
-    public ArrayList<String> getImmagini() {
-        return immagini;
+    public String getSistemaOperativo() {
+        return sistemaOperativo;
     }
 
-    public void setImmagini(ArrayList<String> immagini) {
-        this.immagini = immagini;
-    }
-
-    public double getPrezzoListino() {
-        return prezzoListino;
-    }
-
-    public void setPrezzoListino(double prezzoListino) {
-        this.prezzoListino = prezzoListino;
-    }
-
-    public String getSo() {
-        return so;
-    }
-
-    public void setSo(String so) {
-        this.so = so;
+    public void setSistemaOperativo(String sistemaOperativo) {
+        this.sistemaOperativo = sistemaOperativo;
     }
 
     public String getTipoRam() {
@@ -95,14 +87,6 @@ public class Prodotto  {
         this.tipoRam = tipoRam;
     }
 
-    public String getGpu() {
-        return gpu;
-    }
-
-    public void setGpu(String gpu) {
-        this.gpu = gpu;
-    }
-
     public String getCpuNome() {
         return cpuNome;
     }
@@ -111,12 +95,20 @@ public class Prodotto  {
         this.cpuNome = cpuNome;
     }
 
-    public String getSchermo() {
-        return schermo;
+    public String getTipologia() {
+        return tipologia;
     }
 
-    public void setSchermo(String schermo) {
-        this.schermo = schermo;
+    public void setTipologia(String tipologia) {
+        this.tipologia = tipologia;
+    }
+
+    public ArrayList<String> getImmagini() {
+        return immagini;
+    }
+
+    public void setImmagini(ArrayList<String> immagini) {
+        this.immagini = immagini;
     }
 
     public float getHertzCpu() {
@@ -127,19 +119,19 @@ public class Prodotto  {
         this.hertzCpu = hertzCpu;
     }
 
+    public float getPrezzoListino() {
+        return prezzoListino;
+    }
+
+    public void setPrezzoListino(float prezzoListino) {
+        this.prezzoListino = prezzoListino;
+    }
+
     public boolean isBatteria() {
         return batteria;
     }
 
     public void setBatteria(boolean batteria) {
         this.batteria = batteria;
-    }
-
-    public int getQuantitaRam() {
-        return quantitaRam;
-    }
-
-    public void setQuantitaRam(int quantitaRam) {
-        this.quantitaRam = quantitaRam;
     }
 }
