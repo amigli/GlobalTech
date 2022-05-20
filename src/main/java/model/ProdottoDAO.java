@@ -11,7 +11,7 @@ import java.util.List;
 public class ProdottoDAO {
     public List<Prodotto> doRetrieveAll(){
         try(Connection con = ConPool.getConnection()){
-            String sql ="SELECT * from prodotto p join informatica i on i.id_prodotto=p.id";
+            String sql ="SELECT * from prodotto";
             Statement stmt = con.createStatement();
 
             ResultSet res =  stmt.executeQuery(sql);
@@ -37,9 +37,9 @@ public class ProdottoDAO {
             ResultSet res =  statement.executeQuery(sql);
             res.next();
 
-            Prodotto i =  this.creaInformatica(res);
+            return  this.creaInformatica(res);
 
-            return i;
+
         } catch (SQLException e) {
             throw new RuntimeException();
         }
@@ -49,7 +49,7 @@ public class ProdottoDAO {
         String nome = res.getString("nome");
         String marca = res.getString("marca");
         String colore = res.getString("colore");
-        double prezzoListino = res.getDouble("prezzo_listino");
+        float prezzoListino = res.getFloat("prezzo_listino");
         String descrizione = res.getString("descrizione");
 
         String tipologia = res.getString("tipologia");
@@ -71,14 +71,13 @@ public class ProdottoDAO {
         p.setPrezzoListino(prezzoListino);
         p.setDescrizione(descrizione);
 
-        p.setSo(so);
+        p.setSistemaOperativo(so);
         p.setTipoRam(ram_tipo);
         p.setQuantitaRam(ram_quantita);
-        p.setGpu(gpu);
         p.setCpuNome(cpu_nome);
         p.setHertzCpu(cpu_hertz);
         p.setBatteria(batteria);
-        p.setSchermo(schermo);
+
 
         return p;
     }
