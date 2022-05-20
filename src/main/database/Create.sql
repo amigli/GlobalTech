@@ -6,24 +6,18 @@ use progettoTSW;
 
 CREATE TABLE Prodotto(
      id integer auto_increment primary key,
-     nome char(50) not null,
+     nome varchar(50) not null,
+     tipologia varchar(50) not null, -- Da concordare
      marca varchar(50) not null,
      colore varchar(50) not null,
      prezzoListino float not null,
-     descrizione char(50),
-     batteriaTipo varchar(20),
-     batteriaCapacita float,
-     ramTipo varchar(20),
-     ramQuantita float(20),
-     so varchar(20),
-     fotocameraPosteriore float,
-     fotocameraAnteriore float,
-     cpuNome varchar(20),
-     cpuHertz float,
-     gpu varchar(20),
-     schermo varchar(30),
-     autonomia int,
-
+     descrizione text not null,
+     batteria boolean not null,
+     ram_tipo varchar(20),
+     ram_quantita float(20),
+     sistema_operativo varchar(20),
+     cpu_nome varchar(20),
+     cpu_hertz float,
      disponibilita int not null
 );
 
@@ -37,13 +31,13 @@ CREATE TABLE Foto (
 
 CREATE TABLE Categoria(
   id integer not null auto_increment primary key,
-  nome char(50) not null,
-  descrizione char(50)
+  nome varchar(50) not null,
+  descrizione text not null
 );
 
 CREATE TABLE Appartenere(
-    id_categoria int references Categoria(id) not null,
-    id_prodotto int references Prodotto(id) not null,
+    id_categoria int not null references Categoria(id) ,
+    id_prodotto int not null references Prodotto(id) ,
 
     primary key (id_prodotto, id_categoria)
 );
@@ -51,63 +45,67 @@ CREATE TABLE Appartenere(
 
 CREATE TABLE Utente (
     id int auto_increment primary key,
-    nomeUtente char (30) not null,
-    password varchar (20) not null,
-    dataNascita date not null,
+    email varchar (30) not null unique,
+    passwordhash varchar (32) not null,  -- minimo 8 e massimo 32
+    data_nascita date not null,
     nome char (30) not null,
     cognome char (30) not null,
     admin boolean not null,
-    viaC char (30),
+
+    via_indirizzo char (30),
     civico int,
     citta char (30),
-    cap int,
-    numAcquisti int not null, -- Bisogna inserire la query che calcola il numero di oridini effettuati
-    numeroTelefono char(10)
+    cap char(5),
+    num_acquisti int not null, -- Bisogna inserire la query che calcola il numero di ordini effettuati
+    numero_telefono char(10),
+    numero_cc char(16) not null,
+    cvv_cc char (3)not null,
+    data_scadenza_cc date not null
 );
 
 CREATE TABLE Carrello (
-    idUtente int primary key references Utente (id) ,
+    id_utente int primary key references Utente (id) ,
     totale double not null
 );
 
 CREATE TABLE Ordine (
     id int auto_increment primary key not null,
-    prezzoTotale float not null,
+    prezzo_totale float not null,
     tracking char (20),
-    dataOrdine date not null,
-    speseSpedizione float not null,
-    modalitaPagamento char (30) not null,
+    data_ordine date not null,
+    spese_spedizione float not null,
+    modalita_pagamento char (30) not null,
     stato char (30) not null,
-    idUtente int references Utente (id)
+    id_utente int references Utente (id)
 );
 
 CREATE TABLE Contenere (
-    idProdotto int references Prodotto(id),
-    idOrdine int references Ordine(ID),
+    id_prodotto int references Prodotto(id),
+    id_ordine int references Ordine(ID),
     quantita int not null,
-    prezzoAcquisto double not null,
-    primary key (idProdotto, idOrdine)
+    prezzo_acquisto double not null,
+    primary key (id_prodotto, id_ordine)
 );
 
 CREATE TABLE Offerta (
     id int auto_increment primary key,
     percentuale double not null,
-    dataInizio date not null,
-    dataFine date not null
+    data_inizio date not null,
+    data_fine date not null
 );
 
 CREATE TABLE Applicare(
-    idProdotto int references Prodotto(id),
-    idOfferta int references Offerta(id),
-    primary key(idProdotto, idOfferta)
+    id_prodotto int references Prodotto(id),
+    id_offerta int references Offerta(id),
+    primary key(id_prodotto, id_offerta)
 );
 
 
 CREATE TABLE Comporre(
-    IDCarrello int not null references  Carrello(idUtente) ,
-    idProdotto int not null references prodotto(id),
+    id_carrello int not null references  Carrello(id_utente) ,
+    id_prodotto int not null references prodotto(id),
     quantita int not null,
     prezzo double not null,
 
-    primary key(IDCarrello, idProdotto)
+    primary key(id_carrello, id_prodotto)
 );
