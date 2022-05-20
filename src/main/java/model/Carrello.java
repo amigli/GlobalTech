@@ -3,35 +3,35 @@ package model;
 import java.util.ArrayList;
 
 public class Carrello {
-    private ArrayList <Prodotto> p;
-    private double totale;
+    private ArrayList <Item> cart;
 
     public Carrello() {
-        p=new ArrayList<>();
-        totale=0;
+        cart = new ArrayList<>();
     }
 
-    public ArrayList<Prodotto> getP() {
-        return p;
+    public ArrayList<Item> getCart() {
+        return cart;
     }
 
-    public void setP(ArrayList<Prodotto> p) {
-        this.p = p;
+    public float getTotale() {
+        return cart.stream().map(Item::getPrezzo).reduce(0F, Float::sum);
     }
 
-    public double getTotale() {
-        return totale;
+    public void addProdotto (Prodotto prodotto, int quantita){
+        /*
+        *   Bisogna controllare se è già presente un item con lo stesso prodotto, in tal caso biosgna aumentare
+        *   soltanto la quantità.
+        *   Inoltre, bisogna controllare se il prodotto è in offerta quindi salvare o il prezzo di listino
+        *   o quello scontato
+        *   Altrimenti inserire creare nuovo item e inserirlo nell'array list.
+        *   Sono necessari i seguenti metodi:
+        *       - compare per i prodotti per poterli confrontare in base all'id
+        *       (magari usiamo una lampda expression ed evitiamo il metodo);
+        *
+         * */
     }
 
-    public void setTotale(double totale) {
-        this.totale = totale;
-    }
-
-    public void addProdotto (Prodotto pr){
-        if (p.contains(pr)) {
-            int i = p.indexOf(pr);
-
-            totale += pr.getPrezzoListino();
-        }
+    public void setCart(ArrayList<Item> cart) {
+        this.cart = cart;
     }
 }
