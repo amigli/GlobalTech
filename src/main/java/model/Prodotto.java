@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Prodotto  {
     private int id, disponibilita, quantitaRam;
     private String nome, marca, colore, descrizione,
-            sistemaOperativo, tipoRam, cpuNome, tipologia;
+            sistemaOperativo, tipoRam, cpuNome;
 
     private ArrayList<String> immagini;
     private float hertzCpu, prezzoListino;
@@ -93,14 +93,6 @@ public class Prodotto  {
 
     public void setCpuNome(String cpuNome) {
         this.cpuNome = cpuNome;
-    }
-
-    public String getTipologia() {
-        return tipologia;
-    }
-
-    public void setTipologia(String tipologia) {
-        this.tipologia = tipologia;
     }
 
     public ArrayList<String> getImmagini() {
