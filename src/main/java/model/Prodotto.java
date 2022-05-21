@@ -7,7 +7,7 @@ public class Prodotto  {
     private String nome, marca, colore, descrizione,
             sistemaOperativo, tipoRam, cpuNome;
 
-    private ArrayList<String> immagini;
+    private Foto immagini;
     private float hertzCpu, prezzoListino;
 
     private boolean batteria;
@@ -95,11 +95,11 @@ public class Prodotto  {
         this.cpuNome = cpuNome;
     }
 
-    public ArrayList<String> getImmagini() {
+    public Foto getImmagini() {
         return immagini;
     }
 
-    public void setImmagini(ArrayList<String> immagini) {
+    public void setImmagini(Foto immagini) {
         this.immagini = immagini;
     }
 

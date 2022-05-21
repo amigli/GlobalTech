@@ -52,8 +52,8 @@ public class ProdottoDAO {
         float prezzoListino = res.getFloat("prezzo_listino");
         String descrizione = res.getString("descrizione");
         String sistemaOpeativo =  res.getString("so");
-        String ram_tipo = res.getString("ram_tipo");
-        int ram_quantita = res.getInt("ram_quantita");
+        String ramTipo = res.getString("ram_tipo");
+        int ramQuantita = res.getInt("ram_quantita");
         String nomeCpu = res.getString("cpu_nome");
         float hertzCpu = res.getFloat("cpu_hertz");
         boolean batteria =  res.getBoolean("batteria");
@@ -68,8 +68,8 @@ public class ProdottoDAO {
         p.setPrezzoListino(prezzoListino);
         p.setDescrizione(descrizione);
         p.setSistemaOperativo(sistemaOpeativo);
-        p.setTipoRam(ram_tipo);
-        p.setQuantitaRam(ram_quantita);
+        p.setTipoRam(ramTipo);
+        p.setQuantitaRam(ramQuantita);
         p.setCpuNome(nomeCpu);
         p.setHertzCpu(hertzCpu);
         p.setBatteria(batteria);
