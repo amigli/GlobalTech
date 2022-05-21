@@ -9,7 +9,7 @@ CREATE TABLE Prodotto(
      nome varchar(50) not null,
      marca varchar(50) not null,
      colore varchar(50) not null,
-     prezzoListino float not null,
+     prezzo_listino float not null,
      descrizione text not null,
      batteria boolean not null,
      ram_tipo varchar(20),
@@ -18,6 +18,7 @@ CREATE TABLE Prodotto(
      cpu_nome varchar(20),
      cpu_hertz float,
      disponibilita int not null
+
 );
 
 CREATE TABLE Foto (
