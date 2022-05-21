@@ -7,7 +7,6 @@ use progettoTSW;
 CREATE TABLE Prodotto(
      id integer auto_increment primary key,
      nome varchar(50) not null,
-     tipologia varchar(50) not null, -- Da concordare
      marca varchar(50) not null,
      colore varchar(50) not null,
      prezzoListino float not null,
