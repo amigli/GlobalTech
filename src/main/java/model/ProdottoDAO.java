@@ -17,7 +17,7 @@ public class ProdottoDAO {
             ResultSet res =  stmt.executeQuery(sql);
             List<Prodotto> list =  new ArrayList<>();
             while(res.next()){
-                Prodotto i = this.creaInformatica(res);
+                Prodotto i = this.creaProdotto(res);
 
                 list.add(i);
             }
@@ -37,14 +37,14 @@ public class ProdottoDAO {
             ResultSet res =  statement.executeQuery(sql);
             res.next();
 
-            return  this.creaInformatica(res);
+            return  this.creaProdotto(res);
 
 
         } catch (SQLException e) {
             throw new RuntimeException();
         }
     }
-    private Prodotto creaInformatica(ResultSet res) throws SQLException {
+    private Prodotto creaProdotto(ResultSet res) throws SQLException {
         int id = res.getInt("id");
         String nome = res.getString("nome");
         String marca = res.getString("marca");
