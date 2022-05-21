@@ -8,21 +8,7 @@ public class Ordine {
     private GregorianCalendar data;
     private String modalitaPagamento, stato;
 
-    public Ordine(int id, double prezzoTotale, double speseSpedizione, GregorianCalendar data, String modalitaPagamento, String stato) {
-        this.id = id;
-        this.prezzoTotale = prezzoTotale;
-        this.speseSpedizione = speseSpedizione;
-        this.data = data;
-        this.modalitaPagamento = modalitaPagamento;
-        this.stato = stato;
-    }
-
-    public Ordine(double prezzoTotale, double speseSpedizione, GregorianCalendar data, String modalitaPagamento, String stato) {
-        this.prezzoTotale = prezzoTotale;
-        this.speseSpedizione = speseSpedizione;
-        this.data = data;
-        this.modalitaPagamento = modalitaPagamento;
-        this.stato = stato;
+    public Ordine() {
     }
 
     public int getId() {

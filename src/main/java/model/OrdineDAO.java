@@ -22,7 +22,13 @@ public class OrdineDAO {
                 String modalitaPagamento=rs.getString(5);
                 String stato=rs.getString(6);
 
-                Ordine o=new Ordine(id, prezzoTotale,speseSpedizione, data, modalitaPagamento, stato);
+                Ordine o=new Ordine();
+                o.setId(id);
+                o.setPrezzoTotale(prezzoTotale);
+                o.setData(data);
+                o.setSpeseSpedizione(speseSpedizione);
+                o.setModalitaPagamento(modalitaPagamento);
+                o.setStato(stato);
 
                 l.add(o);
             }
@@ -73,7 +79,13 @@ public class OrdineDAO {
                 String modalitaPagamento=rs.getString(5);
                 String stato=rs.getString(6);
 
-                Ordine o = new Ordine(ID, prezzoTotale, speseSpedizione, data, modalitaPagamento, stato);
+                Ordine o = new Ordine();
+                o.setId(ID);
+                o.setPrezzoTotale(prezzoTotale);
+                o.setData(data);
+                o.setSpeseSpedizione(speseSpedizione);
+                o.setModalitaPagamento(modalitaPagamento);
+                o.setStato(stato);
 
                 l.add(o);
             }

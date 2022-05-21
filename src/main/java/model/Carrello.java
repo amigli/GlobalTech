@@ -27,8 +27,8 @@ public class Carrello {
         *   Sono necessari i seguenti metodi:
         *       - compare per i prodotti per poterli confrontare in base all'id
         *       (magari usiamo una lampda expression ed evitiamo il metodo);
-        *
-         * */
+        */
+
     }
 
     public void setCart(ArrayList<Item> cart) {
