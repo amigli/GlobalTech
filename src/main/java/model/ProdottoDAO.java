@@ -43,6 +43,7 @@ public class ProdottoDAO {
         }
     }
 
+
     private Prodotto creaProdotto(ResultSet res) throws SQLException {
         int id = res.getInt("id");
         String nome = res.getString("nome");
