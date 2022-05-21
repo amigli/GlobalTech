@@ -19,7 +19,7 @@ public class UtenteDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM utente");
             while (rs.next()){
-                Utente u =  this.creaUtente(rs);
+                Utente u =  this.trovaUtente(rs);
                 l.add(u);
             }
 
@@ -37,7 +37,7 @@ public class UtenteDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM utente WHERE id="+id);
             if (rs.next()){
-                return creaUtente(rs);
+                return trovaUtente(rs);
             }else{
                 return null;
             }
@@ -48,12 +48,9 @@ public class UtenteDAO {
 
     }
 
-    /*
-       Metodo di servizio che evita la ridondanza del codice.
-    */
-    private Utente creaUtente(ResultSet rs) throws SQLException {
+    private Utente trovaUtente(ResultSet rs) throws SQLException {
         int id = rs.getInt(1);
-        String nomeUtente=rs.getString(2);
+        String email=rs.getString(2);
         String password=rs.getString(3);
         GregorianCalendar dataNascita = (GregorianCalendar) rs.getObject(4);
         String nome=rs.getString(5);
@@ -65,7 +62,7 @@ public class UtenteDAO {
         Utente u =  new Utente();
 
         u.setId(id);
-        u.setNomeUtente(nomeUtente);
+        u.setEmail(email);
         u.setPassword(password);
         u.setDataNascita(dataNascita);
         u.setNome(nome);
