@@ -3,9 +3,9 @@ package model;
 import java.util.GregorianCalendar;
 
 public class Utente {
-    private int id, numAcquisti;
-    private String nomeUtente, password, nome, cognome, indirizzo;
-    private GregorianCalendar dataNascita;
+    private int id, numAcquisti, numCivico, cap, cvvCarta;
+    private String nome, cognome, indirizzo, email, password, citta, numTelefono, numeroCarta;
+    private GregorianCalendar dataNascita, dataScadenzaCarta;
     private boolean admin;
 
     public Utente() {
@@ -59,10 +59,6 @@ public class Utente {
         return cognome;
     }
 
-    public String getNomeUtente() {
-        return nomeUtente;
-    }
-
     public String getIndirizzo() {
         return indirizzo;
     }
@@ -75,11 +71,75 @@ public class Utente {
         this.indirizzo = indirizzo;
     }
 
-    public void setNomeUtente(String nomeUtente) {
-        this.nomeUtente = nomeUtente;
-    }
-
     public boolean isAdmin() {
         return admin;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getNumCivico() {
+        return numCivico;
+    }
+
+    public void setNumCivico(int numCivico) {
+        this.numCivico = numCivico;
+    }
+
+    public int getCap() {
+        return cap;
+    }
+
+    public void setCap(int cap) {
+        this.cap = cap;
+    }
+
+    public int getCvvCarta() {
+        return cvvCarta;
+    }
+
+    public void setCvvCarta(int cvvCarta) {
+        this.cvvCarta = cvvCarta;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCitta() {
+        return citta;
+    }
+
+    public void setCitta(String citta) {
+        this.citta = citta;
+    }
+
+    public String getNumTelefono() {
+        return numTelefono;
+    }
+
+    public void setNumTelefono(String numTelefono) {
+        this.numTelefono = numTelefono;
+    }
+
+    public String getNumeroCarta() {
+        return numeroCarta;
+    }
+
+    public void setNumeroCarta(String numeroCarta) {
+        this.numeroCarta = numeroCarta;
+    }
+
+    public GregorianCalendar getDataScadenzaCarta() {
+        return dataScadenzaCarta;
+    }
+
+    public void setDataScadenzaCarta(GregorianCalendar dataScadenzaCarta) {
+        this.dataScadenzaCarta = dataScadenzaCarta;
     }
 }
