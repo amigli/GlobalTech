@@ -9,11 +9,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class OffertaDAO {
-    public List<Offerta> doRetrieveAll(){
+
+    public List<Offerta> doRetrieveActive(){
         List <Offerta> l = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM offerta");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM offerta WHERE data_inizio<=current_date() and data_fine>=current_date()");
             while (rs.next()){
                 int id= rs.getInt(1);
                 double percentuale=rs.getDouble(2);
@@ -24,7 +25,6 @@ public class OffertaDAO {
 
                 l.add(o);
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
