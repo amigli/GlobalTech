@@ -5,19 +5,19 @@ CREATE DATABASE progettoTSW;
 use progettoTSW;
 
 CREATE TABLE Prodotto(
-     id integer auto_increment primary key,
-     nome varchar(50) not null,
-     marca varchar(50) not null,
-     colore varchar(50) not null,
-     prezzo_listino float not null,
-     descrizione text not null,
-     batteria boolean not null,
-     ram_tipo varchar(20),
-     ram_quantita float(20),
-     sistema_operativo varchar(20),
-     cpu_nome varchar(20),
-     cpu_hertz float,
-     disponibilita int not null
+    id integer auto_increment primary key,
+    nome varchar(50) not null,
+    marca varchar(50) not null,
+    colore varchar(50) not null,
+    prezzo_listino float not null,
+    descrizione text not null,
+    batteria boolean not null,
+    ram_tipo varchar(20),
+    ram_quantita float(20),
+    sistema_operativo varchar(20),
+    cpu_nome varchar(20),
+    cpu_hertz float,
+    disponibilita int not null
 
 );
 
