@@ -9,20 +9,16 @@
 <html>
 <head>
     <title>Navbar</title>
-    <link type="text/css" rel="stylesheet" href="navstyle.css">
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
-<ul>
-    <li>Home</li>
-    <li>Catalogo</li>
-    <!-- Questa è la barra di ricerca. Bisogna inserire la servlet che viene chiamata quando si cerca-->
-    <!--<form class="example" action="" style="margin:auto; max-width: 300px">
-        <input type="text" placeholder="Cerca...">
-        <button type="submit">
-            <i class="fa fa-search"></i>
-        </button>
-    </form>-->
-    <li>Offerte</li>
-</ul>
+    <nav>
+        <ul  class="nav">
+            <li>Home</li>
+            <li>Catalogo</li>
+            <li>Offerte</li>
+        </ul>
+    </nav>
+
 </body>
 </html>

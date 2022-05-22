@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Inserimento Prodotto</title>
 </head>
 <body>
     <form>
@@ -22,12 +22,12 @@
         <label for="prezzo">Prezzo</label><br>
         <input type="text" name="prezzo" id="prezzo"><br>
 
-        <label for="descrizione">Descrizione</label>
-        <textarea name="descrizione" id="descrizione"></textarea><br>
+        <label for="descrizione">Descrizione</label><br>
+        <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
 
         <p>Stai inserendo un prodotto con batteria?</p>
-        <input type="radio" name="batteria" id="batteria_true" value="true"><label for="batteria_true"></label>
-        <input type="radio" name="batteria" id="batteria_false" value="false"><label for="batteria_false"></label>
+        <input type="radio" name="batteria" id="batteria_true" value="true">Si<label for="batteria_true"></label>
+        <input type="radio" name="batteria" id="batteria_false" value="false">No<label for="batteria_false"></label>
 
         <fieldset>
             <legend>Dati tecnici</legend>
