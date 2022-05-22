@@ -1,17 +1,54 @@
 ul.nav{
     background-color: darkblue;
+    list-style-type: none;
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+
 }
 
 li{
     float: left;
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+li.login-item{
+    float: right;
 }
+
+ul.nav > li > a{
+    text-decoration: none;
+    display: block;
+    padding: 18px ;
+
+    color: white;
+
+}
+
+ul.nav > li > a:hover{
+    background-color: cyan;
+    color: blue;
+}
+#search-box{
+    width: 350px;
+    height: 30px;
+    margin-left: 80px;
+    margin-right: -5px;
+}
+
+.search-form{
+    margin-top: 15px;
+    margin-bottom: 0;
+
+}
+#search-button{
+    font-size: 1.15em;
+    height: 30px;
+
+}
+
+
+
+
 
 
 
