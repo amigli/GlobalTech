@@ -12,10 +12,70 @@
 </head>
 <body>
 <form>
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email">
-    <label for="pass">Password</label>
-    <input type="password" name="password" id="password">
+    <fieldset>
+        <legend> Dati di accesso</legend>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div>
+            <label for="pass">Password</label>
+            <input type="password" name="pass" id="pass">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Dati personali</legend>
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome">
+        </div>
+        <div>
+            <label for="cognome">Cognome</label>
+            <input type="text" name="cognome" id="cognome">
+        </div>
+        <br>
+        <div>
+            <label for="data_nascita">Data di nascita</label>
+            <input type="date" name="data_nascita" id="data_nascita">
+        </div>
+        <br>
+        <div>
+            <label for="citta">Città</label>
+            <input type="text" name="citta" id="citta">
+        </div>
+        <br>
+        <div>
+            <label for="cap">CAP</label>
+            <input type="text" name="cap" id="cap">
+        </div>
+        <div>
+            <label for="via">Via</label>
+            <input type="text" name="via" id="via">
+        </div>
+        <br>
+        <div>
+            <label for="numero_civico">Numero</label>
+            <input type="int" name="numero_civico" id="numero_civico">
+        </div>
+        <div>
+            <label for="numero_telefono">Numero telefono</label>
+            <input type="text" name="numero_telefono" id="numero_telefono">
+        </div>
+    </fieldset>
+    <fieldset>
+        <div>
+            <label for="numero_cc">Numero della carta</label>
+            <input type="text" name="numero_cc" id="numero_cc">
+        </div>
+        <div>
+            <label for="cvv">CVV</label>
+            <input type="int" name="cvv" id="cvv">
+        </div>
+        <div>
+            <label for="scadenza_carta">Scadenza carta</label>
+            <input type="date" name="scadenza_carta" id="scadenza_carta">
+        </div>
+    </fieldset>
 </form>
 </body>
 </html>
