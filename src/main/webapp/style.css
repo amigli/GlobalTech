@@ -25,8 +25,8 @@ ul.nav > li > a{
 }
 
 ul.nav > li > a:hover{
-    background-color: cyan;
-    color: blue;
+    background-color: cornflowerblue;
+    color: white;
 }
 
 #search-item{
@@ -43,7 +43,7 @@ ul.nav > li > a:hover{
     margin-bottom: 0;
     width: 75%;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     height: 1.7em;
 
@@ -70,12 +70,5 @@ ul.nav > li > a:hover{
 
 
 #search-button:hover{
-    background-color: aqua;
+    background-color: whitesmoke;
 }
-
-
-
-
-
-
-

@@ -21,6 +21,9 @@
             <li>
                 <a href="#">Catalogo</a>
             </li>
+            <li>
+                <a href="#">Offerte</a>
+            </li>
             <li id="search-item">
                 <form class="search-form" action=#>
                     <input type="text" placeholder="Inzia a digitare..." name="keyword" id="search-box">
