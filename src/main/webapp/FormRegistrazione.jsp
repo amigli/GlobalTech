@@ -23,6 +23,7 @@
             <input type="password" name="pass" id="pass">
         </div>
     </fieldset>
+    <br>
     <fieldset>
         <legend>Dati personali</legend>
         <div>
@@ -62,7 +63,9 @@
             <input type="text" name="numero_telefono" id="numero_telefono">
         </div>
     </fieldset>
+    <br>
     <fieldset>
+        <legend>Dati della carta</legend>
         <div>
             <label for="numero_cc">Numero della carta</label>
             <input type="text" name="numero_cc" id="numero_cc">
