@@ -12,41 +12,60 @@
 </head>
 <body>
     <form>
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome"><br>
-        <label for="marca">Marca</label><br>
-        <input type="text" name="marca" id="marca"><br>
-
-        <label for="colore">Colore</label><br>
-        <input type="text" name="colore" id="colore"><br>
-        <label for="prezzo">Prezzo</label><br>
-        <input type="text" name="prezzo" id="prezzo"><br>
-
-        <label for="descrizione">Descrizione</label><br>
-        <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
-
-        <p>Stai inserendo un prodotto con batteria?</p>
-        <input type="radio" name="batteria" id="batteria_true" value="true">Si<label for="batteria_true"></label>
-        <input type="radio" name="batteria" id="batteria_false" value="false">No<label for="batteria_false"></label>
+        <div>
+            <label for="nome">Nome</label><br>
+            <input type="text" name="nome" id="nome"><br>
+        </div>
+        <div>
+            <label for="marca">Marca</label><br>
+            <input type="text" name="marca" id="marca"><br>
+        </div>
+        <div>
+            <label for="colore">Colore</label><br>
+            <input type="text" name="colore" id="colore"><br>
+        </div>
+        <div>
+            <label for="prezzo">Prezzo</label><br>
+            <input type="text" name="prezzo" id="prezzo"><br>
+        </div>
+        <div>
+            <label for="descrizione">Descrizione</label><br>
+            <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
+        </div>
+        <div>
+            <p>Stai inserendo un prodotto con batteria?</p>
+            <input type="radio" name="batteria" id="batteria_true" value="true">Si<label for="batteria_true"></label>
+            <input type="radio" name="batteria" id="batteria_false" value="false">No<label for="batteria_false"></label>
+        </div>
 
         <fieldset>
             <legend>Dati tecnici</legend>
             <h3>Ram</h3><br>
-            <label for="ram_tipo">Tipologia RAM</label><br>
-            <input type="text" name="ram_tipo" id="ram_tipo"><br>
-            <label for="ram_quantita">Quanità RAM</label><br>
-            <input type="text" name="ram_quantita" id="ram_quantita"> GB<br>
-
-
+            <div>
+                <label for="ram_tipo">Tipologia RAM</label><br>
+                <input type="text" name="ram_tipo" id="ram_tipo"><br>
+            </div>
+            <div>
+                <label for="ram_quantita">Quanità RAM</label><br>
+                <input type="text" name="ram_quantita" id="ram_quantita"> GB<br>
+            </div>
             <h3>CPU</h3><br>
-            <label for="cpu_nome">Nome CPU</label><br>
-            <input type="text" name="cpu_nome" id="cpu_nome"><br>
-            <label for="cpu_hertz">Hertz CPU</label><br>
-            <input type="text" name="cpu_hertz" id="cpu_hertz"><br>
+            <div>
+                <label for="cpu_nome">Nome CPU</label><br>
+                <input type="text" name="cpu_nome" id="cpu_nome"><br>
+            </div>
+            <div>
+                <label for="cpu_hertz">Hertz CPU</label><br>
+                <input type="text" name="cpu_hertz" id="cpu_hertz"><br>
+            </div>
+
         </fieldset>
 
-        <label for="disponibilita">Quantità disponibile</label>
-        <input type="text" name="disponibilita" id="disponibilita">
+        <div>
+            <label for="disponibilita">Quantità disponibile</label>
+            <input type="text" name="disponibilita" id="disponibilita">
+        </div>
+
 
         <input type="submit">
 
