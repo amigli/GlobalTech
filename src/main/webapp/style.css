@@ -1,10 +1,11 @@
-ul.nav{
+nav{
     background-color: darkblue;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    padding: 1rem 1rem 0.5rem 1rem;
+}
 
+ul.nav{
+    list-style-type: none;
+    overflow: hidden;
 }
 
 li{
@@ -15,18 +16,18 @@ li.login-item{
     float: right;
 }
 
-ul.nav > li > a{
+ul.nav li > a{
     text-decoration: none;
     display: block;
-    padding: 18px ;
-
     color: white;
-
+    padding: 0.7rem;
+    border-radius: 40%;
 }
 
 ul.nav > li > a:hover{
     background-color: cornflowerblue;
     color: white;
+
 }
 
 #search-item{
@@ -39,12 +40,9 @@ ul.nav > li > a:hover{
 .search-form{
     border: 1px solid white;
     padding: -0.5%;
-    margin-top: 2%;
-    margin-bottom: 0;
     width: 75%;
     background-color: white;
     border-radius: 5px;
-    border: none;
     height: 1.7em;
 
 
@@ -55,6 +53,7 @@ ul.nav > li > a:hover{
     border: none;
     background: none;
     height: 1.7rem;
+
 
 }
 
