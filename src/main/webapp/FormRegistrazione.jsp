@@ -79,6 +79,8 @@
             <input type="date" name="scadenza_carta" id="scadenza_carta">
         </div>
     </fieldset>
+    <br>
+    <input type="submit" value="Registrati">
 </form>
 </body>
 </html>
