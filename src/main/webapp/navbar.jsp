@@ -14,31 +14,52 @@
 </head>
 <body>
     <nav>
+       <div id="logo">
+           <h2 >
+               GlobalTech
+           </h2>
+       </div>
         <ul class="nav">
-            <li>
-                <a href="#">Home</a>
-            </li>
-            <li>
-                <a href="#">Catalogo</a>
-            </li>
-            <li>
-                <a href="#">Offerte</a>
-            </li>
-            <li id="search-item">
-                <form class="search-form" action=#>
-                    <input type="text" placeholder="Inzia a digitare..." name="keyword" id="search-box">
-                    <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
-                </form>
+                <li id="search-item">
+                    <form id="search-form" action=#>
+                        <input type="text" placeholder="Inzia a digitare..." name="keyword" id="search-box">
+                        <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                    </form>
+                    <div id="burger" onclick="mostraMenu()">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </li>
 
-            </li>
-            <li class="login-item">
-                <a href="#">
-                    Login
-                </a>
-            </li>
+                <div id="menu-items">
+                    <li >
+                        <a href="#">Catalogo</a>
+                    </li>
+                    <li >
+                        <a href="#">Offerte</a>
+                    </li >
 
+                    <li id="login-item">
+                        <a href="#">
+                            Login
+                        </a>
+                        <div id="login-box">
+                            <%@include file="FormAccesso.jsp"%>
+                        </div>
+                    </li>
+
+                </div>
         </ul>
     </nav>
+    <script type="text/javascript">
+        function mostraMenu(){
+            const menu =  document.querySelector("#menu-items");
+            const burger = document.getElementById("burger");
+            menu.classList.toggle("active");
+            burger.classList.toggle("active");
+        }
 
+    </script>
 </body>
 </html>
