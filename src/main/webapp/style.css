@@ -1,62 +1,28 @@
 nav{
     background-color: darkblue;
     padding: 1rem 1rem 0.5rem 1rem;
+    height: 6em;
+    text-shadow: 2px 2px 4px #000000;
 }
-
-ul.nav{
+ul.nav {
     list-style-type: none;
-    overflow: hidden;
+    background-color: darkblue;
+    width: 100%;
+    margin-left: -1rem;
+    text-align: center;
+    padding: 1rem;
 }
 
-li{
-    float: left;
-}
-
-li.login-item{
-    float: right;
-}
-
-ul.nav li > a{
-    text-decoration: none;
-    display: block;
-    color: white;
-    padding: 0.7rem;
-    border-radius: 40%;
-}
-
-ul.nav > li > a:hover{
-    background-color: cornflowerblue;
-    color: white;
-
-}
-
-#search-item{
-    border: none;
-    width: 60%;
-    margin-left: 9%;
-
-
-}
-.search-form{
+#search-form{
     border: 1px solid white;
-    padding: -0.5%;
-    width: 75%;
     background-color: white;
     border-radius: 5px;
     height: 1.7em;
-
-
+    margin-bottom: 0;
+    width: 90%;
+    margin-top: -1rem;
+    float: left;
 }
-#search-box{
-    width: 89%;
-    font-size: 1.05em;
-    border: none;
-    background: none;
-    height: 1.7rem;
-
-
-}
-
 
 #search-button{
     font-size: 1.22em;
@@ -71,3 +37,146 @@ ul.nav > li > a:hover{
 #search-button:hover{
     background-color: whitesmoke;
 }
+
+#search-box{
+    width: 85%;
+    font-size: 1.05em;
+    border: none;
+    background: none;
+    height: 1.7rem;
+}
+
+ul.nav li > a{
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-image: linear-gradient(white,whitesmoke);
+    background-position: center bottom;
+    background-size: 0 5px, auto;
+    background-repeat: no-repeat;
+    padding: 0.3rem;
+    margin: 0.3rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+ul.nav li > a:hover{
+    background-color: white;
+    color: darkblue;
+    text-shadow: grey;
+}
+#menu-items{
+    display: none;
+    margin-top: 1rem;
+}
+
+#burger {
+    display: block;
+    cursor: pointer;
+    margin-top: -1rem;
+    float: right;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+#login-box{
+    display: none;
+}
+
+#logo {
+    color: white;
+}
+
+div#menu-items.active{
+    display: block;
+}
+
+#burger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+#burger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#burger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+@media screen and (min-width : 769px) {
+    nav{
+        height: 4em;
+    }
+
+    #burger{
+        display: none;
+    }
+    div#menu-items{
+        display: block;
+        margin-top: 0;
+    }
+    ul.nav{
+        float: right;
+        width: 65%;
+        padding: 0;
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+
+    ul.nav {
+        list-style-type: none;
+        background-color: darkblue;
+    }
+
+    ul.nav li{
+        float: left;
+    }
+
+
+    #menu-items{
+        float:right;
+    }
+
+    ul.nav li > a:hover{
+        background-size: 100% 5px, auto;
+    }
+
+    #logo{
+        float: left;
+        width: 20%;
+    }
+
+    #search-item{
+        border: none;
+        width: 50%;
+    }
+
+    #login-box{
+        z-index: 1;
+        position:absolute;
+        background-color: white;
+        display: none;
+        padding: 2rem 2rem;
+        right: 0;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        margin-right: 0.05em;
+    }
+
+    #login-item:hover #login-box{
+        display: block;
+    }
+
+    #search-form{
+        width: 70%;
+        margin-top: 0;
+        float: none;
+    }
+
+}
+
+
