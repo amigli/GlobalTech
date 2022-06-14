@@ -72,6 +72,4 @@ public class UtenteDAO {
         return u;
     }
 
-
-
 }
