@@ -3,12 +3,12 @@ package model;
 import java.util.ArrayList;
 
 public class Prodotto  {
-    private int id, disponibilita, quantitaRam;
+    private int id, disponibilita;
     private String nome, marca, colore, descrizione,
             sistemaOperativo, tipoRam, cpuNome;
 
     private Foto immagini;
-    private float hertzCpu, prezzoListino;
+    private float prezzoListino, quantitaRam;
 
     private boolean batteria;
 
@@ -31,11 +31,11 @@ public class Prodotto  {
         this.disponibilita = disponibilita;
     }
 
-    public int getQuantitaRam() {
+    public float getQuantitaRam() {
         return quantitaRam;
     }
 
-    public void setQuantitaRam(int quantitaRam) {
+    public void setQuantitaRam(float quantitaRam) {
         this.quantitaRam = quantitaRam;
     }
 
@@ -101,14 +101,6 @@ public class Prodotto  {
 
     public void setImmagini(Foto immagini) {
         this.immagini = immagini;
-    }
-
-    public float getHertzCpu() {
-        return hertzCpu;
-    }
-
-    public void setHertzCpu(float hertzCpu) {
-        this.hertzCpu = hertzCpu;
     }
 
     public float getPrezzoListino() {

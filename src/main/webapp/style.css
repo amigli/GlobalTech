@@ -22,6 +22,11 @@ ul.nav {
     width: 90%;
     margin-top: -1rem;
     float: left;
+    padding: 0.05em;
+}
+
+#search-box:focus-visible {
+    outline: thin dotted;
 }
 
 #search-button{
@@ -46,14 +51,10 @@ ul.nav {
     height: 1.7rem;
 }
 
-ul.nav li > a{
+ul.nav  li > a{
     text-decoration: none;
     display: block;
     color: white;
-    background-image: linear-gradient(white,whitesmoke);
-    background-position: center bottom;
-    background-size: 0 5px, auto;
-    background-repeat: no-repeat;
     padding: 0.3rem;
     margin: 0.3rem;
     font-size: 1.2rem;
@@ -68,6 +69,7 @@ ul.nav li > a:hover{
 #menu-items{
     display: none;
     margin-top: 1rem;
+
 }
 
 #burger {
@@ -94,7 +96,7 @@ ul.nav li > a:hover{
     color: white;
 }
 
-div#menu-items.active{
+li#menu-items.active{
     display: block;
 }
 
@@ -108,6 +110,44 @@ div#menu-items.active{
 #burger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+
+#suggest{
+    background-color: white;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 0.2em;
+    display: none;
+    width: 88%;
+    overflow: scroll;
+    height: 9rem;
+    text-align: left;
+}
+
+ul#menu-items-list{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#search-box:focus-visible ~ #suggest{
+    display: block;
+}
+
+
+#result{
+    margin-left: 0;
+}
+#result li{
+    padding: 1px;
+    display: block;
+    list-style-type: none;
+    float: none;
+}
+
+#result li:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
 @media screen and (min-width : 769px) {
     nav{
         height: 4em;
@@ -116,7 +156,7 @@ div#menu-items.active{
     #burger{
         display: none;
     }
-    div#menu-items{
+    li#menu-items{
         display: block;
         margin-top: 0;
     }
@@ -142,10 +182,6 @@ div#menu-items.active{
         float:right;
     }
 
-    ul.nav li > a:hover{
-        background-size: 100% 5px, auto;
-    }
-
     #logo{
         float: left;
         width: 20%;
@@ -153,9 +189,12 @@ div#menu-items.active{
 
     #search-item{
         border: none;
-        width: 50%;
+        width: 60%;
     }
 
+    li#menu-items{
+        width: 30%;
+    }
     #login-box{
         z-index: 1;
         position:absolute;
@@ -176,6 +215,7 @@ div#menu-items.active{
         margin-top: 0;
         float: none;
     }
+
 
 }
 

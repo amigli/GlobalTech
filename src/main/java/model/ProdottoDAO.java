@@ -55,7 +55,6 @@ public class ProdottoDAO {
         String ramTipo = res.getString("ram_tipo");
         int ramQuantita = res.getInt("ram_quantita");
         String nomeCpu = res.getString("cpu_nome");
-        float hertzCpu = res.getFloat("cpu_hertz");
         boolean batteria =  res.getBoolean("batteria");
         int disponibilita =  res.getInt("disponibilita");
 
@@ -71,7 +70,6 @@ public class ProdottoDAO {
         p.setTipoRam(ramTipo);
         p.setQuantitaRam(ramQuantita);
         p.setCpuNome(nomeCpu);
-        p.setHertzCpu(hertzCpu);
         p.setBatteria(batteria);
         p.setDisponibilita(disponibilita);
         return p;

@@ -11,6 +11,9 @@
     <title>Navbar</title>
     <link type="text/css" rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <nav>
@@ -24,42 +27,61 @@
                     <form id="search-form" action=#>
                         <input type="text" placeholder="Inzia a digitare..." name="keyword" id="search-box">
                         <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                        <div id="suggest">
+
+                        </div>
                     </form>
-                    <div id="burger" onclick="mostraMenu()">
+                    <div id="burger" >
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
                     </div>
                 </li>
 
-                <div id="menu-items">
-                    <li >
-                        <a href="#">Catalogo</a>
-                    </li>
-                    <li >
-                        <a href="#">Offerte</a>
-                    </li >
+                <li id="menu-items">
+                    <ul id="menu-items-list">
+                        <li>
+                            <a href="#">Catalogo</a>
+                        </li>
+                        <li>
+                            <a href="#">Offerte</a>
+                        </li>
 
-                    <li id="login-item">
-                        <a href="#">
-                            Login
-                        </a>
-                        <div id="login-box">
-                            <%@include file="FormAccesso.jsp"%>
-                        </div>
-                    </li>
-
-                </div>
+                        <li id="login-item">
+                            <a href="#">
+                                Login
+                            </a>
+                            <div id="login-box">
+                                <%@include file="FormAccesso.jsp"%>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
         </ul>
     </nav>
     <script type="text/javascript">
         function mostraMenu(){
-            const menu =  document.querySelector("#menu-items");
+            //const menu =  document.querySelector("#menu-items");
             const burger = document.getElementById("burger");
-            menu.classList.toggle("active");
+            //menu.classList.toggle("active");
             burger.classList.toggle("active");
+
+
         }
+        $(document).ready(
+            function (){
+                $("#burger").click(
+                    function () {
+                        $("#menu-items").slideToggle("slow");
+                    }
+                )
+            }
+        );
+
 
     </script>
+    <script src="script/SelectResultJquery.js" defer>
+    </script>
+
 </body>
 </html>
