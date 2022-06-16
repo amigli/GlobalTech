@@ -4,8 +4,8 @@ import java.util.GregorianCalendar;
 
 public class Utente {
     private int id, numAcquisti, numCivico, cap, cvvCarta;
-    private String nome, cognome, indirizzo, email, password, citta, numTelefono, numeroCarta;
-    private GregorianCalendar dataNascita, dataScadenzaCarta;
+    private String nome, cognome, indirizzo, email, password;
+    private String citta, via, numTelefono, numeroCarta, dataNascita, dataScadenzaCarta;
     private boolean admin;
 
     public Utente() {
@@ -27,7 +27,7 @@ public class Utente {
         return password;
     }
 
-    public void setDataNascita(GregorianCalendar dataNascita) {
+    public void setDataNascita(String dataNascita) {
         this.dataNascita = dataNascita;
     }
 
@@ -63,7 +63,7 @@ public class Utente {
         return indirizzo;
     }
 
-    public GregorianCalendar getDataNascita() {
+    public String getDataNascita() {
         return dataNascita;
     }
 
@@ -135,11 +135,19 @@ public class Utente {
         this.numeroCarta = numeroCarta;
     }
 
-    public GregorianCalendar getDataScadenzaCarta() {
+    public String getDataScadenzaCarta() {
         return dataScadenzaCarta;
     }
 
-    public void setDataScadenzaCarta(GregorianCalendar dataScadenzaCarta) {
+    public void setDataScadenzaCarta(String dataScadenzaCarta) {
         this.dataScadenzaCarta = dataScadenzaCarta;
+    }
+
+    public String getVia() {
+        return via;
+    }
+
+    public void setVia(String via) {
+        this.via = via;
     }
 }
