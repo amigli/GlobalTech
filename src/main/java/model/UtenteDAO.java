@@ -50,7 +50,7 @@ public class UtenteDAO {
         int id = rs.getInt(1);
         String email=rs.getString(2);
         String password=rs.getString(3);
-        GregorianCalendar dataNascita = (GregorianCalendar) rs.getObject(4);
+        String dataNascita = (String) rs.getObject(4);
         String nome=rs.getString(5);
         String cognome=rs.getString(6);
         String indirizzo=rs.getString(7);
@@ -70,6 +70,16 @@ public class UtenteDAO {
         u.setAdmin(admin);
 
         return u;
+    }
+
+    public void registraUtente (Utente u){
+        try (Connection con = ConPool.getConnection()) {
+            Statement stmt=con.createStatement();
+            stmt.executeUpdate("INSERT INTO utente(email, passwordhash, data_nascita, nome, cognome, admin, via_indirizzo, civico, citta, cap, num_acquisti, numero_telefono, numero_cc, cvv_cc, data_scadenza_cc) " +
+                    "values ("\"" + u.getEmail()+ "\",\""+ u.getPassword() + "\",\"" + u.getDataNascita() + "\",\"" + u.getNome() + "\", \"" + u.getCognome() + "\", \"" + u.isAdmin() + "\", \"" + u.getVia() + "\", \"" + u.getNumCivico() + "\", \"" + u.getCitta() + "\", \"" + u.getCap() + "\", \"" + u.getNumAcquisti() + "\", \"" + u.getNumTelefono() + "\", \"" + u.getNumeroCarta() + "\", \"" + u.getCvvCarta() + "\", \"" + u.getDataScadenzaCarta() + "\");");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
