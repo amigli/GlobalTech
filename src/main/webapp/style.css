@@ -4,6 +4,43 @@ nav{
     height: 6em;
     text-shadow: 2px 2px 4px #000000;
 }
+
+input[type=text]{
+    width: 100%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password]{
+    width: 100%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: mediumblue;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: darkblue;
+}
+
 ul.nav {
     list-style-type: none;
     background-color: darkblue;
@@ -49,6 +86,8 @@ ul.nav {
     border: none;
     background: none;
     height: 1.7rem;
+    padding: 0;
+    margin : 0;
 }
 
 ul.nav  li > a{
@@ -148,6 +187,36 @@ ul#menu-items-list{
     background-color: rgba(0,0,0,0.2);
 }
 
+/*-----------------------------*/
+
+#accesso {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    align:center;
+    width: 35%;
+    margin-top:20px;
+    margin-left:400px;
+}
+
+form#login-form > label{
+    font-size: 20px;
+}
+
+form#login-form > h2{
+    text-align: center;
+    color: darkblue;
+}
+
+form#login-form > a{
+    text-decoration: none;
+    color: darkblue;
+    font-size: 20px;
+    font-family: Arial;
+}
+
+/*----------------------------------------*/
+
 @media screen and (min-width : 769px) {
     nav{
         height: 4em;
@@ -218,5 +287,7 @@ ul#menu-items-list{
 
 
 }
+
+
 
 

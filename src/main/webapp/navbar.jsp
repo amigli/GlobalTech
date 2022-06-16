@@ -25,7 +25,7 @@
         <ul class="nav">
                 <li id="search-item">
                     <form id="search-form" action=#>
-                        <input type="text" placeholder="Inzia a digitare..." name="keyword" id="search-box">
+                        <input type="text" placeholder="Inizia a digitare..." name="keyword" id="search-box">
                         <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
                         <div id="suggest">
 
@@ -52,7 +52,7 @@
                                 Login
                             </a>
                             <div id="login-box">
-                                <%@include file="FormAccesso.jsp"%>
+                                <-!%@include file="FormAccesso.jsp"%->
                             </div>
                         </li>
                     </ul>
@@ -72,7 +72,7 @@
             function (){
                 $("#burger").click(
                     function () {
-                        $("#menu-items").slideToggle("slow");
+                        $("#menu-items").toggle();
                     }
                 )
             }

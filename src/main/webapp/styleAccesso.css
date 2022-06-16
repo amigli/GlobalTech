@@ -44,28 +44,19 @@ input[type=submit]:hover {
     background-color: darkblue;
 }
 
-label{
+form#login-form > label{
     font-size: 20px;
 }
 
-h2{
+form#login-form > h2{
     text-align: center;
     color: darkblue;
 }
 
-a{
+form#login-form > a{
     text-decoration: none;
     color: darkblue;
     font-size: 20px;
     font-family: Arial;
 }
 
-#logo {
-    color: white;
-    background: darkblue;
-    width: 200px;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 10px;
-}
