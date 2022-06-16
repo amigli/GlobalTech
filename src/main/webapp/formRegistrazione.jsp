@@ -6,11 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Registrazione</title>
+    <%@include file="links.html"%>
 </head>
 <body>
+<%@ include file="navbar.jsp"%>
 <form action="registra-utente">
     <fieldset>
         <legend> Dati di accesso</legend>
