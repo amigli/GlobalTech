@@ -48,6 +48,7 @@ ul.nav {
     margin-left: -1rem;
     text-align: center;
     padding: 1rem;
+    position: relative;
 }
 
 #search-form{
@@ -231,16 +232,15 @@ form#login-form > a{
     }
     ul.nav{
         float: right;
-        width: 65%;
+        width: 70%;
         padding: 0;
         margin-left: 0;
         margin-top: 1.5rem;
-    }
-
-    ul.nav {
         list-style-type: none;
         background-color: darkblue;
+        margin-bottom: 0;
     }
+
 
     ul.nav li{
         float: left;
@@ -258,12 +258,10 @@ form#login-form > a{
 
     #search-item{
         border: none;
-        width: 60%;
+        width: 50%;
     }
 
-    li#menu-items{
-        width: 30%;
-    }
+
     #login-box{
         z-index: 1;
         position:absolute;
@@ -273,6 +271,7 @@ form#login-form > a{
         right: 0;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         margin-right: 0.05em;
+        text-shadow: none;
     }
 
     #login-item:hover #login-box{
@@ -280,14 +279,13 @@ form#login-form > a{
     }
 
     #search-form{
-        width: 70%;
+        width: 85%;
         margin-top: 0;
         float: none;
     }
 
 
 }
-
 
 
 

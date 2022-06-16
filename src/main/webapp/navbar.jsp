@@ -9,11 +9,7 @@
 <html>
 <head>
     <title>Navbar</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+    <%@ include file="links.html"%>
 </head>
 <body>
     <nav>
@@ -52,7 +48,7 @@
                                 Login
                             </a>
                             <div id="login-box">
-                                <-!%@include file="FormAccesso.jsp"%->
+                                <%@include file="login.jsp"%>
                             </div>
                         </li>
                     </ul>
@@ -65,8 +61,6 @@
             const burger = document.getElementById("burger");
             //menu.classList.toggle("active");
             burger.classList.toggle("active");
-
-
         }
         $(document).ready(
             function (){
@@ -78,7 +72,15 @@
             }
         );
 
+        window.addEventListener("resize", function (){
+            let  el  = document.getElementById("menu-items");
 
+            if(window.innerWidth >= 769){
+                el.style.display = "block"
+            }else{
+                el.style.display = "none"
+            }
+        })
     </script>
     <script src="script/SelectResultJquery.js" defer>
     </script>
