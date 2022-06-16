@@ -11,7 +11,7 @@
     <title>Registrazione</title>
 </head>
 <body>
-<form>
+<form action="registra-utente">
     <fieldset>
         <legend> Dati di accesso</legend>
         <div>
