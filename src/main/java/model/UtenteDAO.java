@@ -75,13 +75,9 @@ public class UtenteDAO {
     public void registraUtente (Utente u){
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
-            stmt.executeUpdate("INSERT INTO utente(email, passwordhash, data_nascita, nome, cognome, admin, " +
-                    "via_indirizzo, civico, citta, cap, num_acquisti, numero_telefono, numero_cc, cvv_cc, " +
-                    "data_scadenza_cc) " +
-                    "values (" + u.getEmail()+ ", "+ u.getPassword() + ", " + u.getDataNascita() + "," + u.getNome() + ","
-                        + u.getCognome() + ", " + u.isAdmin() + ", " + u.getVia() + ", " + u.getNumCivico() + ", " +
-                        u.getCitta() + ", " + u.getCap() + ", " + u.getNumAcquisti() + ", " + u.getNumTelefono() + ", "
-                        + u.getNumeroCarta() + ", " + u.getCvvCarta() + ", " + u.getDataScadenzaCarta() + ")");
+            stmt.executeUpdate("INSERT INTO utente(nome, cognome, email, passwordhash, data_nascita, admin, num_acquisti) " +
+                    "values (" + u.getNome()+ ", "+ u.getCognome() + ", " + u.getEmail() + "," + u.getPassword() + ","
+                        + u.getDataNascita() + ", " + u.isAdmin() + ", " + u.getNumAcquisti() + ")");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
