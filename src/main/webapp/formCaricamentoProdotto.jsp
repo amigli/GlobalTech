@@ -66,6 +66,17 @@
                     <option>SnapDragon Gen 1</option>
                 </select>
             </div>
+            <div>
+                <label for="sistema_operativo">Sistema Operativo</label>
+                <select name="sistema_operativo" id="sistema_operativo">
+                    <option value="Windows">Windows</option>
+                    <option value="Linux">Linux</option>
+                    <option value="macOS">MacOS</option>
+                    <option value="Android">Android</option>
+                    <option value="iOS">iOS</option>
+                    <option value="Propietario">Propietario</option>
+                </select>
+            </div>
         </fieldset>
 
         <div>

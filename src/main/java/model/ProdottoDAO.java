@@ -1,10 +1,8 @@
 package model;
 
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +41,24 @@ public class ProdottoDAO {
         }
     }
 
+    public static int doRetrieveNextId(){
+        try(Connection con = ConPool.getConnection()){
+            String sql =  "SELECT max(id) from prodotto";
+
+            PreparedStatement stmt =  con.prepareStatement(sql);
+
+            ResultSet res =  stmt.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1) + 1;
+            }else{
+                return 0; //non stati ancora inseriti prodotti
+            }
+
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }
+    }
 
     private Prodotto creaProdotto(ResultSet res) throws SQLException {
         int id = res.getInt("id");
