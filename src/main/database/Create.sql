@@ -58,9 +58,9 @@ CREATE TABLE Utente (
     cap char(5),
     num_acquisti int not null, -- Bisogna inserire la query che calcola il numero di ordini effettuati
     numero_telefono char(10),
-    numero_cc char(16) not null,
-    cvv_cc char (3)not null,
-    data_scadenza_cc date not null
+    numero_cc char(16),
+    cvv_cc char (3),
+    data_scadenza_cc date
 );
 
 CREATE TABLE Carrello (
