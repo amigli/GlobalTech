@@ -7,6 +7,7 @@
     <label for="password">Password:</label><br>
     <input type="password" name="password" id="password">
     <br>
+    <br>
     <input type="submit" value="Login">
     <br>
     <a href="#">Sei un nuovo cliente? Registrati!</a>

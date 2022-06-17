@@ -182,10 +182,9 @@ ul#menu-items-list{
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 10px 20px;
-    align:center;
     width: 35%;
     margin-top:20px;
-    margin-left:400px;
+    margin-left:12em;
 }
 
 form#login-form > label{
@@ -283,7 +282,12 @@ form#login-form > a{
         text-align: left;
     }
 
+    #accesso{
+        margin-left: 400px;
+    }
+
 }
+
 
 
 
