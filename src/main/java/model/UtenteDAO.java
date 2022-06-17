@@ -83,4 +83,18 @@ public class UtenteDAO {
         }
     }
 
+    public Utente login (String username, String password){
+        try (Connection con = ConPool.getConnection()) {
+            Statement stmt=con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id, email, passwordhash FROM utente WHERE email=? AND passwordhash=SHA1(?);");
+            if (rs.next()){
+                return trovaUtente(rs);
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
