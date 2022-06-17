@@ -51,19 +51,21 @@ public class CaricaProdottoServlet extends HttpServlet {
         }
 
         String ramTipo =  request.getParameter("ram_tipo");
+        int ramQuantita = 0;
 
-        if(!ramTipo.matches("^DDR[3-5]$/"))
-            errorPar.add("ram_tipo");
-
-        int ramQuantita;
-
-        try{
-            ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
-        }catch (NumberFormatException e){
-            ramQuantita =  -1;
+        if(ramTipo.equalsIgnoreCase("nessuna")){
+            ramTipo =  null;
+        }else {
+            if (!ramTipo.matches("^DDR[3-5]$"))
+                errorPar.add("ram_tipo");
+            try{
+                ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
+            }catch (NumberFormatException e){
+                ramQuantita =  -1;
+            }
         }
 
-        if(ramQuantita < 1)
+        if(ramQuantita < 0)
             errorPar.add("ram_quantita");
 
         String nomeCpu =  request.getParameter("cpu_nome");
@@ -97,10 +99,10 @@ public class CaricaProdottoServlet extends HttpServlet {
             prod.setDisponibilita(disponibilita);
 
             request.setAttribute("prodotto", prod);
-            address = "./WEB-INF/result/caricamentoProdottoResult.jsp";
+            address = "/WEB-INF/result/caricamentoProdottoResult.jsp";
         }else{
             request.setAttribute("error_parameter", errorPar);
-            address = "/formCaricamentoProdotto.jsp";
+            address = "formCaricamentoProdotto.jsp";
         }
 
         RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
@@ -110,6 +112,6 @@ public class CaricaProdottoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 }

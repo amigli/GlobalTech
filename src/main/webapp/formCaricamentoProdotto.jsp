@@ -6,45 +6,69 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Inserimento Prodotto</title>
+    <%@include file="links.html"%>
 </head>
 <body>
-    <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
-        <div>
-            <label for="nome">Nome</label><br>
-            <input type="text" name="nome" id="nome" required><br>
-            <div class="error" id="err_nome"></div>
-        </div>
-        <div>
-            <label for="marca">Marca</label><br>
-            <input type="text" name="marca" id="marca" required><br>
-            <div class="error" id="err_marca"></div>
-        </div>
-        <div>
-            <label for="colore">Colore</label><br>
-            <input type="text" name="colore" id="colore" required>
-            <div class="error" id="err_colore"></div>
-        </div>
-        <div>
-            <label for="prezzo">Prezzo</label><br>
-            <input type="number" step="any" min="0.01" max="" name="prezzo" id="prezzo" required><br>
-        </div>
-        <div>
-            <label for="descrizione">Descrizione</label><br>
-            <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
-        </div>
-        <div>
-            <p>Stai inserendo un prodotto con batteria?</p>
-            <input type="radio" name="batteria" id="batteria_true" value="true" required><label for="batteria_true">Si</label>
-            <input type="radio" name="batteria" id="batteria_false" value="false" required><label for="batteria_false">No</label>
-        </div>
+    <div>
+        <%
+            ArrayList<String> list =
+                    (ArrayList<String>) request.getAttribute("error_parameter");
 
+            if(list != null){
+                for(String s : list){
+                    %>
+                 <%=s%>
+        <%
+                }
+            }
+        %>
+    </div>
+
+    <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
+        <fieldset>
+            <legend>Dati generali</legend>
+            <div class="input-section">
+                <label for="nome">Nome</label><br>
+                <input type="text" name="nome" id="nome" required><br>
+                <div class="error" id="err_nome"></div>
+            </div>
+            <div>
+                <label for="marca">Marca</label><br>
+                <input type="text" name="marca" id="marca" required><br>
+                <div class="error" id="err_marca"></div>
+            </div>
+            <div>
+                <label for="colore">Colore</label><br>
+                <input type="text" name="colore" id="colore" required>
+                <div class="error" id="err_colore"></div>
+            </div>
+            <div>
+                <label for="prezzo">Prezzo</label><br>
+                <input type="number" step="any" min="0.01" max="" name="prezzo" id="prezzo" required><br>
+            </div>
+            <div>
+                <label for="disponibilita">Quantità disponibile</label>
+                <input type="number" min="1" max="200" name="disponibilita" id="disponibilita" required>
+            </div>
+            <div>
+                <label for="descrizione">Descrizione</label><br>
+                <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
+            </div>
+
+
+        </fieldset>
         <fieldset>
             <legend>Dati tecnici</legend>
-            <h3>Ram</h3>
+            <div>
+                <label>Stai inserendo un prodotto con batteria?</label>
+                <input type="radio" name="batteria" id="batteria_true" value="true" required><label for="batteria_true">Si</label>
+                <input type="radio" name="batteria" id="batteria_false" value="false" required><label for="batteria_false">No</label>
+            </div>
             <div>
                 <label for="ram_tipo" >Tipologia RAM</label><br>
                 <select name="ram_tipo" onchange="activeRam(value)" id="ram_tipo">
@@ -56,14 +80,13 @@
             </div>
             <div>
                 <label for="ram_quantita">Quanità RAM</label><br>
-                <input type="number" step="any" min="0.2" max="128" name="ram_quantita" id="ram_quantita" disabled>
+                <input type="number"  min="1" max="128" name="ram_quantita" id="ram_quantita" disabled>
             </div>
-            <h3>CPU</h3><br>
             <div>
                 <label for="cpu_nome">Nome CPU</label><br>
                 <select name="cpu_nome" id="cpu_nome">
                     <option value="nothing">-</option>
-                    <option>SnapDragon Gen 1</option>
+                    <option value="snapdragon-gen-1">SnapDragon Gen 1</option>
                 </select>
             </div>
             <div>
@@ -79,10 +102,7 @@
             </div>
         </fieldset>
 
-        <div>
-            <label for="disponibilita">Quantità disponibile</label>
-            <input type="number" min="1" max="200" name="disponibilita" id="disponibilita" required>
-        </div>
+
         <input type="submit">
     </form>
     <script type="text/javascript" src="./script/CaricamentoProdotti.js">
