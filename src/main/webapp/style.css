@@ -2,20 +2,9 @@ nav{
     background-color: darkblue;
     padding: 1rem 1rem 0.5rem 1rem;
     height: 6em;
-    text-shadow: 2px 2px 4px #000000;
 }
 
-input[type=text]{
-    width: 100%;
-    padding: 8px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=password]{
+input[type=text], input[type=email], input[type=password]{
     width: 100%;
     padding: 8px 10px;
     margin: 8px 0;
@@ -104,7 +93,6 @@ ul.nav  li > a{
 ul.nav li > a:hover{
     background-color: white;
     color: darkblue;
-    text-shadow: grey;
 }
 #menu-items{
     display: none;
@@ -284,6 +272,16 @@ form#login-form > a{
         float: none;
     }
 
+    form#registrazione-form{
+        margin-left: 6em;
+        margin-right: 6em;
+        font-size: 20px;
+    }
+
+    form#registrazione-form > h2{
+        color: darkblue;
+        text-align: left;
+    }
 
 }
 

@@ -14,7 +14,7 @@
 <body>
     <nav>
        <div id="logo">
-           <h2 >
+           <h2>
                GlobalTech
            </h2>
        </div>
@@ -44,7 +44,7 @@
                         </li>
 
                         <li id="login-item">
-                            <a href="#">
+                            <a href="loginPage.jsp">
                                 Login
                             </a>
                             <div id="login-box">
