@@ -25,7 +25,7 @@ public class Utente {
 
     public void setPassword(String password) {
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            MessageDigest digest = MessageDigest.getInstance("SHA-1");
             digest.reset();
             digest.update(password.getBytes(StandardCharsets.UTF_8));
             this.password = String.format("%040x", new BigInteger(1, digest.digest()));
