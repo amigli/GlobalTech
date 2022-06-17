@@ -12,7 +12,7 @@
     <title>Inserimento Prodotto</title>
 </head>
 <body>
-    <form action="#" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
+    <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
         <div>
             <label for="nome">Nome</label><br>
             <input type="text" name="nome" id="nome" required><br>

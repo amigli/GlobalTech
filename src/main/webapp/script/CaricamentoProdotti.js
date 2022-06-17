@@ -10,16 +10,16 @@ function validateForm(){
     }
    let marca =  form["marca"];
 
-    if((/^[A-Z0-9\s]{4-30}$/i).test(marca.value)){
+    if((/^[A-Z0-9\s]{4,30}$/i).test(marca.value)){
         inputCorrect(marca, "marca" );
     }else{
         inputError(marca, "marca")
-        result=false;
+        result=false
     }
 
     let color = form["colore"];
 
-    if((/^[A-Z]{4-30}$/i).test(color.value)){
+    if((/^[A-Za-z]{4,30}$/i).test(color.value)){
         inputCorrect(color,"colore")
     }else{
         result=false;

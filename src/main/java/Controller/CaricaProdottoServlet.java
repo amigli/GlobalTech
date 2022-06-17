@@ -17,7 +17,7 @@ public class CaricaProdottoServlet extends HttpServlet {
 
         String nome = request.getParameter("nome");
 
-        if(nome == null || nome.length() <= 3)
+        if(nome == null || nome.length() < 3)
             errorPar.add("nome");
 
         String marca =  request.getParameter("marca");
@@ -96,8 +96,8 @@ public class CaricaProdottoServlet extends HttpServlet {
             prod.setBatteria(batteria);
             prod.setDisponibilita(disponibilita);
 
-
-            address = "Test";
+            request.setAttribute("prodotto", prod);
+            address = "./WEB-INF/result/caricamentoProdottoResult.jsp";
         }else{
             request.setAttribute("error_parameter", errorPar);
             address = "/formCaricamentoProdotto.jsp";
