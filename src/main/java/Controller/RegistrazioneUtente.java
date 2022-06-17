@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,7 +9,6 @@ import model.Utente;
 import model.UtenteDAO;
 
 import java.io.IOException;
-import java.sql.SQLData;
 
 @WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
 public class RegistrazioneUtente extends HttpServlet {
@@ -21,6 +20,7 @@ public class RegistrazioneUtente extends HttpServlet {
         String nome = req.getParameter("nome");
         String cognome = req.getParameter("cognome");
         String dataNascita = req.getParameter("data_nascita");
+
         String via = req.getParameter("via");
         int civico = Integer.parseInt(req.getParameter("numero_civico"));
         String citta = req.getParameter("citta");
