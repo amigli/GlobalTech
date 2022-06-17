@@ -14,12 +14,14 @@
 </head>
 <body>
 <%@ include file="navbar.jsp"%>
-<form action="registra-utente">
+<br>
+<form action="registra-utente" id="registrazione-form">
+    <h2>Crea un account</h2>
     <fieldset>
         <legend> Dati di accesso</legend>
         <div>
             <label for="email">Email:</label>
-            <input type="text" name="email" id="email">
+            <input type="email" name="email" id="email">
         </div>
         <div>
             <label for="pass">Password</label>
@@ -40,49 +42,11 @@
         <br>
         <div>
             <label for="data_nascita">Data di nascita</label>
-            <input type="date" name="data_nascita" id="data_nascita">
+            <input type="date" name="data_nascita" id="data_nascita" min="2005-01-01">
         </div>
         <br>
-        <div>
-            <label for="citta">Città</label>
-            <input type="text" name="citta" id="citta">
-        </div>
-        <br>
-        <div>
-            <label for="cap">CAP</label>
-            <input type="text" name="cap" id="cap">
-        </div>
-        <div>
-            <label for="via">Via</label>
-            <input type="text" name="via" id="via">
-        </div>
-        <br>
-        <div>
-            <label for="numero_civico">Numero</label>
-            <input type="int" name="numero_civico" id="numero_civico">
-        </div>
-        <div>
-            <label for="numero_telefono">Numero telefono</label>
-            <input type="text" name="numero_telefono" id="numero_telefono">
-        </div>
     </fieldset>
-    <br>
-    <fieldset>
-        <legend>Dati della carta</legend>
-        <div>
-            <label for="numero_cc">Numero della carta</label>
-            <input type="text" name="numero_cc" id="numero_cc">
-        </div>
-        <div>
-            <label for="cvv">CVV</label>
-            <input type="int" name="cvv" id="cvv">
-        </div>
-        <div>
-            <label for="scadenza_carta">Scadenza carta</label>
-            <input type="date" name="scadenza_carta" id="scadenza_carta">
-        </div>
-    </fieldset>
-    <br>
+        <br>
     <input type="submit" value="Registrati">
 </form>
 </body>
