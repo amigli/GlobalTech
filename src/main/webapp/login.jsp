@@ -8,5 +8,6 @@
     <input type="password" name="password" id="password">
     <br>
     <input type="submit" value="Login">
+    <br>
     <a href="#">Sei un nuovo cliente? Registrati!</a>
 </form>
