@@ -4,7 +4,7 @@ nav{
     height: 6em;
 }
 
-input[type=text], input[type=email], input[type=password]{
+input, select{
     width: 100%;
     padding: 8px 10px;
     margin: 8px 0;
@@ -15,14 +15,12 @@ input[type=text], input[type=email], input[type=password]{
 }
 
 input[type=submit] {
-    width: 100%;
     background-color: mediumblue;
     color: white;
     font-size: 20px;
     padding: 10px 20px;
     margin: 5px 0;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -203,6 +201,15 @@ form#login-form > a{
     font-family: Arial;
 }
 
+div#dettagli-caricamento{
+    margin : 1em 5em;
+    width: 60%;
+}
+
+div#dettagli-caricamento > p{
+    float : left;
+    width: 50%;
+}
 /*----------------------------------------*/
 
 @media screen and (min-width : 769px) {

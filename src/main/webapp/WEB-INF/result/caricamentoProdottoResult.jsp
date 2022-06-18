@@ -10,46 +10,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Dettaglio caricamento</title>
+    <%@include file="/links.html"%>
 </head>
 <body>
     <h2>Dettagli prodotto caricato</h2>
 
-    <div id="dettagli">
-        <p>ID(temporaneo):</p>
-        <p>${prod.id}</p>
-        <p>Nome:</p>
-        <p>${prod.nome}</p>
-        <p>Marca:</p>
-        <p>${prod.marca}</p>
-        <p>Colore:</p>
-        <p>${prod.colore}</p>
-        <p>Prezzo:</p>
-        <p>${prod.prezzoListino}</p>
-        <p>Descrizione:</p>
-        <p>${prod.descrizione}</p>
-        <p>Nome:</p>
-        <p>${prod.nome}</p>
-        <p>Sistema Operativo:</p>
-        <p>${prod.nome}</p>
-        <p>Tipo RAM:</p>
-        <p>${prod.tipoRam}</p>
-        <p>Quantita RAM</p>
-        <p>${prod.quantitaRAM}</p>
-        <p>CPU:</p>
-        <p>${prod.cpuNome}</p>
-        <p>Batteria :</p>
-        <p><%= (boolean) request.getAttribute("prod") ? "Si" : "No"%></p>
-        <p>Disponibilit&agrave:</p>
-        <p><${prod.disponibilita}/p>
+    <div id="dettagli-caricamento">
+        <p>ID(temporaneo):&emsp; ${prodotto.id}</p>
+        <p>Nome:&emsp;${prodotto.nome}</p>
+        <p>Marca:&emsp;${prodotto.marca}</p>
+        <p>Colore:&emsp;${prodotto.colore}</p>
+        <p>Prezzo:&emsp;${prodotto.prezzoListino}</p>
+        <p>Descrizione:&emsp;${prodotto.descrizione}</p>
+        <p>Nome:&emsp;${prodotto.nome}</p>
+        <p>Sistema Operativo:&emsp;${prodotto.nome}</p>
+        <p>Tipo RAM:&emsp;${prodotto.tipoRam}</p>
+        <p>Quantita RAM&emsp;${prodotto.quantitaRam}</p>
+        <p>CPU:&emsp;${prodotto.cpuNome}</p>
+        <p>Batteria :&emsp;${prodotto.batteria ? "Si" : "No"} </p>
+        <p>Disponibilit&agrave:&emsp;<${prodotto.disponibilita}</p>
 
-        <%--
-
-            prod.setCpuNome(nomeCpu);
-            prod.setBatteria(batteria);
-            prod.setDisponibilita(disponibilita);
-
-        --%>
     </div>
 </body>
 </html>
