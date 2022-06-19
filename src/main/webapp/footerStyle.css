@@ -1,8 +1,31 @@
 footer{
-    background: antiquewhite;
+    background-color: antiquewhite;
+    height: 25%;
 }
 
 a{
     text-decoration: none;
     color: black;
+}
+
+.information{
+    float:left;
+    height: 20%;
+    margin-top: 8px;
+}
+
+#left{
+    margin-left: 12%;
+}
+
+#center{
+    margin-left: 16%;
+}
+
+#right{
+    margin-left: 30%;
+}
+
+#social li{
+    display: inline;
 }

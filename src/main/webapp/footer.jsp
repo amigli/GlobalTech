@@ -14,27 +14,32 @@
 </head>
 <body>
     <footer>
-        <div id="chi_siamo" class="information">
+        <div id="left" class="information">
             <a href="#"><b>Chi siamo</b></a>
         </div>
-        <div id="pagamento" class="information">
+        <div id="center" class="information">
             <b>Informazioni utili</b>
             <ul>
                 <a href="#"><li>Modalità di pagamento</li></a>
                 <a href="#"><li>Modalità di spedizione</li></a>
             </ul>
         </div>
-        <div id="social" class="information">
+        <div id="right" class="information">
             <b>I nostri social</b>
-            <ul>
+            <ul id="social">
                 <li><a href="www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a></li>
                 <li><a href="www.twitter.com"><i class="fa-brands fa-twitter"></i></a></li>
                 <li><a href="www.linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a></li>
             </ul>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div id="author">
-
+            <p>A cura di Miglino Annalaura e Francesco Giuseppe Zammarrelli</p>
         </div>
     </footer>
 </body>
