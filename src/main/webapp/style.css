@@ -2,6 +2,7 @@ nav{
     background-color: darkblue;
     padding: 1rem 1rem 0.5rem 1rem;
     height: 6em;
+    position: sticky;
 }
 
 input, select{
@@ -181,8 +182,9 @@ ul#menu-items-list{
     background-color: #f2f2f2;
     padding: 10px 20px;
     width: 60%;
-    margin-top:5%;
-    margin-left:18%;
+    /*margin-top:5%;
+    margin-left:18%;*/
+    margin:auto;
 }
 
 form#login-form > label{

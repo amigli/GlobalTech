@@ -13,9 +13,14 @@
 </head>
 <body>
     <nav>
+        <!--
+        Aggiungere collegamento alla Home nel logo
+        -->
        <div id="logo">
            <h2>
+               <a href="#" style="text-decoration: none; color:white;">
                GlobalTech
+               </a>
            </h2>
        </div>
         <ul class="nav">
