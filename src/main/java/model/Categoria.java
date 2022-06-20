@@ -4,15 +4,8 @@ public class Categoria {
     private int id;
     private String nome, descrizione;
 
-    public Categoria(int id, String nome, String descrizione){
-        this.id=id;
-        this.nome=nome;
-        this.descrizione=descrizione;
-    }
+    public Categoria(){
 
-    public Categoria(String nome, String descrizione){
-        this.nome=nome;
-        this.descrizione=descrizione;
     }
 
     public int getId() {

@@ -19,7 +19,10 @@ public class CategoriaDAO {
                 String nome = rs.getString(2);
                 String descrizione = rs.getString(3);
 
-                Categoria c = new Categoria(id, nome, descrizione);
+                Categoria c = new Categoria();
+                c.setId(id);
+                c.setNome(nome);
+                c.setDescrizione(descrizione);
 
                 l.add(c);
             }
@@ -39,7 +42,6 @@ public class CategoriaDAO {
                 String nome = rs.getString(2);
                 String descrizione = rs.getString(3);
 
-                c.setId(ID);
                 c.setNome(nome);
                 c.setDescrizione(descrizione);
             }
@@ -64,6 +66,17 @@ public class CategoriaDAO {
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
             stmt.executeUpdate("DELETE FROM categoria WHERE id="+c.getId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void modificaCategoria (Categoria c){
+        try (Connection con = ConPool.getConnection()) {
+            Statement stmt=con.createStatement();
+            stmt.executeUpdate("UPDATE categoria " +
+                    "SET nome=" + c.getNome() + ", descrizione=" + c.getDescrizione() +
+                    ",WHERE id="+c.getId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
