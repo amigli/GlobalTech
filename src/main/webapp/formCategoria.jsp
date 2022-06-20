@@ -36,41 +36,31 @@ ArrayList<Categoria> allCategories = (ArrayList<Categoria>) service.doRetrieveAl
 %>
 <br>
 <h1>Gestione categorie</h1>
-
-<div id="inserireCategoria">
-    <form action="#" id="inserisciCategoria" method="get">
-        <h2>Inserisci una nuova categoria</h2>
-        <label for="nomeCategoria">Nome della categoria:</label>
-        <input type="text" id="nomeCategoria" name="idCategoria" required>
-        <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-        <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="48" required></textarea>
-        <br><br>
-        <input type="submit" value="Inserisci">
-    </form>
-</div>
-<div id="rimuovereCategoria">
-    <form action="#" id="rimuoviCategoria" method="get">
-        <label for="categorie" style="font-size: 20px;">Scegli una categoria:</label><br>
-        <select name="categorie" id="categorie" size="10">
-        <%for (int i=0; i<allCategories.size(); i++){%>
-            <option value="<%=allCategories.get(i).getNome()%>"<%=allCategories.get(i).getNome()%></option>
-       <% } %>
-        </select>
-        <input type="submit" value="Rimuovi">
-    </form>
-</div>
-<div id="modificareCategoria">
-    <label for="categorie" style="font-size: 20px;">Scegli una categoria:</label><br>
-    <select name="categorie" id="categorie2" size="3">
-        <%for (int i=0; i<allCategories.size(); i++){%>
-        <option value="<%=allCategories.get(i).getNome()%>"<%=allCategories.get(i).getNome()%></option>
-        <% } %>
-    </select>
-    <label for="nomeCategoria">Nome della categoria:</label>
-    <input type="text" id="nomeCategoria2" name="idCategoria" required>
-    <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-    <textarea id="descrizioneCategoria2" name="descrizioneCategoria" rows="5" cols="48" required></textarea>
-    <input type="submit" value="Modifica">
-</div>
+<a href="formInserimentoCategoria.jsp">Inserire una nuova categoria</a>
+<br><br>
+<table id="categorie">
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Descrizione</th>
+    <%for (int i=0; i<allCategories.size(); i++){%>
+        <tr>
+            <td><%=allCategories.get(i).getId()%></td>
+            <td><%=allCategories.get(i).getNome()%></td>
+            <td><%=allCategories.get(i).getDescrizione()%></td>
+            <td>
+                <form action="modificainter-categoria" id="modificaCategoria">
+                    <input type="hidden" name="id" value="<%=allCategories.get(i).getId()%>">
+                    <input type="submit" value="Modifica">
+                </form>
+            </td>
+            <td>
+                <form action="rimuovi-categoria" id="rimuoviCategoria" method="get">
+                    <input type="hidden" name="id" value="<%=allCategories.get(i).getId()%>">
+                    <input type="submit" value="Rimuovi">
+                </form>
+            </td>
+        </tr>
+    <% } %>
+</table>
 </body>
 </html>
