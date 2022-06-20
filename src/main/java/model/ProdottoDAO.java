@@ -41,22 +41,41 @@ public class ProdottoDAO {
         }
     }
 
-    public static int doRetrieveNextId(){
-        try(Connection con = ConPool.getConnection()){
-            String sql =  "SELECT max(id) from prodotto";
 
-            PreparedStatement stmt =  con.prepareStatement(sql);
 
-            ResultSet res =  stmt.executeQuery();
+    public synchronized int doSaveProdotto(Prodotto p){
+        try(Connection con =  ConPool.getConnection()){
+            PreparedStatement stmt =  con.prepareStatement(
+                    "INSERT INTO prodotto (nome, marca, colore, prezzo_listino, descrizione, batteria, ram_tipo," +
+                            " ram_quantita, sistema_operativo, cpu_nome, disponibilita)"+
+                            "VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, ?, ? )"
 
-            if(res.next()){
-                return res.getInt(1) + 1;
-            }else{
-                return 0; //non stati ancora inseriti prodotti
-            }
+            );
 
+            stmt.setString(1,p.getNome());
+            stmt.setString(2, p.getMarca());
+            stmt.setString(3, p.getColore());
+            stmt.setFloat(4, p.getPrezzoListino());
+            stmt.setString(5, p.getDescrizione());
+            stmt.setBoolean(6, p.isBatteria());
+            stmt.setString(7, p.getTipoRam());
+            stmt.setString(8, p.getQuantitaRam());
+            stmt.setString(9, p.getSistemaOperativo());
+            stmt.setString(10, p.getCpuNome());
+            stmt.setInt(11, p.getDisponibilita());
+
+            stmt.executeUpdate();
+
+            Statement stmt2 = con.createStatement();
+            String sql = "SELECT MAX(id) FROM Prodotto";
+            ResultSet res = stmt2.executeQuery(sql);
+            res.next();
+
+            int id =  res.getInt(1);
+
+            return id;
         }catch (SQLException e){
-            throw new RuntimeException();
+            throw  new RuntimeException();
         }
     }
 
@@ -69,7 +88,7 @@ public class ProdottoDAO {
         String descrizione = res.getString("descrizione");
         String sistemaOpeativo =  res.getString("so");
         String ramTipo = res.getString("ram_tipo");
-        int ramQuantita = res.getInt("ram_quantita");
+        String ramQuantita = res.getString("ram_quantita");
         String nomeCpu = res.getString("cpu_nome");
         boolean batteria =  res.getBoolean("batteria");
         int disponibilita =  res.getInt("disponibilita");

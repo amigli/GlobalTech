@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Prodotto  {
     private int id, disponibilita;
     private String nome, marca, colore, descrizione,
-            sistemaOperativo, tipoRam, cpuNome;
+            sistemaOperativo, tipoRam, cpuNome, quantitaRam;
 
     private Foto immagini;
-    private float prezzoListino, quantitaRam;
+    private float prezzoListino;
 
     private boolean batteria;
 
@@ -31,11 +31,11 @@ public class Prodotto  {
         this.disponibilita = disponibilita;
     }
 
-    public float getQuantitaRam() {
+    public String getQuantitaRam() {
         return quantitaRam;
     }
 
-    public void setQuantitaRam(float quantitaRam) {
+    public void setQuantitaRam(String quantitaRam) {
         this.quantitaRam = quantitaRam;
     }
 

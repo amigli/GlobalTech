@@ -1,9 +1,7 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.File;
+import java.sql.*;
 
 public class FotoDAO {
 
@@ -32,6 +30,33 @@ public class FotoDAO {
         String id =  res.getString(2);
         String estensione =  res.getString(3);
 
-       return id + "/" + numero + "." + estensione;
+       return id + File.separator + numero + "." + estensione;
+    }
+
+
+    public void doSave(Foto f){
+        try(Connection con = ConPool.getConnection()) {
+            for (String s : f.getFoto()) {
+                PreparedStatement stmt = con.prepareStatement(
+                        "INSERT into foto(numero, id_prodotto, estensione) VALUES(?, ?, ?)");
+
+                String[] tmp = s.split("/");
+
+                int id = Integer.parseInt(tmp[0]);
+
+                tmp = tmp[1].split("\\.");
+
+                int number = Integer.parseInt(tmp[0]);
+                String extension = tmp[1];
+                stmt.setInt(1, number);
+                stmt.setInt(2, id);
+                stmt.setString(3, extension);
+
+                stmt.executeUpdate();
+            }
+        }catch (SQLException e){
+           e.printStackTrace();
+           throw new RuntimeException();
+        }
     }
 }
