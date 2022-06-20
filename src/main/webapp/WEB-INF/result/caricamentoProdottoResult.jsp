@@ -17,7 +17,7 @@
     <h2>Dettagli prodotto caricato</h2>
 
     <div id="dettagli-caricamento">
-        <p>ID(temporaneo):&emsp; ${prodotto.id}</p>
+        <p>ID:&emsp; ${prodotto.id}</p>
         <p>Nome:&emsp;${prodotto.nome}</p>
         <p>Marca:&emsp;${prodotto.marca}</p>
         <p>Colore:&emsp;${prodotto.colore}</p>
@@ -32,5 +32,11 @@
         <p>Disponibilit&agrave:&emsp;<${prodotto.disponibilita}</p>
 
     </div>
+    <form action="carica-foto" enctype="multipart/form-data" method="post">
+        <input type="hidden" name="id"  value=${prodotto.id}>
+        <input type="file" name="foto" accept="image/*" multiple>
+        <input type="submit" value="carica-immagini">
+    </form>
+
 </body>
 </html>

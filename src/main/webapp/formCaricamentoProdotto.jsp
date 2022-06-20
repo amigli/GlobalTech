@@ -15,18 +15,8 @@
 </head>
 <body>
     <div>
-        <%
-            ArrayList<String> list =
-                    (ArrayList<String>) request.getAttribute("error_parameter");
-
-            if(list != null){
-                for(String s : list){
-                    %>
-                 <%=s%>
-        <%
-                }
-            }
-        %>
+        <%ArrayList<String> list =
+                    (ArrayList<String>) request.getAttribute("error_parameter");%>
     </div>
 
     <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
@@ -34,40 +24,72 @@
             <legend>Dati generali</legend>
             <div class="input-section">
                 <label for="nome">Nome</label><br>
-                <input type="text" name="nome" id="nome" required><br>
-                <div class="error" id="err_nome"></div>
+                <input type="text" name="nome" id="nome"
+                    <%if(list != null && list.contains("nome")){%>
+                        <%="class = \"error-parameter\" value=\""+ request.getParameter("nome") +"\""%>
+                    <%}%>
+                       required><br>
+                <div class="error" id="err_nome">
+                    <%if(list != null && list.contains("name")){%>
+                        <%="Inserire nome ammissibile"%>
+                    <%}%>
+                </div>
             </div>
             <div>
                 <label for="marca">Marca</label><br>
-                <input type="text" name="marca" id="marca" required><br>
-                <div class="error" id="err_marca"></div>
+                <input type="text" name="marca" id="marca"
+                    <%if(list != null && list.contains("marca")){%>
+                        <%="class = \"error-parameter\" value=\""+ request.getParameter("marca") +"\""%>
+                    <%}%>
+               required>
+                <div class="error" id="err_marca">
+                    <%if(list != null && list.contains("marca")){%>
+                        <%="Inserire marca ammissibile"%>
+                    <%}%>
+                </div>
             </div>
             <div>
                 <label for="colore">Colore</label><br>
-                <input type="text" name="colore" id="colore" required>
-                <div class="error" id="err_colore"></div>
+                <input type="text" name="colore" id="colore"
+                    <%if(list != null && list.contains("colore")){%>
+                        <%="class = \"error-parameter\" value=\""+ request.getParameter("colore") +"\""%>
+                    <%}%>
+                       required>
+                <div class="error" id="err_colore">
+                    <%if(list != null && list.contains("colore")){%>
+                        <%="Inserire colore ammissibile"%>
+                    <%}%>
+                </div>
             </div>
             <div>
                 <label for="prezzo">Prezzo</label><br>
-                <input type="number" step="any" min="0.01" max="" name="prezzo" id="prezzo" required><br>
+                <input type="number" step="any" min="0.01" max="" name="prezzo" id="prezzo"
+                    <%if(list != null && list.contains("prezzo")){%>
+                        <%="class = \"error-parameter\" "%>
+                    <%}%>
+               required>
             </div>
             <div>
                 <label for="disponibilita">Quantità disponibile</label>
-                <input type="number" min="1" max="200" name="disponibilita" id="disponibilita" required>
+                <input type="number" min="1" max="200" name="disponibilita" id="disponibilita"
+                    <%if(list != null && list.contains("disponibilita")){%>
+                         <%="class = \"error-parameter\""%>
+                    <%}%>
+                       required>
             </div>
             <div>
                 <label for="descrizione">Descrizione</label><br>
                 <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
             </div>
-
-
         </fieldset>
         <fieldset>
             <legend>Dati tecnici</legend>
             <div>
                 <label>Stai inserendo un prodotto con batteria?</label>
-                <input type="radio" name="batteria" id="batteria_true" value="true" required><label for="batteria_true">Si</label>
-                <input type="radio" name="batteria" id="batteria_false" value="false" required><label for="batteria_false">No</label>
+                <input type="radio" name="batteria" id="batteria_true" value="true" required>
+                <label for="batteria_true">Si</label>
+                <input type="radio" name="batteria" id="batteria_false" value="false" required>
+                <label for="batteria_false">No</label>
             </div>
             <div>
                 <label for="ram_tipo" >Tipologia RAM</label><br>
@@ -77,10 +99,25 @@
                     <option value="DDR5">DDR4</option>
                     <option value="DDR5">DDR5</option>
                 </select>
+                <%if(list != null && list.contains("ram_tipo")){%>
+                    <div>
+                        Inserire uno tipo RAM dalla selezione multipla
+                    </div>
+                <%}%>
+
             </div>
             <div>
                 <label for="ram_quantita">Quanità RAM</label><br>
-                <input type="number"  min="1" max="128" name="ram_quantita" id="ram_quantita" disabled>
+                <input type="number"  min="1" max="1024" name="ram_quantita" id="ram_quantita"
+                    <%if(list != null && list.contains("quantita_ram")){%>
+                       <%="class = \"error-parameter\""%>
+                    <%}%>
+                       disabled>
+                <select name="ram_unit">
+                    <option value="kb">KB</option>
+                    <option value="mb">MB</option>
+                    <option value="mb">GB</option>
+                </select>
             </div>
             <div>
                 <label for="cpu_nome">Nome CPU</label><br>

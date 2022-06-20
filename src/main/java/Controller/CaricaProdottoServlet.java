@@ -1,16 +1,26 @@
-package controller;
+package Controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.Foto;
+import model.FotoDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 @WebServlet(name = "CaricaProdottoServlet", value = "/carica-prodotto")
+@MultipartConfig
 public class CaricaProdottoServlet extends HttpServlet {
+
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
@@ -31,9 +41,13 @@ public class CaricaProdottoServlet extends HttpServlet {
             errorPar.add("colore");
 
         float prezzo;
-        try {
-            prezzo = Float.parseFloat(request.getParameter("prezzo"));
-        }catch (NumberFormatException e){
+        if(request.getParameter("prezzo") != null) {
+            try {
+                prezzo = Float.parseFloat(request.getParameter("prezzo") );
+            } catch (NumberFormatException e) {
+                prezzo = -1;
+            }
+        } else{
             prezzo = -1;
         }
 
@@ -44,48 +58,68 @@ public class CaricaProdottoServlet extends HttpServlet {
 
         boolean batteria ;
 
-        if(request.getParameter("batteria").equals("true")){
+        if(request.getParameter("batteria") != null && request.getParameter("batteria").equals("true")){
             batteria = true;
         }else {
             batteria = false;
         }
 
-        String ramTipo =  request.getParameter("ram_tipo");
+        String ramTipo =  request.getParameter("ram_tipo"), ramUnit =  request.getParameter("ram_unit");
         int ramQuantita = 0;
 
-        if(ramTipo.equalsIgnoreCase("nessuna")){
-            ramTipo =  null;
+        if(ramTipo == null)
+            errorPar.add("ram_tipo");
+        else if( ramTipo.equalsIgnoreCase("nessuna")) {
+            ramTipo = null;
         }else {
-            if (!ramTipo.matches("^DDR[3-5]$"))
+            if (!ramTipo.matches("^DDR[3-5]$")) {
                 errorPar.add("ram_tipo");
-            try{
-                ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
-            }catch (NumberFormatException e){
-                ramQuantita =  -1;
+
+                if (request.getParameter("ram_quantita") != null) {
+                    try {
+                        ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
+                    } catch (NumberFormatException e) {
+                        ramQuantita = -1;
+                    }
+                } else
+                    ramQuantita = -1;
+
+                if(ramUnit == null || !ramUnit.toLowerCase().matches("^[kgm]b"))
+                    errorPar.add("ram_unit");
             }
         }
 
-        if(ramQuantita < 0)
+        String ramQuantityAndUnit = null;
+        if (ramQuantita < 0)
             errorPar.add("ram_quantita");
+        else
+            ramQuantityAndUnit = ramQuantita + ramUnit;
 
-        String nomeCpu =  request.getParameter("cpu_nome");
+
+
+        String nomeCpu = request.getParameter("cpu_nome");
         int disponibilita;
 
-        try{
-            disponibilita =  Integer.parseInt(request.getParameter("disponibilita"));
-        }catch (NumberFormatException e){
-            disponibilita =  -1;
-        }
+            if (request.getParameter("disponibilita") != null){
+                try {
+                    disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
+                } catch (NumberFormatException e) {
+                    disponibilita = -1;
+                }
+            }else{
+                disponibilita = -1;
+            }
 
         if(disponibilita < 1)
             errorPar.add("disponibilita");
 
         String sistemaOperativo = request.getParameter("sistema_operativo");
         String address;
+
+
         if(errorPar.isEmpty()){
             Prodotto prod =  new Prodotto();
 
-            prod.setId(ProdottoDAO.doRetrieveNextId());
             prod.setNome(nome);
             prod.setMarca(marca);
             prod.setColore(colore);
@@ -93,12 +127,19 @@ public class CaricaProdottoServlet extends HttpServlet {
             prod.setDescrizione(descrizione);
             prod.setSistemaOperativo(sistemaOperativo);
             prod.setTipoRam(ramTipo);
-            prod.setQuantitaRam(ramQuantita);
+            prod.setQuantitaRam(ramQuantityAndUnit);
             prod.setCpuNome(nomeCpu);
             prod.setBatteria(batteria);
             prod.setDisponibilita(disponibilita);
 
+            ProdottoDAO service  =  new ProdottoDAO();
+
+            int id =  service.doSaveProdotto(prod);
+
+            prod.setId(id);
+
             request.setAttribute("prodotto", prod);
+
             address = "/WEB-INF/result/caricamentoProdottoResult.jsp";
         }else{
             request.setAttribute("error_parameter", errorPar);

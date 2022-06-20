@@ -1,4 +1,4 @@
-function validateForm(){
+ function validateForm(){
     let form = document.forms["caricamento-prodotto"];
     let nome = form["nome"];
     let result = true;
@@ -26,9 +26,6 @@ function validateForm(){
         inputError(color, "colore")
     }
 
-
-
-
     return result;
 }
 
@@ -36,14 +33,15 @@ function inputError(input, id){
    let err = "err_" + id;
    document.getElementById(err).textContent = "Inserire " + id + " ammissibile";
    input.style.backgroundColor = "red";
-   input.style.borderStyle = "dotted";
+   input.style.border = "2px dotted black";
+
 }
 
 function inputCorrect(input, id){
     let err = "err_" + id;
     document.getElementById(err).textContent = "";
     input.style.backgroundColor = "white";
-    input.style.borderStyle = "solid";
+    input.style.border = "1px solid #ccc";
 }
 
 function activeRam(value){
