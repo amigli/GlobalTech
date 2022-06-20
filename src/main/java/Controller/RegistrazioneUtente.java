@@ -56,11 +56,11 @@ public class RegistrazioneUtente extends HttpServlet {
         }
         else{
             req.setAttribute("error_parameter", errorPar);
+            //aggiungere un messaggio al formRegistrazione in questo caso
             address = "/formRegistrazione.jsp";
         }
 
         RequestDispatcher dispatcher =  req.getRequestDispatcher(address);
-
         dispatcher.forward(req, resp);
 
     }
