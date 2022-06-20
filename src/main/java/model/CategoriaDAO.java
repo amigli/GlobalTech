@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class CategoriaDAO {
-    public List<Categoria> doRetrieveActive(){
+    public List<Categoria> doRetrieveAll(){
         List <Categoria> l = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
