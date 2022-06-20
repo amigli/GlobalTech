@@ -13,6 +13,7 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
+<br><br>
 <div id="accesso">
     <%@include file="login.jsp"%>
 </div>
