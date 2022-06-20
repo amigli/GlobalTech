@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -29,7 +29,8 @@ public class RegistrazioneUtente extends HttpServlet {
         if (email==null || (!email.matches("^[a-z0-9/.]+@[a-z]+/.[a-z]{2,3}$")))
             errorPar.add("email");
 
-        if (password==null || password.length()<8 || (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[/*.!@$%^&()[/]{}:;<>,.?+-_=]).{8,32}")))
+        if (password==null || password.length()<8 ||
+                (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[/*.!@$%^&()[/]{}:;<>,.?+-_=]).{8,32}")))
             errorPar.add("password");
 
         if (nome==null || nome.length()<3)

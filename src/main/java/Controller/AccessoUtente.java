@@ -1,4 +1,5 @@
-package controller;
+package Controller;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,9 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Utente;
 import model.UtenteDAO;
-import java.io.IOException;
-import java.util.ArrayList;
 
+import java.io.IOException;
 
 @WebServlet(name = "AccessoUtenteServlet", value = "/accesso-utente")
 public class AccessoUtente extends HttpServlet {
@@ -18,13 +18,11 @@ public class AccessoUtente extends HttpServlet {
         String password = request.getParameter("password");
         UtenteDAO service = new UtenteDAO();
         String address;
-        ArrayList<String> errorPar =  new ArrayList<>();
 
-        if (!email.matches("^[a-z0-9/.]+@[a-z]+/.[a-z]{2,3}$"))
-            errorPar.add("email");
-
-        if (password.length()<8 || (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[/*.!@$%^&()[/]{}:;<>,.?+-_=]).{8,32}")))
-            errorPar.add("password");
+        /*
+        * I controlli non li inserisco perché si suppone che, essendo fatti già in fase di registrazione,
+        * sia email e password siano coerenti con quelli che sono i formati richiesti.
+        * */
 
         Utente u=service.login(email, password);
         if (u!=null){
@@ -34,8 +32,7 @@ public class AccessoUtente extends HttpServlet {
                 address="#"; //home del sito
         }
         else{
-            request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al loginForm in questo caso
+            //anche qui inserire un messaggio nella pagina di login che indica che qualcosa è andato storto
             address = "/loginPage.jsp";
         }
 

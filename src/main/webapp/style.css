@@ -5,6 +5,11 @@ nav{
     position: sticky;
 }
 
+input.error-parameter{
+    background-color: red;
+    border: 2px dotted black;
+}
+
 input, select{
     width: 100%;
     padding: 8px 10px;
@@ -13,6 +18,10 @@ input, select{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+input[type="radio"] {
+    width: auto;
 }
 
 input[type=submit] {
@@ -39,7 +48,7 @@ ul.nav {
     position: relative;
 }
 
-#search-form{
+#search-form {
     border: 1px solid white;
     background-color: white;
     border-radius: 5px;

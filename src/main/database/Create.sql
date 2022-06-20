@@ -13,12 +13,10 @@ CREATE TABLE Prodotto(
     descrizione text not null,
     batteria boolean not null,
     ram_tipo varchar(20),
-    ram_quantita float(20),
+    ram_quantita varchar(20),
     sistema_operativo varchar(20),
     cpu_nome varchar(20),
-    cpu_hertz float,
     disponibilita int not null
-
 );
 
 CREATE TABLE Foto (
