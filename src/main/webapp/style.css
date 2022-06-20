@@ -187,11 +187,11 @@ ul#menu-items-list{
     margin:auto;
 }
 
-form#login-form > label{
+form#login-form > label, form#inserisciCategoria > label{
     font-size: 20px;
 }
 
-form#login-form > h2{
+form#login-form > h2, form#inserisciCategoria > h2{
     text-align: center;
     color: darkblue;
 }
@@ -212,6 +212,27 @@ div#dettagli-caricamento > p{
     float : left;
     width: 50%;
 }
+
+#inserireCategoria, #rimuovereCategoria, #modificareCategoria{
+    border: 2px solid darkblue;
+    /*margin-left: 16%;*/
+    float:left;
+    width: 30%;
+    height: 55%;
+    padding: 10px;
+    border-radius: 3px;
+    margin-right: 1%;
+}
+
+h1{
+    color: darkblue;
+    text-align: center;
+}
+
+textarea{
+    resize:none;
+}
+
 /*----------------------------------------*/
 
 @media screen and (min-width : 769px) {
@@ -295,6 +316,9 @@ div#dettagli-caricamento > p{
         width: 35%;
         margin-left:30%;
     }
+
+
+
 
 }
 
