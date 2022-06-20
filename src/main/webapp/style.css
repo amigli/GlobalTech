@@ -187,11 +187,11 @@ ul#menu-items-list{
     margin:auto;
 }
 
-form#login-form > label, form#inserisciCategoria > label{
+form#login-form > label, form#inserisciCategoria > label, form#modificaCategoria > label{
     font-size: 20px;
 }
 
-form#login-form > h2, form#inserisciCategoria > h2{
+form#login-form > h2, form#inserisciCategoria > h2, form#modificaCategoria > h2{
     text-align: center;
     color: darkblue;
 }
@@ -213,15 +213,13 @@ div#dettagli-caricamento > p{
     width: 50%;
 }
 
-#inserireCategoria, #rimuovereCategoria, #modificareCategoria{
+#inserireCategoria, #modificareCategoria{
     border: 2px solid darkblue;
-    /*margin-left: 16%;*/
-    float:left;
-    width: 30%;
+    margin: auto;
+    width: 40%;
     height: 55%;
     padding: 10px;
     border-radius: 3px;
-    margin-right: 1%;
 }
 
 h1{
@@ -231,6 +229,36 @@ h1{
 
 textarea{
     resize:none;
+}
+
+#categorie{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    margin-left: 1%;
+}
+
+#categorie td, #categorie th {
+    border: 1px solid darkblue;
+    padding: 8px;
+}
+
+#categorie tr:nth-child(even){background-color: aliceblue;}
+
+#categorie tr:hover {background-color: lightblue;}
+
+#categorie th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: darkblue;
+    color: white;
+}
+
+a{
+    color: darkblue;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 /*----------------------------------------*/
