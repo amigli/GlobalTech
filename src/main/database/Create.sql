@@ -29,7 +29,7 @@ CREATE TABLE Foto (
 
 CREATE TABLE Categoria(
   id integer not null auto_increment primary key,
-  nome varchar(50) not null,
+  nome varchar(50) not null unique,
   descrizione text not null
 );
 
