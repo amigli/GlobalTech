@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Categoria;
 import model.CategoriaDAO;
+import model.UtenteDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
