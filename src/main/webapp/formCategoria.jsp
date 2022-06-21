@@ -24,7 +24,7 @@
             for(String s : list){
     %>
     <h1>Errore nell'inserimento dei dati:</h1>
-    <%=s%>
+        <%=s%>
     <%
             }
         }

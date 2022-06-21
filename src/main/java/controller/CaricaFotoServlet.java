@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -8,7 +8,6 @@ import model.FotoDAO;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,9 +74,6 @@ public class CaricaFotoServlet extends HttpServlet {
         }else{
             address = "/error.jsp";
         }
-
-
-
 
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

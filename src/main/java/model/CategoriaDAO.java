@@ -54,9 +54,9 @@ public class CategoriaDAO {
 
     public void doSave (Categoria c){
         try (Connection con = ConPool.getConnection()) {
-            Statement stmt=con.createStatement();
+            Statement stmt = con.createStatement();
             stmt.executeUpdate("INSERT INTO categoria(nome, descrizione) " +
-                    "values (" + c.getNome()+ ", "+ c.getDescrizione() + ")");
+                    "VALUES( \"" + c.getNome()+ "\", \""+ c.getDescrizione() + "\")");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

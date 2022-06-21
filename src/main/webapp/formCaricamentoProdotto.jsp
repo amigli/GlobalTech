@@ -95,8 +95,8 @@
                 <label for="ram_tipo" >Tipologia RAM</label><br>
                 <select name="ram_tipo" onchange="activeRam(value)" id="ram_tipo">
                     <option value="nessuna">Nessuna</option>
-                    <option value="DDR4">DDR3</option>
-                    <option value="DDR5">DDR4</option>
+                    <option value="DDR3">DDR3</option>
+                    <option value="DDR4">DDR4</option>
                     <option value="DDR5">DDR5</option>
                 </select>
                 <%if(list != null && list.contains("ram_tipo")){%>
@@ -116,7 +116,7 @@
                 <select name="ram_unit">
                     <option value="kb">KB</option>
                     <option value="mb">MB</option>
-                    <option value="mb">GB</option>
+                    <option value="gb">GB</option>
                 </select>
             </div>
             <div>

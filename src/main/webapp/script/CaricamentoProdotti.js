@@ -2,7 +2,7 @@
     let form = document.forms["caricamento-prodotto"];
     let nome = form["nome"];
     let result = true;
-    if((/^[A-Z\s]{3,45}$/i).test(nome.value)){
+    if((/^[\w\s]{3,45}$/i).test(nome.value)){
         inputCorrect(nome, "nome");
     }else{
         inputError(nome, "nome");
@@ -10,7 +10,7 @@
     }
    let marca =  form["marca"];
 
-    if((/^[A-Z0-9\s]{4,30}$/i).test(marca.value)){
+    if((/^[\w\s]{4,30}$/i).test(marca.value)){
         inputCorrect(marca, "marca" );
     }else{
         inputError(marca, "marca")
@@ -19,7 +19,7 @@
 
     let color = form["colore"];
 
-    if((/^[A-Za-z]{4,30}$/i).test(color.value)){
+    if((/^[\w\s]{4,30}$/i).test(color.value)){
         inputCorrect(color,"colore")
     }else{
         result=false;

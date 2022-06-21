@@ -23,13 +23,12 @@
         <p>Colore:&emsp;${prodotto.colore}</p>
         <p>Prezzo:&emsp;${prodotto.prezzoListino}</p>
         <p>Descrizione:&emsp;${prodotto.descrizione}</p>
-        <p>Nome:&emsp;${prodotto.nome}</p>
-        <p>Sistema Operativo:&emsp;${prodotto.nome}</p>
+        <p>Sistema Operativo:&emsp;${prodotto.sistemaOperativo}</p>
         <p>Tipo RAM:&emsp;${prodotto.tipoRam}</p>
         <p>Quantita RAM&emsp;${prodotto.quantitaRam}</p>
         <p>CPU:&emsp;${prodotto.cpuNome}</p>
         <p>Batteria :&emsp;${prodotto.batteria ? "Si" : "No"} </p>
-        <p>Disponibilit&agrave:&emsp;<${prodotto.disponibilita}</p>
+        <p>Disponibilit&agrave:&emsp;${prodotto.disponibilita}</p>
 
     </div>
     <form action="carica-foto" enctype="multipart/form-data" method="post">

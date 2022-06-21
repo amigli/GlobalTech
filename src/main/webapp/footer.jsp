@@ -14,30 +14,28 @@
 </head>
 <body>
     <footer>
-        <div id="left" class="information">
-            <a href="#"><b>Chi siamo</b></a>
+        <div id="footer-content">
+            <div id="left" class="information">
+                <a href="#"><b>Chi siamo</b></a>
+            </div>
+            <div id="center" class="information">
+                <b>Informazioni utili</b>
+                <ul>
+                    <a href="#"><li>Modalità di pagamento</li></a>
+                    <a href="#"><li>Modalità di spedizione</li></a>
+                </ul>
+            </div>
+            <div id="right" class="information">
+                <b>I nostri social</b>
+                <ul id="social">
+                    <li><a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-official"></i></a></li>
+                    <li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+
         </div>
-        <div id="center" class="information">
-            <b>Informazioni utili</b>
-            <ul>
-                <a href="#"><li>Modalità di pagamento</li></a>
-                <a href="#"><li>Modalità di spedizione</li></a>
-            </ul>
-        </div>
-        <div id="right" class="information">
-            <b>I nostri social</b>
-            <ul id="social">
-                <li><a href="www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li><a href="www.twitter.com"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="www.linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a></li>
-            </ul>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <div id="author">
             <p>A cura di Miglino Annalaura e Francesco Giuseppe Zammarrelli</p>
         </div>
