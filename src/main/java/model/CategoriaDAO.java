@@ -52,7 +52,7 @@ public class CategoriaDAO {
         return c;
     }
 
-    public void aggiungiCategoria (Categoria c){
+    public void doSave (Categoria c){
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
             stmt.executeUpdate("INSERT INTO categoria(nome, descrizione) " +
