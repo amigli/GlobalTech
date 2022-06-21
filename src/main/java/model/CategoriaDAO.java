@@ -1,9 +1,6 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -33,17 +30,20 @@ public class CategoriaDAO {
     }
 
     public Categoria doRetrieveById(int id){
-        Categoria c = null;
+        Categoria c = new Categoria();
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM categoria WHERE id="+id);
             if (rs.next()){
+
                 int ID= rs.getInt(1);
                 String nome = rs.getString(2);
                 String descrizione = rs.getString(3);
 
+                c.setId(ID);
                 c.setNome(nome);
                 c.setDescrizione(descrizione);
+
             }
 
         } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class CategoriaDAO {
         try (Connection con = ConPool.getConnection()) {
             Statement stmt = con.createStatement();
             stmt.executeUpdate("INSERT INTO categoria(nome, descrizione) " +
-                    "VALUES( \"" + c.getNome()+ "\", \""+ c.getDescrizione() + "\")");
+                    "VALUES(\"" + c.getNome()+ "\", \""+ c.getDescrizione() + "\")");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -81,4 +81,6 @@ public class CategoriaDAO {
             throw new RuntimeException(e);
         }
     }
+
+
 }
