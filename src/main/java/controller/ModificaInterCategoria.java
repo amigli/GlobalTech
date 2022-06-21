@@ -20,15 +20,16 @@ public class ModificaInterCategoria extends HttpServlet {
         CategoriaDAO service = new CategoriaDAO();
         String address=null;
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        int Id = Integer.parseInt(request.getParameter("id"));
 
-        if (id!=-1){
-            Categoria c = new Categoria();
-            c.setId(id);
+        if (Id!=0){
+            Categoria c = service.doRetrieveById(Id);
 
-            if(service.doRetrieveById(id)!=null) {
-                request.setAttribute("categoria", service.doRetrieveById(id));
-                address="/WEB-INF/formModificaCategoria.jsp";
+            if(c!=null) {
+                request.setAttribute("idCategoria", c.getId());
+                request.setAttribute("nomeCategoria", c.getNome());
+                request.setAttribute("descrizioneCategoria", c.getDescrizione());
+                address="formModificaCategoria.jsp";
             }
 
         }else{
