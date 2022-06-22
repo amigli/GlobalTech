@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 public class Offerta {
     private int id;
     private String nome;
-    private double percentuale;
+    private float percentuale;
     private LocalDate dataInizio, dataFine;
 
     public Offerta() {
@@ -28,11 +28,11 @@ public class Offerta {
         this.id = id;
     }
 
-    public double getPercentuale() {
+    public float getPercentuale() {
         return percentuale;
     }
 
-    public void setPercentuale(double percentuale) {
+    public void setPercentuale(float percentuale) {
         this.percentuale = percentuale;
     }
 

@@ -1,7 +1,6 @@
 package model;
 
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +47,7 @@ public class ProdottoDAO {
             PreparedStatement stmt =  con.prepareStatement(
                     "INSERT INTO prodotto (nome, marca, colore, prezzo_listino, descrizione, batteria, ram_tipo," +
                             " ram_quantita, sistema_operativo, cpu_nome, disponibilita)"+
-                            "VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, ?, ? )"
-
-            );
+                            "VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, ?, ? )", Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1,p.getNome());
             stmt.setString(2, p.getMarca());
@@ -64,16 +61,17 @@ public class ProdottoDAO {
             stmt.setString(10, p.getCpuNome());
             stmt.setInt(11, p.getDisponibilita());
 
-            stmt.executeUpdate();
+            int result = stmt.executeUpdate();
 
-            Statement stmt2 = con.createStatement();
-            String sql = "SELECT MAX(id) FROM Prodotto";
-            ResultSet res = stmt2.executeQuery(sql);
-            res.next();
+            if(result > 0){
+                ResultSet r =  stmt.getGeneratedKeys();
+                r.next();
+                return r.getInt("id");
+            }else{
+                throw  new RuntimeException();
+            }
 
-            int id =  res.getInt(1);
 
-            return id;
         }catch (SQLException e){
             throw  new RuntimeException();
         }
