@@ -15,7 +15,7 @@
 <%@include file="navbar.jsp"%>
 <br><br><br>
 <div id="inserireCategoria">
-    <form action="inserisci-categoria" id="inserisciCategoria" method="get">
+    <form action="inserisci-categoria" id="inserisciCategoria" method="post">
         <h2>Inserisci una nuova categoria</h2>
         <label for="nomeCategoria">Nome della categoria:</label>
         <input type="text" id="nomeCategoria" name="nomeCategoria" required>
