@@ -1,9 +1,6 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -11,50 +8,54 @@ import java.util.List;
 public class OffertaDAO {
 
     public List<Offerta> doRetrieveActive(){
-        List <Offerta> l = new ArrayList<>();
+
         try (Connection con = ConPool.getConnection()) {
+            List <Offerta> l = new ArrayList<>();
+            String sql = "SELECT * FROM offerta WHERE data_inizio<=current_date() " +
+                    "and data_fine >= current_date()";
             Statement stmt=con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM offerta WHERE data_inizio<=current_date() and data_fine>=current_date()");
+            ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
-                int id= rs.getInt(1);
-                double percentuale=rs.getDouble(2);
-                GregorianCalendar dataInizio= (GregorianCalendar) rs.getObject(3);
-                GregorianCalendar dataFine= (GregorianCalendar) rs.getObject(4);
-
-                Offerta o = new Offerta();
-                o.setId(id);
-                o.setPercentuale(percentuale);
-                o.setDataInizio(dataInizio);
-                o.setDataFine(dataFine);
-
-                l.add(o);
+                l.add(this.creaOfferta(rs));
             }
+            return l;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return l;
+
     }
 
     public Offerta doRetrieveById(int id){
-        Offerta o = null;
         try (Connection con = ConPool.getConnection()) {
+            Offerta o = null;
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM offerta WHERE id="+id);
             if (rs.next()){
-                int ID= rs.getInt(1);
-                double percentuale=rs.getDouble(2);
-                GregorianCalendar dataInizio= (GregorianCalendar) rs.getObject(3);
-                GregorianCalendar dataFine= (GregorianCalendar) rs.getObject(4);
-
-                o.setId(ID);
-                o.setPercentuale(percentuale);
-                o.setDataInizio(dataInizio);
-                o.setDataFine(dataFine);
+                return this.creaOfferta(rs);
+            }else {
+                return null;
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return o;
+
+    }
+
+
+    private Offerta creaOfferta(ResultSet res) throws SQLException{
+        int id = res.getInt(1);
+        String nome = res.getString(2);
+        double percentuale = res.getDouble(3);
+        Date dataInizio = res.getDate(4);
+        Date dataFine = res.getDate(5);
+
+        Offerta offerta = new Offerta();
+        offerta.setId(id);
+        offerta.setNome(nome);
+        offerta.setPercentuale(percentuale);
+        offerta.setDataInizio(dataInizio.toLocalDate());
+        offerta.setDataFine(dataFine.toLocalDate());
+
+        return offerta;
     }
 }

@@ -1,12 +1,13 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 public class Offerta {
     private int id;
     private String nome;
     private double percentuale;
-    private GregorianCalendar dataInizio, dataFine;
+    private LocalDate dataInizio, dataFine;
 
     public Offerta() {
     }
@@ -35,19 +36,19 @@ public class Offerta {
         this.percentuale = percentuale;
     }
 
-    public GregorianCalendar getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(GregorianCalendar dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public GregorianCalendar getDataFine() {
+    public LocalDate getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(GregorianCalendar dataFine) {
+    public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
 }
