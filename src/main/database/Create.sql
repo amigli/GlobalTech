@@ -54,7 +54,7 @@ CREATE TABLE Utente (
     civico int,
     citta char (30),
     cap char(5),
-    num_acquisti int not null, -- Bisogna inserire la query che calcola il numero di ordini effettuati
+    num_acquisti int, -- Bisogna inserire la query che calcola il numero di ordini effettuati
     numero_telefono char(10),
     numero_cc char(16),
     cvv_cc char (3),
@@ -62,7 +62,7 @@ CREATE TABLE Utente (
 );
 
 CREATE TABLE Carrello (
-    id_utente int primary key references Utente (id) ,
+    id_utente int primary key references Utente (id),
     totale double not null
 );
 
@@ -87,6 +87,7 @@ CREATE TABLE Contenere (
 
 CREATE TABLE Offerta (
     id int auto_increment primary key,
+    nome varchar(45),
     percentuale double not null,
     data_inizio date not null,
     data_fine date not null
@@ -107,3 +108,7 @@ CREATE TABLE Comporre(
 
     primary key(id_carrello, id_prodotto)
 );
+
+
+
+

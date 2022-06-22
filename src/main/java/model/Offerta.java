@@ -4,20 +4,19 @@ import java.util.GregorianCalendar;
 
 public class Offerta {
     private int id;
+    private String nome;
     private double percentuale;
     private GregorianCalendar dataInizio, dataFine;
 
-    public Offerta(int id, double percentuale, GregorianCalendar dataInizio, GregorianCalendar dataFine) {
-        this.id = id;
-        this.percentuale = percentuale;
-        this.dataInizio = dataInizio;
-        this.dataFine = dataFine;
+    public Offerta() {
     }
 
-    public Offerta(double percentuale, GregorianCalendar dataInizio, GregorianCalendar dataFine) {
-        this.percentuale = percentuale;
-        this.dataInizio = dataInizio;
-        this.dataFine = dataFine;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getId() {

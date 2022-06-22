@@ -2,7 +2,6 @@ package model;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class CategoriaDAO {
@@ -62,7 +61,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void rimuoviCategoria (Categoria c){
+    public void doRemoveCategoria(Categoria c){
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
             stmt.executeUpdate("DELETE FROM categoria WHERE id="+c.getId());
@@ -71,12 +70,15 @@ public class CategoriaDAO {
         }
     }
 
-    public void modificaCategoria (Categoria c){
+    public void doUpdateCategoria(Categoria c){
         try (Connection con = ConPool.getConnection()) {
             Statement stmt=con.createStatement();
-            stmt.executeUpdate("UPDATE categoria " +
-                    "SET nome=" + c.getNome() + ", descrizione=" + c.getDescrizione() +
-                    ",WHERE id="+c.getId());
+            String sql = "UPDATE categoria " +
+                    "SET nome= \"" + c.getNome() + "\", descrizione=\"" + c.getDescrizione() +"\"" +
+                    "WHERE id= " + c.getId();
+
+            stmt.executeUpdate(sql);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

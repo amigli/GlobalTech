@@ -1,4 +1,4 @@
-        <%@ page import="model.Categoria" %>
+<%@ page import="model.Categoria" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: migli
@@ -20,7 +20,7 @@
     int id = 0;
     String nome = "";
     String descrizione = "";
-    if (list != null) {
+    if (list == null) {
         id = (int) request.getAttribute("idCategoria");
         nome = (String) request.getAttribute("nomeCategoria");
         descrizione = (String) request.getAttribute("descrizioneCategoria");
@@ -28,14 +28,13 @@
 %>
 <br><br><br>
 <div id="modificareCategoria">
-    <form action="modifica-categoria" id="modificaCategoria" method="get">
+    <form action="modifica-categoria" id="modificaCategoria" method="post">
         <h2>ID categoria da modificare: <%=id%></h2>
         <label for="nomeCategoria">Nome della categoria:</label>
         <input type="text" id="nomeCategoria" name="nomeCategoria" value="<%=nome%>" required>
         <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-        <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="65" required>
-        <%=descrizione%>
-        </textarea>
+        <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="65" required><%=descrizione%></textarea>
+        <input type="hidden" name="id" value="<%=id%>">
         <br>
         <br>
         <input type="submit" value="Modifica">

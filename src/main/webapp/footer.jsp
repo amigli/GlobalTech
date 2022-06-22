@@ -17,6 +17,9 @@
         <div id="footer-content">
             <div id="left" class="information">
                 <a href="#"><b>Chi siamo</b></a>
+                <ul>
+                    <a href="#">Contatti</a>
+                </ul>
             </div>
             <div id="center" class="information">
                 <b>Informazioni utili</b>

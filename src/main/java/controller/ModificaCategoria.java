@@ -16,12 +16,29 @@ import java.util.ArrayList;
 public class ModificaCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         CategoriaDAO service = new CategoriaDAO();
         String address=null;
 
         String nome=request.getParameter("nomeCategoria");
         String descrizione = request.getParameter("descrizioneCategoria");
+        int id ;
+
+        if(request.getParameter("id") != null){
+            try{
+                id =  Integer.parseInt(request.getParameter("id"));
+            }catch (NumberFormatException e){
+                id = -1;
+            }
+        }else{
+            id = -1;
+        }
+
+        if(id < 0)
+            errorPar.add("id");
 
         if (nome==null || nome.length()<3)
             errorPar.add("nome");
@@ -31,10 +48,11 @@ public class ModificaCategoria extends HttpServlet {
 
         if (errorPar.isEmpty()){
             Categoria c = new Categoria();
+
             c.setNome(nome);
             c.setDescrizione(descrizione);
-
-            service.modificaCategoria(c);
+            c.setId(id);
+            service.doUpdateCategoria(c);
 
             address = "formCategoria.jsp";
         }

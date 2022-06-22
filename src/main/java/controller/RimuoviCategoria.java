@@ -27,7 +27,7 @@ public class RimuoviCategoria extends HttpServlet {
             Categoria c = new Categoria();
             c.setId(id);
 
-            service.rimuoviCategoria(c);
+            service.doRemoveCategoria(c);
 
             address="formCategoria.jsp";
         }else{

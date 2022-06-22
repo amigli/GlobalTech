@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: frank
-  Date: 16/06/2022
-  Time: 23:11
+  Date: 21/06/2022
+  Time: 22:54
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -10,9 +10,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Carica Immagini</title>
+    <title>Gestione Prodotti</title>
 </head>
 <body>
+    <%
+
+    %>
 
 </body>
 </html>
