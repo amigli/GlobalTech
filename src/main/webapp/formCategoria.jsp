@@ -11,6 +11,7 @@ To change this template use File | Settings | File Templates.
 <%@ page import="model.Categoria" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.CategoriaDAO" %>
+<%@ page import="java.lang.reflect.Array" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,9 +35,7 @@ To change this template use File | Settings | File Templates.
     %>
 </div>
 <%
-    CategoriaDAO service = new CategoriaDAO();
-    ArrayList<Categoria> allCategories = (ArrayList<Categoria>) service.doRetrieveAll();
-
+    List<Categoria> cat = (List<Categoria>) request.getAttribute("categorie");
 %>
 <br>
 <h1>Gestione categorie</h1>
@@ -46,20 +45,20 @@ To change this template use File | Settings | File Templates.
     <th>ID</th>
     <th>Nome</th>
     <th>Descrizione</th>
-    <%for (int i=0; i<allCategories.size(); i++){%>
+    <%for (Categoria c : cat){%>
         <tr>
-            <td><%=allCategories.get(i).getId()%></td>
-            <td><%=allCategories.get(i).getNome()%></td>
-            <td><%=allCategories.get(i).getDescrizione()%></td>
+            <td><%=c.getId()%></td>
+            <td><%=c.getNome()%></td>
+            <td><%=c.getDescrizione()%></td>
             <td>
                 <form action="modificainter-categoria" id="modificaCategoria">
-                    <input type="hidden" name="id" value="<%=allCategories.get(i).getId()%>">
+                    <input type="hidden" name="id" value="<%=c.getId()%>">
                     <input type="submit" value="Modifica">
                 </form>
             </td>
             <td>
                 <form action="rimuovi-categoria" id="rimuoviCategoria" method="get">
-                    <input type="hidden" name="id" value="<%=allCategories.get(i).getId()%>">
+                    <input type="hidden" name="id" value="<%=c.getId()%>">
                     <input type="submit" value="Rimuovi">
                 </form>
             </td>
