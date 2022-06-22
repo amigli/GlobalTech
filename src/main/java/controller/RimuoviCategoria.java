@@ -15,26 +15,33 @@ import java.util.ArrayList;
 @WebServlet(name = "RimuoviCategoriaServlet", value = "/rimuovi-categoria")
 public class RimuoviCategoria extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ArrayList<String> errorPar =  new ArrayList<>();
-        CategoriaDAO service = new CategoriaDAO();
-        String address=null;
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (id!=-1){
-            Categoria c = new Categoria();
-            c.setId(id);
+        String idstring =  request.getParameter("id");
+        String address = "/WEB-INF/result/removeCategoriaResult.jsp";
 
-            service.doRemoveCategoria(c);
+        if(idstring != null){
+            try{
+                int id = Integer.parseInt(idstring);
 
-            address="formCategoria.jsp";
+                CategoriaDAO service = new CategoriaDAO();
+
+                Categoria cat = service.doRetrieveById(id);
+
+                if(cat != null){
+                    service.doRemoveCategoria(id);
+                    request.setAttribute("deleted_cat", cat);
+                }
+            }catch (NumberFormatException e){
+                response.setStatus(500);
+            }
         }else{
-            errorPar.add("id");
-            request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al formCategoria in questo caso
-            address = "formCategoria.jsp";
+            response.setStatus(404);
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

@@ -16,14 +16,13 @@ import java.util.ArrayList;
 public class ModificaCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         CategoriaDAO service = new CategoriaDAO();
-        String address=null;
+        String  address = "/WEB-INF/result/modificaCategoriaResult.jsp";
 
-        String nome=request.getParameter("nomeCategoria");
+        String nome = request.getParameter("nomeCategoria");
         String descrizione = request.getParameter("descrizioneCategoria");
         int id ;
 
@@ -38,28 +37,26 @@ public class ModificaCategoria extends HttpServlet {
         }
 
         if(id < 0)
-            errorPar.add("id");
+            response.setStatus(404);
+        else {
+            if (nome == null || nome.length() < 3)
+                errorPar.add("nome");
 
-        if (nome==null || nome.length()<3)
-            errorPar.add("nome");
+            if (descrizione == null || descrizione.length() < 3)
+                errorPar.add("descrizione");
 
-        if (descrizione==null || descrizione.length()<3)
-            errorPar.add("descrizione");
+            if (errorPar.isEmpty()) {
+                Categoria c = new Categoria();
 
-        if (errorPar.isEmpty()){
-            Categoria c = new Categoria();
-
-            c.setNome(nome);
-            c.setDescrizione(descrizione);
-            c.setId(id);
-            service.doUpdateCategoria(c);
-
-            address = "formCategoria.jsp";
-        }
-        else{
-            request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al formInserimentoCategoria in questo caso
-            address = "formInserimentoCategoria.jsp";
+                c.setNome(nome);
+                c.setDescrizione(descrizione);
+                c.setId(id);
+                service.doUpdateCategoria(c);
+            } else {
+                request.setAttribute("error_parameter", errorPar);
+                //aggiungere un messaggio al formInserimentoCategoria in questo caso
+                address = "formInserimentoCategoria.jsp";
+            }
         }
         RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
         dispatcher.forward(request, response);

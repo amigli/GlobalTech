@@ -17,23 +17,19 @@ import java.util.List;
 public class VisualizzaCategorie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> errorPar =  new ArrayList<>();
         CategoriaDAO service = new CategoriaDAO();
-        String address=null;
-
+        String address="visualizzaCategorie.jsp";
         List<Categoria> cat = service.doRetrieveAll();
 
-        if (cat.isEmpty()){
-            errorPar.add("categorie vuote");
-            address="#"; //rimanda alla pagina admin
-        }
-        else{
-            address = "formCategoria.jsp";
-            request.setAttribute("categorie", cat);
-        }
+        request.setAttribute("categorie", cat);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

@@ -13,30 +13,48 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ModificaInterCategoriaServlet", value = "/modificainter-categoria")
-public class ModificaInterCategoria extends HttpServlet {
+public class GestioneCategoria extends HttpServlet {
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         CategoriaDAO service = new CategoriaDAO();
         String address=null;
 
-        int Id = Integer.parseInt(request.getParameter("id"));
+        int id;
 
-        if (Id!=0){
-            Categoria c = service.doRetrieveById(Id);
+        if(request.getParameter("id") != null){
+            try{
+                id = Integer.parseInt(request.getParameter("id"));
+            }catch (NumberFormatException e){
+                id = -1;
+            }
 
+        }else{
+            id = -1;
+        }
+
+
+        if (id < 1){
+            errorPar.add("id");
+            request.setAttribute("error_parameter", errorPar);
+            //aggiungere un messaggio al formCategoria in questo caso
+            address = "visualizza-categorie";
+        }else{
+            Categoria c = service.doRetrieveById(id);
             if(c!=null) {
                 request.setAttribute("idCategoria", c.getId());
                 request.setAttribute("nomeCategoria", c.getNome());
                 request.setAttribute("descrizioneCategoria", c.getDescrizione());
                 address="formModificaCategoria.jsp";
+            }else{
+                response.setStatus(404);
             }
-
-        }else{
-            errorPar.add("id");
-            request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al formCategoria in questo caso
-            address = "formCategoria.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

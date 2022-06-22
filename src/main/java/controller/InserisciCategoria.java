@@ -17,10 +17,15 @@ import java.util.ArrayList;
 public class InserisciCategoria extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         CategoriaDAO service = new CategoriaDAO();
-        String address=null;
+        String address;
 
         String nome = request.getParameter("nomeCategoria");
         String descrizione = request.getParameter("descrizioneCategoria");
@@ -36,9 +41,13 @@ public class InserisciCategoria extends HttpServlet {
             c.setNome(nome);
             c.setDescrizione(descrizione);
 
-            service.doSave(c);
+            int id = service.doSaveCategoria(c);
 
-            address="formCategoria.jsp";
+            c.setId(id);
+
+            request.setAttribute("categoria_inserita", c);
+
+            address="/WEB-INF/result/caricamentoCategoriaCompletato.jsp";
         }
         else{
             request.setAttribute("error_parameter", errorPar);
