@@ -21,18 +21,6 @@ To change this template use File | Settings | File Templates.
 <body>
 <%@include file="navbar.jsp"%>
 <div>
-    <%
-        ArrayList<String> list = (ArrayList<String>) request.getAttribute("error_parameter");
-
-        if(list != null){
-            for(String s : list){
-    %>
-    <h1>Errore nell'inserimento dei dati:</h1>
-        <%=s%>
-    <%
-            }
-        }
-    %>
 </div>
 <%
     List<Categoria> cat = (List<Categoria>) request.getAttribute("categorie");
@@ -51,13 +39,13 @@ To change this template use File | Settings | File Templates.
             <td><%=c.getNome()%></td>
             <td><%=c.getDescrizione()%></td>
             <td>
-                <form action="modificainter-categoria" id="modificaCategoria">
+                <form action="modificainter-categoria" id="modificaCategoria" method="post">
                     <input type="hidden" name="id" value="<%=c.getId()%>">
                     <input type="submit" value="Modifica">
                 </form>
             </td>
             <td>
-                <form action="rimuovi-categoria" id="rimuoviCategoria" method="get">
+                <form action="rimuovi-categoria" id="rimuoviCategoria" method="post">
                     <input type="hidden" name="id" value="<%=c.getId()%>">
                     <input type="submit" value="Rimuovi">
                 </form>
