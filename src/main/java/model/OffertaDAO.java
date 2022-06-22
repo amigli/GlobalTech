@@ -21,7 +21,11 @@ public class OffertaDAO {
                 GregorianCalendar dataInizio= (GregorianCalendar) rs.getObject(3);
                 GregorianCalendar dataFine= (GregorianCalendar) rs.getObject(4);
 
-                Offerta o = new Offerta(id, percentuale, dataInizio, dataFine);
+                Offerta o = new Offerta();
+                o.setId(id);
+                o.setPercentuale(percentuale);
+                o.setDataInizio(dataInizio);
+                o.setDataFine(dataFine);
 
                 l.add(o);
             }
