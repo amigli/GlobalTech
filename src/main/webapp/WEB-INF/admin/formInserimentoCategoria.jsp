@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>Inserisci categoria</title>
-    <%@include file="links.html"%>
+    <%@include file="../includes/links.html"%>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="../includes/navbar.jsp"%>
 <br><br><br>
 <div id="inserireCategoria">
     <form action="inserisci-categoria" id="inserisciCategoria" method="post">

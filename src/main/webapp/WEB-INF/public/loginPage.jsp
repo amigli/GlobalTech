@@ -8,14 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="style.css">
     <title>Accedi</title>
+    <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="/WEB-INF/includes/navbar.jsp"%>
 <br><br>
 <div id="accesso">
-    <%@include file="login.jsp"%>
+
+    <%@include file="/WEB-INF/includes/login.jsp"%>
 </div>
 </body>
 </html>

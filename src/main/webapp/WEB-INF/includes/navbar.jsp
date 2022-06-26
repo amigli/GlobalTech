@@ -4,21 +4,19 @@
   Date: 22/05/2022
   Time: 19:00
   To change this template use File | Settings | File Templates.
+
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Navbar</title>
-    <%@ include file="links.html"%>
-</head>
-<body>
+<%@page import="model.Utente" %>
+<%
+    Utente utente = (Utente) session.getAttribute("utente");
+%>
     <nav>
         <!--
         Aggiungere collegamento alla Home nel logo
         -->
        <div id="logo">
            <h2>
-               <a href="#" style="text-decoration: none; color:white;">
+               <a href="index.html" style="text-decoration: none; color:white;">
                GlobalTech
                </a>
            </h2>
@@ -48,13 +46,20 @@
                             <a href="#">Offerte</a>
                         </li>
 
+
                         <li id="login-item">
-                            <a href="loginPage.jsp">
-                                Login
-                            </a>
-                            <div id="login-box">
-                                <%@include file="login.jsp"%>
-                            </div>
+                            <%if(utente==null){ %>
+                                <a href="login-page">
+                                    Login
+                                </a>
+                                <div id="login-box">
+                                    <%@include file="login.jsp"%>
+                                </div>
+                            <%}else{%>
+                                <a href="#">
+                                    <%=utente.getNome()%>
+                                </a>
+                            <%}%>
                         </li>
                     </ul>
                 </li>
@@ -87,8 +92,5 @@
             }
         })
     </script>
-    <script src="script/SelectResultJquery.js" defer>
+    <script src="../script/SelectResultJquery.js" defer>
     </script>
-
-</body>
-</html>

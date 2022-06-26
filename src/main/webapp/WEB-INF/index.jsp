@@ -3,9 +3,13 @@
 <html>
     <head>
         <title>JSP - Hello World</title>
+        <%@include file="/WEB-INF/includes/links.html"%>
+        <meta charset="UTF-8">
     </head>
     <body>
-    <br>
-    <p>Hello Servlet</p>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <p>Home utente</p>
+    
+
     </body>
 </html>

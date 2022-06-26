@@ -10,10 +10,10 @@
 <html>
 <head>
     <title>Modifica categoria</title>
-    <%@include file="links.html"%>
+    <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="/WEB-INF/includes/navbar.jsp"%>
 <%
     ArrayList<String> list = (ArrayList<String>) request.getAttribute("error_parameter");
 

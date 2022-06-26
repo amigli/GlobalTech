@@ -16,10 +16,10 @@ To change this template use File | Settings | File Templates.
 <html>
 <head>
     <title>Gestisci categorie</title>
-    <%@include file="links.html"%>
+    <%@include file="../includes/links.html"%>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="../includes/navbar.jsp"%>
 <div>
 </div>
 <%
@@ -30,9 +30,11 @@ To change this template use File | Settings | File Templates.
 <a href="formInserimentoCategoria.jsp">Inserire una nuova categoria</a>
 <br><br>
 <table id="categorie">
-    <th>ID</th>
-    <th>Nome</th>
-    <th>Descrizione</th>
+   <tr>
+       <th>ID</th>
+       <th>Nome</th>
+       <th>Descrizione</th>
+   </tr>
     <%for (Categoria c : cat){%>
         <tr>
             <td><%=c.getId()%></td>

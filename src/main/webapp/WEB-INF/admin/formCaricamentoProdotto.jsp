@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Inserimento Prodotto</title>
-    <%@include file="links.html"%>
+    <%@include file="../includes/links.html"%>
 </head>
 <body>
     <div>
@@ -142,7 +142,7 @@
 
         <input type="submit">
     </form>
-    <script type="text/javascript" src="./script/CaricamentoProdotti.js">
+    <script type="text/javascript" src="../../script/CaricamentoProdotti.js">
     </script>
 
 </body>
