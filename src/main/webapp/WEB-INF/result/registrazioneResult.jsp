@@ -11,13 +11,12 @@
 <html>
 <head>
     <title>Utente registrato</title>
+    <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
   <%@include file="/WEB-INF/includes/navbar.jsp"%>
 
     <p>La registrazione è avvenuta correttamente.</p>
-    <p>Puoi effettuare il login in alto a sinistra o al seguente <a href="login">link</a> </p>
-
-
+    <p>Puoi effettuare il login in alto a sinistra o al seguente <a href="login-page">link</a> </p>
 </body>
 </html>
