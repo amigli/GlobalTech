@@ -6,32 +6,41 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Utente;
 import model.UtenteDAO;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 @WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
 public class RegistrazioneUtente extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         UtenteDAO service = new UtenteDAO();
         String address=null;
 
-        String email = req.getParameter("email");
-        String password = req.getParameter("pass");
-        String nome = req.getParameter("nome");
-        String cognome = req.getParameter("cognome");
-        String dataNascita = req.getParameter("data_nascita");
+        String email = request.getParameter("email");
+        String password = request.getParameter("pass");
+        String nome = request.getParameter("nome");
+        String cognome = request.getParameter("cognome");
+        String dataNascitaString = request.getParameter("data_nascita");
 
         //aggiungere controlli con regex
-        if (email==null || (!email.matches("^[a-z0-9/.]+@[a-z]+/.[a-z]{2,3}$")))
-            errorPar.add("email");
+        if (email==null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$")))
+            errorPar.add("email_registrazione");
 
-        if (password==null || password.length()<8 ||
+        /*if (password==null || password.length()<8 ||
                 (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[/*.!@$%^&()[/]{}:;<>,.?+-_=]).{8,32}")))
-            errorPar.add("password");
+            errorPar.add("password");*/
 
         if (nome==null || nome.length()<3)
             errorPar.add("nome");
@@ -39,8 +48,17 @@ public class RegistrazioneUtente extends HttpServlet {
         if (cognome==null || cognome.length()<3)
             errorPar.add("cognome");
 
-        if (dataNascita==null)
+        LocalDate dataNascita = null;
+
+        if (dataNascitaString==null)
             errorPar.add("dataNascita");
+        else {
+            try{
+                dataNascita = LocalDate.parse(dataNascitaString);
+            }catch (DateTimeParseException e){
+                errorPar.add("dataNascita");
+            }
+        }
 
         if (errorPar.isEmpty()){
             Utente u = new Utente();
@@ -51,23 +69,20 @@ public class RegistrazioneUtente extends HttpServlet {
             u.setDataNascita(dataNascita);
             u.setAdmin(false);
             u.setNumAcquisti(0);
+
             service.registraUtente(u);
-            //aggiungere collegamento alla Home
-            address="#";
+
+
+            address="/WEB-INF/result/registrazioneResult.jsp";
+
         }
         else{
-            req.setAttribute("error_parameter", errorPar);
+            request.setAttribute("error_parameter", errorPar);
             //aggiungere un messaggio al formRegistrazione in questo caso
-            address = "/formRegistrazione.jsp";
+            address = "/WEB-INF/public/formRegistrazione.jsp";
         }
 
-        RequestDispatcher dispatcher =  req.getRequestDispatcher(address);
-        dispatcher.forward(req, resp);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+        dispatcher.forward(request, resp);
     }
 }
