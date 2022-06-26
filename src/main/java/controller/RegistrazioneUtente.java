@@ -70,8 +70,11 @@ public class RegistrazioneUtente extends HttpServlet {
             u.setAdmin(false);
             u.setNumAcquisti(0);
 
-            service.registraUtente(u);
+            int id = service.registraUtente(u);
 
+            u.setId(id);
+
+            request.setAttribute("utente", u);
 
             address="/WEB-INF/result/registrazioneResult.jsp";
 
