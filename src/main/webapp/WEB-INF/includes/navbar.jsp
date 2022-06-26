@@ -50,15 +50,35 @@
                         <li id="login-item">
                             <%if(utente==null){ %>
                                 <a href="login-page">
-                                    Login
+                                    Login/Registrazione
                                 </a>
-                                <div id="login-box">
-                                    <%@include file="login.jsp"%>
-                                </div>
                             <%}else{%>
                                 <a href="#">
                                     <%=utente.getNome()%>
                                 </a>
+                                <div id="account-box">
+                                    <ul id="account-box-list">
+                                        <%if(!utente.isAdmin()){%>
+                                            <li>
+                                                <a href="#">I miei Ordini</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Il mio account</a>
+                                            </li>
+                                        <%}else{%>
+                                            <li>
+                                                <a href="#">Gestione Prodotti</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Gestione Categorie</a>
+                                            </li>
+                                        <%}%>
+                                        <li>
+                                            <a href="logout">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
                             <%}%>
                         </li>
                     </ul>
@@ -92,5 +112,5 @@
             }
         })
     </script>
-    <script src="../script/SelectResultJquery.js" defer>
+    <script src="/script/SelectResultJquery.js" defer>
     </script>
