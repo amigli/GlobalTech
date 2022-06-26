@@ -48,9 +48,10 @@ public class UtenteDAO {
         Date dataNascita = rs.getDate(4);
         String nome=rs.getString(5);
         String cognome=rs.getString(6);
-        String indirizzo=rs.getString(7);
-        int numeroAcquisti=rs.getInt(8);
-        boolean admin=rs.getBoolean(9);
+        boolean admin=rs.getBoolean(7);
+        String indirizzo=rs.getString(8);
+        int numeroAcquisti=rs.getInt(12);
+
 
         Utente u =  new Utente();
 
@@ -71,7 +72,7 @@ public class UtenteDAO {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement stmt=
                     con.prepareStatement("INSERT INTO utente(nome, cognome, email, passwordhash," +
-                            " data_nascita, admin, num_acquisti) values (?,?,?,sha1(?),?,?,?)",
+                            " data_nascita, admin, num_acquisti) values (?,?,?,?,?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1,u.getNome());
