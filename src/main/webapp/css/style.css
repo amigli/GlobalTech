@@ -124,7 +124,7 @@ ul.nav li > a:hover{
     background-color: white;
 }
 
-#login-box{
+#account-box{
     display: none;
 }
 
@@ -316,19 +316,19 @@ a{
     }
 
 
-    #login-box{
+    #account-box{
         z-index: 1;
         position:absolute;
         background-color: white;
         display: none;
-        padding: 2rem 2rem;
+        padding: 0;
         right: 0;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         margin-right: 0.05em;
         text-shadow: none;
     }
 
-    #login-item:hover #login-box{
+    #login-item:hover #account-box{
         display: block;
     }
 
@@ -354,9 +354,24 @@ a{
         margin-left:30%;
     }
 
+    ul#account-box-list{
+        padding-left: 0;
+        list-style-type: none;
+    }
 
+    ul#account-box-list li{
+        float: none;
+        text-align: left;
+    }
 
+    ul#account-box-list li a:hover{
+        background-color: blue;
+        color: white;
+    }
 
+    ul#account-box-list li a{
+        color: blue;
+    }
 }
 
 
