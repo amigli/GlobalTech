@@ -14,5 +14,6 @@
 </head>
 <body>
     <p>Il prodotto e' stato caricato con successo</p>
+    <p>Ritorna alla <a href="index.html">home</a></p>
 </body>
 </html>

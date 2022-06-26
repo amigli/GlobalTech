@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Dettaglio caricamento</title>
-    <%@include file="/links.html"%>
+    <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
     <h2>Dettagli prodotto caricato</h2>

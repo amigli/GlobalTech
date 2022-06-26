@@ -14,5 +14,6 @@
 </head>
 <body>
     <p>La categoria è stata modificata correttamente</p>
+    <p>Ritorna alla <a href="index.html">home</a></p>
 </body>
 </html>

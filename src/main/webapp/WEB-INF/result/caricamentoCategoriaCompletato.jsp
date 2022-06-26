@@ -15,6 +15,7 @@
 <body>
     <p>Categoria caricata correttamente</p>
     <p>id:${categoria_inserita.id}</p>
+    <p>Ritorna alla <a href="index.html">home</a></p>
 
 </body>
 </html>

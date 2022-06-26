@@ -21,5 +21,7 @@
         <p>Percentuale di sconto:${offerta.percentuale}%</p>
     </div>
 
+    <p>Ritorna alla <a href="index.html">home</a></p>
+
 </body>
 </html>
