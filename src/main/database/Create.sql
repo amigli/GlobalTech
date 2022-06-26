@@ -16,7 +16,7 @@ CREATE TABLE Prodotto(
     ram_quantita varchar(20),
     sistema_operativo varchar(20),
     cpu_nome varchar(20),
-    disponibilita int not null
+    disponibilita int not null -- disponibilita=-1, il prodotto non è più in vendita
 );
 
 CREATE TABLE Foto (

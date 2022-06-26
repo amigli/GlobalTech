@@ -7,16 +7,20 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
+<%@ page import="model.Offerta" %>
+<%@ page import="model.Categoria" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Inserimento Prodotto</title>
-    <%@include file="../includes/links.html"%>
+    <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
     <div>
-        <%ArrayList<String> list =
-                    (ArrayList<String>) request.getAttribute("error_parameter");%>
+        <%
+            ArrayList<String> list =
+                    (ArrayList<String>) request.getAttribute("error_parameter");
+        %>
     </div>
 
     <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
@@ -142,7 +146,7 @@
 
         <input type="submit">
     </form>
-    <script type="text/javascript" src="../../script/CaricamentoProdotti.js">
+    <script type="text/javascript" src="script/CaricamentoProdotti.js">
     </script>
 
 </body>

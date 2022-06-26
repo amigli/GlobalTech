@@ -31,6 +31,21 @@
         <p>Disponibilit&agrave:&emsp;${prodotto.disponibilita}</p>
 
     </div>
+
+    <p>Il prodotto è stato caricato con successo. Ora puoi:</p>
+    <ul>
+        <li>
+            <a href="">Aggiungere delle immagini al prodotto</a>
+        </li>
+        <li>
+            <a href="">Aggiungere il prodotto a uno o più categorie</a>
+        </li>
+        <li>
+            <a href="">Applicare delle offerte al prodotto</a>
+        </li>
+    </ul>
+
+    <
     <form action="carica-foto" enctype="multipart/form-data" method="post">
         <input type="hidden" name="id"  value=${prodotto.id}>
         <input type="file" name="foto" accept="image/*" multiple>

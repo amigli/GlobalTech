@@ -41,7 +41,7 @@ To change this template use File | Settings | File Templates.
             <td><%=c.getNome()%></td>
             <td><%=c.getDescrizione()%></td>
             <td>
-                <form action="modificainter-categoria" id="modificaCategoria" method="post">
+                <form action="gestisci-categoria" id="modificaCategoria" method="post">
                     <input type="hidden" name="id" value="<%=c.getId()%>">
                     <input type="submit" value="Modifica">
                 </form>

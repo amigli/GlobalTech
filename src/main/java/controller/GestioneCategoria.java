@@ -12,7 +12,7 @@ import model.CategoriaDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "ModificaInterCategoriaServlet", value = "/modificainter-categoria")
+@WebServlet(name = "GestioneCategoria", value = "/gestisci-categoria")
 public class GestioneCategoria extends HttpServlet {
 
     @Override
@@ -22,10 +22,6 @@ public class GestioneCategoria extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> errorPar =  new ArrayList<>();
-        CategoriaDAO service = new CategoriaDAO();
-        String address=null;
-
         int id;
 
         if(request.getParameter("id") != null){
@@ -41,23 +37,23 @@ public class GestioneCategoria extends HttpServlet {
 
 
         if (id < 1){
-            errorPar.add("id");
-            request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al formCategoria in questo caso
-            address = "visualizza-categorie";
+            response.sendError(404);
         }else{
+            CategoriaDAO service = new CategoriaDAO();
             Categoria c = service.doRetrieveById(id);
             if(c!=null) {
                 request.setAttribute("idCategoria", c.getId());
                 request.setAttribute("nomeCategoria", c.getNome());
                 request.setAttribute("descrizioneCategoria", c.getDescrizione());
-                address="formModificaCategoria.jsp";
+                String address="formModificaCategoria.jsp";
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                dispatcher.forward(request, response);
             }else{
-                response.setStatus(404);
+                response.sendError(404);
             }
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+
     }
 }

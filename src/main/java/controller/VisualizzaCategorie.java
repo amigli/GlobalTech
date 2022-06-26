@@ -6,8 +6,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Categoria;
 import model.CategoriaDAO;
+import model.Utente;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,14 +19,28 @@ import java.util.List;
 public class VisualizzaCategorie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoriaDAO service = new CategoriaDAO();
-        String address="visualizzaCategorie.jsp";
-        List<Categoria> cat = service.doRetrieveAll();
+        HttpSession session = request.getSession(false);
 
-        request.setAttribute("categorie", cat);
+        if(session != null){
+            Utente u = (Utente) session.getAttribute("utente");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+            if(u !=  null && u.isAdmin()){
+                CategoriaDAO service = new CategoriaDAO();
+                String address="/WEB-INF/admin/visualizzaCategorie.jsp";
+                List<Categoria> cat = service.doRetrieveAll();
+
+                request.setAttribute("categorie", cat);
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                dispatcher.forward(request, response);
+            }else{
+                response.sendError(401);
+            }
+        }else{
+            response.sendRedirect("login-page");
+        }
+
+
     }
 
     @Override

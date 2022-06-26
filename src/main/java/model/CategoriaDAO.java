@@ -6,8 +6,8 @@ import java.util.List;
 
 public class CategoriaDAO {
     public List<Categoria> doRetrieveAll(){
-        List <Categoria> l = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
+            List <Categoria> l = new ArrayList<>();
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM categoria");
             while (rs.next()){
@@ -22,15 +22,17 @@ public class CategoriaDAO {
 
                 l.add(c);
             }
+            con.close();
+            return l;
         } catch (SQLException e) {
             throw new RuntimeException();
         }
-        return l;
+
     }
 
     public Categoria doRetrieveById(int id){
-        Categoria c = new Categoria();
         try (Connection con = ConPool.getConnection()) {
+            Categoria c = new Categoria();
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM categoria WHERE id= ?");
 
             stmt.setInt(1, id);
@@ -46,11 +48,13 @@ public class CategoriaDAO {
                 c.setDescrizione(descrizione);
 
             }
+            con.close();
 
+            return c;
         } catch (SQLException e) {
             throw new RuntimeException();
         }
-        return c;
+
     }
 
     public int doSaveCategoria(Categoria c){
@@ -68,8 +72,13 @@ public class CategoriaDAO {
                 ResultSet res = stmt.getGeneratedKeys();
 
                 res.next();
-                return res.getInt(1);
+                int id =  res.getInt(1);
+
+                con.close();
+
+                return id;
             }else{
+                con.close();
                 throw new RuntimeException("Result < 0");
             }
         } catch (SQLException e) {

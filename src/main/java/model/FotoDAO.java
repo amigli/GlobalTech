@@ -17,6 +17,7 @@ public class FotoDAO {
                 foto.addFoto(this.trasformFoto(res));
             }
 
+            con.close();
             return foto;
 
 
@@ -53,6 +54,8 @@ public class FotoDAO {
                 stmt.setString(3, extension);
 
                 stmt.executeUpdate();
+
+                con.close();
             }
         }catch (SQLException e){
            e.printStackTrace();

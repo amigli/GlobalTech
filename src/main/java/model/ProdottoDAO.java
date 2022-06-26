@@ -18,11 +18,11 @@ public class ProdottoDAO {
 
                 list.add(i);
             }
-
+            con.close();
             return list;
 
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 
@@ -33,8 +33,10 @@ public class ProdottoDAO {
             ResultSet res =  statement.executeQuery(sql);
             res.next();
 
-            return  this.creaProdotto(res);
+            Prodotto p =this.creaProdotto(res);
+            con.close();
 
+            return p;
         } catch (SQLException e) {
             throw new RuntimeException();
         }
@@ -61,15 +63,22 @@ public class ProdottoDAO {
             stmt.setString(10, p.getCpuNome());
             stmt.setInt(11, p.getDisponibilita());
 
-            int result = stmt.executeUpdate();
+            stmt.executeUpdate();
 
-            if(result > 0){
-                ResultSet r =  stmt.getGeneratedKeys();
-                r.next();
-                return r.getInt("id");
+            ResultSet res =  stmt.getGeneratedKeys();
+
+            if(res.next()){
+                int id =  res.getInt(1);
+                con.close();
+
+                return id;
             }else{
-                throw  new RuntimeException();
+                con.close();
+                throw new RuntimeException();
             }
+
+
+
 
 
         }catch (SQLException e){
@@ -84,7 +93,7 @@ public class ProdottoDAO {
         String colore = res.getString("colore");
         float prezzoListino = res.getFloat("prezzo_listino");
         String descrizione = res.getString("descrizione");
-        String sistemaOpeativo =  res.getString("so");
+        String sistemaOpeativo =  res.getString("sistema_operativo");
         String ramTipo = res.getString("ram_tipo");
         String ramQuantita = res.getString("ram_quantita");
         String nomeCpu = res.getString("cpu_nome");

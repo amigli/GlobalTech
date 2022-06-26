@@ -18,13 +18,20 @@
     <p>Scegli un servizio:</p>
     <ul>
         <li>
-            <a href="#">Gestione categorie</a>
+            <a href="admin-service?s=caricamento-prodotto">Caricamento Prodotto</a>
         </li>
         <li>
-            <a href="#">Inserisci Prodotto</a>
+            <a href="admin-service?s=caricamento-offerta">Caricamento offerta</a>
         </li>
-
-
+        <li>
+            <a href="admin-service?s=caricamento-categoria">Caricamento categoria</a>
+        </li>
+        <li>
+            <a href="visualizza-categorie">Visualizza categorie</a>
+        </li>
+        <li>
+            <a href="visualizza-prodotti">Visualizza prodotti</a>
+        </li>
     </ul>
 
 </body>

@@ -16,6 +16,9 @@ public class UtenteDAO {
                 l.add(u);
             }
 
+            con.close();
+
+
             return l;
 
         } catch (SQLException e) {
@@ -30,10 +33,14 @@ public class UtenteDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM utente WHERE id="+id);
             if (rs.next()){
+                con.close();
                 return creaUtente(rs);
             }else{
+                con.close();
                 return null;
             }
+
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -88,9 +95,10 @@ public class UtenteDAO {
             ResultSet res = stmt.getGeneratedKeys();
 
             res.next();
+            int id = res.getInt(1);
+            con.close();
 
-            return res.getInt(1);
-
+            return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -107,8 +115,13 @@ public class UtenteDAO {
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
-                return creaUtente(rs);
+                Utente u =  this.creaUtente(rs);
+                con.close();
+
+                return u;
+
             }else{
+                con.close();
                 return null;
             }
         } catch (SQLException e) {

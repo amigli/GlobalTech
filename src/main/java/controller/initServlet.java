@@ -20,7 +20,7 @@ public class initServlet extends HttpServlet {
         List<Categoria> categoriaList = serviceCategorie.doRetrieveAll();
         OffertaDAO serviceOfferta = new OffertaDAO();
 
-        List<Offerta> offertaList =  serviceOfferta.doRetrieveActive();
+        List<Offerta> offertaList =  serviceOfferta.doRetrieveAll();
 
         ServletContext context =  this.getServletContext();
         context.setAttribute("offerte", offertaList);

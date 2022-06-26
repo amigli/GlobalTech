@@ -6,7 +6,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class OffertaDAO {
-
     public List<Offerta> doRetrieveActive(){
         try (Connection con = ConPool.getConnection()) {
             List <Offerta> l = new ArrayList<>();
@@ -21,7 +20,26 @@ public class OffertaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public List<Offerta> doRetrieveAll(){
+        try(Connection con = ConPool.getConnection()){
+            List<Offerta> offerte =  new ArrayList<>();
+
+            String sql =  "SELECT * FROM offerta";
+            Statement stmt = con.createStatement();
+
+            ResultSet res =  stmt.executeQuery(sql);
+
+            while(res.next()){
+                offerte.add(this.creaOfferta(res));
+            }
+
+            return offerte;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
     public Offerta doRetrieveById(int id){
