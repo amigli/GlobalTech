@@ -44,7 +44,7 @@ CREATE TABLE Appartenere(
 CREATE TABLE Utente (
     id int auto_increment primary key,
     email varchar (30) not null unique,
-    passwordhash varchar (32) not null,  -- minimo 8 e massimo 32
+    passwordhash varchar (100) not null,  -- minimo 8 e massimo 32
     data_nascita date not null,
     nome char (30) not null,
     cognome char (30) not null,
