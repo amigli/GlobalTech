@@ -18,10 +18,10 @@
     <p>Scegli un servizio:</p>
     <ul>
         <li>
-            <a>Gestione categorie</a>
+            <a href="#">Gestione categorie</a>
         </li>
         <li>
-            <a>Inserisci Prodotto</a>
+            <a href="#">Inserisci Prodotto</a>
         </li>
 
 
