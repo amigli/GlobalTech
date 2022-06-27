@@ -34,7 +34,7 @@ CREATE TABLE Categoria(
 );
 
 CREATE TABLE Appartenere(
-    id_categoria int not null references Categoria(id) ,
+    id_categoria int not null references Categoria(id) on delete cascade on update cascade ,
     id_prodotto int not null references Prodotto(id) ,
 
     primary key (id_prodotto, id_categoria)
