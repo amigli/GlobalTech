@@ -6,8 +6,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Categoria;
 import model.CategoriaDAO;
+import model.Utente;
 import model.UtenteDAO;
 
 import java.io.IOException;
@@ -23,38 +25,53 @@ public class InserisciCategoria extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> errorPar =  new ArrayList<>();
-        CategoriaDAO service = new CategoriaDAO();
-        String address;
+        HttpSession session =  request.getSession();
 
-        String nome = request.getParameter("nomeCategoria");
-        String descrizione = request.getParameter("descrizioneCategoria");
+        Utente u = (Utente) session.getAttribute("utente");
 
-        if (nome==null || nome.length()<3)
-            errorPar.add("nome");
+        if(u != null){
+            if(u.isAdmin()){
+                ArrayList<String> errorPar =  new ArrayList<>();
+                CategoriaDAO service = new CategoriaDAO();
+                String address;
 
-        if (descrizione==null || descrizione.length()<3)
-            errorPar.add("descrizione");
+                String nome = request.getParameter("nomeCategoria");
+                String descrizione = request.getParameter("descrizioneCategoria");
 
-        if (errorPar.isEmpty()){
-            Categoria c = new Categoria();
-            c.setNome(nome);
-            c.setDescrizione(descrizione);
+                if (nome==null || nome.length()<3)
+                    errorPar.add("nome");
 
-            int id = service.doSaveCategoria(c);
+                if (descrizione==null || descrizione.length()<3)
+                    errorPar.add("descrizione");
 
-            c.setId(id);
+                if (errorPar.isEmpty()){
+                    Categoria c = new Categoria();
+                    c.setNome(nome);
+                    c.setDescrizione(descrizione);
 
-            request.setAttribute("categoria_inserita", c);
+                    int id = service.doSaveCategoria(c);
 
-            address="/WEB-INF/result/caricamentoCategoriaCompletato.jsp";
+                    c.setId(id);
+
+                    request.setAttribute("categoria_inserita", c);
+
+                    address="/WEB-INF/result/caricamentoCategoriaCompletato.jsp";
+                }
+                else{
+                    request.setAttribute("error_parameter", errorPar);
+                    //aggiungere un messaggio al formInserimentoCategoria in questo caso
+                    address = "formInserimentoCategoria.jsp";
+                }
+                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+                dispatcher.forward(request, response);
+            }else{
+                response.sendError(401);
+            }
+
+        }else{
+            response.sendRedirect("login-page");
         }
-        else{
-            request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al formInserimentoCategoria in questo caso
-            address = "formInserimentoCategoria.jsp";
-        }
-        RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+
+
     }
 }

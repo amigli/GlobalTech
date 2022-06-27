@@ -14,23 +14,23 @@ import java.util.List;
 public class VisualizzaProdottiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session =  request.getSession(false);
+        HttpSession session =  request.getSession();
+        Utente u = (Utente) session.getAttribute("utente");
 
-        if(session != null && session.getAttribute("utente") != null){
-             Utente u = (Utente) session.getAttribute("utente");
 
-             if(u.isAdmin()){
-                    ProdottoDAO service =  new ProdottoDAO();
+            if(u != null){
+                 if(u.isAdmin()){
+                        ProdottoDAO service =  new ProdottoDAO();
 
-                    List<Prodotto> list =  service.doRetrieveAll();
+                        List<Prodotto> list =  service.doRetrieveAll();
 
-                    request.setAttribute("prodotti", list);
-                    RequestDispatcher dispatcher =
-                            request.getRequestDispatcher("/WEB-INF/admin/visualizzaProdotti.jsp");
-                    dispatcher.forward(request, response);
-                }else{
-                    response.sendError(401);
-                }
+                        request.setAttribute("prodotti", list);
+                        RequestDispatcher dispatcher =
+                                request.getRequestDispatcher("/WEB-INF/admin/visualizzaProdotti.jsp");
+                        dispatcher.forward(request, response);
+                    }else{
+                        response.sendError(401);
+                    }
             }else{
                 response.sendRedirect("login-page");
             }

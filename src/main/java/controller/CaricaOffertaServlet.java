@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Offerta;
 import model.OffertaDAO;
+import model.Utente;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -25,81 +26,93 @@ public class CaricaOffertaServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> errPar =  new ArrayList<>();
+        HttpSession session =  request.getSession();
+        Utente u =  (Utente) session.getAttribute("utente");
 
-        String nome = request.getParameter("nome");
-        String dataInzioString =  request.getParameter("data-inizio");
-        String dataFineString =  request.getParameter("data-fine");
-        float sconto;
-        try {
-            sconto = Float.parseFloat(request.getParameter("sconto"));
-        }catch (NumberFormatException e){
-            sconto = 0;
-        }
+        if(u != null){
+            if(u.isAdmin()){
+                ArrayList<String> errPar =  new ArrayList<>();
 
-        if(sconto < 0.01)
-            errPar.add("sconto");
+                String nome = request.getParameter("nome");
+                String dataInzioString =  request.getParameter("data-inizio");
+                String dataFineString =  request.getParameter("data-fine");
+                float sconto;
+                try {
+                    sconto = Float.parseFloat(request.getParameter("sconto"));
+                }catch (NumberFormatException e){
+                    sconto = 0;
+                }
 
-        LocalDate dataInizio = null,dataFine = null;
-        if(dataInzioString != null && dataFineString != null) {
-            try {
-                dataInizio = LocalDate.parse(dataInzioString);
-            }catch (DateTimeParseException e){
-                errPar.add("data-inzio");
-            }
+                if(sconto < 0.01)
+                    errPar.add("sconto");
 
-            try {
-                dataFine = LocalDate.parse(dataFineString);
-            }catch (DateTimeParseException e){
-                errPar.add("data-fine");
+                LocalDate dataInizio = null,dataFine = null;
+                if(dataInzioString != null && dataFineString != null) {
+                    try {
+                        dataInizio = LocalDate.parse(dataInzioString);
+                    }catch (DateTimeParseException e){
+                        errPar.add("data-inzio");
+                    }
+
+                    try {
+                        dataFine = LocalDate.parse(dataFineString);
+                    }catch (DateTimeParseException e){
+                        errPar.add("data-fine");
+                    }
+                }else{
+                    if(dataInzioString == null)
+                        errPar.add("data-inzio");
+
+                    if(dataFineString == null)
+                        errPar.add("data-fine");
+                }
+
+                if(nome ==  null){
+                    errPar.add("nome");
+                }
+
+                String address;
+
+                if(errPar.isEmpty()){
+                    //inserisci l'offerta
+                    Offerta offerta = new Offerta();
+
+
+                    offerta.setNome(nome);
+                    offerta.setPercentuale(sconto);
+                    offerta.setDataInizio(dataInizio);
+                    offerta.setDataFine(dataFine);
+
+                    OffertaDAO service =  new OffertaDAO();
+
+                    int id =  service.doSaveOfferta(offerta);
+                    offerta.setId(id);
+
+                    ServletContext context = request.getServletContext();
+                    List<Offerta> offertaList = service.doRetrieveActive();
+
+                    context.setAttribute("offerte", offertaList);
+
+                    request.setAttribute("offerta", offerta );
+
+
+                    address = "/WEB-INF/result/caricamentoOffertaCompletato.jsp";
+
+                }else{
+                    address = "formCaricamentoOfferta.jsp";
+                    request.setAttribute("error_parameter", errPar);
+                }
+
+                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+
+                dispatcher.forward(request, response);
+            }else{
+                response.sendError(401);
             }
         }else{
-            if(dataInzioString == null)
-                errPar.add("data-inzio");
-
-            if(dataFineString == null)
-                errPar.add("data-fine");
+            response.sendRedirect("login-page");
         }
 
-        if(nome ==  null){
-            errPar.add("nome");
-        }
-
-        String address;
-
-        if(errPar.isEmpty()){
-            //inserisci l'offerta
-            Offerta offerta = new Offerta();
-
-
-            offerta.setNome(nome);
-            offerta.setPercentuale(sconto);
-            offerta.setDataInizio(dataInizio);
-            offerta.setDataFine(dataFine);
-
-            OffertaDAO service =  new OffertaDAO();
-
-            int id =  service.doSaveOfferta(offerta);
-            offerta.setId(id);
-
-            ServletContext context = request.getServletContext();
-            List<Offerta> offertaList = service.doRetrieveActive();
-
-            context.setAttribute("offerte", offertaList);
-
-            request.setAttribute("offerta", offerta );
-
-
-            address = "/WEB-INF/result/caricamentoOffertaCompletato.jsp";
-
-        }else{
-            address = "formCaricamentoOfferta.jsp";
-            request.setAttribute("error_parameter", errPar);
-        }
-
-        RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-
-        dispatcher.forward(request, response);
 
 
     }

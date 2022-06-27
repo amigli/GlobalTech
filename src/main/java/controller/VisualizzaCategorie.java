@@ -19,12 +19,11 @@ import java.util.List;
 public class VisualizzaCategorie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
+        Utente u = (Utente) session.getAttribute("utente");
 
-        if(session != null){
-            Utente u = (Utente) session.getAttribute("utente");
-
-            if(u !=  null && u.isAdmin()){
+            if(u !=  null ){
+                if(u.isAdmin()){
                 CategoriaDAO service = new CategoriaDAO();
                 String address="/WEB-INF/admin/visualizzaCategorie.jsp";
                 List<Categoria> cat = service.doRetrieveAll();

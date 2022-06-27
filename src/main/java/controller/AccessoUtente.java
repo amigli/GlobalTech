@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @WebServlet(name = "AccessoUtenteServlet", value = "/login")
 public class AccessoUtente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendRedirect("login-page");
     }
 
     @Override

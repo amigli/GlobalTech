@@ -11,13 +11,8 @@ import java.io.IOException;
 public class LoginForwardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-
-        Utente u = null;
-
-        if(session !=  null){
-            u =(Utente) session.getAttribute("utente");
-        }
+        HttpSession session = request.getSession();
+        Utente u =  (Utente) session.getAttribute("utente");
 
         if (u != null) {
             response.sendRedirect("index.html");
@@ -27,7 +22,6 @@ public class LoginForwardServlet extends HttpServlet {
 
             dispatcher.forward(request, response);
         }
-
     }
 
     @Override

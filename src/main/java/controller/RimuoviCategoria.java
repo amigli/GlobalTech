@@ -23,12 +23,11 @@ public class RimuoviCategoria extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session =  request.getSession(false);
+        HttpSession session =  request.getSession();
+        Utente u = (Utente) session.getAttribute("Utente");
 
-        if(session != null){
-            Utente u = (Utente) session.getAttribute("Utente");
-
-            if(u != null && u.isAdmin()){
+        if(u != null ){
+            if( u.isAdmin()){
                 String idstring =  request.getParameter("id");
                 String address = "/WEB-INF/result/removeCategoriaResult.jsp";
 

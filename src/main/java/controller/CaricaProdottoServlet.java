@@ -18,12 +18,10 @@ public class CaricaProdottoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-
-        if(session != null){
-            Utente u =  (Utente) session.getAttribute("utente");
-
-            if(u != null && u.isAdmin()){
+        HttpSession session = request.getSession();
+        Utente u =  (Utente) session.getAttribute("utente");
+        if(u != null){
+            if(u.isAdmin()){
                 String address ;
 
                 ArrayList<String> errorPar = new ArrayList<>();
