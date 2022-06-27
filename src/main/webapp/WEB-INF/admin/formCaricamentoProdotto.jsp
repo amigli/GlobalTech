@@ -16,6 +16,7 @@
     <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
+    <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <div>
         <%
             ArrayList<String> list =

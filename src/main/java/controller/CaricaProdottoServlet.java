@@ -94,7 +94,7 @@ public class CaricaProdottoServlet extends HttpServlet {
                 if (ramQuantita < 0)
                     errorPar.add("ram_quantita");
                 else
-                    ramQuantityAndUnit = ramQuantita + ramUnit;
+                    ramQuantityAndUnit = ramQuantita +  " " + ramUnit;
 
                 String nomeCpu = request.getParameter("cpu_nome");
                 int disponibilita;
