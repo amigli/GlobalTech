@@ -32,7 +32,7 @@
                         ${prod.nome}
                 </td>
                 <td>
-                    <form>
+                    <form method="get" action="gestione-prodotto">
                         <input type="hidden" name="id" value="${prod.id}">
                         <button type="submit"><i class="fa fa-external-link"></i></button>
                     </form>
