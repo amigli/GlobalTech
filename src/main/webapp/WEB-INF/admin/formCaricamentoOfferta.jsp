@@ -13,8 +13,10 @@
 <html>
 <head>
     <title>Caricamento offerta</title>
+    <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
+    <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <form method="post" action="carica-offerta">
         <%  GregorianCalendar inizio = (new GregorianCalendar());
             inizio.add(Calendar.DATE, 1);
