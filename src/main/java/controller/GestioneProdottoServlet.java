@@ -3,16 +3,18 @@ package controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import model.Prodotto;
-import model.ProdottoDAO;
-import model.Utente;
+import model.*;
+import sun.util.resources.LocaleData;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 @WebServlet(name = "GestioneProdottoServlet", value = "/gestione-prodotto")
 public class GestioneProdottoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         Utente u =  ((Utente) session.getAttribute("utente"));
 
@@ -29,6 +31,23 @@ public class GestioneProdottoServlet extends HttpServlet {
                         if(p != null){
                             request.setAttribute("prodotto", p);
                             String address =  "/WEB-INF/admin/gestioneProdotto.jsp";
+
+                            GregorianCalendar lastUpdateOffers = (GregorianCalendar)
+                                    this.getServletContext().getAttribute("lastUpdateOffers");
+                            OffertaDAO serviceOfferta = new OffertaDAO();
+
+                            if(lastUpdateOffers.before(new GregorianCalendar())){
+
+                                List<Offerta> offertaList =  serviceOfferta.doRetrieveActive();
+
+                                this.getServletContext().setAttribute("offerte", offertaList);
+                                this.getServletContext().setAttribute("offerte", offertaList);
+                                this.getServletContext().setAttribute("lastUpdateOffers", new GregorianCalendar());
+                            }
+
+                            List<Offerta> futureOffers = serviceOfferta.doRetrieveFuture();
+
+                            request.setAttribute("futureOffers", futureOffers);
 
                             RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
 

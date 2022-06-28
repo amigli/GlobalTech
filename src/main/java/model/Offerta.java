@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Offerta {
@@ -8,6 +9,7 @@ public class Offerta {
     private String nome;
     private float percentuale;
     private LocalDate dataInizio, dataFine;
+    private ArrayList<Prodotto> prodotti;
 
     public Offerta() {
     }
@@ -50,5 +52,26 @@ public class Offerta {
 
     public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
+    }
+
+    public boolean addProdotto(Prodotto p){
+        if(this.prodotti.contains(p))
+            return false;
+        else{
+            this.prodotti.add(p);
+            return true;
+        }
+    }
+
+    public ArrayList<Prodotto> getProdotti() {
+        return prodotti;
+    }
+
+    public void setProdotti(ArrayList<Prodotto> prodotti) {
+        this.prodotti = prodotti;
+    }
+
+    public boolean contains(Prodotto p){
+        return this.prodotti.contains(p);
     }
 }

@@ -16,6 +16,9 @@ public class OffertaDAO {
             while (rs.next()){
                 l.add(this.creaOfferta(rs));
             }
+
+            con.close();
+
             return l;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -35,9 +38,26 @@ public class OffertaDAO {
                 offerte.add(this.creaOfferta(res));
             }
 
+            con.close();
             return offerte;
 
         }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Offerta> doRetrieveFuture(){
+        try (Connection con = ConPool.getConnection()) {
+            List <Offerta> l = new ArrayList<>();
+            String sql = "SELECT * FROM offerta WHERE data_inizio >=current_date()";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                l.add(this.creaOfferta(rs));
+            }
+            con.close();
+            return l;
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -48,8 +68,11 @@ public class OffertaDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM offerta WHERE id="+id);
             if (rs.next()){
-                return this.creaOfferta(rs);
+                con.close();
+                Offerta offerta = this.creaOfferta(rs);
+                return offerta;
             }else {
+                con.close();
                 return null;
             }
         } catch (SQLException e) {
@@ -73,8 +96,13 @@ public class OffertaDAO {
             if(result > 0) {
                 ResultSet res = stmt.getGeneratedKeys();
                 res.next();
-                return res.getInt(1);
+                int id = res.getInt(1);
+
+                con.close();
+
+                return id;
             }else{
+                con.close();
                 throw new RuntimeException();
             }
 

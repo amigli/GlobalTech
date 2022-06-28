@@ -9,6 +9,7 @@ import model.Offerta;
 import model.OffertaDAO;
 
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @WebServlet(name = "initServlet", value = "/initServlet", loadOnStartup = 0)
@@ -20,11 +21,15 @@ public class initServlet extends HttpServlet {
         List<Categoria> categoriaList = serviceCategorie.doRetrieveAll();
         OffertaDAO serviceOfferta = new OffertaDAO();
 
-        List<Offerta> offertaList =  serviceOfferta.doRetrieveAll();
+        List<Offerta> offertaList =  serviceOfferta.doRetrieveActive();
+
+        GregorianCalendar today =  new GregorianCalendar();
 
         ServletContext context =  this.getServletContext();
-        context.setAttribute("offerte", offertaList);
+
         context.setAttribute("categorie", categoriaList);
+        context.setAttribute("offerte", offertaList);
+        context.setAttribute("lastUpdateOffers", today);
     }
 
     @Override

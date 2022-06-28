@@ -126,10 +126,7 @@
             </div>
             <div>
                 <label for="cpu_nome">Nome CPU</label><br>
-                <select name="cpu_nome" id="cpu_nome">
-                    <option value="nothing">-</option>
-                    <option value="snapdragon-gen-1">SnapDragon Gen 1</option>
-                </select>
+                <input type="text" name="cpu_nome" id="cpu_nome">
             </div>
             <div>
                 <label for="sistema_operativo">Sistema Operativo</label>

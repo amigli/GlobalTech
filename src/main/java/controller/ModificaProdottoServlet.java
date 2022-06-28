@@ -10,9 +10,8 @@ import model.Utente;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "CaricaProdottoServlet", value = "/carica-prodotto")
-@MultipartConfig
-public class CaricaProdottoServlet extends HttpServlet {
+@WebServlet(name = "ModificaProdottoServlet", value = "/modifica-prodotto")
+public class ModificaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendError(400);

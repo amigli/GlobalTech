@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Prodotto  {
     private int id, disponibilita;
@@ -118,4 +119,15 @@ public class Prodotto  {
     public void setBatteria(boolean batteria) {
         this.batteria = batteria;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Prodotto prodotto = (Prodotto) o;
+        return id == prodotto.id;
+    }
+
+
 }

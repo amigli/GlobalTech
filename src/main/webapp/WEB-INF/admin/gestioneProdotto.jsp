@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="java.util.List" %>
 <%@ page import="model.Prodotto" %>
+<%@ page import="model.Offerta" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -126,9 +127,34 @@
                     </select>
                 </div>
             </fieldset>
-
-
             <input type="submit" value="invia" disabled>
         </form>
+
+        <p>Altre azioni :</p>
+        <ul>
+            <li>
+                <a href="#">Gestioni foto prodotto ${prodo.id}</a>
+            </li>
+            <li>
+                <h4>Categorie del prodotto</h4>
+            </li>
+            <li>
+                <h4>Offerte attive sul prodotto</h4>
+                <%
+                    List<Offerta> offerteAttive =  (List<Offerta>) application.getAttribute("offerte");
+                    List<Offerta> offerteFuture = (List<Offerta>) request.getAttribute("futureOffers");
+                %>
+                <form>
+                    <%for(Offerta o : offerteAttive){%>
+                        <input type="checkbox" name="offerte_attive" value="<%=o.getId()%>"
+                            <%if(o.)%> >
+                    <%}%>
+                </form>
+                <h4>Offerte future</h4>
+                <form>
+
+                </form>
+            </li>
+        </ul>
     </body>
 </html>

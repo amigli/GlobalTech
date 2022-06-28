@@ -17,10 +17,12 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
+    <br>
     <table>
         <tr>
             <th>ID</th>
             <th>Nome</th>
+            <th>Prezzo</th>
             <th>Azione </th>
         </tr>
         <c:forEach items="${prodotti}" var="prod">
@@ -30,6 +32,9 @@
                 </td>
                 <td>
                         ${prod.nome}
+                </td>
+                <td>
+                        ${prod.prezzoListino} &euro;
                 </td>
                 <td>
                     <form method="get" action="gestione-prodotto">
