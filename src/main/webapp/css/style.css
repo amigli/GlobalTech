@@ -20,7 +20,7 @@ input, select{
     box-sizing: border-box;
 }
 
-input[type="radio"] {
+input[type="radio"], input[type="checkbox"] {
     width: auto;
 }
 
