@@ -43,6 +43,62 @@ public class ProdottoDAO {
     }
 
 
+    public List<Prodotto> doRetrieveByCategoria(Categoria cat){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =
+                    con.prepareStatement(
+                            "SELECT p.id, p.nome, p.marca, p.colore, " +
+                                    "p.prezzo_listino, p.descrizione," +
+                                    "p.batteria, p.ram_tipo, p.ram_quantita, " +
+                                    "p.sistema_operativo, p.cpu_nome , p.disponibilita " +
+                                    "FROM prodotto p, appartenere a " +
+                                    "WHERE p.id = a.id_prodotto AND a.id_categoria = ?");
+
+            stmt.setInt(1, cat.getId());
+
+            ResultSet res = stmt.executeQuery();
+
+            ArrayList<Prodotto> list = new ArrayList<>();
+
+            while (res.next()){
+                list.add(creaProdotto(res));
+            }
+
+            return list;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public List<Prodotto> doRetrieveByOfferta(Offerta offerta){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =
+                    con.prepareStatement(
+                                "SELECT p.id, p.nome, p.marca, p.colore, " +
+                                    "p.prezzo_listino, p.descrizione," +
+                                    "p.batteria, p.ram_tipo, p.ram_quantita, " +
+                                    "p.sistema_operativo, p.cpu_nome , p.disponibilita " +
+                                    "FROM prodotto p, applicare a " +
+                                    "WHERE p.id = a.id_prodotto AND a.id_offerta = ?");
+
+            stmt.setInt(1, offerta.getId());
+
+            ResultSet res = stmt.executeQuery();
+
+            ArrayList<Prodotto> list = new ArrayList<>();
+
+            while (res.next()){
+                list.add(creaProdotto(res));
+            }
+
+            return list;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 
     public synchronized int doSaveProdotto(Prodotto p){
         try(Connection con =  ConPool.getConnection()){
@@ -76,11 +132,6 @@ public class ProdottoDAO {
                 con.close();
                 throw new RuntimeException();
             }
-
-
-
-
-
         }catch (SQLException e){
             throw  new RuntimeException();
         }
