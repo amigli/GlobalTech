@@ -12,6 +12,7 @@ public class Offerta {
     private ArrayList<Prodotto> prodotti;
 
     public Offerta() {
+        prodotti = new ArrayList<>();
     }
 
     public String getNome() {

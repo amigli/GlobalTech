@@ -113,11 +113,14 @@ public class OffertaDAO {
     }
 
     private Offerta creaOfferta(ResultSet res) throws SQLException{
+
         int id = res.getInt(1);
         String nome = res.getString(2);
         float percentuale = res.getFloat(3);
         Date dataInizio = res.getDate(4);
         Date dataFine = res.getDate(5);
+
+
 
         Offerta offerta = new Offerta();
         offerta.setId(id);
@@ -126,6 +129,10 @@ public class OffertaDAO {
         offerta.setDataInizio(dataInizio.toLocalDate());
         offerta.setDataFine(dataFine.toLocalDate());
 
+        ProdottoDAO service = new ProdottoDAO();
+        ArrayList<Prodotto> prodotti = new ArrayList<>(service.doRetrieveByOfferta(offerta)) ;
+
+        offerta.setProdotti(prodotti);
         return offerta;
     }
 }
