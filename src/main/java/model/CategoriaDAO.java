@@ -11,16 +11,7 @@ public class CategoriaDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM categoria");
             while (rs.next()){
-                int id= rs.getInt(1);
-                String nome = rs.getString(2);
-                String descrizione = rs.getString(3);
-
-                Categoria c = new Categoria();
-                c.setId(id);
-                c.setNome(nome);
-                c.setDescrizione(descrizione);
-
-                l.add(c);
+               l.add(creaCategoria(rs));
             }
             con.close();
             return l;
@@ -32,21 +23,13 @@ public class CategoriaDAO {
 
     public Categoria doRetrieveById(int id){
         try (Connection con = ConPool.getConnection()) {
-            Categoria c = new Categoria();
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM categoria WHERE id= ?");
 
             stmt.setInt(1, id);
             ResultSet rs  = stmt.executeQuery();
+            Categoria c = null;
             if (rs.next()){
-
-                int ID= rs.getInt(1);
-                String nome = rs.getString(2);
-                String descrizione = rs.getString(3);
-
-                c.setId(ID);
-                c.setNome(nome);
-                c.setDescrizione(descrizione);
-
+                c = this.creaCategoria(rs);
             }
             con.close();
 
@@ -115,5 +98,24 @@ public class CategoriaDAO {
         }
     }
 
+    private  Categoria creaCategoria(ResultSet res) throws SQLException{
+        int ID= res.getInt(1);
+        String nome = res.getString(2);
+        String descrizione = res.getString(3);
+
+        Categoria c = new Categoria();
+        c.setId(ID);
+        c.setNome(nome);
+        c.setDescrizione(descrizione);
+
+        ProdottoDAO service =  new ProdottoDAO();
+
+        ArrayList<Prodotto> prodotti = new ArrayList<>(service.doRetrieveByCategoria(c));
+
+
+        c.setProdotti(prodotti);
+
+        return  c;
+    }
 
 }
