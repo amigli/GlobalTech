@@ -10,6 +10,8 @@
 <%@page import="java.util.List" %>
 <%@ page import="model.Prodotto" %>
 <%@ page import="model.Offerta" %>
+<%@ page import="com.oracle.wls.shaded.org.apache.xalan.xsltc.dom.ArrayNodeListIterator" %>
+<%@ page import="model.Categoria" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -137,21 +139,41 @@
             </li>
             <li>
                 <h4>Categorie del prodotto</h4>
+                <form action="#" method="post">
+                    <%
+                      List<Categoria>  categorie =  (List<Categoria>) application.getAttribute("categorie");
+                    %>
+                    <input type="hidden" name="id" value="${p.id}">
+                    <%for(Categoria o : categorie){%>
+                    <input type="checkbox" id="offerta_attiva" name="offerte_attive" value="<%=o.getId()%>"
+                           <%if(o.contains(p)){%>checked<%}%>>
+                    <label for="offerta_attiva"><%=o.getNome()%>(id = <%=o.getId()%>)</label><br>
+                    <%}%>
+                </form>
             </li>
             <li>
                 <h4>Offerte attive sul prodotto</h4>
                 <%
                     List<Offerta> offerteAttive =  (List<Offerta>) application.getAttribute("offerte");
                     List<Offerta> offerteFuture = (List<Offerta>) request.getAttribute("futureOffers");
+
                 %>
-                <form>
+                <form action="#" method="post">
+                    <input type="hidden" name="id" value="${p.id}">
                     <%for(Offerta o : offerteAttive){%>
-                        <input type="checkbox" name="offerte_attive" value="<%=o.getId()%>"
-                            <%if(o.)%> >
+                        <input type="checkbox" id="offerta_attiva" name="offerte_attive" value="<%=o.getId()%>"
+                            <%if(o.contains(p)){%>checked<%}%>>
+                        <label for="offerta_attiva"><%=o.getNome()%>(id = <%=o.getId()%>)</label><br>
                     <%}%>
                 </form>
                 <h4>Offerte future</h4>
-                <form>
+                <form action="#" method="post">
+                    <input type="hidden" name="id" value="${p.id}">
+                    <%for(Offerta o : offerteFuture){%>
+                    <input type="checkbox" id="offerta_futura" name="offerte_futura" value="<%=o.getId()%>"
+                           <%if(o.contains(p)){%>checked<%}%>>
+                    <label for="offerta_futura"><%=o.getNome()%>(id = <%=o.getId()%>)</label><br>
+                    <%}%>
 
                 </form>
             </li>
