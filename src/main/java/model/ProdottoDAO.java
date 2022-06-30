@@ -26,14 +26,17 @@ public class ProdottoDAO {
         }
     }
 
+
     public Prodotto doRetrieveById(int id){
         try(Connection con = ConPool.getConnection()){
-            String sql ="SELECT * from prodotto" ;
-            Statement statement = con.createStatement();
-            ResultSet res =  statement.executeQuery(sql);
+            PreparedStatement statement =
+                    con.prepareStatement("SELECT * from prodotto where id = ?");
+
+            statement.setInt(1, id);
+            ResultSet res =  statement.executeQuery();
             res.next();
 
-            Prodotto p =this.creaProdotto(res);
+            Prodotto p = this.creaProdotto(res);
             con.close();
 
             return p;

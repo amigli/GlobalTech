@@ -40,7 +40,6 @@ public class GestioneProdottoServlet extends HttpServlet {
                                 List<Offerta> offertaList =  serviceOfferta.doRetrieveActive();
 
                                 this.getServletContext().setAttribute("offerte", offertaList);
-                                this.getServletContext().setAttribute("offerte", offertaList);
                                 this.getServletContext().setAttribute("lastUpdateOffers", new GregorianCalendar());
                             }
 
@@ -52,7 +51,7 @@ public class GestioneProdottoServlet extends HttpServlet {
 
                             dispatcher.forward(request, response);
                         }else{
-                            response.sendError(404);
+                            response.sendError(HttpServletResponse.SC_NOT_FOUND);
                         }
 
                     }catch (NumberFormatException e){
