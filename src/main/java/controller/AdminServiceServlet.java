@@ -12,10 +12,10 @@ public class AdminServiceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession(false);
-        if(session != null){
-            Utente u =  ((Utente) session.getAttribute("utente"));
+        Utente u =  ((Utente) session.getAttribute("utente"));
 
-            if(u != null && u.isAdmin()){
+        if(u != null){
+            if(u.isAdmin()){
                 String parameter =  request.getParameter("s");
                 String address = "/WEB-INF/admin/";
                 switch (parameter){
@@ -39,6 +39,8 @@ public class AdminServiceServlet extends HttpServlet {
             }else{
                 response.sendError(401);
             }
+        }else{
+            response.sendRedirect("login-page");
         }
 
     }
