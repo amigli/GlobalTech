@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 @WebServlet(name = "initServlet", value = "/initServlet", loadOnStartup = 1)
-public class initServlet extends HttpServlet {
+public class InitServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();

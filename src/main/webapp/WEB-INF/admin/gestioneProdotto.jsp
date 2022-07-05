@@ -135,21 +135,10 @@
         <p>Altre azioni :</p>
         <ul>
             <li>
-                <a href="#">Gestioni foto prodotto ${prodo.id}</a>
+                <a href="#">Gestioni foto prodotto ${prodotto.id}</a>
             </li>
             <li>
-                <h4>Categorie del prodotto</h4>
-                <form action="#" method="post">
-                    <%
-                      List<Categoria>  categorie =  (List<Categoria>) application.getAttribute("categorie");
-                    %>
-                    <input type="hidden" name="id" value="${p.id}">
-                    <%for(Categoria o : categorie){%>
-                    <input type="checkbox" id="offerta_attiva" name="offerte_attive" value="<%=o.getId()%>"
-                           <%if(o.contains(p)){%>checked<%}%>>
-                    <label for="offerta_attiva"><%=o.getNome()%>(id = <%=o.getId()%>)</label><br>
-                    <%}%>
-                </form>
+                <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}">Gestioni categorie prodotto</a>
             </li>
             <li>
                 <h4>Offerte attive sul prodotto</h4>
