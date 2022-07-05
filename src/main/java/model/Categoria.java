@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Categoria {
     private int id;
@@ -43,7 +44,7 @@ public class Categoria {
         this.prodotti = prodotti;
     }
 
-    public boolean contains(Object o) {
+    public boolean contains(Prodotto o) {
         return prodotti.contains(o);
     }
 
@@ -55,4 +56,16 @@ public class Categoria {
             return true;
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Categoria categoria = (Categoria) o;
+        return id == categoria.id;
+    }
+
+
+
+
 }
