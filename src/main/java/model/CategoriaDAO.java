@@ -77,6 +77,7 @@ public class CategoriaDAO {
             stmt.setInt(1, id);
 
             stmt.executeUpdate();
+            con.close();
         } catch (SQLException e) {
             throw new RuntimeException();
         }
@@ -92,12 +93,44 @@ public class CategoriaDAO {
             stmt.setInt(3, c.getId());
 
             stmt.executeUpdate();
-
+            con.close();
         } catch (SQLException e) {
             throw new RuntimeException();
         }
     }
 
+
+    public void doRemoveProdottoFromCategoria(Categoria categoria, Prodotto prodotto){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =  con.prepareStatement(
+                    "DELETE FROM appartenere where id_categoria = ? AND id_prodotto = ?");
+
+            stmt.setInt(1, categoria.getId());
+            stmt.setInt(2, prodotto.getId());
+
+            stmt.executeUpdate();
+
+            con.close();
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    public void doSaveProdottoCategoria(Categoria categoria, Prodotto prodotto){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =  con.prepareStatement(
+                    "INSERT INTO appartenere(id_categoria, id_prodotto) VALUES(?, ?)");
+
+            stmt.setInt(1, categoria.getId());
+            stmt.setInt(2, prodotto.getId());
+
+            stmt.executeUpdate();
+
+            con.close();
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
     private  Categoria creaCategoria(ResultSet res) throws SQLException{
         int ID= res.getInt(1);
         String nome = res.getString(2);

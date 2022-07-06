@@ -16,12 +16,12 @@
 <head>
     <title>Gestione Categorie prodotto ${prodotto.id}</title>
     <%@include file="/WEB-INF/includes/links.html"%>
+    <script src="script/gestione-categorie-prodotto.js" defer></script>
 </head>
 <body>
-
+<%@include file="/WEB-INF/includes/navbar.jsp"%>
 <h4>Categorie del prodotto ${prodotto.id}</h4>
-<form action="#" method="post">
-    <%@include file="/WEB-INF/includes/navbar.jsp"%>
+
     <%
         List<Categoria>  categorie =  (List<Categoria>) application.getAttribute("categorie");
         Prodotto prodotto =  (Prodotto) request.getAttribute("prodotto");
@@ -30,28 +30,31 @@
                 .collect(Collectors.toList());
     %>
 
-    <form id="categorie-prodotto" >
+    <input type="hidden" id="id-prod" value = ${prodotto.id}>
+    <section id="categorie-prodotto">
         <p>Seleziona le categorie da cui vuoi eliminare il prodotto</p>
         <%for(Categoria c : categorieProd){%>
-            <input type="checkbox" name="categoria" id="categoria-<%=c.getId()%>" value="<%=c.getId()%>">
-            <label for="categoria-<%=c.getId()%>"><%=c.getNome()%></label><br>
+            <div>
+                <input type="checkbox" name="categoria-prod" id="categoria-<%=c.getId()%>" value="<%=c.getId()%>">
+                <label for="categoria-<%=c.getId()%>"><%=c.getNome()%></label>
+            </div>
         <%}%>
-        <br>
-        <button>Elimina categorie</button>
-    </form>
-    <form id="altre-categorie" >
+    </section>
+    <br>
+    <button  onclick="rimuoviCategoria()">Elimina categorie</button>
+    <section id="altre-categorie">
         <p>Seleziona le categorie da cui vuoi eliminare il prodotto</p>
         <%for(Categoria c : categorie){%>
             <%if(!categorieProd.contains(c)){%>
-                <input type="checkbox" name="categoria" id="categoria-<%=c.getId()%>" value="<%=c.getId()%>">
-                <label for="categoria-<%=c.getId()%>"><%=c.getNome()%></label><br>
+                <div>
+                    <input type="checkbox" name="categoria-other" id="categoria-<%=c.getId()%>" value="<%=c.getId()%>">
+                    <label for="categoria-<%=c.getId()%>"><%=c.getNome()%></label><br>
+                </div>
         <%}
         }%>
-        <br>
-        <button>Aggiungi categorie</button>
-    </form>
-
-</form>
+    </section>
+    <br>
+    <button onclick="aggiungiCategoria()">Aggiungi categorie</button>
 
 </body>
 </html>
