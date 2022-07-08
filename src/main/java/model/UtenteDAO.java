@@ -129,4 +129,17 @@ public class UtenteDAO {
         }
     }
 
+    public void setAdmin (boolean valore, int id){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("UPDATE utente SET admin = ? WHERE id = ?");
+
+            stmt.setBoolean(1, valore);
+            stmt.setInt(2, id);
+
+            stmt.executeUpdate();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
 }
