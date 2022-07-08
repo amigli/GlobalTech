@@ -7,6 +7,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,10 @@
 </head>
 <body>
     <h1>Si e' verificato un errore</h1>
-    <p><%=exception.getCause()%></p>
+    <%if (exception != null) { %>
+            <%=exception.getMessage()%>
+            <%=exception.getStackTrace()%>
+        <%}%>
+    <%=response.getStatus()%>
 </body>
 </html>

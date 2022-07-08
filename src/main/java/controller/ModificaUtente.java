@@ -14,14 +14,13 @@ public class ModificaUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente u = (Utente) request.getSession().getAttribute("utente");
-        String address=null;
 
         if (u!=null){
             if (u.isAdmin()){
                 ArrayList<String> errorPar =  new ArrayList<>();
                 UtenteDAO service = new UtenteDAO();
 
-                address = "/WEB-INF/result/modificaUtenteResult.jsp";
+                String address = "/WEB-INF/result/modificaUtenteResult.jsp";
 
                 String adminString = request.getParameter("adminUtente");
                 String idString = request.getParameter("id");
@@ -45,14 +44,16 @@ public class ModificaUtente extends HttpServlet {
                     //aggiungere un messaggio al form in gestioneUtente.jsp in questo caso
                     address = "gestioneUtente.jsp";
                 }
+
+                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+                dispatcher.forward(request, response);
             }else{
                 response.sendError(401);
             }
         }else{
             response.sendRedirect("login-page");
         }
-        RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+
     }
 
     @Override

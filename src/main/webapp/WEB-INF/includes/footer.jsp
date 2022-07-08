@@ -5,14 +5,7 @@
   Time: 12:19
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Footer</title>
-    <link type="text/css" rel="stylesheet" href="footerStyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
+
     <footer>
         <div id="footer-content">
             <div id="left" class="information">
@@ -43,5 +36,4 @@
             <p>A cura di Miglino Annalaura e Francesco Giuseppe Zammarrelli</p>
         </div>
     </footer>
-</body>
-</html>
+

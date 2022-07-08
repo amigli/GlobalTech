@@ -36,7 +36,7 @@ public class GestioneUtente extends HttpServlet {
                             response.sendError(HttpServletResponse.SC_NOT_FOUND);
                         }
                     }catch (NumberFormatException e){
-                        throw new RuntimeException();
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                     }
                 }
                 else{
