@@ -32,6 +32,9 @@
         <li>
             <a href="visualizza-prodotti">Visualizza prodotti</a>
         </li>
+        <li>
+            <a href="visualizza-utenti">Gestione utenti</a>
+        </li>
     </ul>
 
 </body>
