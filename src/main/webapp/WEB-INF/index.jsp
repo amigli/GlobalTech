@@ -9,7 +9,7 @@
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
         <p>Home utente</p>
-    
 
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
 </html>
