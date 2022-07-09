@@ -20,8 +20,10 @@ Utente me = (Utente) request.getSession().getAttribute("utente");
 <table id="utenti">
     <tr>
         <th>ID</th>
+        <th>E-mail</th>
         <th>Nome</th>
-        <th>Descrizione</th>
+        <th>Cognome</th>
+        <th>Altre informazioni</th>
     </tr>
     <%for (Utente ut : u){%>
     <% if (!ut.equals(me)){ %>
