@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 
 public class Utente {
     private int id, numAcquisti, numCivico, cap, cvvCarta;
-    private String nome, cognome, indirizzo, email, password, citta, via, numTelefono, numeroCarta;
+    private String nome, cognome, email, password, citta, via, numTelefono, numeroCarta;
     private boolean admin;
     private LocalDate dataNascita, dataScadenzaCarta;
 
@@ -81,14 +81,6 @@ public class Utente {
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
-    }
-
-    public String getIndirizzo() {
-        return indirizzo;
-    }
-
-    public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
     }
 
     public String getEmail() {
