@@ -34,7 +34,7 @@
         </div>
         <div>
             <label for="pass">Password</label>
-            <input type="password" name="pass" id="pass">
+            <input type="password" name="pass" id="pass" required>
             <%if(errList != null && errList.contains("password")){%>
             <p>Inserire password valida</p>
             <%}%>
