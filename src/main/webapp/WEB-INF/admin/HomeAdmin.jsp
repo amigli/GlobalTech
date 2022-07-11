@@ -35,6 +35,9 @@
         <li>
             <a href="visualizza-utenti">Gestione utenti</a>
         </li>
+        <li>
+            <a href="visualizza-ordini">Gestione ordini</a>
+        </li>
     </ul>
 
 </body>
