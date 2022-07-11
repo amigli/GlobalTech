@@ -22,11 +22,9 @@ public class ModificaUtente extends HttpServlet {
 
                 String address = "/WEB-INF/result/modificaUtenteResult.jsp";
 
-                String adminString = request.getParameter("adminUtente");
+                String rimuoviAdminButton = request.getParameter("rimuoviAdmin");
+                String aggiungiAdminButton = request.getParameter("aggiungiAdmin");
                 String idString = request.getParameter("id");
-
-                if (adminString==null)
-                    errorPar.add("admin");
 
                 if (idString==null)
                     errorPar.add("id");
@@ -34,10 +32,12 @@ public class ModificaUtente extends HttpServlet {
                 if (errorPar.isEmpty()){
                     int id = Integer.parseInt(idString);
 
-                    if (adminString.equals("Admin"))
-                        service.setAdmin(true, id);
-                    else
-                        service.setAdmin(false, id);
+                    if (rimuoviAdminButton!=null){
+                        service.setAdmin(0,id);
+                    }
+                    if(aggiungiAdminButton!=null){
+                        service.setAdmin(1,id);
+                    }
 
                 }else{
                     request.setAttribute("error_parameter", errorPar);
