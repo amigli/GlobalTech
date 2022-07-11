@@ -17,6 +17,7 @@
 List<Utente> u = (List<Utente>) request.getAttribute("utenti");
 Utente me = (Utente) request.getSession().getAttribute("utente");
 %>
+<br>
 <table id="utenti">
     <tr>
         <th>ID</th>
@@ -26,7 +27,7 @@ Utente me = (Utente) request.getSession().getAttribute("utente");
         <th>Altre informazioni</th>
     </tr>
     <%for (Utente ut : u){%>
-    <% if (!ut.equals(me)){ %>
+    <% if (!(ut.getEmail().equals(me.getEmail()))){ %>
     <tr>
         <td><%=ut.getId()%></td>
         <td><%=ut.getEmail()%></td>
@@ -42,5 +43,6 @@ Utente me = (Utente) request.getSession().getAttribute("utente");
     <% }
     } %>
 </table>
+<br>
 </body>
 </html>
