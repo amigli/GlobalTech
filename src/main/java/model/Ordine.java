@@ -1,11 +1,11 @@
 package model;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class Ordine {
     private int id;
     private double prezzoTotale, speseSpedizione;
-    private GregorianCalendar data;
+    private LocalDate data;
     private String modalitaPagamento, stato;
 
     public Ordine() {
@@ -35,11 +35,11 @@ public class Ordine {
         this.speseSpedizione = speseSpedizione;
     }
 
-    public GregorianCalendar getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(GregorianCalendar data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
