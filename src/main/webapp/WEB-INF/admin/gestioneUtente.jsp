@@ -97,9 +97,9 @@ ArrayList<String> datiMancanti = new ArrayList<>();
         <%
         if (u.isAdmin()){
         %>
-        <input type="checkbox" id="adminUtente" name="adminUtente" value="Admin" checked>
+        <input type="submit" id="adminUtente" name="rimuoviAdmin" value="Rimuovi da admin">
         <%}else{%>
-        <input type="checkbox" id="adminUtente" name="adminUtente" value="Admin">
+        <input type="submit" id="adminUtente" name="aggiungiAdmin" value="Aggiungi come admin">
         <%}%>
         <input type="hidden" name="id" value="<%=u.getId()%>">
         <br>
@@ -127,5 +127,12 @@ ArrayList<String> datiMancanti = new ArrayList<>();
     </ul>
     <%}%>
 </div>
+<br>
+<form action="visualizza-ordiniC">
+    <input type="hidden" name="idCliente" id="idCliente" value="<%=u.getId()%>">
+    <input type="submit" value="Vedi tutti gli ordini di questo utente">
+</form>
+<br>
+<a href="visualizzaUtenti.jsp">Indietro</a>
 </body>
 </html>
