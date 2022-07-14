@@ -3,18 +3,18 @@ package model;
 import java.util.ArrayList;
 
 public class Carrello {
-    private ArrayList <Item> cart;
+    private ArrayList <ItemCart> cart;
 
     public Carrello() {
         cart = new ArrayList<>();
     }
 
-    public ArrayList<Item> getCart() {
+    public ArrayList<ItemCart> getCart() {
         return cart;
     }
 
     public float getTotale() {
-        return cart.stream().map(Item::getPrezzo).reduce(0F, Float::sum);
+        return cart.stream().map(ItemCart::getPrezzo).reduce(0F, Float::sum);
     }
 
     public void addProdotto (Prodotto prodotto, int quantita){
@@ -31,7 +31,7 @@ public class Carrello {
 
     }
 
-    public void setCart(ArrayList<Item> cart) {
+    public void setCart(ArrayList<ItemCart> cart) {
         this.cart = cart;
     }
 }
