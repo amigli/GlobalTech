@@ -81,7 +81,7 @@ public class CaricaFotoServlet extends HttpServlet {
                                     FotoDAO serviceFoto =  new FotoDAO();
                                     Optional<Integer> maxNumber = prodotto.getImmagini().stream().map(Foto::getNumeroId).max(Integer::compareTo);
 
-                                    int i = maxNumber.isPresent() ? maxNumber.get() : 1;
+                                    int i = maxNumber.isPresent() ? maxNumber.get() + 1 : 1;
 
                                     for (Part p : foto) {
                                         String fileName = p.getSubmittedFileName();
