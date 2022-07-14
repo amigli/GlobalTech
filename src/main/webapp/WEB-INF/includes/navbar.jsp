@@ -37,7 +37,7 @@
                     </div>
                 </li>
 
-                <li id="menu-items">
+            <li id="menu-items">
                     <ul id="menu-items-list">
                         <li>
                             <a href="#">Catalogo</a>
@@ -67,11 +67,14 @@
                                             </li>
                                         <%}else{%>
                                             <li>
-                                                <a href="#">Gestione Prodotti</a>
+                                                <a href="visualizza-prodotti">Gestione Prodotti</a>
                                             </li>
                                             <li>
-                                                <a href="#">Gestione Categorie</a>
+                                                <a href="visualizza-categorie">Gestione Categorie</a>
                                             </li>
+                                        <li>
+                                            <a href="visualizza-utenti">Gestione Ordini</a>
+                                        </li>
                                         <%}%>
                                         <li>
                                             <a href="logout">Logout</a>
