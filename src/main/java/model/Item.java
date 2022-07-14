@@ -2,7 +2,6 @@ package model;
 
 public class Item {
     private Prodotto prodotto;
-    private int quantita;
     private float prezzo;
 
     public Item() {
