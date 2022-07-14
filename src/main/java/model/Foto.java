@@ -1,23 +1,40 @@
 package model;
 
-import java.util.ArrayList;
+import java.io.File;
 
 public class Foto {
-    private ArrayList<String> directories;
+    private int numeroId, prodottoId;
+    private String estensione;
 
     public Foto() {
-        directories = new ArrayList<>();
     }
 
-    public void addFoto(String directory){
-        this.directories.add(directory);
+    public String getDirectory(){
+        return "image/"  +prodottoId + "/" + numeroId + "." + estensione;
     }
 
-    public ArrayList<String> getFoto() {
-        return directories;
+
+    public int getNumeroId() {
+        return numeroId;
     }
 
-    public void setFoto(ArrayList<String> directory) {
-        this.directories = directory;
+    public void setNumeroId(int numeroId) {
+        this.numeroId = numeroId;
+    }
+
+    public int getProdottoId() {
+        return prodottoId;
+    }
+
+    public void setProdottoId(int prodottoID) {
+        this.prodottoId = prodottoID;
+    }
+
+    public String getEstensione() {
+        return estensione;
+    }
+
+    public void setEstensione(String estensione) {
+        this.estensione = estensione;
     }
 }

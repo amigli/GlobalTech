@@ -32,14 +32,16 @@ public class AggiungiCategoriaProdottoServlet extends HttpServlet {
                         idCategorie.add(tmp);
                     }
 
-                    List<Categoria> allCategorie = (List<Categoria>) this.getServletContext().getAttribute("categorie");
-                    List<Categoria> categorieDaAggiungere =
-                            allCategorie.stream().filter(a->idCategorie.contains(a.getId())).collect(Collectors.toList());
-
                     ProdottoDAO service =  new ProdottoDAO();
                     Prodotto prodotto =  service.doRetrieveById(id);
 
                     if(prodotto != null){
+
+                        List<Categoria> allCategorie = (List<Categoria>) this.getServletContext().getAttribute("categorie");
+                        List<Categoria> categorieDaAggiungere =
+                                allCategorie.stream().filter(a->idCategorie.contains(a.getId())).collect(Collectors.toList());
+
+
                         if(categorieDaAggiungere.stream().noneMatch(a -> a.contains(prodotto))){
                             CategoriaDAO serviceCategoria =  new CategoriaDAO();
                             for(Categoria c : categorieDaAggiungere){

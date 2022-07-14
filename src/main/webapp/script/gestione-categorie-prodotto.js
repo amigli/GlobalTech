@@ -1,4 +1,3 @@
-// noinspection DuplicatedCode
 
 function rimuoviCategoria(){
     let id =  document.getElementById("id-prod").value;
@@ -93,11 +92,4 @@ function aggiungiCategoria(){
     }else{
         window.alert("Selezionare almeno una categoria da rimuovere!");
     }
-
-
-
-
-
-
-
 }

@@ -135,36 +135,13 @@
         <p>Altre azioni :</p>
         <ul>
             <li>
-                <a href="#">Gestioni foto prodotto ${prodotto.id}</a>
+                <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}">Gestioni foto prodotto ${prodotto.id}</a>
             </li>
             <li>
                 <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}">Gestioni categorie prodotto</a>
             </li>
             <li>
-                <h4>Offerte attive sul prodotto</h4>
-                <%
-                    List<Offerta> offerteAttive =  (List<Offerta>) application.getAttribute("offerte");
-                    List<Offerta> offerteFuture = (List<Offerta>) request.getAttribute("futureOffers");
-
-                %>
-                <form action="#" method="post">
-                    <input type="hidden" name="id" value="${p.id}">
-                    <%for(Offerta o : offerteAttive){%>
-                        <input type="checkbox" id="offerta_attiva" name="offerte_attive" value="<%=o.getId()%>"
-                            <%if(o.contains(p)){%>checked<%}%>>
-                        <label for="offerta_attiva"><%=o.getNome()%>(id = <%=o.getId()%>)</label><br>
-                    <%}%>
-                </form>
-                <h4>Offerte future</h4>
-                <form action="#" method="post">
-                    <input type="hidden" name="id" value="${p.id}">
-                    <%for(Offerta o : offerteFuture){%>
-                    <input type="checkbox" id="offerta_futura" name="offerte_futura" value="<%=o.getId()%>"
-                           <%if(o.contains(p)){%>checked<%}%>>
-                    <label for="offerta_futura"><%=o.getNome()%>(id = <%=o.getId()%>)</label><br>
-                    <%}%>
-
-                </form>
+                <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}">Gestione offerte sul prodotto</a>
             </li>
         </ul>
     </body>

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Prodotto  {
@@ -8,7 +9,7 @@ public class Prodotto  {
     private String nome, marca, colore, descrizione,
             sistemaOperativo, tipoRam, cpuNome, quantitaRam;
 
-    private Foto immagini;
+    private List<Foto> immagini;
     private float prezzoListino;
 
     private boolean batteria;
@@ -96,11 +97,11 @@ public class Prodotto  {
         this.cpuNome = cpuNome;
     }
 
-    public Foto getImmagini() {
+    public List<Foto> getImmagini() {
         return immagini;
     }
 
-    public void setImmagini(Foto immagini) {
+    public void setImmagini(List<Foto> immagini) {
         this.immagini = immagini;
     }
 

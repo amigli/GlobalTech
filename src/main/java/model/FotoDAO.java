@@ -1,64 +1,62 @@
 package model;
 
-import java.io.File;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FotoDAO {
 
-    public Foto doRetrieveById(int id){
+    public List<Foto> doRetrieveByProdotto(int idProdotto){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement stmt = con.prepareStatement("SELECT * from foto WHERE id_prodotto = ? ");
 
-            stmt.setInt(1, id);
+            stmt.setInt(1, idProdotto);
 
             ResultSet res = stmt.executeQuery();
-            Foto foto = new Foto();
+            List<Foto> fotoList = new ArrayList<>();
             while(res.next()){
-                foto.addFoto(this.trasformFoto(res));
+                fotoList.add(this.creaFoto(res));
             }
 
             con.close();
-            return foto;
-
-
+            return fotoList;
         }catch (SQLException e){
             throw new RuntimeException();
         }
     }
 
-    private String trasformFoto(ResultSet res)throws SQLException {
-        String numero = res.getString(1);
-        String id =  res.getString(2);
+    public List<Foto> doRetrieveByProdotto(Prodotto p){
+        return  doRetrieveByProdotto(p.getId());
+    }
+
+    private Foto creaFoto(ResultSet res)throws SQLException {
+        Foto foto = new Foto();
+
+        int numero = res.getInt(1);
+        int idProdotto =  res.getInt(2);
         String estensione =  res.getString(3);
 
-       return id + File.separator + numero + "." + estensione;
+        foto.setNumeroId(numero);
+        foto.setProdottoId(idProdotto);
+        foto.setEstensione(estensione);
+
+        return foto;
     }
 
 
     public void doSave(Foto f){
-        try(Connection con = ConPool.getConnection()) {
-            for (String s : f.getFoto()) {
+        try(Connection con = ConPool.getConnection()){
                 PreparedStatement stmt = con.prepareStatement(
                         "INSERT into foto(numero, id_prodotto, estensione) VALUES(?, ?, ?)");
 
-                String[] tmp = s.split("/");
-
-                int id = Integer.parseInt(tmp[0]);
-
-                tmp = tmp[1].split("\\.");
-
-                int number = Integer.parseInt(tmp[0]);
-                String extension = tmp[1];
-                stmt.setInt(1, number);
-                stmt.setInt(2, id);
-                stmt.setString(3, extension);
+                stmt.setInt(1, f.getNumeroId());
+                stmt.setInt(2, f.getProdottoId());
+                stmt.setString(3, f.getEstensione());
 
                 stmt.executeUpdate();
 
                 con.close();
-            }
         }catch (SQLException e){
-           e.printStackTrace();
            throw new RuntimeException();
         }
     }

@@ -49,7 +49,7 @@ public class OffertaDAO {
     public List<Offerta> doRetrieveFuture(){
         try (Connection con = ConPool.getConnection()) {
             List <Offerta> l = new ArrayList<>();
-            String sql = "SELECT * FROM offerta WHERE data_inizio >=current_date()";
+            String sql = "SELECT * FROM offerta WHERE data_inizio > current_date()";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
@@ -112,6 +112,43 @@ public class OffertaDAO {
         }
     }
 
+    public void doSaveProdottoOfferta(Offerta offerta, Prodotto prodotto){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(
+                    "INSERT INTO applicare(id_prodotto, id_offerta) VALUES(?, ?)");
+
+            stmt.setInt(1, prodotto.getId());
+            stmt.setInt(2, offerta.getId());
+
+            if(stmt.executeUpdate()  == 0){
+                throw new RuntimeException("Errore nel aggiornamento");
+            }
+
+            con.close();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void doRemoveProdottoOfferta(Offerta offerta, Prodotto prodotto){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(
+                    "DELETE FROM applicare WHERE id_prodotto = ?  AND  id_offerta = ?");
+
+            stmt.setInt(1, prodotto.getId());
+            stmt.setInt(2, offerta.getId());
+
+            if(stmt.executeUpdate()  == 0){
+                throw new RuntimeException("Errore nell' aggiornamento");
+            }
+
+            con.close();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     private Offerta creaOfferta(ResultSet res) throws SQLException{
 
         int id = res.getInt(1);
