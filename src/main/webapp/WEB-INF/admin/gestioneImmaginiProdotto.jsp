@@ -1,6 +1,7 @@
 <%@ page import="model.Prodotto" %>
 <%@ page import="model.Foto" %>
 <%@ page import="java.util.*"%>
+
 <%--
   Created by IntelliJ IDEA.
   User: frank
@@ -36,7 +37,6 @@
                 <p>Il prodotto non ha immagini, per la visualizzazione verrà utilizzata l'immagine di default</p>
                 <p>Puoi caricare una immagine con il form qui in basso</p>
             <%}%>
-
 
         <form action="carica-foto" enctype="multipart/form-data" method="post">
             <input type="hidden" name="id"  value=${prodotto.id}>
