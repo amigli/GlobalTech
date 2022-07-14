@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @WebServlet(name = "EliminaCategorieProdottoServlet", value = "/rimuovi-prodotto-categoria")
-public class EliminaCategorieProdottoServlet extends HttpServlet {
+public class RimuoviCategorieProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();

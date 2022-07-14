@@ -15,7 +15,7 @@
 <%@include file="../includes/navbar.jsp"%>
 <%
 List<Utente> u = (List<Utente>) request.getAttribute("utenti");
-Utente me = (Utente) request.getSession().getAttribute("utente");
+Utente me = (Utente) session.getAttribute("utente");
 %>
 <br>
 <table id="utenti">

@@ -168,6 +168,13 @@ public class ProdottoDAO {
         p.setCpuNome(nomeCpu);
         p.setBatteria(batteria);
         p.setDisponibilita(disponibilita);
+
+        FotoDAO service =  new FotoDAO();
+
+        List<Foto> photos =  service.doRetrieveByProdotto(id);
+
+        p.setImmagini(photos);
+
         return p;
     }
 }

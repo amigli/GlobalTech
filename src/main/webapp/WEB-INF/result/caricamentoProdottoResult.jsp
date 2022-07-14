@@ -44,13 +44,5 @@
             <a href="">Applicare delle offerte al prodotto</a>
         </li>
     </ul>
-
-    <
-    <form action="carica-foto" enctype="multipart/form-data" method="post">
-        <input type="hidden" name="id"  value=${prodotto.id}>
-        <input type="file" name="foto" accept="image/*" multiple>
-        <input type="submit" value="carica-immagini">
-    </form>
-
 </body>
 </html>
