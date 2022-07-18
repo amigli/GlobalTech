@@ -61,10 +61,6 @@ CREATE TABLE Utente (
     data_scadenza_cc date
 );
 
-CREATE TABLE Carrello (
-    id_utente int primary key references Utente (id),
-    totale double not null
-);
 
 CREATE TABLE Ordine (
     id int auto_increment primary key not null,
@@ -100,14 +96,17 @@ CREATE TABLE Applicare(
 );
 
 
-CREATE TABLE Comporre(
-    id_carrello int not null references  Carrello(id_utente) ,
-    id_prodotto int not null references prodotto(id),
-    quantita int not null,
-    prezzo double not null,
+CREATE TABLE Carrello
+(
+    id_utente   int not null references Utente (id),
+    id_prodotto int not null references prodotto (id),
+    quantita    int not null,
 
-    primary key(id_carrello, id_prodotto)
+    primary key (id_utente, id_prodotto)
 );
+
+
+
 
 
 
