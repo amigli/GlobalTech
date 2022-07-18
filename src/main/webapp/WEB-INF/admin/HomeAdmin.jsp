@@ -38,6 +38,9 @@
         <li>
             <a href="visualizza-ordini">Gestione ordini</a>
         </li>
+        <li>
+            <a href="visualizza-offerte">Visualizza Offerte</a>
+        </li>
     </ul>
 
 </body>

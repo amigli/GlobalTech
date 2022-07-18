@@ -234,7 +234,6 @@ div#dettagli-caricamento > p{
 
 h1{
     color: darkblue;
-    text-align: center;
 }
 
 textarea{
@@ -270,6 +269,49 @@ a{
     font-size: 20px;
     text-decoration: none;
 }
+
+
+footer{
+    background-color: darkblue;
+    height: 25%;
+    color : white;
+    width : 99%;
+    position: absolute;
+    margin-top: 2rem;
+}
+
+div#footer-content{
+    width: 95%;
+    height: 70%;
+    padding-left: 4em;
+}
+
+footer a{
+    text-decoration: none;
+    color : white;
+}
+
+div.information{
+    float:left;
+    margin-top: 8px;
+    width: 30%;
+
+}
+div.information > ul{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+
+div#author{
+    height: 30%;
+    width: 95%;
+    text-align: center;
+}
+ul#social li{
+    display: inline;
+}
+
 
 /*----------------------------------------*/
 
@@ -373,6 +415,8 @@ a{
     ul#account-box-list li a{
         color: blue;
     }
+
+
 }
 
 

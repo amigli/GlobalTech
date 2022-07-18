@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class ItemCart {
     private Prodotto prodotto;
     private int quantita;
@@ -28,4 +30,13 @@ public class ItemCart {
     public void setPrezzo(float prezzo) {
         this.prezzo = prezzo;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemCart itemCart = (ItemCart) o;
+        return Objects.equals(prodotto, itemCart.prodotto);
+    }
+
 }

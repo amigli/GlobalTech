@@ -40,12 +40,15 @@
             <li id="menu-items">
                     <ul id="menu-items-list">
                         <li>
-                            <a href="#">Catalogo</a>
+                            <a href="catalogo">Catalogo</a>
                         </li>
                         <li>
                             <a href="#">Offerte</a>
                         </li>
 
+                        <li>
+                            <a href="visualizza-carrello"><i class="fa fa-shopping-cart"></i></a>
+                        </li>
 
                         <li id="login-item">
                             <%if(utente==null){ %>
