@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @WebServlet(name = "AggiungiOffertaServlet", value = "/applica-offerta-prodotto")
-public class AggiungiOffertaServlet extends HttpServlet {
+public class AggiungiOffertaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -53,15 +53,15 @@ public class AggiungiOffertaServlet extends HttpServlet {
                                         serviceOfferta.doSaveProdottoOfferta(offerta, prod);
                                     }
                                 }else{
-                                    response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                                    response.sendError(401);
                                 }
 
                             }else{
-                                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                                response.sendError(402);
                             }
 
                         }catch (NumberFormatException e){
-                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                            response.sendError(404);
                         }
                     }else{
                         response.sendError(HttpServletResponse.SC_BAD_REQUEST);

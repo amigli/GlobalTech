@@ -10,10 +10,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Offerta caricata con successo</title>
+    <%@include file="/WEB-INF/includes/links.html"%>
+    <%
+        String modifica =  (String) request.getAttribute("operation");
+        boolean isModifica =  modifica != null && modifica.equalsIgnoreCase("modifica");
+    %>
+    <title>Offerta  <%=isModifica ? "modificata" : "caricata" %>con successo</title>
 </head>
 <body>
+    <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <div>
+        <p>Offerta <%=isModifica ? "modificata" : "caricata" %> con successo!</p>
         <p>ID:${offerta.id}</p>
         <p>Nome:${offerta.nome}</p>
         <p>Data inizio:${offerta.dataInizio}</p>

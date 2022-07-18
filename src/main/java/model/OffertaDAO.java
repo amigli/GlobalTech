@@ -112,6 +112,24 @@ public class OffertaDAO {
         }
     }
 
+    public void doUpdate(Offerta offerta){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(
+                    "UPDATE offerta SET nome = ?, data_inizio = ?, data_fine = ?, percentuale = ? WHERE id = ?");
+
+            stmt.setString(1, offerta.getNome());
+            stmt.setDate(2, Date.valueOf(offerta.getDataInizio()));
+            stmt.setDate(3, Date.valueOf(offerta.getDataFine()));
+            stmt.setFloat(4, offerta.getPercentuale());
+            stmt.setInt(5, offerta.getId());
+
+            if(stmt.executeUpdate() == 0)
+                throw new RuntimeException("Errore nell'aggiornamento");
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     public void doSaveProdottoOfferta(Offerta offerta, Prodotto prodotto){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement stmt = con.prepareStatement(
