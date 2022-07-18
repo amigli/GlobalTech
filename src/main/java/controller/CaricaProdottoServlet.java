@@ -22,140 +22,142 @@ public class CaricaProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Utente u =  (Utente) session.getAttribute("utente");
-        if(u != null){
-            if(u.isAdmin()){
-                String address ;
 
-                ArrayList<String> errorPar = new ArrayList<>();
+        synchronized (session){
+            if(u != null){
+                if(u.isAdmin()){
+                    String address ;
 
-                String nome = request.getParameter("nome");
+                    ArrayList<String> errorPar = new ArrayList<>();
 
-                if (nome == null || nome.length() < 3)
-                    errorPar.add("nome");
+                    String nome = request.getParameter("nome");
 
-                String marca = request.getParameter("marca");
+                    if (nome == null || nome.length() < 3)
+                        errorPar.add("nome");
 
-                if (marca == null || marca.length() < 3)
-                    errorPar.add("marca");
+                    String marca = request.getParameter("marca");
 
-                String colore = request.getParameter("colore");
+                    if (marca == null || marca.length() < 3)
+                        errorPar.add("marca");
 
-                if (colore == null || colore.length() < 3)
-                    errorPar.add("colore");
+                    String colore = request.getParameter("colore");
 
-                float prezzo;
-                if (request.getParameter("prezzo") != null) {
-                    try {
-                        prezzo = Float.parseFloat(request.getParameter("prezzo"));
-                    } catch (NumberFormatException e) {
+                    if (colore == null || colore.length() < 3)
+                        errorPar.add("colore");
+
+                    float prezzo;
+                    if (request.getParameter("prezzo") != null) {
+                        try {
+                            prezzo = Float.parseFloat(request.getParameter("prezzo"));
+                        } catch (NumberFormatException e) {
+                            prezzo = -1;
+                        }
+                    } else {
                         prezzo = -1;
                     }
-                } else {
-                    prezzo = -1;
-                }
 
-                if (prezzo < 0.01)
-                    errorPar.add("prezzo");
+                    if (prezzo < 0.01)
+                        errorPar.add("prezzo");
 
-                String descrizione = request.getParameter("descrizione");
+                    String descrizione = request.getParameter("descrizione");
 
-                boolean batteria;
+                    boolean batteria;
 
-                if (request.getParameter("batteria") != null && request.getParameter("batteria").equals("true")) {
-                    batteria = true;
-                } else {
-                    batteria = false;
-                }
-
-                String ramTipo = request.getParameter("ram_tipo"), ramUnit = request.getParameter("ram_unit");
-                int ramQuantita = 0;
-
-                if (ramTipo == null)
-                    errorPar.add("ram_tipo");
-                else if (ramTipo.equalsIgnoreCase("nessuna")) {
-                    ramTipo = null;
-                } else {
-                    if (!ramTipo.matches("^DDR[3-5]$")) {
-                        errorPar.add("ram_tipo");
+                    if (request.getParameter("batteria") != null && request.getParameter("batteria").equals("true")) {
+                        batteria = true;
                     } else {
-                        if (request.getParameter("ram_quantita") != null) { //ram_quantita
-                            try {
-                                ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
-                            } catch (NumberFormatException e) {
-                                ramQuantita = -1;
-                            }
-                        } else
-                            ramQuantita = -1;
-
-                        if (ramUnit == null || !ramUnit.toLowerCase().matches("^[kgm]b$"))
-                            errorPar.add("ram_unit");
+                        batteria = false;
                     }
-                }
 
-                String ramQuantityAndUnit = null;
-                if (ramQuantita < 0)
-                    errorPar.add("ram_quantita");
-                else
-                    ramQuantityAndUnit = ramQuantita +  " " + ramUnit;
+                    String ramTipo = request.getParameter("ram_tipo"), ramUnit = request.getParameter("ram_unit");
+                    int ramQuantita = 0;
 
-                String nomeCpu = request.getParameter("cpu_nome");
-                int disponibilita;
+                    if (ramTipo == null)
+                        errorPar.add("ram_tipo");
+                    else if (ramTipo.equalsIgnoreCase("nessuna")) {
+                        ramTipo = null;
+                    } else {
+                        if (!ramTipo.matches("^DDR[3-5]$")) {
+                            errorPar.add("ram_tipo");
+                        } else {
+                            if (request.getParameter("ram_quantita") != null) { //ram_quantita
+                                try {
+                                    ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
+                                } catch (NumberFormatException e) {
+                                    ramQuantita = -1;
+                                }
+                            } else
+                                ramQuantita = -1;
 
-                if (request.getParameter("disponibilita") != null) {
-                    try {
-                        disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
-                    } catch (NumberFormatException e) {
+                            if (ramUnit == null || !ramUnit.toLowerCase().matches("^[kgm]b$"))
+                                errorPar.add("ram_unit");
+                        }
+                    }
+
+                    String ramQuantityAndUnit = null;
+                    if (ramQuantita < 0)
+                        errorPar.add("ram_quantita");
+                    else
+                        ramQuantityAndUnit = ramQuantita +  " " + ramUnit;
+
+                    String nomeCpu = request.getParameter("cpu_nome");
+                    int disponibilita;
+
+                    if (request.getParameter("disponibilita") != null) {
+                        try {
+                            disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
+                        } catch (NumberFormatException e) {
+                            disponibilita = -1;
+                        }
+                    } else {
                         disponibilita = -1;
                     }
-                } else {
-                    disponibilita = -1;
+
+                    if (disponibilita < 1)
+                        errorPar.add("disponibilita");
+
+                    String sistemaOperativo = request.getParameter("sistema_operativo");
+
+
+                    if (errorPar.isEmpty()) {
+                        Prodotto prod = new Prodotto();
+
+                        prod.setNome(nome);
+                        prod.setMarca(marca);
+                        prod.setColore(colore);
+                        prod.setPrezzoListino(prezzo);
+                        prod.setDescrizione(descrizione);
+                        prod.setSistemaOperativo(sistemaOperativo);
+                        prod.setTipoRam(ramTipo);
+                        prod.setQuantitaRam(ramQuantityAndUnit);
+                        prod.setCpuNome(nomeCpu);
+                        prod.setBatteria(batteria);
+                        prod.setDisponibilita(disponibilita);
+
+                        ProdottoDAO service = new ProdottoDAO();
+
+                        int id = service.doSaveProdotto(prod);
+
+                        prod.setId(id);
+
+                        request.setAttribute("prodotto", prod);
+
+                        address = "/WEB-INF/result/caricamentoProdottoResult.jsp";
+                    } else {
+                        request.setAttribute("error_parameter", errorPar);
+                        address = "/WEB-INF/admin/formCaricamentoProdotto.jsp";
+                    }
+
+                    RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+
+                    dispatcher.forward(request, response);
+
+                }else{
+                    response.sendError(401);
                 }
-
-                if (disponibilita < 1)
-                    errorPar.add("disponibilita");
-
-                String sistemaOperativo = request.getParameter("sistema_operativo");
-
-
-                if (errorPar.isEmpty()) {
-                    Prodotto prod = new Prodotto();
-
-                    prod.setNome(nome);
-                    prod.setMarca(marca);
-                    prod.setColore(colore);
-                    prod.setPrezzoListino(prezzo);
-                    prod.setDescrizione(descrizione);
-                    prod.setSistemaOperativo(sistemaOperativo);
-                    prod.setTipoRam(ramTipo);
-                    prod.setQuantitaRam(ramQuantityAndUnit);
-                    prod.setCpuNome(nomeCpu);
-                    prod.setBatteria(batteria);
-                    prod.setDisponibilita(disponibilita);
-
-                    ProdottoDAO service = new ProdottoDAO();
-
-                    int id = service.doSaveProdotto(prod);
-
-                    prod.setId(id);
-
-                    request.setAttribute("prodotto", prod);
-
-                    address = "/WEB-INF/result/caricamentoProdottoResult.jsp";
-                } else {
-                    request.setAttribute("error_parameter", errorPar);
-                    address = "/WEB-INF/formCaricamentoProdotto.jsp";
-                }
-
-                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-
-                dispatcher.forward(request, response);
-
             }else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
-
-        }else{
-            response.sendRedirect("login-page");
         }
     }
 }

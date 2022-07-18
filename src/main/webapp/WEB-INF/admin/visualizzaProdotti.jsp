@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Visualizza prodtti</title>
+    <title>Visualizza prodotti</title>
     <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>

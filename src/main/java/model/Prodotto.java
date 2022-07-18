@@ -130,5 +130,4 @@ public class Prodotto  {
         return id == prodotto.id;
     }
 
-
 }

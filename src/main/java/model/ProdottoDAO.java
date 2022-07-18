@@ -8,7 +8,7 @@ import java.util.List;
 public class ProdottoDAO {
     public List<Prodotto> doRetrieveAll(){
         try(Connection con = ConPool.getConnection()){
-            String sql ="SELECT * from prodotto";
+            String sql ="SELECT * from prodotto WHERE disponibilita > 0";
             Statement stmt = con.createStatement();
 
             ResultSet res =  stmt.executeQuery(sql);
@@ -46,6 +46,9 @@ public class ProdottoDAO {
     }
 
 
+
+
+
     public List<Prodotto> doRetrieveByCategoria(Categoria cat){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement stmt =
@@ -55,7 +58,7 @@ public class ProdottoDAO {
                                     "p.batteria, p.ram_tipo, p.ram_quantita, " +
                                     "p.sistema_operativo, p.cpu_nome , p.disponibilita " +
                                     "FROM prodotto p, appartenere a " +
-                                    "WHERE p.id = a.id_prodotto AND a.id_categoria = ?");
+                                    "WHERE p.id = a.id_prodotto AND a.id_categoria = ? AND p.disponibilita > 0");
 
             stmt.setInt(1, cat.getId());
 
@@ -84,7 +87,7 @@ public class ProdottoDAO {
                                     "p.batteria, p.ram_tipo, p.ram_quantita, " +
                                     "p.sistema_operativo, p.cpu_nome , p.disponibilita " +
                                     "FROM prodotto p, applicare a " +
-                                    "WHERE p.id = a.id_prodotto AND a.id_offerta = ?");
+                                    "WHERE p.id = a.id_prodotto AND a.id_offerta = ? AND p.disponibilita > 0");
 
             stmt.setInt(1, offerta.getId());
 
@@ -140,6 +143,47 @@ public class ProdottoDAO {
         }
     }
 
+
+    public void doUpdate(Prodotto p){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =
+                    con.prepareStatement("UPDATE prodotto SET nome = ?, marca = ?, colore = ?, prezzo_listino = ?," +
+                            " descrizione = ?, batteria = ?, ram_tipo = ?, ram_quantita = ?, sistema_operativo = ?, " +
+                            "cpu_nome = ?, disponibilita = ? WHERE id = ?");
+
+            stmt.setString(1,p.getNome());
+            stmt.setString(2, p.getMarca());
+            stmt.setString(3, p.getColore());
+            stmt.setFloat(4, p.getPrezzoListino());
+            stmt.setString(5, p.getDescrizione());
+            stmt.setBoolean(6, p.isBatteria());
+            stmt.setString(7, p.getTipoRam());
+            stmt.setString(8, p.getQuantitaRam());
+            stmt.setString(9, p.getSistemaOperativo());
+            stmt.setString(10, p.getCpuNome());
+            stmt.setInt(11, p.getDisponibilita());
+            stmt.setInt(12, p.getId());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void doRemove(Prodotto p){
+        try(Connection con =  ConPool.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("UPDATE prodotto set disponibilita = -1 WHERE id = ? ");
+
+            stmt.setInt(1, p.getId());
+
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     private Prodotto creaProdotto(ResultSet res) throws SQLException {
         int id = res.getInt("id");
         String nome = res.getString("nome");

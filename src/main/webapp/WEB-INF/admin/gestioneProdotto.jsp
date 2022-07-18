@@ -27,6 +27,7 @@
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
         <h2>Dettagli prodotto ${prodotto.id}</h2>
         <form action="#"  method="post">
+            <input type="hidden" name="id_prod" value="${prodotto.id}">
             <fieldset>
                 <legend>Dati generali</legend>
                 <div class="input-section">
@@ -132,6 +133,10 @@
             <input type="submit" value="invia" disabled>
         </form>
 
+        <form action="elimina-prodotto" method="post">
+            <input type="hidden" name="id_prod" value="${prodotto.id}">
+            <input type="submit" value="Elimina prodotto">
+        </form>
         <p>Altre azioni :</p>
         <ul>
             <li>
