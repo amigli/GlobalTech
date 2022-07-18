@@ -7,8 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Utente;
-import model.UtenteDAO;
+import model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +34,22 @@ public class AccessoUtente extends HttpServlet {
             if (u!=null){
                 HttpSession session =  request.getSession();
                 session.setAttribute("utente", u);
+
+                if(!u.isAdmin()){
+                    Carrello cart = (Carrello) session.getAttribute("carrello");
+                    CarrelloDAO serviceCarrello =  new CarrelloDAO();
+                    if(cart != null && !cart.isEmpty()){
+                        serviceCarrello.doDelete(u.getId());
+
+                        for(ItemCart item : cart.getProdotti()){
+                            serviceCarrello.doAggiungiProdotto(u,item);
+                        }
+                    }else{
+                        cart = serviceCarrello.doRetrieveByUtente(u);
+                        session.setAttribute("carrello", cart);
+                    }
+                }
+
                 response.sendRedirect("index.html");
             }else{
                 error = true;
