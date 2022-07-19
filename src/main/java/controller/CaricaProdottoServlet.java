@@ -118,6 +118,10 @@ public class CaricaProdottoServlet extends HttpServlet {
 
                     String sistemaOperativo = request.getParameter("sistema_operativo");
 
+                    if(sistemaOperativo == null){
+                        errorPar.add("sistema_operativo");
+                    }
+
 
                     if (errorPar.isEmpty()) {
                         Prodotto prod = new Prodotto();

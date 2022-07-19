@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.chrono.ChronoZonedDateTime;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -74,5 +75,12 @@ public class Offerta {
 
     public boolean contains(Prodotto p){
         return this.prodotti.contains(p);
+    }
+
+    public boolean isActive(){
+        LocalDate today = (new GregorianCalendar()).toZonedDateTime().toLocalDate();
+
+        return (today.isAfter(dataInizio) || today.equals(dataInizio))
+                && (today.isBefore(dataFine) || today.equals(dataFine));
     }
 }

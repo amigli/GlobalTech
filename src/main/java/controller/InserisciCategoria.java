@@ -19,14 +19,13 @@ import java.util.ArrayList;
 public class InserisciCategoria extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-
         Utente u = (Utente) session.getAttribute("utente");
 
         if(u != null){
@@ -59,8 +58,7 @@ public class InserisciCategoria extends HttpServlet {
                 }
                 else{
                     request.setAttribute("error_parameter", errorPar);
-                    //aggiungere un messaggio al formInserimentoCategoria in questo caso
-                    address = "formInserimentoCategoria.jsp";
+                    address = "/WEB-INF/admin/formInserimentoCategoria.jsp";
                 }
                 RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
                 dispatcher.forward(request, response);

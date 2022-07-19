@@ -2,6 +2,7 @@
 <%@ page import="model.Prodotto" %>
 <%@ page import="model.Offerta" %>
 <%@ page import="java.util.stream.Collectors" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%--
   Created by IntelliJ IDEA.
   User: frank
@@ -17,12 +18,13 @@
   <head>
       <title>Gestisci Offerta ${offerta.id}</title>
       <%@include file="/WEB-INF/includes/links.html"%>
-      <script type="text/javascript" src="script/gestione-offerta.js"></script>
+      <script type="text/javascript" src="script/gestione-offerta.js" defer></script>
+      <script type="text/javascript" src="script/caricamentoOfferta.js" defer></script>
+
   </head>
   <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
-
-    <form method="post" id="form-modifica" action="modifica-offerta">
+    <form method="post" id="form-modifica" action="modifica-offerta" onsubmit="return validateFormOfferta()">
         <input type="hidden" name="id_offer"  id="id_offer" value="${offerta.id}">
         <div>
             <label for="nome">Nome Offerta</label><br>
@@ -30,7 +32,10 @@
         </div>
         <div>
             <label for="data-inizio">Data Inizio</label><br>
-            <input type="date" name="data-inizio" id="data-inizio" value="${offerta.dataInizio}"  disabled required>
+            <%
+                GregorianCalendar today = new GregorianCalendar();
+            %>
+            <input type="date" name="data-inizio" id="data-inizio" min="<%=today.toZonedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))%>" value="${offerta.dataInizio}" disabled onchange="setDataFine()" required>
         </div>
         <div>
             <label for="data-fine">Data Fine</label><br>

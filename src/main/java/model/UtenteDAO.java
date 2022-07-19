@@ -16,8 +16,8 @@ public class UtenteDAO {
                 l.add(u);
             }
 
+            stmt.close();
             con.close();
-
 
             return l;
 
@@ -33,9 +33,11 @@ public class UtenteDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM utente WHERE id="+id);
             if (rs.next()){
+                stmt.close();
                 con.close();
                 return creaUtente(rs);
             }else{
+                stmt.close();
                 con.close();
                 return null;
             }
@@ -96,6 +98,7 @@ public class UtenteDAO {
 
             res.next();
             int id = res.getInt(1);
+            stmt.close();
             con.close();
 
             return id;
@@ -116,11 +119,13 @@ public class UtenteDAO {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
                 Utente u =  this.creaUtente(rs);
+                stmt.close();
                 con.close();
 
                 return u;
 
             }else{
+                stmt.close();
                 con.close();
                 return null;
             }
@@ -137,6 +142,7 @@ public class UtenteDAO {
             stmt.setInt(2, id);
 
             stmt.executeUpdate();
+            stmt.close();
             con.close();
         } catch (SQLException e) {
             throw new RuntimeException();

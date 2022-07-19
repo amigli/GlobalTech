@@ -37,8 +37,8 @@ public class ProdottoDAO {
             res.next();
 
             Prodotto p = this.creaProdotto(res);
+            statement.close();
             con.close();
-
             return p;
         } catch (SQLException e) {
             throw new RuntimeException();
@@ -70,6 +70,9 @@ public class ProdottoDAO {
                 list.add(creaProdotto(res));
             }
 
+            stmt.close();
+            con.close();
+
             return list;
 
         }catch (SQLException e){
@@ -98,6 +101,9 @@ public class ProdottoDAO {
             while (res.next()){
                 list.add(creaProdotto(res));
             }
+
+            stmt.close();
+            con.close();
 
             return list;
 
@@ -131,10 +137,13 @@ public class ProdottoDAO {
 
             if(res.next()){
                 int id =  res.getInt(1);
+                stmt.close();
                 con.close();
+
 
                 return id;
             }else{
+                stmt.close();
                 con.close();
                 throw new RuntimeException();
             }
@@ -167,6 +176,7 @@ public class ProdottoDAO {
             stmt.executeUpdate();
 
             stmt.close();
+            con.close();
 
         }catch (SQLException e){
             throw new RuntimeException(e);
@@ -180,6 +190,8 @@ public class ProdottoDAO {
             stmt.setInt(1, p.getId());
 
             stmt.executeUpdate();
+            stmt.close();
+            con.close();
         }catch (SQLException e){
             throw new RuntimeException(e);
         }

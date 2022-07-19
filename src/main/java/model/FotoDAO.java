@@ -18,6 +18,7 @@ public class FotoDAO {
                 fotoList.add(this.creaFoto(res));
             }
 
+            stmt.close();
             con.close();
             return fotoList;
         }catch (SQLException e){
@@ -43,6 +44,27 @@ public class FotoDAO {
         return foto;
     }
 
+    public void doRemove(int prodottoId, int fotoId){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =  con.prepareStatement("DELETE FROM foto WHERE id_prodotto = ?  AND numero = ?");
+
+            stmt.setInt(1, prodottoId);
+            stmt.setInt(2, fotoId);
+
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+
+        }catch (SQLException e){
+
+        }
+    }
+
+
+
+    public void doRemove(Foto f){
+        doRemove(f.getProdottoId(), f.getNumeroId());
+    }
 
     public void doSave(Foto f){
         try(Connection con = ConPool.getConnection()){
@@ -54,7 +76,7 @@ public class FotoDAO {
                 stmt.setString(3, f.getEstensione());
 
                 stmt.executeUpdate();
-
+                stmt.close();
                 con.close();
         }catch (SQLException e){
            throw new RuntimeException();

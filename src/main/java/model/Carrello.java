@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Optional;
 
 public class Carrello {
@@ -38,5 +39,26 @@ public class Carrello {
 
     public void setProdotti(ArrayList<ItemCart> prodotti) {
         this.prodotti = prodotti;
+    }
+
+    public ItemCart rimuoviProdotto(Prodotto p){
+        if(prodotti.stream().map(ItemCart::getProdotto).anyMatch(prodotto->prodotto.equals(p))){
+            Iterator<ItemCart> iterator = prodotti.iterator();
+
+            while(iterator.hasNext()){
+                ItemCart tmp = iterator.next();
+
+                if(tmp.getProdotto().equals(p)){
+                    iterator.remove();
+                    return tmp;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    public ItemCart rimuoviProdotto(ItemCart p){
+        return rimuoviProdotto(p.getProdotto());
     }
 }

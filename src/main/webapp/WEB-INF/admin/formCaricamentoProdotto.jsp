@@ -29,11 +29,14 @@
             <legend>Dati generali</legend>
             <div class="input-section">
                 <label for="nome">Nome</label><br>
-                <input type="text" name="nome" id="nome"
-                    <%if(list != null && list.contains("nome")){%>
-                        <%="class = \"error-parameter\" value=\""+ request.getParameter("nome") +"\""%>
+                <input type="text" name="nome" id="nome"required
+                    <%if(list != null){%>
+                        <%if(list.contains("nome")){%>
+                            class = "error-parameter"
+                        <%}%>
+                        value="<%=request.getParameter("nome")%>"
                     <%}%>
-                       required><br>
+                       ><br>
                 <div class="error" id="err_nome">
                     <%if(list != null && list.contains("name")){%>
                         <%="Inserire nome ammissibile"%>
@@ -42,11 +45,14 @@
             </div>
             <div>
                 <label for="marca">Marca</label><br>
-                <input type="text" name="marca" id="marca"
-                    <%if(list != null && list.contains("marca")){%>
-                        <%="class = \"error-parameter\" value=\""+ request.getParameter("marca") +"\""%>
+                <input type="text" name="marca" id="marca" required
+                    <%if(list != null){%>
+                    <%if(list.contains("marca")){%>
+                       class = "error-parameter"
                     <%}%>
-               required>
+                       value="<%=request.getParameter("marca")%>"
+                    <%}%>
+               >
                 <div class="error" id="err_marca">
                     <%if(list != null && list.contains("marca")){%>
                         <%="Inserire marca ammissibile"%>
@@ -55,11 +61,14 @@
             </div>
             <div>
                 <label for="colore">Colore</label><br>
-                <input type="text" name="colore" id="colore"
-                    <%if(list != null && list.contains("colore")){%>
-                        <%="class = \"error-parameter\" value=\""+ request.getParameter("colore") +"\""%>
+                <input type="text" name="colore" id="colore" required
+                    <%if(list != null){%>
+                    <%if(list.contains("colore")){%>
+                       class = "error-parameter"
                     <%}%>
-                       required>
+                       value="<%=request.getParameter("colore")%>"
+                    <%}%>
+                       >
                 <div class="error" id="err_colore">
                     <%if(list != null && list.contains("colore")){%>
                         <%="Inserire colore ammissibile"%>
@@ -68,19 +77,25 @@
             </div>
             <div>
                 <label for="prezzo">Prezzo</label><br>
-                <input type="number" step="any" min="0.01" max="" name="prezzo" id="prezzo"
-                    <%if(list != null && list.contains("prezzo")){%>
-                        <%="class = \"error-parameter\" "%>
+                <input type="number" step="any" min="0.01" max="" name="prezzo" id="prezzo" required
+                    <%if(list != null){%>
+                        <%if(list.contains("prezzo")){%>
+                           class = "error-parameter"
+                        <%}%>
+                        value="<%=request.getParameter("prezzo")%>"
                     <%}%>
-               required>
+               >
             </div>
             <div>
                 <label for="disponibilita">Quantità disponibile</label>
-                <input type="number" min="1" max="200" name="disponibilita" id="disponibilita"
-                    <%if(list != null && list.contains("disponibilita")){%>
-                         <%="class = \"error-parameter\""%>
+                <input type="number" min="1" max="200" name="disponibilita" id="disponibilita" required
+                    <%if(list != null){%>
+                        <%if(list.contains("disponibilita")){%>
+                           class = "error-parameter"
+                        <%}%>
+                        value="<%=request.getParameter("disponibilita")%>"
                     <%}%>
-                       required>
+                >
             </div>
             <div>
                 <label for="descrizione">Descrizione</label><br>
@@ -105,8 +120,8 @@
                     <option value="DDR5">DDR5</option>
                 </select>
                 <%if(list != null && list.contains("ram_tipo")){%>
-                    <div>
-                        Inserire uno tipo RAM dalla selezione multipla
+                    <div class="error-message">
+                        Inserire uno tipo din RAM dalla selezione multipla
                     </div>
                 <%}%>
 
@@ -114,8 +129,11 @@
             <div>
                 <label for="ram_quantita">Quanità RAM</label><br>
                 <input type="number"  min="1" max="1024" name="ram_quantita" id="ram_quantita"
-                    <%if(list != null && list.contains("quantita_ram")){%>
-                       <%="class = \"error-parameter\""%>
+                    <%if(list != null){%>
+                    <%if(list.contains("ram_quantita")){%>
+                       class = "error-parameter"
+                    <%}%>
+                       value="<%=request.getParameter("ram_quantita")%>"
                     <%}%>
                        disabled>
                 <select name="ram_unit">
@@ -123,14 +141,19 @@
                     <option value="mb">MB</option>
                     <option value="gb">GB</option>
                 </select>
+                <%if(list != null && list.contains("ram_unit")){%>
+                <div class="error-message">
+                   Selezionare un'unità dalla selezione multipla
+                </div>
+                <%}%>
             </div>
             <div>
                 <label for="cpu_nome">Nome CPU</label><br>
-                <input type="text" name="cpu_nome" id="cpu_nome">
+                <input type="text" name="cpu_nome" id="cpu_nome" required>
             </div>
             <div>
                 <label for="sistema_operativo">Sistema Operativo</label>
-                <select name="sistema_operativo" id="sistema_operativo">
+                <select name="sistema_operativo" id="sistema_operativo" required>
                     <option value="Windows">Windows</option>
                     <option value="Linux">Linux</option>
                     <option value="macOS">MacOS</option>
@@ -138,10 +161,13 @@
                     <option value="iOS">iOS</option>
                     <option value="Propietario">Propietario</option>
                 </select>
+                <%if(list != null && list.contains("sistema_operativo")){%>
+                    <div class="error-message">
+                        Inserire uno tipo din RAM dalla selezione multipla
+                    </div>
+                <%}%>
             </div>
         </fieldset>
-
-
         <input type="submit">
     </form>
     <script type="text/javascript" src="script/CaricamentoProdotti.js">

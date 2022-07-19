@@ -1,6 +1,6 @@
-function rimuoviProdotto(){
-    let id = document.getElementById("id").value;
-    const chekboxAll =  document.getElementsByName("prod-attivi");
+function rimuoviProdottoCategoria(){
+    let id = document.getElementById("id_cat").value;
+    const chekboxAll =  document.getElementsByName("prod-categoria");
     const checked = Array.from(chekboxAll).filter(c=>c.checked);
 
     if(checked.length > 0){
@@ -28,7 +28,7 @@ function rimuoviProdotto(){
             }
         }
 
-        xhttp.open("POST", "rimuovi-prodotto-offerta");
+        xhttp.open("POST", "rimuovi-categoria-prodotto");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(parameters + "&id=" + id)
     }else{
@@ -38,8 +38,8 @@ function rimuoviProdotto(){
 
 }
 
-function aggiungiProdotto(){
-    let id = document.getElementById("id_offer").value;
+function aggiungiProdottoCategoria(){
+    let id = document.getElementById("id_cat").value;
     const chekboxAll =  document.getElementsByName("prod-other");
     const checked = Array.from(chekboxAll).filter(c=>c.checked);
 
@@ -55,11 +55,11 @@ function aggiungiProdotto(){
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                let otherSection =  document.getElementById("prodotti-attivi");
+                let otherSection =  document.getElementById("prodotti-categoria");
 
                 for(let c of checked){
                     c.checked = false;
-                    c.setAttribute("name", "prod-attivi" )
+                    c.setAttribute("name", "prod-categoria" )
 
                     let parent = c.parentNode;
                     parent.parentNode.removeChild(parent);
@@ -68,22 +68,10 @@ function aggiungiProdotto(){
             }
         }
 
-        xhttp.open("POST", "aggiungi-prodotto-offerta");
+        xhttp.open("POST", "aggiungi-categoria-prodotto");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(parameters + "&id=" + id)
     }else{
         window.alert("Selezionare almeno un prodotto da eliminare")
     }
-}
-
-function effettuaModifica(){
-    let forms = document.forms["form-modifica"];
-
-    for(let el of forms){
-        el.removeAttribute("disabled");
-    }
-
-    document.getElementById("salva-modifica").style.display =  "block";
-    document.getElementById("effettua-modifica").style.display = "none";
-    document.getElementById("gestione-prodotti-offerta").style.display = "none";
 }

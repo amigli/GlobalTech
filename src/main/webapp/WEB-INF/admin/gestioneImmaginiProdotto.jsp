@@ -27,10 +27,13 @@
         <%
             if(!immagini.isEmpty()){
                 for(Foto img : immagini){%>
-                    <form action="#">
-                        <img src="<%=img.getDirectory()%>" alt="immagine prodotto${prodotto.nome}">
-                        <input type="submit" value="rimuovi">
-                    </form>
+                    <figure>
+                        <img id="img-<%=img.getNumeroId()%>"src="<%=img.getDirectory()%>" alt="immagine prodotto${prodotto.nome}">
+                        <figcaption>
+                            <button onclick="rimuoviImmagini(<%=img.getNumeroId()%>, <%=img.getProdottoId()%>)">Rimuovi</button>
+                        </figcaption>
+                    </figure>
+
                 <%}%>
                 <p>Puoi caricare altre immagini con il form qui sotto</p>
             <%}else{%>
@@ -44,6 +47,6 @@
             <input type="submit" value="carica-immagini">
         </form>
 
-
+    <script type="text/javascript" src="script/gestioneImmagini.js"></script>
     </body>
 </html>

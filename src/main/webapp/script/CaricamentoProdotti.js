@@ -31,7 +31,7 @@
 
 function inputError(input, id){
    let err = "err_" + id;
-   document.getElementById(err).textContent = "Inserire " + id + " ammissibile";
+   document.getElementById(err).textContent = "Inserire  " + id + " ammissibile";
    input.style.backgroundColor = "red";
    input.style.border = "2px dotted black";
 

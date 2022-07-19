@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class ModificaCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
@@ -61,14 +62,14 @@ public class ModificaCategoria extends HttpServlet {
                         service.doUpdateCategoria(c);
                     } else {
                         request.setAttribute("error_parameter", errorPar);
-                        //aggiungere un messaggio al formInserimentoCategoria in questo caso
-                        address = "formInserimentoCategoria.jsp";
+
+                        address = "/WEB-INF/admin/formModificaCategoria.jsp";
                     }
                 }
                 RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
                 dispatcher.forward(request, response);
             }else{
-                response.sendError(401);
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             }
         }else{
             response.sendRedirect("login-page");

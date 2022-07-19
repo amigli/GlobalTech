@@ -13,6 +13,7 @@ public class CategoriaDAO {
             while (rs.next()){
                l.add(creaCategoria(rs));
             }
+            stmt.close();
             con.close();
             return l;
         } catch (SQLException e) {
@@ -31,6 +32,7 @@ public class CategoriaDAO {
             if (rs.next()){
                 c = this.creaCategoria(rs);
             }
+            stmt.close();
             con.close();
 
             return c;
@@ -56,11 +58,12 @@ public class CategoriaDAO {
 
                 res.next();
                 int id =  res.getInt(1);
-
+                stmt.close();
                 con.close();
 
                 return id;
             }else{
+                stmt.close();
                 con.close();
                 throw new RuntimeException("Result < 0");
             }
@@ -77,6 +80,7 @@ public class CategoriaDAO {
             stmt.setInt(1, id);
 
             stmt.executeUpdate();
+            stmt.close();
             con.close();
         } catch (SQLException e) {
             throw new RuntimeException();
@@ -93,7 +97,9 @@ public class CategoriaDAO {
             stmt.setInt(3, c.getId());
 
             stmt.executeUpdate();
+            stmt.close();
             con.close();
+
         } catch (SQLException e) {
             throw new RuntimeException();
         }
@@ -109,7 +115,7 @@ public class CategoriaDAO {
             stmt.setInt(2, prodotto.getId());
 
             stmt.executeUpdate();
-
+            stmt.close();
             con.close();
         }catch (SQLException e){
             throw new RuntimeException(e.getMessage());
@@ -126,6 +132,7 @@ public class CategoriaDAO {
 
             stmt.executeUpdate();
 
+            stmt.close();
             con.close();
         }catch (SQLException e){
             throw new RuntimeException(e.getMessage());

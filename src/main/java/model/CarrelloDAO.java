@@ -34,6 +34,9 @@ public class CarrelloDAO {
 
             cart.setProdotti(prodotti);
 
+            stmt.close();
+            con.close();
+
             return cart;
 
         }catch (SQLException e){
@@ -80,6 +83,8 @@ public class CarrelloDAO {
                 throw new RuntimeException();
 
 
+            stmt.close();
+
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -112,6 +117,8 @@ public class CarrelloDAO {
 
 
             stmt.executeUpdate();
+
+            stmt.close();
 
         }catch(SQLException e){
             throw new RuntimeException(e);

@@ -16,8 +16,9 @@ public class OffertaDAO {
             while (rs.next()){
                 l.add(this.creaOfferta(rs));
             }
-
+            stmt.close();
             con.close();
+
 
             return l;
         } catch (SQLException e) {
@@ -38,6 +39,7 @@ public class OffertaDAO {
                 offerte.add(this.creaOfferta(res));
             }
 
+            stmt.close();
             con.close();
             return offerte;
 
@@ -55,6 +57,7 @@ public class OffertaDAO {
             while (rs.next()){
                 l.add(this.creaOfferta(rs));
             }
+            stmt.close();
             con.close();
             return l;
         } catch (SQLException e) {
@@ -68,10 +71,12 @@ public class OffertaDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM offerta WHERE id="+id);
             if (rs.next()){
+                stmt.close();
                 con.close();
                 Offerta offerta = this.creaOfferta(rs);
                 return offerta;
             }else {
+                stmt.close();
                 con.close();
                 return null;
             }
@@ -98,10 +103,12 @@ public class OffertaDAO {
                 res.next();
                 int id = res.getInt(1);
 
+                stmt.close();
                 con.close();
 
                 return id;
             }else{
+                stmt.close();
                 con.close();
                 throw new RuntimeException();
             }
@@ -142,6 +149,7 @@ public class OffertaDAO {
                 throw new RuntimeException("Errore nel aggiornamento");
             }
 
+            stmt.close();
             con.close();
 
         }catch (SQLException e){
@@ -161,6 +169,7 @@ public class OffertaDAO {
                 throw new RuntimeException("Errore nell' aggiornamento");
             }
 
+            stmt.close();
             con.close();
 
         }catch (SQLException e){

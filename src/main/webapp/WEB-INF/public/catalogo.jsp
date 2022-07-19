@@ -1,6 +1,8 @@
 <%@ page import="model.Item" %>
 <%@ page import="model.Prodotto"%>
 <%@ page import="java.util.*"%>
+<%@ page import="model.Categoria" %>
+<%@ page import="java.util.stream.Collectors" %>
 <%--
   Created by IntelliJ IDEA.
   User: frank
@@ -17,19 +19,49 @@
         <%@include file="/WEB-INF/includes/links.html" %>
     </head>
     <body>
-        <%@include file="/WEB-INF/includes/navbar.jsp" %>
-            <%
-                List<Item> catalogo = (List<Item>) request.getAttribute("catalogo");
 
-                for(Item item : catalogo){
-            %>
+        <%
+            List<Item> catalogo = (List<Item>) request.getAttribute("catalogo");
+            List<Categoria> categorieAll =  (List<Categoria>) application.getAttribute("categorie");
+
+            List<String> marche = catalogo.stream().map(p->p.getProdotto().getMarca()).distinct().collect(Collectors.toList());
+        %>
+        <%@include file="/WEB-INF/includes/navbar.jsp" %>
+            <div id="sidebar">
+                <p>
+                    Filtra per
+                    <ul>
+                        <li>
+                            <select name="categoria" id="select-categoria" onchange="filtraProdotti()">
+                                <option value="-1">Categoria</option>
+                                <%for(Categoria c : categorieAll){%>
+                                    <option value="<%=c.getId()%>"><%=c.getNome()%></option>
+                                <%}%>
+                            </select>
+                        </li>
+                        <li>
+                            <select name="marca"  id="select-marca" onchange="filtraProdotti()">
+                                <option value="-1">Marca</option>
+                                <%for(String m : marche){%>
+                                <option value="<%=m%>"><%=m%></option>
+                                <%}%>
+                            </select>
+                        </li>
+                    </ul>
+                </p>
+
+            </div>
+            <section id="prodotti-catalogo">
+                <%
+                    for(Item item : catalogo){
+                %>
                 <figure>
+                    <%if(item.getProdotto().getImmagini().size() > 0){%>
+                    <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
+                    <%}else{%>
+                    <img src="./asset/default.png">
+                    <%}%>
                     <figcaption>
-                        <%if(item.getProdotto().getImmagini().size() > 0){%>
-                            <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
-                        <%}else{%>
-                            <img src="./asset/default.png">
-                        <%}%>
                         <h1 id="marca-nome">
                             <%=item.getProdotto().getMarca()%>-<%=item.getProdotto().getNome()%>
                         </h1>
@@ -44,9 +76,9 @@
                         </form>
                     </figcaption>
                 </figure>
-
-
-            <%}%>
+                <%}%>
+            </section>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
+        <script type="text/javascript" src="script/gestioneCatalogo.js"></script>
     </body>
 </html>
