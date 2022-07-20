@@ -17,13 +17,12 @@ import java.util.ArrayList;
 
 @WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
 public class RegistrazioneUtente extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         UtenteDAO service = new UtenteDAO();
         String address=null;
@@ -38,9 +37,9 @@ public class RegistrazioneUtente extends HttpServlet {
         if (email==null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$")))
             errorPar.add("email_registrazione");
 
-        /*if (password==null || password.length()<8 ||
-                (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[/*.!@$%^&()[/]{}:;<>,.?+-_=]).{8,32}")))
-            errorPar.add("password");*/
+        if (password==null || password.length()<8 || !password.matches("(?=[!_;,:\\.+-]+)")
+                || !password.matches("(?=[A-Za-z]+)") || !password.matches("(?=[0-9]+)"))
+            errorPar.add("password");
 
         if (nome==null || nome.length()<3)
             errorPar.add("nome");
@@ -86,6 +85,6 @@ public class RegistrazioneUtente extends HttpServlet {
         }
 
         RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-        dispatcher.forward(request, resp);
+        dispatcher.forward(request, response);
     }
 }

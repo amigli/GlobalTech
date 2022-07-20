@@ -312,7 +312,13 @@ ul#social li{
     display: inline;
 }
 
+div#password-check{
+    display: none;
+}
 
+ul#password-check-list{
+    list-style-type: none;
+}
 /*----------------------------------------*/
 
 @media screen and (min-width : 769px) {
