@@ -76,19 +76,38 @@ public class UtenteDAO {
         u.setId(id);
         u.setEmail(email);
         u.setPassword(password);
-        u.setDataNascita(dataNascita.toLocalDate());
+        if (dataNascita==null) {
+            u.setDataNascita(null);
+        }else{
+            u.setDataNascita(dataNascita.toLocalDate());
+        }
         u.setNome(nome);
         u.setCognome(cognome);
         u.setAdmin(admin);
         u.setVia(indirizzo);
         u.setNumCivico(civico);
         u.setCitta(citta);
-        u.setCap(Integer.parseInt(cap));
+        try{
+            int CAP = Integer.parseInt(cap);
+            u.setCap(CAP);
+        }catch (NumberFormatException e){
+            u.setCap(0);
+        }
         u.setNumAcquisti(numeroAcquisti);
         u.setNumTelefono(numeroTelefono);
         u.setNumeroCarta(numeroCc);
-        u.setCvvCarta(Integer.parseInt(cvv));
-        u.setDataScadenzaCarta(dataCc.toLocalDate());
+        try{
+            int CVV = Integer.parseInt(cvv);
+            u.setCvvCarta(CVV);
+        }catch (NumberFormatException e){
+            u.setCvvCarta(0);
+        }
+        if(dataCc==null){
+            u.setDataScadenzaCarta(null);
+        }else{
+           u.setDataScadenzaCarta(dataCc.toLocalDate());
+        }
+
 
         return u;
     }
@@ -183,6 +202,21 @@ public class UtenteDAO {
             stmt.setInt(10, u.getCvvCarta());
             stmt.setDate(11, Date.valueOf(u.getDataScadenzaCarta()));
             stmt.setInt(12, u.getId());
+
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public void doSavePassword (String password, int id){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("UPDATE utente SET passwordhash = ? WHERE id = ?");
+
+            stmt.setString(1, password);
+            stmt.setInt(2, id);
 
             stmt.executeUpdate();
             stmt.close();
