@@ -4,7 +4,7 @@ function errorInput(elem){
 
     let error = document.createElement("div");
     error.setAttribute("id", "err_" + elem.getAttribute("id"))
-    error.appendChild(document.createTextNode("Inserire" + elem.getAttribute("id") + "ammissibile"))
+    error.appendChild(document.createTextNode("Inserire " + elem.getAttribute("id") + " ammissibile"))
 
     elem.parentNode.appendChild(error);
 }

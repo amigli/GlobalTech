@@ -66,7 +66,7 @@
                                                 <a href="#">I miei Ordini</a>
                                             </li>
                                             <li>
-                                                <a href="#">Il mio account</a>
+                                                <a href="visualizza-datiUtente">Il mio account</a>
                                             </li>
                                         <%}else{%>
                                             <li>

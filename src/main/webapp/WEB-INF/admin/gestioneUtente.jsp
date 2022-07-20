@@ -47,10 +47,14 @@ ArrayList<String> datiMancanti = new ArrayList<>();
         <%}else{
             datiMancanti.add("Cognome");
         }%>
-        <!--
+        <%
+            if (u.getDataNascita()!=null){
+        %>
         <label for="dataNascitaUtente">Data di nascita:</label>
         <input type="date" id="dataNascitaUtente" name="dataNascitaUtente" value="<%=u.getDataNascita()%>">
-        -->
+        <%}else{
+            datiMancanti.add("Data di nascita");
+        }%>
         <%
             if (u.getVia()!=null){
         %>
