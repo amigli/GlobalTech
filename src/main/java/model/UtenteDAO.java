@@ -1,6 +1,8 @@
 package model;
 
+
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +61,14 @@ public class UtenteDAO {
         String cognome=rs.getString(6);
         boolean admin=rs.getBoolean(7);
         String indirizzo=rs.getString(8);
+        int civico = rs.getInt(9);
+        String citta = rs.getString(10);
+        String cap = rs.getString(11);
         int numeroAcquisti=rs.getInt(12);
+        String numeroTelefono = rs.getString(13);
+        String numeroCc = rs.getString(14);
+        String cvv = rs.getString(15);
+        Date dataCc = rs.getDate(16);
 
 
         Utente u =  new Utente();
@@ -70,9 +79,16 @@ public class UtenteDAO {
         u.setDataNascita(dataNascita.toLocalDate());
         u.setNome(nome);
         u.setCognome(cognome);
-        u.setVia(indirizzo);
-        u.setNumAcquisti(numeroAcquisti);
         u.setAdmin(admin);
+        u.setVia(indirizzo);
+        u.setNumCivico(civico);
+        u.setCitta(citta);
+        u.setCap(Integer.parseInt(cap));
+        u.setNumAcquisti(numeroAcquisti);
+        u.setNumTelefono(numeroTelefono);
+        u.setNumeroCarta(numeroCc);
+        u.setCvvCarta(Integer.parseInt(cvv));
+        u.setDataScadenzaCarta(dataCc.toLocalDate());
 
         return u;
     }
@@ -148,4 +164,32 @@ public class UtenteDAO {
             throw new RuntimeException();
         }
     }
+
+    public void aggiornaUtente (Utente u){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("UPDATE utente " +
+                    "SET nome = ?, cognome=?, data_nascita=?, via_indirizzo=?, civico=?, citta=?, cap=?, " +
+                    "numero_telefono=?, numero_cc=?,cvv_cc=?, data_scadenza_cc=? WHERE id = ?");
+
+            stmt.setString(1, u.getNome());
+            stmt.setString(2, u.getCognome());
+            stmt.setDate(3, Date.valueOf(u.getDataNascita()));
+            stmt.setString(4, u.getVia());
+            stmt.setInt(5, u.getNumCivico());
+            stmt.setString(6, u.getCitta());
+            stmt.setInt(7, u.getCap());
+            stmt.setString(8, u.getNumTelefono());
+            stmt.setString(9, u.getNumeroCarta());
+            stmt.setInt(10, u.getCvvCarta());
+            stmt.setDate(11, Date.valueOf(u.getDataScadenzaCarta()));
+            stmt.setInt(12, u.getId());
+
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
+
 }
