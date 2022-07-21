@@ -47,7 +47,11 @@
                 </div>
             <%}%>
             <p id="totale-carrello"><b>TOTALE <%=cart.getTotale()%></b></p>
+            <form method="post" action="completa-ordine">
+                <input type="submit" value="Conferma Ordine">
+            </form>
             <%}%>
+
         </section>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>

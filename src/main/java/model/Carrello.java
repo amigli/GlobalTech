@@ -61,4 +61,12 @@ public class Carrello {
     public ItemCart rimuoviProdotto(ItemCart p){
         return rimuoviProdotto(p.getProdotto());
     }
+
+    public void svuotaCarrello(){
+        prodotti.removeAll(prodotti);
+    }
+
+
+
+
 }
