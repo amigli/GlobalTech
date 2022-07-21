@@ -35,9 +35,11 @@ public class UtenteDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM utente WHERE id="+id);
             if (rs.next()){
+                Utente u = creaUtente(rs);
                 stmt.close();
                 con.close();
-                return creaUtente(rs);
+                return u;
+
             }else{
                 stmt.close();
                 con.close();
@@ -107,7 +109,6 @@ public class UtenteDAO {
         }else{
            u.setDataScadenzaCarta(dataCc.toLocalDate());
         }
-
 
         return u;
     }

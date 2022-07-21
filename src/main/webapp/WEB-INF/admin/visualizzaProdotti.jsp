@@ -18,7 +18,7 @@
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
-    <table>
+    <table id="prodotti">
         <tr>
             <th>ID</th>
             <th>Nome</th>

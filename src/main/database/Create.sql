@@ -111,8 +111,6 @@ CREATE TABLE Carrello
 
 
 
-DROP TABLE  Ordine;
-
 
 
 

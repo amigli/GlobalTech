@@ -11,10 +11,7 @@
     Utente utente = (Utente) session.getAttribute("utente");
 %>
     <nav>
-        <!--
-        Aggiungere collegamento alla Home nel logo
-        -->
-       <div id="logo">
+        <div id="logo">
            <h2>
                <a href="index.html" style="text-decoration: none; color:white;">
                GlobalTech

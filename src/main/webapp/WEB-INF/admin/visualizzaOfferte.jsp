@@ -17,8 +17,8 @@
     </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
-
-        <table>
+<br>
+        <table id="offerte">
             <tr>
                 <th>
                     ID
@@ -66,6 +66,5 @@
             </c:forEach>
         </table>
 
-        <%@include file="/WEB-INF/includes/footer.jsp"%>
-    </body>
+     </body>
 </html>

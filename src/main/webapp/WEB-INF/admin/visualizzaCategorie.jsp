@@ -27,8 +27,7 @@ To change this template use File | Settings | File Templates.
 %>
 <br>
 <h1>Gestione categorie</h1>
-<a href="formInserimentoCategoria.jsp">Inserire una nuova categoria</a>
-<br><br>
+<br>
 <table id="categorie">
    <tr>
        <th>ID</th>

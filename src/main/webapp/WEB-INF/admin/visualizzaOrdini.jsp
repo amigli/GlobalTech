@@ -19,7 +19,7 @@ List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
 %>
 
 <br>
-<table>
+<table id="ordini">
     <tr>
         <th>ID</th>
         <th>Prezzo</th>

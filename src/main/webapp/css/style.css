@@ -1,3 +1,4 @@
+/*navbar.jsp*/
 nav{
     background-color: darkblue;
     padding: 1rem 1rem 0.5rem 1rem;
@@ -32,6 +33,7 @@ input[type=submit] {
     margin: 5px 0;
     border: none;
     cursor: pointer;
+    width: 55%;
 }
 
 input[type=submit]:hover {
@@ -185,7 +187,51 @@ ul#menu-items-list{
     background-color: rgba(0,0,0,0.2);
 }
 
-/*-----------------------------*/
+/*HomeAdmin.jsp*/
+a.gestioneAdmin{
+    border-style: groove;
+    border-radius: 8px;
+    padding:2%;
+    border-color: white;
+    background-color: darkblue;
+    color: white;
+    margin: 4%;
+}
+
+div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
+    margin:5%;
+    text-align: center;
+    border: 5px solid darkblue;
+    padding: 5%;
+}
+
+div#gestioneProdotto{
+    background-image: url("../asset/immagineProdotti.jpg");
+    opacity: 0.6;
+    background-size: 50%;
+}
+
+div#gestioneOfferte{
+    background-image: url("../asset/immagineOfferte.jpg");
+    opacity: 0.6;
+    background-size: 40%;
+}
+
+div#gestioneCategorie{
+    background-image: url("../asset/immagineCategorie.jpg");
+    opacity: 0.6;
+    background-size: 30%;
+}
+
+div#utentiOrdini{
+    background-image: url("../asset/immagineAcquisti.jpg");
+    opacity: 0.6;
+    background-size: 30%;
+}
+
+section#serviziAdmin h1{
+    margin-left: 4rem;
+}
 
 #accesso {
     border-radius: 5px;
@@ -223,40 +269,44 @@ div#dettagli-caricamento > p{
     width: 50%;
 }
 
-#inserireCategoria, #modificareCategoria{
+/*#inserireCategoria, #modificareCategoria, #caricareProdotto{
     border: 2px solid darkblue;
     margin: auto;
-    width: 40%;
+    width: 50%;
     height: 55%;
     padding: 10px;
     border-radius: 3px;
-}
+}*/
 
 h1{
     color: darkblue;
 }
-
 textarea{
     resize:none;
 }
-
 table{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 70%;
     margin-left: 1%;
 }
-
 table td, table th {
     border: 1px solid darkblue;
     padding: 8px;
 }
 
-#categorie tr:nth-child(even){background-color: aliceblue;}
-
-#categorie tr:hover {background-color: lightblue;}
-
-#categorie th {
+/*visualizzaCategorie.jsp
+ visualizzaOfferte.jsp
+ visualizzaUtenti.jsp
+ visualizzaOrdini.jsp
+ visualizzaProdotti.jsp*/
+#categorie tr:nth-child(even), #prodotti tr:nth-child(even), #offerte tr:nth-child(even), #utenti tr:nth-child(even), #ordini tr:nth-child(even){
+    background-color: aliceblue;
+}
+#categorie tr:hover, #prodotti tr:hover, #offerte tr:hover, #utenti tr:hover, #ordini tr:hover {
+    background-color: lightblue;
+}
+#categorie th, #prodotti th, #offerte th, #utenti th, #ordini th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -270,7 +320,7 @@ a{
     text-decoration: none;
 }
 
-
+/*footer.jsp*/
 footer{
     background-color: darkblue;
     height: 25%;
@@ -279,30 +329,24 @@ footer{
     position: absolute;
     margin-top: 2rem;
 }
-
 div#footer-content{
     width: 95%;
     height: 70%;
     padding-left: 4em;
 }
-
 footer a{
     text-decoration: none;
     color : white;
 }
-
 div.information{
     float:left;
     margin-top: 8px;
     width: 30%;
-
 }
 div.information > ul{
     margin-left: 0;
     padding-left: 0;
 }
-
-
 div#author{
     height: 30%;
     width: 95%;
@@ -312,6 +356,7 @@ ul#social li{
     display: inline;
 }
 
+/*formRegistrazione.jsp*/
 div#password-check{
     display: none;
 }
@@ -319,7 +364,10 @@ div#password-check{
 ul#password-check-list{
     list-style-type: none;
 }
+
+
 /*----------------------------------------*/
+
 
 @media screen and (min-width : 769px) {
     nav{

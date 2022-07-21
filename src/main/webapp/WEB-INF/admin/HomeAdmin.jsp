@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: frank
+  User: Annalaura
   Date: 23/06/2022
   Time: 10:01
   To change this template use File | Settings | File Templates.
@@ -15,33 +15,40 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
-    <p>Scegli un servizio:</p>
-    <ul>
-        <li>
-            <a href="admin-service?s=caricamento-prodotto">Caricamento Prodotto</a>
-        </li>
-        <li>
-            <a href="admin-service?s=caricamento-offerta">Caricamento offerta</a>
-        </li>
-        <li>
-            <a href="admin-service?s=caricamento-categoria">Caricamento categoria</a>
-        </li>
-        <li>
-            <a href="visualizza-categorie">Visualizza categorie</a>
-        </li>
-        <li>
-            <a href="visualizza-prodotti">Visualizza prodotti</a>
-        </li>
-        <li>
-            <a href="visualizza-utenti">Gestione utenti</a>
-        </li>
-        <li>
-            <a href="visualizza-ordini">Gestione ordini</a>
-        </li>
-        <li>
-            <a href="visualizza-offerte">Visualizza Offerte</a>
-        </li>
-    </ul>
+    <section id="serviziAdmin">
+    <h1>Scegli un servizio:</h1>
+
+    <div id="gestioneProdotto">
+        <a href="admin-service?s=caricamento-prodotto" class="gestioneAdmin">Caricamento prodotto</a>
+
+        <a href="visualizza-prodotti" class="gestioneAdmin">Visualizza prodotti</a>
+
+    </div>
+
+    <div id="gestioneOfferte">
+        <a href="admin-service?s=caricamento-offerta" class="gestioneAdmin">Caricamento offerta</a>
+
+        <a href="visualizza-offerte" class="gestioneAdmin">Visualizza offerte</a>
+
+    </div>
+
+    <div id="gestioneCategorie">
+        <a href="admin-service?s=caricamento-categoria" class="gestioneAdmin">Caricamento categoria</a>
+
+        <a href="visualizza-categorie" class="gestioneAdmin">Visualizza categorie</a>
+
+    </div>
+
+    <div id="utentiOrdini">
+        <a href="visualizza-utenti" class="gestioneAdmin">Gestione utenti</a>
+
+        <a href="visualizza-ordini" class="gestioneAdmin">Gestione ordini</a>
+
+    </div>
+
+    </section>
+
+
 
 </body>
 </html>

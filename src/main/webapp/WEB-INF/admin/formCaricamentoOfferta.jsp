@@ -17,6 +17,7 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
+    <br>
     <form method="post" action="carica-offerta" onsubmit=" return validateFormOfferta()">
         <%  GregorianCalendar inizio = (new GregorianCalendar());
             inizio.add(Calendar.DATE, 1);
@@ -51,7 +52,7 @@
 
         <div>
             <label for="sconto">Percentuale di sconto</label>
-            <input type="number" step="any" min="0,01" id="sconto" name="sconto"max="99" required
+            <input type="number" step="any" min="0,01" id="sconto" name="sconto"max="99" minlength="3" style="width: 10%" required
                 <%if(errorParameter != null && errorParameter.contains("sconto")){%>
                    class="error-parameter" value="<%=request.getParameter("sconto")%>"
                 <%}%>

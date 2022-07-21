@@ -17,13 +17,14 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
-    <div>
+    <br>
+    <div id="caricareProdotto">
         <%
             ArrayList<String> list =
                     (ArrayList<String>) request.getAttribute("error_parameter");
         %>
-    </div>
 
+<br>
     <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
         <fieldset>
             <legend>Dati generali</legend>
@@ -102,6 +103,7 @@
                 <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
             </div>
         </fieldset>
+        <br>
         <fieldset>
             <legend>Dati tecnici</legend>
             <div>
@@ -170,6 +172,7 @@
         </fieldset>
         <input type="submit">
     </form>
+    </div>
     <script type="text/javascript" src="script/CaricamentoProdotti.js">
     </script>
 

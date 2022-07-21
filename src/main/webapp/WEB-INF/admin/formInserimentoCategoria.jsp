@@ -13,13 +13,12 @@
     </head>
     <body>
         <%@include file="../includes/navbar.jsp"%>
+        <br>
         <div id="inserireCategoria">
             <%
                 List<String> errorPar = (List<String>) request.getAttribute("error_parmeter");
             %>
-
             <form action="inserisci-categoria" id="inserisciCategoria" onsubmit="return validateFormCategoria()" method="post">
-                <h2>Inserisci una nuova categoria</h2>
                 <label for="nomeCategoria">Nome della categoria:</label>
                 <input type="text" id="nomeCategoria" name="nomeCategoria" required
                     <%if(errorPar != null){%>
@@ -29,7 +28,7 @@
                        value="<%=request.getParameter("prezzo")%>"
                     <%}%> >
                 <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-                <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="65" required
+                <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="40" required
                         <%if(errorPar != null && errorPar.contains("descrizione")){%>
                           class="error-parameter"
                         <%}%>
@@ -38,7 +37,7 @@
                        <%=request.getParameter("prezzo")%>"
                     <%}%>
                 </textarea>
-                <br><br>
+                <br>
                 <input type="submit" value="Inserisci">
             </form>
         </div>
