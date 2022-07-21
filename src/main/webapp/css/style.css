@@ -298,7 +298,7 @@ table td, table th {
 /*visualizzaCategorie.jsp
  visualizzaOfferte.jsp
  visualizzaUtenti.jsp
- visualizzaOrdini.jsp
+ visualizzaOrdiniCliente.jsp
  visualizzaProdotti.jsp*/
 #categorie tr:nth-child(even), #prodotti tr:nth-child(even), #offerte tr:nth-child(even), #utenti tr:nth-child(even), #ordini tr:nth-child(even){
     background-color: aliceblue;

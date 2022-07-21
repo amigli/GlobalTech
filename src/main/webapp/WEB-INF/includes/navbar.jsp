@@ -64,7 +64,7 @@
                                     <ul id="account-box-list">
                                         <%if(!utente.isAdmin()){%>
                                             <li>
-                                                <a href="#">I miei Ordini</a>
+                                                <a href="ordini-effettuati">I miei Ordini</a>
                                             </li>
                                             <li>
                                                 <a href="visualizza-datiUtente">Il mio account</a>
@@ -77,7 +77,7 @@
                                                 <a href="visualizza-categorie">Gestione Categorie</a>
                                             </li>
                                         <li>
-                                            <a href="visualizza-utenti">Gestione Ordini</a>
+                                            <a href="visualizza-utenti">Gestione Utenti</a>
                                         </li>
                                         <%}%>
                                         <li>
