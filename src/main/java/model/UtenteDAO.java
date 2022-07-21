@@ -193,7 +193,12 @@ public class UtenteDAO {
 
             stmt.setString(1, u.getNome());
             stmt.setString(2, u.getCognome());
-            stmt.setDate(3, Date.valueOf(u.getDataNascita()));
+
+            if(u.getDataNascita()!= null)
+                stmt.setDate(3, Date.valueOf(u.getDataNascita()));
+            else
+                stmt.setDate(3, null);
+
             stmt.setString(4, u.getVia());
             stmt.setInt(5, u.getNumCivico());
             stmt.setString(6, u.getCitta());
@@ -201,10 +206,15 @@ public class UtenteDAO {
             stmt.setString(8, u.getNumTelefono());
             stmt.setString(9, u.getNumeroCarta());
             stmt.setInt(10, u.getCvvCarta());
-            stmt.setDate(11, Date.valueOf(u.getDataScadenzaCarta()));
+
+            if(u.getDataScadenzaCarta() != null)
+                stmt.setDate(11, Date.valueOf(u.getDataScadenzaCarta()));
+            else
+                stmt.setDate(11, null);
             stmt.setInt(12, u.getId());
 
             stmt.executeUpdate();
+
             stmt.close();
             con.close();
         } catch (SQLException e) {

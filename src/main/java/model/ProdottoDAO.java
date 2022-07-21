@@ -112,7 +112,7 @@ public class ProdottoDAO {
         }
     }
 
-    public synchronized int doSaveProdotto(Prodotto p){
+    public int doSaveProdotto(Prodotto p){
         try(Connection con =  ConPool.getConnection()){
             PreparedStatement stmt =  con.prepareStatement(
                     "INSERT INTO prodotto (nome, marca, colore, prezzo_listino, descrizione, batteria, ram_tipo," +
@@ -183,6 +183,25 @@ public class ProdottoDAO {
         }
     }
 
+    public void doUpdateQuantita(Prodotto p){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt =
+                    con.prepareStatement("UPDATE prodotto SET disponibilita = ? WHERE id = ?");
+
+            stmt.setInt(1, p.getDisponibilita());
+            stmt.setInt(2, p.getId());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            con.close();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public void doRemove(Prodotto p){
         try(Connection con =  ConPool.getConnection()) {
             PreparedStatement stmt = con.prepareStatement("UPDATE prodotto set disponibilita = -1 WHERE id = ? ");
@@ -196,6 +215,9 @@ public class ProdottoDAO {
             throw new RuntimeException(e);
         }
     }
+
+
+
     private Prodotto creaProdotto(ResultSet res) throws SQLException {
         int id = res.getInt("id");
         String nome = res.getString("nome");
