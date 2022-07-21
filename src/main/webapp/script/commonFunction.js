@@ -16,3 +16,13 @@ function correctInput(elem){
         error.parentNode.removeChild(error);
     }
 }
+
+function correctField(li, icon){
+    li.style.color =  "green";
+    icon.setAttribute("class", "fa fa-check-circle");
+}
+
+function errorField(li, icon){
+    li.style.color =  "red";
+    icon.setAttribute("class", "fa fa-circle-o");
+}

@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <label for="pass">Password</label>
-                    <input type="password" name="pass" id="pass" onkeyup="validatePassword()" required>
+                    <input type="password" name="pass" id="pass" onkeyup="validatePassword('pass')" required>
                     <%if(errList != null && errList.contains("password")){%>
                         <p>Inserire password valida</p>
                     <%}%>
@@ -76,7 +76,7 @@
                     %>
                     <input type="date" name="data_nascita" id="data_nascita"
                            max="<%=dataCalculate.toZonedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))%>">
-                    <%if(errList != null && errList.contains("password")){%>
+                    <%if(errList != null && errList.contains("dataNascita")){%>
                         <p>Inserire data valida</p>
                     <%}%>
                 </div>

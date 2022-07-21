@@ -77,7 +77,7 @@ public class UtenteDAO {
 
         u.setId(id);
         u.setEmail(email);
-        u.setPassword(password);
+        u.setPasswordSimple(password);
         if (dataNascita==null) {
             u.setDataNascita(null);
         }else{
@@ -224,14 +224,23 @@ public class UtenteDAO {
 
     public void doSavePassword (String password, int id){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement stmt = con.prepareStatement("UPDATE utente SET passwordhash = ? WHERE id = ?");
+            PreparedStatement stmt = con.prepareStatement("UPDATE utente SET passwordhash = SHA1(?) WHERE id = ?");
 
             stmt.setString(1, password);
             stmt.setInt(2, id);
 
-            stmt.executeUpdate();
-            stmt.close();
-            con.close();
+            if(stmt.executeUpdate() == 0){
+                stmt.close();
+                con.close();
+
+                throw new RuntimeException();
+            }else{
+                stmt.close();
+                con.close();
+
+            }
+
+
         } catch (SQLException e) {
             throw new RuntimeException();
         }

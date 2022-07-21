@@ -27,6 +27,10 @@ public class Utente {
         }
     }
 
+    public void setPasswordSimple(String password){
+        this.password =  password;
+    }
+
     public int getId() {
         return id;
     }

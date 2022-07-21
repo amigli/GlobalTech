@@ -1,9 +1,9 @@
-function validatePassword(){
+function validatePassword(id){
     let checkBox = document.getElementById("password-check");
 
     checkBox.style.display = "block";
 
-    let password =  document.getElementById("pass").value;
+    let password =  document.getElementById(id).value;
 
     let error = true;
 
@@ -50,18 +50,6 @@ function validatePassword(){
     }
 
     return error;
-
-}
-
-
-function correctField(li, icon){
-    li.style.color =  "green";
-    icon.setAttribute("class", "fa fa-check-circle");
-}
-
-function errorField(li, icon){
-    li.style.color =  "red";
-    icon.setAttribute("class", "fa fa-circle-o");
 }
 
 

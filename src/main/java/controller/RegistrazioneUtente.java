@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
 public class RegistrazioneUtente extends HttpServlet {
@@ -37,8 +39,9 @@ public class RegistrazioneUtente extends HttpServlet {
         if (email==null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$")))
             errorPar.add("email_registrazione");
 
-        if (password==null || password.length()<8 || !password.matches("(?=[!_;,:\\.+-]+)")
-                || !password.matches("(?=[A-Za-z]+)") || !password.matches("(?=[0-9]+)"))
+        Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_;,:+.-]).{8,20}$");
+        Matcher matcher = pattern.matcher(password);
+        if (password==null || !matcher.matches())
             errorPar.add("password");
 
         if (nome==null || nome.length()<3)
@@ -49,10 +52,10 @@ public class RegistrazioneUtente extends HttpServlet {
 
         LocalDate dataNascita = null;
 
-        if (dataNascitaString==null)
+        if (dataNascitaString == null)
             errorPar.add("dataNascita");
         else {
-            try{
+            try {
                 dataNascita = LocalDate.parse(dataNascitaString);
             }catch (DateTimeParseException e){
                 errorPar.add("dataNascita");

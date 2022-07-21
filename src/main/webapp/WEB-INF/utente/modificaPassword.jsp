@@ -7,28 +7,44 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Modifica password</title>
-    <%@include file="../includes/links.html"%>
-</head>
-<body>
-<%@include file="../includes/navbar.jsp"%>
-<form action="modifica-password">
-    <label for="oldPassword">Vecchia password:</label>
-    <input type="password" id="oldPassword" name="oldPassword">
-    <label for="newPassword1">Nuova password:</label>
-    <input type="password" id="newPassword1" name="newPassword1">
-    <label for="newPassword2">Ripeti nuova password:</label>
-    <input type="password" id="newPassword2" name="newPassword2" onkeyup="validateEqualsPassword()">
+    <head>
+        <title>Modifica password</title>
+        <%@include file="../includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="../includes/navbar.jsp"%>
+        <% String message = (String) request.getAttribute("message");
+            if(message != null){%>
+                <div class="error-message">
+                    <%=message%>
+                </div>
+            <%}%>
+        <form action="modifica-password" method="post">
+            <label for="oldPassword">Vecchia password:</label>
+            <input type="password" id="oldPassword" name="old-password">
+            <label for="newPassword1">Nuova password:</label>
+            <input onkeyup="validatePassword('newPassword1')" type="password" id="newPassword1" name="new-password-1">
+            <div id="password-check">
+                <ul id="password-check-list">
+                    <li id="min-lenght"><i class="fa fa-circle-o"></i> Lunghezza minima 8 caratteri</li>
+                    <li id="min-symbol"><i class="fa fa-circle-o"></i> Almeno un simbolo tra !_;,:.-+</li>
+                    <li id="min-letter"><i class="fa fa-circle-o"></i> Almeno una lettera minuscola e una maiuscola</li>
+                    <li id="min-number"><i class="fa fa-circle-o"></i> Almeno un numero</li>
+                </ul>
+            </div>
 
-    <div id="newPassword-check">
-        <ul id="password-check-list">
-            <li id="uguali"><i class="fa fa-circle-o"></i> Password uguali</li>
-        </ul>
-    </div>
+            <label for="newPassword2">Ripeti nuova password:</label>
+            <input type="password" id="newPassword2" name="new-password-2" onkeyup="validateEqualsPassword()">
 
-    <input type="submit" value="Modifica">
-</form>
-<script type="text/javascript" src="script/passwordUguali.js"></script>
-</body>
+            <div id="newPassword-check">
+                <ul id="password-equals-list">
+                    <li id="uguali"><i class="fa fa-circle-o"></i> Password uguali</li>
+                </ul>
+            </div>
+
+            <input type="submit" value="Modifica">
+        </form>
+        <script type="text/javascript" src="script/passwordUguali.js"></script>
+        <script type="text/javascript" src="script/registrazioneUtente.js"></script>
+    </body>
 </html>

@@ -11,7 +11,7 @@
     <title>Password modificata</title>
 </head>
 <body>
-<p>La password è stata modificata correttamente</p>
-<p>Ritorna alla <a href="index.html">home</a></p>
+    <p>La password è stata modificata correttamente</p>
+    <p>Ritorna alla <a href="index.html">home</a></p>
 </body>
 </html>
