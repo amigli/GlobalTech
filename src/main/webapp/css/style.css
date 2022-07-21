@@ -33,7 +33,7 @@ input[type=submit] {
     margin: 5px 0;
     border: none;
     cursor: pointer;
-    width: 55%;
+    width: 100%;
 }
 
 input[type=submit]:hover {
