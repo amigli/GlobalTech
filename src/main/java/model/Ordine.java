@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Ordine {
     private int id, stato;
+    public static final int inAttesaDiConferma=0, confermato=1, completato=2;
     private double prezzoTotale, speseSpedizione;
     private LocalDate data;
     private String modalitaPagamento;
