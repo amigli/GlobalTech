@@ -96,7 +96,6 @@ public class ConfermaPagamentoServlet extends HttpServlet {
 
                         dispatcher.forward(request, response);
                     }
-
                 }else{
                     response.sendRedirect("conferma-ordine-page");
                 }

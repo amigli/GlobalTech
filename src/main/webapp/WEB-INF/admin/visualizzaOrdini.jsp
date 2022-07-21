@@ -8,60 +8,58 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Ordini</title>
-    <%@include file="../includes/links.html"%>
-</head>
-<body>
-<%@include file="../includes/navbar.jsp"%>
-<%
-List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
-%>
-
-<br>
-<table id="ordini">
-    <tr>
-        <th>ID</th>
-        <th>Prezzo</th>
-        <th>Data</th>
-        <th>Pagamento</th>
-        <th>Indirizzo Spedizione</th>
-        <th>Stato</th>
-    </tr>
-    <%
-    for (Ordine o : ordini){
-    %>
-    <tr>
-        <td><%=o.getId()%></td>
-        <td><%=o.getPrezzoTotale()%></td>
-        <td><%=o.getData()%></td>
-        <td><%=o.getCcPagamento()%></td>
-        <td><%=o.getIndirizzoSpedizione()%></td>
-        <td>
-        <form action="stato-spedizione">
-            <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">
+    <head>
+        <title>Ordini</title>
+        <%@include file="../includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="../includes/navbar.jsp"%>
+        <%
+        List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
+        %>
+        <br>
+        <table id="ordini">
+            <tr>
+                <th>ID</th>
+                <th>Prezzo</th>
+                <th>Data</th>
+                <th>Pagamento</th>
+                <th>Indirizzo Spedizione</th>
+                <th>Stato</th>
+            </tr>
             <%
-        if (o.getStato()==0){
-        %>
-            In attesa di conferma
-        <input type="submit" id="stato1" name="stato1" value="Conferma">
-        <%}%>
-        <%if (o.getStato()==1){
-        %>
-            In attesa di spedizione
-            <input type="text" id="numTracking" name="numTracking" placeholder="Numero di tracking" required>
-            <input type="submit" id="stato2" name="stato2" value="Spedisci">
+            for (Ordine o : ordini){
+            %>
+            <tr>
+                <td><%=o.getId()%></td>
+                <td><%=o.getPrezzoTotale()%></td>
+                <td><%=o.getData()%></td>
+                <td><%=o.getCcPagamento()%></td>
+                <td><%=o.getIndirizzoSpedizione()%></td>
+                <td>
+                <form action="stato-spedizione">
+                    <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">
+                    <%
+                if (o.getStato()==0){
+                %>
+                    In attesa di conferma
+                <input type="submit" id="stato1" name="stato1" value="Conferma">
+                <%}%>
+                <%if (o.getStato()==1){
+                %>
+                    In attesa di spedizione
+                    <input type="text" id="numTracking" name="numTracking" placeholder="Numero di tracking" required>
+                    <input type="submit" id="stato2" name="stato2" value="Spedisci">
 
-            <%}%>
-        <%if (o.getStato()==2){%>
-            Completato
-        <%}%>
-        </form>
-        </td>
-        <%}%>
-    </tr>
+                    <%}%>
+                <%if (o.getStato()==2){%>
+                    Completato
+                <%}%>
+                </form>
+                </td>
+                <%}%>
+            </tr>
+        </table>
 
-</table>
-
-</body>
+    </body>
 </html>

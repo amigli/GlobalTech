@@ -43,8 +43,8 @@ public class CambiaStatoSpedizione extends HttpServlet {
                     }
                 }else{
                     request.setAttribute("error_parameter", errorPar);
-                    //aggiungere un messaggio al form in visualizzaOrdini.jsp in questo caso
-                    address = "visualizzaOrdini.jsp";
+                    //aggiungere un messaggio al form in visualizzaOrdiniCliente.jsp in questo caso
+                    address = "visualizzaOrdiniCliente.jsp";
                 }
             }else{
                 response.sendError(401);

@@ -17,7 +17,7 @@ public class VisualizzaOrdini extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente u = (Utente) request.getSession().getAttribute("utente");
         List<String> errorPar = new ArrayList<>();
-        String address="/WEB-INF/admin/visualizzaOrdini.jsp";
+        String address="/WEB-INF/admin/visualizzaOrdiniCliente.jsp";
 
         if (u!=null){
             if (u.isAdmin()){

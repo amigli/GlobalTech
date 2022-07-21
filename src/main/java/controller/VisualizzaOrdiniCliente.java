@@ -18,7 +18,7 @@ public class VisualizzaOrdiniCliente extends HttpServlet {
         String idUtenteString = request.getParameter("idCliente");
         Utente u = (Utente) request.getSession().getAttribute("utente");
         List<String> errorPar = new ArrayList<>();
-        String address="/WEB-INF/admin/visualizzaOrdini.jsp";
+        String address="/WEB-INF/admin/visualizzaOrdiniCliente.jsp";
 
         if (u!=null){
             if (u.isAdmin()){

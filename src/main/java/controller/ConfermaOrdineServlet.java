@@ -38,7 +38,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
                             List<ItemCart> prodotti =  cart.getProdotti();
                             int spese_spedizione =  cart.getTotale() >= 100 ? 5 : 0;
                             float totale_ordine =  cart.getTotale() + spese_spedizione;
-                            String indirizzo =  u.getNome() + " " +u.getCognome() + "Via " +  u.getVia()
+                            String indirizzo =  u.getNome() + " " +u.getCognome() + ", Via " +  u.getVia()
                                     + ", "  + u.getNumCivico() +", " + u.getCap() +", " + u.getCitta();
                             String cc_pagamento = u.getNumeroCarta();
                             Ordine  ordine =  new Ordine();
