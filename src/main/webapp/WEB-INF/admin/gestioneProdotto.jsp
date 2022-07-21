@@ -12,6 +12,7 @@
 <%@ page import="model.Offerta" %>
 <%@ page import="com.oracle.wls.shaded.org.apache.xalan.xsltc.dom.ArrayNodeListIterator" %>
 <%@ page import="model.Categoria" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,12 +22,24 @@
     </head>
     <body>
     <%
+        ArrayList<String> errorPar = (ArrayList<String>) request.getAttribute("error_parameter");
         Prodotto p =  (Prodotto) request.getAttribute("prodotto");
     %>
 
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
         <h2>Dettagli prodotto ${prodotto.id}</h2>
-        <form action="#"  method="post">
+        <%
+            if(errorPar != null){
+                String txt = errorPar.get(0);
+
+                for(int i =  1; i < errorPar.size(); i++)
+                    txt += ", " + errorPar.get(i);
+        %>
+        <div id="error-message">
+            Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
+        </div>
+        <%}%>
+        <form action="modifica-prodotto"  id="modifica-prodotto" method="post">
             <input type="hidden" name="id_prod" value="${prodotto.id}">
             <fieldset>
                 <legend>Dati generali</legend>
@@ -60,9 +73,7 @@
                 </div>
                 <div>
                     <label for="descrizione">Descrizione</label><br>
-                    <textarea rows="8" cols="30" name="descrizione" id="descrizione" disabled>
-                        ${prodotto.descrizione}
-                    </textarea><br>
+                    <textarea rows="8" cols="30" name="descrizione" id="descrizione" disabled>${prodotto.descrizione}</textarea><br>
                 </div>
             </fieldset>
             <fieldset>
@@ -130,8 +141,10 @@
                     </select>
                 </div>
             </fieldset>
-            <input type="submit" value="invia" disabled>
+            <input type="submit" id="modifica-prodotto-submit" value="Modifica" style="display: none" disabled>
         </form>
+        <button onclick="effettuaModificaProdotto()" id="effettua-modifica-prodotto-button">Effettua Modifica</button>
+
 
         <form action="elimina-prodotto" method="post">
             <input type="hidden" name="id_prod" value="${prodotto.id}">
@@ -149,5 +162,7 @@
                 <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}">Gestione offerte sul prodotto</a>
             </li>
         </ul>
+
+    <script type="text/javascript" src="script/gestioneProdotto.js"></script>
     </body>
 </html>

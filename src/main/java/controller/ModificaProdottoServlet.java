@@ -146,7 +146,7 @@ public class ModificaProdottoServlet extends HttpServlet {
                                     service.doUpdate(prod);
 
                                     request.setAttribute("prodotto", prod);
-
+                                    request.setAttribute("modifica", true);
                                     address = "/WEB-INF/result/caricamentoProdottoResult.jsp";
                                 } else {
                                     request.setAttribute("error_parameter", errorPar);
