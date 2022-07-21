@@ -42,7 +42,7 @@
                         <ul id="password-check-list">
                             <li id="min-lenght"><i class="fa fa-circle-o"></i> Lunghezza minima 8 caratteri</li>
                             <li id="min-symbol"><i class="fa fa-circle-o"></i> Almeno un simbolo tra !_;,:.-+</li>
-                            <li id="min-letter"><i class="fa fa-circle-o"></i> Almeno una lettera</li>
+                            <li id="min-letter"><i class="fa fa-circle-o"></i> Almeno una lettera minuscola e una maiuscola</li>
                             <li id="min-number"><i class="fa fa-circle-o"></i> Almeno un numero</li>
                         </ul>
                     </div>

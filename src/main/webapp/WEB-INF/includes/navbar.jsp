@@ -11,7 +11,7 @@
     Utente utente = (Utente) session.getAttribute("utente");
 %>
     <nav>
-        <div id="logo">
+       <div id="logo">
            <h2>
                <a href="index.html" style="text-decoration: none; color:white;">
                GlobalTech
@@ -36,6 +36,7 @@
 
             <li id="menu-items">
                     <ul id="menu-items-list">
+                        <%if(utente == null || !utente.isAdmin()){%>
                         <li>
                             <a href="catalogo">Catalogo</a>
                         </li>
@@ -46,17 +47,20 @@
                         <li>
                             <a href="visualizza-carrello"><i class="fa fa-shopping-cart"></i></a>
                         </li>
-
+                        <%}%>
                         <li id="login-item">
                             <%if(utente==null){ %>
                                 <a href="login-page">
-                                    Login/Registrazione
+                                    <i class="fa fa-user"></i>
                                 </a>
                             <%}else{%>
                                 <a href="#">
-                                    <%=utente.getNome()%>
+                                    <i class="fa fa-user"></i>
                                 </a>
                                 <div id="account-box">
+                                    <h2>
+                                        Ciao, <%=utente.getNome()%>
+                                    </h2>
                                     <ul id="account-box-list">
                                         <%if(!utente.isAdmin()){%>
                                             <li>
