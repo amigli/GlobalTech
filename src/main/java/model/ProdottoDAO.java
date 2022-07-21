@@ -201,7 +201,30 @@ public class ProdottoDAO {
         }
     }
 
+    public List<Prodotto> doRetrieveByNameOrMarca(String test){
+        try (Connection con = ConPool.getConnection()){
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM prodotto WHERE marca LIKE ? OR nome LIKE ? LIMIT 10");
 
+            stmt.setString(1, "%" + test + "%");
+            stmt.setString(2, "%" + test + "%");
+
+            ResultSet res =  stmt.executeQuery();
+
+            List<Prodotto> prodotti = new ArrayList<>();
+
+            while(res.next()){
+                prodotti.add(creaProdotto(res));
+            }
+
+            stmt.close();
+            con.close();
+
+            return prodotti;
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
     public void doRemove(Prodotto p){
         try(Connection con =  ConPool.getConnection()) {
             PreparedStatement stmt = con.prepareStatement("UPDATE prodotto set disponibilita = -1 WHERE id = ? ");
