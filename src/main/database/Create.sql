@@ -68,10 +68,13 @@ CREATE TABLE Ordine (
     tracking char (20),
     data_ordine date not null,
     spese_spedizione float not null,
-    modalita_pagamento char (30) not null,
-    stato char (30) not null,
+    cc_pagamento varchar(30) not null,
+    indirizzo_spedizione varchar(100) not null,
+    stato int not null,
     id_utente int references Utente (id)
 );
+
+
 
 CREATE TABLE Contenere (
     id_prodotto int references Prodotto(id),
@@ -107,6 +110,8 @@ CREATE TABLE Carrello
 
 
 
+
+DROP TABLE  Ordine;
 
 
 
