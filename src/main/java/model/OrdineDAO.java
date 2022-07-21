@@ -105,11 +105,11 @@ public class OrdineDAO {
 
     }
 
-    public void setStatusById(String status, int id){
+    public void setStatusById(int status, int id){
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement stmt = con.prepareStatement("UPDATE ordine SET stato = ? WHERE id = ?");
 
-            stmt.setString(1, status);
+            stmt.setInt(1, status);
             stmt.setInt(2, id);
 
             stmt.executeUpdate();
@@ -140,7 +140,7 @@ public class OrdineDAO {
         Date data= res.getDate(4);
         double speseSpedizione=res.getDouble(5);
         String modalitaPagamento=res.getString(6);
-        String stato=res.getString(7);
+        int stato=res.getInt(7);
 
         Ordine o = new Ordine();
         o.setId(id);

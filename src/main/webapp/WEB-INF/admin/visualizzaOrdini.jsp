@@ -18,18 +18,12 @@
 List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
 %>
 
-<!--
-Gli stati dell'ordine sono:
-IN ATTESA DI CONFERMA (conferma ordine e rifiuta ordine)
-CONFERMATO (spedisci con numero di tracking)
-COMPLETATO
--->
 <br>
 <table>
     <tr>
         <th>ID</th>
         <th>Prezzo</th>
-        <!--<th>Data</th>-->
+        <th>Data</th>
         <th>Pagamento</th>
         <th>Stato</th>
     </tr>
@@ -39,25 +33,25 @@ COMPLETATO
     <tr>
         <td><%=o.getId()%></td>
         <td><%=o.getPrezzoTotale()%></td>
-        <!--fare o.getData-->
+        <td><%=o.getData()%></td>
         <td><%=o.getModalitaPagamento()%></td>
         <td>
         <form action="stato-spedizione">
             <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">
             <%
-        if (o.getStato().equals("In attesa di conferma")){
+        if (o.getStato()==0){
         %>
             In attesa di conferma
         <input type="submit" id="stato1" name="stato1" value="Conferma">
         <%}%>
-        <%if (o.getStato().equals("Confermato")){
+        <%if (o.getStato()==1){
         %>
             In attesa di spedizione
             <input type="text" id="numTracking" name="numTracking" placeholder="Numero di tracking" required>
             <input type="submit" id="stato2" name="stato2" value="Spedisci">
 
             <%}%>
-        <%if (o.getStato().equals("Completato")){%>
+        <%if (o.getStato()==2){%>
             Completato
         <%}%>
         </form>

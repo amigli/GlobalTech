@@ -20,7 +20,6 @@ public class CambiaStatoSpedizione extends HttpServlet {
             if (u.isAdmin()){
                 ArrayList<String> errorPar =  new ArrayList<>();
 
-
                 String daConfermare = request.getParameter("stato1");
                 String daSpedire = request.getParameter("stato2");
                 String idString = request.getParameter("idOrdine");
@@ -34,11 +33,11 @@ public class CambiaStatoSpedizione extends HttpServlet {
                     int id = Integer.parseInt(idString);
 
                     if (daConfermare!=null){
-                        service.setStatusById("Confermato", id);
+                        service.setStatusById(1, id);
                     }
                     if (daSpedire!=null){
                         if (tracking!=null){
-                            service.setStatusById("Completato", id);
+                            service.setStatusById(2, id);
                             service.setTrackingById(tracking, id);
                         }
                     }

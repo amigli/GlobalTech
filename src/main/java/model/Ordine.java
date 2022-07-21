@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Ordine {
-    private int id;
+    private int id, stato;
     private double prezzoTotale, speseSpedizione;
     private LocalDate data;
-    private String modalitaPagamento, stato;
+    private String modalitaPagamento;
     private List<ItemCart> prodotti;
 
     public Ordine() {
@@ -53,11 +53,11 @@ public class Ordine {
         this.modalitaPagamento = modalitaPagamento;
     }
 
-    public String getStato() {
+    public int getStato() {
         return stato;
     }
 
-    public void setStato(String stato) {
+    public void setStato(int stato) {
         this.stato = stato;
     }
 

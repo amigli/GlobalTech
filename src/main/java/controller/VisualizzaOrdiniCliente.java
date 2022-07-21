@@ -27,7 +27,7 @@ public class VisualizzaOrdiniCliente extends HttpServlet {
                     int idUtente = Integer.parseInt(idUtenteString);
                     OrdineDAO service = new OrdineDAO();
 
-                    List<Ordine>ordiniById = service.doRetrieveByCustomerId(idUtente);
+                    List<Ordine>ordiniById = service.doRetrieveByUtenteId(idUtente);
 
                     request.setAttribute("ordini", ordiniById);
                 }else{
