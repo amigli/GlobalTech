@@ -33,7 +33,7 @@ public class ConfermaPagamentoServlet extends HttpServlet {
                     String scadenzaMeseString =  request.getParameter("month-scad-cc");
                     String scadenzaAnnoString = request.getParameter("year-scad-cc");
                     String cvvString = request.getParameter("cvv");
-                    String saveCheck =  request.getParameter("check");
+                    String saveCheck =  request.getParameter("save");
 
                     if(numeroCC == null || !numeroCC.matches("^[0-9]{13,16}$"))
                         errorPar.add("Numero Carta");
@@ -52,11 +52,16 @@ public class ConfermaPagamentoServlet extends HttpServlet {
                     }catch (NumberFormatException e){
                         errorPar.add("Anno scadenza carta");
                     }
-
+                    int day = scadenzaMese == 2 ? 28 :
+                            scadenzaMese == 1 || scadenzaMese == 3 ||
+                                    scadenzaMese == 5 || scadenzaMese == 7 ||
+                                    scadenzaMese == 8 || scadenzaMese == 10 ||
+                                    scadenzaMese == 12 ? 31 : 30;
                     GregorianCalendar today  = new GregorianCalendar();
-                    GregorianCalendar scadenza =  new GregorianCalendar(scadenzaAnno, scadenzaMese - 1, 1);
 
-                    scadenza.set(Calendar.DAY_OF_MONTH, scadenza.getMaximum(Calendar.DAY_OF_MONTH));
+
+
+                    GregorianCalendar scadenza = new GregorianCalendar(scadenzaAnno, scadenzaMese - 1, day);
 
                     if(scadenza.before(today)){
                         errorPar.add("Scadenza Carta");
