@@ -31,7 +31,7 @@ public class VisualizzaOrdini extends HttpServlet {
                     errorPar.add("lista vuota");
                 }
             }else{
-                response.sendError(401);
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             }
         }else{
             response.sendRedirect("login-page");

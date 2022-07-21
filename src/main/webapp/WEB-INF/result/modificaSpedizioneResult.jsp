@@ -12,7 +12,11 @@
     <%@include file="/WEB-INF/includes/links.html"%>
 </head>
 <body>
-<p>Lo stato è stato cambiato correttamente</p>
-<p>Ritorna alla <a href="index.html">home</a></p>
+    <%@include file="/WEB-INF/includes/navbar.jsp"%>
+
+    <p>Lo stato è stato cambiato correttamente</p>
+    <p>Ritorna alla <a href="visualizza-ordini">visualizzazione ordini</a></p>
+
+    <%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>

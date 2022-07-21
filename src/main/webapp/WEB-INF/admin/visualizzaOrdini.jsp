@@ -25,6 +25,7 @@ List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
         <th>Prezzo</th>
         <th>Data</th>
         <th>Pagamento</th>
+        <th>Indirizzo Spedizione</th>
         <th>Stato</th>
     </tr>
     <%
@@ -34,7 +35,8 @@ List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
         <td><%=o.getId()%></td>
         <td><%=o.getPrezzoTotale()%></td>
         <td><%=o.getData()%></td>
-        <td><%=o.getModalitaPagamento()%></td>
+        <td><%=o.getCcPagamento()%></td>
+        <td><%=o.getIndirizzoSpedizione()%></td>
         <td>
         <form action="stato-spedizione">
             <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">

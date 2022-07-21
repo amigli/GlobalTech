@@ -6,9 +6,9 @@ import java.util.List;
 public class Ordine {
     private int id, stato;
     public static final int inAttesaDiConferma=0, confermato=1, completato=2;
-    private double prezzoTotale, speseSpedizione;
+    private float prezzoTotale, speseSpedizione;
     private LocalDate data;
-    private String modalitaPagamento;
+    private String ccPagamento, indirizzoSpedizione;
     private List<ItemCart> prodotti;
 
     public Ordine() {
@@ -22,19 +22,19 @@ public class Ordine {
         this.id = id;
     }
 
-    public double getPrezzoTotale() {
+    public float getPrezzoTotale() {
         return prezzoTotale;
     }
 
-    public void setPrezzoTotale(double prezzoTotale) {
+    public void setPrezzoTotale(float prezzoTotale) {
         this.prezzoTotale = prezzoTotale;
     }
 
-    public double getSpeseSpedizione() {
+    public float getSpeseSpedizione() {
         return speseSpedizione;
     }
 
-    public void setSpeseSpedizione(double speseSpedizione) {
+    public void setSpeseSpedizione(float speseSpedizione) {
         this.speseSpedizione = speseSpedizione;
     }
 
@@ -46,12 +46,12 @@ public class Ordine {
         this.data = data;
     }
 
-    public String getModalitaPagamento() {
-        return modalitaPagamento;
+    public String getCcPagamento() {
+        return ccPagamento;
     }
 
-    public void setModalitaPagamento(String modalitaPagamento) {
-        this.modalitaPagamento = modalitaPagamento;
+    public void setCcPagamento(String ccPagamento) {
+        this.ccPagamento = ccPagamento;
     }
 
     public int getStato() {
@@ -68,5 +68,14 @@ public class Ordine {
 
     public void setProdotti(List<ItemCart> prodotti) {
         this.prodotti = prodotti;
+    }
+
+
+    public String getIndirizzoSpedizione() {
+        return indirizzoSpedizione;
+    }
+
+    public void setIndirizzoSpedizione(String indirizzoSpedizione) {
+        this.indirizzoSpedizione = indirizzoSpedizione;
     }
 }
