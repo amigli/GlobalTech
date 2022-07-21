@@ -19,9 +19,16 @@
     <label for="newPassword1">Nuova password:</label>
     <input type="password" id="newPassword1" name="newPassword1">
     <label for="newPassword2">Ripeti nuova password:</label>
-    <input type="password" id="newPassword2" name="newPassword2">
+    <input type="password" id="newPassword2" name="newPassword2" onkeyup="validateEqualsPassword()">
+
+    <div id="newPassword-check">
+        <ul id="password-check-list">
+            <li id="uguali"><i class="fa fa-circle-o"></i> Password uguali</li>
+        </ul>
+    </div>
 
     <input type="submit" value="Modifica">
 </form>
+<script type="text/javascript" src="script/passwordUguali.js"></script>
 </body>
 </html>
