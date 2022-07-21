@@ -4,7 +4,9 @@ function validatePassword(){
     checkBox.style.display = "block";
 
     let password =  document.getElementById("pass").value;
+
     let error = true;
+
     let liLenght = document.getElementById("min-lenght");
     let iconLenght = document.querySelector("li#min-lenght > i");
 
@@ -30,7 +32,7 @@ function validatePassword(){
     let liLetter = document.getElementById("min-letter");
     let iconLetter = document.querySelector("li#min-letter > i");
 
-    if(/(?=[A-Z]+)/i.test(password))
+    if(/(?=[A-Z]+)/.test(password) && /(?=[a-z]+)/.test(password) )
         correctField(liLetter, iconLetter);
     else {
         errorField(liLetter, iconLetter);

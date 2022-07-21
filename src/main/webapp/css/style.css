@@ -414,7 +414,7 @@ ul#password-check-list{
 
 
     #account-box{
-        z-index: 1;
+        z-index: 2;
         position:absolute;
         background-color: white;
         display: none;
