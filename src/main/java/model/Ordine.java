@@ -1,12 +1,14 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Ordine {
     private int id;
     private double prezzoTotale, speseSpedizione;
     private LocalDate data;
     private String modalitaPagamento, stato;
+    private List<ItemCart> prodotti;
 
     public Ordine() {
     }
@@ -57,5 +59,13 @@ public class Ordine {
 
     public void setStato(String stato) {
         this.stato = stato;
+    }
+
+    public List<ItemCart> getProdotti() {
+        return prodotti;
+    }
+
+    public void setProdotti(List<ItemCart> prodotti) {
+        this.prodotti = prodotti;
     }
 }
