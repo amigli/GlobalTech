@@ -19,10 +19,9 @@
     <h1>Scegli un servizio:</h1>
 
     <div id="gestioneProdotto">
-        <a href="admin-service?s=caricamento-prodotto" class="gestioneAdmin">Caricamento prodotto</a>
+            <a href="admin-service?s=caricamento-prodotto" class="gestioneAdmin">Caricamento prodotto</a>
 
-        <a href="visualizza-prodotti" class="gestioneAdmin">Visualizza prodotti</a>
-
+            <a href="visualizza-prodotti" class="gestioneAdmin">Visualizza prodotti</a>
     </div>
 
     <div id="gestioneOfferte">

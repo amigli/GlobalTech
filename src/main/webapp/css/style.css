@@ -367,8 +367,56 @@ ul#password-check-list{
 
 
 /*----------------------------------------*/
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    a.gestioneAdmin{
+        border-style: groove;
+        border-radius: 5px;
+        padding:2%;
+        border-color: white;
+        background-color: darkblue;
+        color: white;
+        margin: 10%;
+    }
 
+    div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
+        margin:1%;
+        text-align: center;
+        border: 5px solid darkblue;
+        padding: 3%;
+        height: 5em;
+    }
 
+    div#gestioneProdotto{
+        background-image: url("../asset/immagineProdotti.jpg");
+        opacity: 0.6;
+        background-size: 50%;
+    }
+
+    div#gestioneOfferte{
+        background-image: url("../asset/immagineOfferte.jpg");
+        opacity: 0.6;
+        background-size: 40%;
+    }
+
+    div#gestioneCategorie{
+        background-image: url("../asset/immagineCategorie.jpg");
+        opacity: 0.6;
+        background-size: 30%;
+    }
+
+    div#utentiOrdini{
+        background-image: url("../asset/immagineAcquisti.jpg");
+        opacity: 0.6;
+        background-size: 30%;
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+/*Se la larghezza dello schermo è più di 769px*/
 @media screen and (min-width : 769px) {
     nav{
         height: 4em;
