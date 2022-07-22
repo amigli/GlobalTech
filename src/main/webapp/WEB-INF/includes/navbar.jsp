@@ -93,22 +93,6 @@
         </ul>
     </nav>
     <script type="text/javascript">
-        function mostraMenu(){
-            //const menu =  document.querySelector("#menu-items");
-            const burger = document.getElementById("burger");
-            //menu.classList.toggle("active");
-            burger.classList.toggle("active");
-        }
-        $(document).ready(
-            function (){
-                $("#burger").click(
-                    function () {
-                        $("#menu-items").toggle();
-                    }
-                )
-            }
-        );
-
         window.addEventListener("resize", function (){
             let  el  = document.getElementById("menu-items");
 
@@ -119,5 +103,4 @@
             }
         })
     </script>
-    <script src="/script/SelectResultJquery.js" defer>
-    </script>
+    <script  type="text/javascript" src="script/scriptNavbar.js" ></script>

@@ -1,4 +1,14 @@
 $(document).ready(
+    $(document).ready(
+        function (){
+            $("#burger").click(
+                function () {
+                    $("#menu-items").toggle();
+                    $('#burger').toggleClass("active");
+                }
+            )
+        }
+    ),
     $("#search-box").keyup(
         function(){
             let content = $("#search-box").val();
@@ -14,3 +24,9 @@ $(document).ready(
         }
     )
 )
+
+function mostraMenu(){
+    const menu =  document.querySelector("#menu-items");
+    const burger = document.getElementById("burger");
+    menu.classList.toggle("active");
+}

@@ -201,12 +201,13 @@ public class ProdottoDAO {
         }
     }
 
-    public List<Prodotto> doRetrieveByNameOrMarca(String test){
+    public List<Prodotto> doRetrieveByNameOrMarca(String key){
         try (Connection con = ConPool.getConnection()){
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM prodotto WHERE marca LIKE ? OR nome LIKE ? LIMIT 10");
+            PreparedStatement stmt =
+                    con.prepareStatement("SELECT * FROM prodotto WHERE marca LIKE ? OR nome LIKE ?");
 
-            stmt.setString(1, "%" + test + "%");
-            stmt.setString(2, "%" + test + "%");
+            stmt.setString(1, "%" + key + "%");
+            stmt.setString(2, "%" + key + "%");
 
             ResultSet res =  stmt.executeQuery();
 
