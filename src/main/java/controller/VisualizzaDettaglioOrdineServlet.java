@@ -40,7 +40,7 @@ public class VisualizzaDettaglioOrdineServlet extends HttpServlet {
                         request.setAttribute("ordine", o);
 
                         RequestDispatcher dispatcher =
-                                request.getRequestDispatcher("/WEB-INF/public/dettagliOrdine.jsp");
+                                request.getRequestDispatcher("/WEB-INF/utente/dettagliOrdine.jsp");
 
                         dispatcher.forward(request, response);
 

@@ -41,7 +41,7 @@ public class CompletaOrdineServlet extends HttpServlet {
 
                     if(removedProduct.isEmpty()){
                         RequestDispatcher dispatcher =
-                                request.getRequestDispatcher("/WEB-INF/public/salvaDatiSpedizione.jsp");
+                                request.getRequestDispatcher("/WEB-INF/utente/salvaDatiSpedizione.jsp");
                         dispatcher.forward(request, response);
                     }else{
                         for (ItemCart item : removedProduct){

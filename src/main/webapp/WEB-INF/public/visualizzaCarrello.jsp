@@ -21,13 +21,14 @@
             Carrello cart = (Carrello) request.getAttribute("carrello");
         %>
 
-        <section id="messages">
-
-        </section>
         <section id="carrello">
+            <h1>Carrello</h1>
 
+            <section id="messages">
+            </section>
             <%if(cart.isEmpty()){%>
                 <p>Il carrello è vuoto!</p>
+            <p>Sfoglia il nostro ricco <a href="catalogo">catalogo</a> e riempilo</p>
             <%}else{
                 for(ItemCart item : cart.getProdotti()){%>
                 <div class="prodotto" id="prodotto-<%=item.getProdotto().getId()%>">

@@ -24,7 +24,7 @@ public class VisualizzaOrdiniEffettuatiServlet extends HttpServlet {
                 List<Ordine> ordini = service.doRetrieveByUtenteId(u.getId());
 
                 request.setAttribute("ordini", ordini);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/public/visualizzaOrdiniCliente.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/utente/visualizzaOrdiniCliente.jsp");
                 dispatcher.forward(request, response);
 
             }else{

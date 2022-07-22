@@ -92,7 +92,7 @@ public class ConfermaPagamentoServlet extends HttpServlet {
                     }else{
                         request.setAttribute("error-parameter", errorPar);
                         RequestDispatcher dispatcher =
-                                request.getRequestDispatcher("/WEB-INF/public/confermaDatiPagamento.jsp");
+                                request.getRequestDispatcher("/WEB-INF/utente/confermaDatiPagamento.jsp");
 
                         dispatcher.forward(request, response);
                     }

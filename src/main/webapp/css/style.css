@@ -2,6 +2,10 @@ h3{
     color: darkblue;
 }
 
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /*navbar.jsp*/
 nav{
     background-color: darkblue;
@@ -200,7 +204,10 @@ ul#menu-items-list{
 formCaricamentoOfferta.jsp
 gestioneCategorieProdotto.jsp
 */
-div#caricareProdotto, div#modificareProdotto, div#caricareOfferta, div#inserireCategoria, div#modificaUtente, div#caricaFoto, div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria, div#modificareCategoria, div#gestione-prodotti-offerta{
+div#caricareProdotto, div#modificareProdotto, div#caricareOfferta,
+div#inserireCategoria, div#modificaUtente, div#caricaFoto,
+div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria,
+div#modificareCategoria, div#gestione-prodotti-offerta{
     border-radius: 5px;
     background-color: #fff8dc;
     padding: 1em;
@@ -250,7 +257,7 @@ a.gestioneAdmin{
     color: white;
 }
 div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
-    margin:5%;
+    margin: 5%;
     text-align: center;
     border: 5px solid darkblue;
     padding: 5%;
@@ -275,8 +282,9 @@ div#utentiOrdini{
     opacity: 0.6;
     background-size: 30%;
 }
-section#serviziAdmin h1{
-    margin-left: 4rem;
+
+section#serviziAdmin{
+    margin : 3rem;
 }
 
 
@@ -285,9 +293,7 @@ section#serviziAdmin h1{
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 10px 20px;
-    width: 60%;
-    /*margin-top:5%;
-    margin-left:18%;*/
+    width: 80%;
     margin:auto;
 }
 
@@ -380,7 +386,7 @@ footer{
     color : white;
     width : 99%;
     position: absolute;
-    margin-top: 2rem;
+    margin-top: 10rem;
 }
 div#footer-content{
     width: 95%;
@@ -418,6 +424,12 @@ ul#password-check-list{
     list-style-type: none;
 }
 
+/* Carrello.jsp*/
+
+section#carrello{
+    margin : 2rem;
+}
+
 
 /*----------------------------------------*/
 @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -428,6 +440,10 @@ ul#password-check-list{
         margin: 2% 7% 2% 7%;
 
     }
+
+    section#serviziAdmin > h1{
+        margin-left : 0;
+    }
     div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
 
     }
@@ -437,6 +453,7 @@ ul#password-check-list{
         margin:2%;
         height: 5em;
     }
+
 
 
 }
@@ -451,10 +468,14 @@ ul#password-check-list{
         height: 40%;
     }
     div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
-        margin:1%;
+        margin: 2% 0;
         border: 3px solid darkblue;
         padding: 3%;
         height: 4em;
+    }
+
+    section#serviziAdmin{
+        margin : 1rem;
     }
 
     /*gestioneProdotto.jsp*/
@@ -574,6 +595,16 @@ ul#password-check-list{
         padding: 2%;
     }
 
+    section#serviziAdmin{
+        z-index: -1;
+        position: relative;
+        margin : 3rem;
+    }
+
+    div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
+        margin: 2rem 0;
+    }
+
     /*formCaricamentoProdotto.jsp
     formCaricamentoOfferta.jsp
     */
@@ -594,6 +625,8 @@ ul#password-check-list{
         margin: 0;
         padding: 2%;
     }
+
+
 
 }
 

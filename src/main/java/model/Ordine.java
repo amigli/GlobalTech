@@ -70,6 +70,27 @@ public class Ordine {
         this.prodotti = prodotti;
     }
 
+    public String getStatoString(){
+        String risp;
+
+        switch (stato){
+            case 0 :
+                risp = "In attesa di conferma";
+            break;
+            case 1 :
+                risp = "In attesa di spedizione";
+            break;
+            case 2 :
+                risp  = "Completato";
+            break;
+            default:
+                risp = "Errore, contattare amministratore";
+            break;
+        }
+
+
+        return risp;
+    }
 
     public String getIndirizzoSpedizione() {
         return indirizzoSpedizione;

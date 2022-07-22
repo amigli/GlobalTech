@@ -26,3 +26,5 @@ function errorField(li, icon){
     li.style.color =  "red";
     icon.setAttribute("class", "fa fa-circle-o");
 }
+
+

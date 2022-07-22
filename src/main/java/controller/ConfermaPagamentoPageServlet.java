@@ -17,7 +17,7 @@ public class ConfermaPagamentoPageServlet extends HttpServlet {
             Utente u =  (Utente) session.getAttribute("utente");
 
             if(u != null){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/public/confermaDatiPagamento.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/utente/confermaDatiPagamento.jsp");
                 dispatcher.forward(request, response);
             }else{
                 response.sendRedirect("login-page");

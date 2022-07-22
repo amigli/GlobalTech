@@ -30,7 +30,7 @@ public class ConfermaOrdinePageServlet extends HttpServlet {
                         request.setAttribute("checkcode", checkCode);
 
 
-                        RequestDispatcher dispatcher =  request.getRequestDispatcher("/WEB-INF/public/confermaOrdine.jsp");
+                        RequestDispatcher dispatcher =  request.getRequestDispatcher("/WEB-INF/utente/confermaOrdine.jsp");
                         dispatcher.forward(request, response);
                     }else{
                         response.sendRedirect("conferma-pagamento");

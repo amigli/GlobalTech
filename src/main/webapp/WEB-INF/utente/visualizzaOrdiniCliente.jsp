@@ -34,7 +34,7 @@
                 <td><%=o.getId()%></td>
                 <td><%=o.getData()%></td>
                 <td><%=o.getPrezzoTotale()%></td>
-                <td><%=o.getStato()%></td>
+                <td><%=o.getStatoString()%></td>
                 <td>
                     <form method="get" action="dettaglio-ordine">
                         <input type="hidden" name="id" value="<%=o.getId()%>">
