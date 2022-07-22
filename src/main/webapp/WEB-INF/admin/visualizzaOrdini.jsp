@@ -26,6 +26,7 @@
                 <th>Pagamento</th>
                 <th>Indirizzo Spedizione</th>
                 <th>Stato</th>
+                <th>Dettaglio</th>
             </tr>
             <%
             for (Ordine o : ordini){
@@ -54,7 +55,14 @@
                     <%}%>
                 </form>
                 </td>
+                <td>
+                    <form action="dettaglio-ordine" method="get">
+                        <input type="hidden" name="id" value="<%=o.getId()%>">
+                        <button type="submit"><i class="fa fa-external-link"></i></button>
+                    </form>
+                </td>
                 <%}%>
+
             </tr>
         </table>
 

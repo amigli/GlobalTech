@@ -41,7 +41,7 @@ input[type=submit] {
     margin-top: 1em;
     border: none;
     cursor: pointer;
-    width: 60%;
+    width: 100%;
 }
 
 input[type=submit]:hover {
@@ -424,15 +424,86 @@ ul#password-check-list{
     list-style-type: none;
 }
 
-/* Carrello.jsp*/
+/* Carrello.jsp */
 
 section#carrello{
     margin : 2rem;
 }
 
+/* Catalogo.jsp */
+
+div#filtri{
+    margin: 2rem;
+    position: relative;
+}
+
+ul#ul-filtri{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul#ul-filtri > li{
+    display: inline;
+    float: left;
+    padding : 0 0.7rem 0 0;
+}
+
+ul#ul-filtri > li#first{
+    padding : 1em;
+
+}
+
+section#prodotti-catalogo{
+    margin: 2rem;
+    display: block;
+}
+
+figure.prodotto-figure{
+    max-width: 95%;
+    border-style: groove;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    margin: 1em;
+    padding: 1em;
+}
+
+figure.prodotto-figure > img{
+    max-width: 90%;
+    max-height: 60%;
+}
+
+h1#marca-nome, h2#prezzo{
+    width: 50%;
+    float: left;
+}
+
+h2#prezzo{
+    text-align: right;
+}
+
+div#title-prezzo{
+    width: 100%;
+    display: block;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------*/
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 320px){
     /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         display: block;
@@ -454,13 +525,28 @@ section#carrello{
         height: 5em;
     }
 
+    /* Catalogo*/
+    div#filtri{
+        margin: 0.5em;
+    }
+
+    figure.prodotto-figure{
+        margin: 2em 0.5em ;
+
+    }
+
+    section#prodotti-catalogo{
+        margin: 2em 0.5em;
+
+    }
+
 
 
 }
 
 /*----------------------------------------*/
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px){
     /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         display: block;
@@ -483,6 +569,46 @@ section#carrello{
         margin:1%;
         height: 5em;
     }
+
+    div#altreAzioniProdotto{
+        margin:2%;
+        height: 5em;
+    }
+
+    /* Catalogo*/
+
+    figure.prodotto-figure{
+        width: 43%;
+        float: left;
+        font-size : 0.8em;
+        padding: 0.7em;
+    }
+
+    h1#marca-nome, h2#prezzo{
+       font-size: 1.5em;
+    }
+
+
+
+    div#title-prezzo{
+        height: 5rem;
+    }
+
+    section#prodotti-catalogo{
+        margin: 3rem;
+    }
+
+    figure.prodotto-figure > img {
+        width: 15rem;
+        height: 15rem;
+        object-fit: contain;
+    }
+
+
+
+
+
+
 
 }
 
@@ -626,6 +752,11 @@ section#carrello{
         padding: 2%;
     }
 
+    /*Catalogo*/
+    figure.prodotto-figure{
+        width: 30%;
+        float : left;
+    }
 
 
 }

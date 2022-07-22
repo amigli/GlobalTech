@@ -29,23 +29,32 @@ public class VisualizzaDettaglioOrdineServlet extends HttpServlet {
 
                    OrdineDAO service = new OrdineDAO();
 
-                   List<Ordine> all = service.doRetrieveByUtenteId(u.getId());
+                   if(u.isAdmin()){
+                      Ordine o = service.doRetrieveById(idOrdine);
+                      request.setAttribute("ordine", o);
 
-                   if(!all.isEmpty() && all.stream().anyMatch(o->o.getId() == idOrdine)){
-                        List<Ordine> filterList =
-                                all.stream().filter(o->o.getId() == idOrdine).collect(Collectors.toList());
+                       RequestDispatcher dispatcher =
+                               request.getRequestDispatcher("/WEB-INF/utente/dettagliOrdine.jsp");
 
-                        Ordine o =  filterList.get(0);
+                       dispatcher.forward(request, response);
+                   }else {
+                       List<Ordine> all = service.doRetrieveByUtenteId(u.getId());
 
-                        request.setAttribute("ordine", o);
+                       if (!all.isEmpty() && all.stream().anyMatch(o -> o.getId() == idOrdine)) {
+                           List<Ordine> filterList =
+                                   all.stream().filter(o -> o.getId() == idOrdine).collect(Collectors.toList());
 
-                        RequestDispatcher dispatcher =
-                                request.getRequestDispatcher("/WEB-INF/utente/dettagliOrdine.jsp");
+                           Ordine o = filterList.get(0);
 
-                        dispatcher.forward(request, response);
+                           request.setAttribute("ordine", o);
 
-                   }else{
-                       response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                           RequestDispatcher dispatcher =
+                                   request.getRequestDispatcher("/WEB-INF/utente/dettagliOrdine.jsp");
+
+                           dispatcher.forward(request, response);
+                       } else {
+                           response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                       }
                    }
                }catch (NumberFormatException e){
                    response.sendError(HttpServletResponse.SC_BAD_REQUEST);

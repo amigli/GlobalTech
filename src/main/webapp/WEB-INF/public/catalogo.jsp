@@ -27,10 +27,9 @@
             List<String> marche = catalogo.stream().map(p->p.getProdotto().getMarca()).distinct().collect(Collectors.toList());
         %>
         <%@include file="/WEB-INF/includes/navbar.jsp" %>
-            <div id="sidebar">
-                <p>
-                    Filtra per
-                    <ul>
+            <div id="filtri">
+                    <ul id="ul-filtri">
+                        <li id="first">Filtra per </li>
                         <li>
                             <select name="categoria" id="select-categoria" onchange="filtraProdotti()">
                                 <option value="-1">Categoria</option>
@@ -48,27 +47,28 @@
                             </select>
                         </li>
                     </ul>
-                </p>
-
             </div>
+            <br>
             <section id="prodotti-catalogo">
                 <%
                     for(Item item : catalogo){
                 %>
-                <figure>
+                <figure class="prodotto-figure" onclick="location.href = 'dettaglio-prodotto?id=' + <%=item.getProdotto().getId()%>">
                     <%if(item.getProdotto().getImmagini().size() > 0){%>
-                    <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
+                    <img class="prodotto-img" src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
                     <%}else{%>
                     <img src="./asset/default.png">
                     <%}%>
                     <figcaption>
-                        <h1 id="marca-nome">
-                            <%=item.getProdotto().getMarca()%>-<%=item.getProdotto().getNome()%>
-                        </h1>
+                        <div id="title-prezzo">
+                            <h1 id="marca-nome">
+                                <%=item.getProdotto().getMarca()%>-<%=item.getProdotto().getNome()%>
+                            </h1>
+                            <h2 id="prezzo"><%=item.getPrezzo()%>€</h2>
+                        </div>
                         <div id="descrizione">
                             <%=item.getProdotto().getDescrizione().substring(0, 50)%>
                         </div>
-                        <div id="prezzo"><%=item.getPrezzo()%></div>
                         <form action="aggiungi-carrello" method="post">
                             <input type="hidden" name="quantita" value="1">
                             <input type="hidden" name="prodotto"  value="<%=item.getProdotto().getId()%>">
@@ -78,7 +78,7 @@
                 </figure>
                 <%}%>
             </section>
-        <%@include file="/WEB-INF/includes/footer.jsp" %>
+
         <script type="text/javascript" src="script/gestioneCatalogo.js"></script>
     </body>
 </html>
