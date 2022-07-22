@@ -26,8 +26,7 @@
         List<Categoria>  categorie =  (List<Categoria>) application.getAttribute("categorie");
         Prodotto prodotto =  (Prodotto) request.getAttribute("prodotto");
 
-        List<Categoria> categorieProd = categorie.stream().filter(c->c.contains(prodotto))
-                .collect(Collectors.toList());
+        List<Categoria> categorieProd = categorie.stream().filter(c->c.contains(prodotto)).collect(Collectors.toList());
     %>
 
     <input type="hidden" id="id-prod" value = ${prodotto.id}>

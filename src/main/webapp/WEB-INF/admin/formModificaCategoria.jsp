@@ -55,7 +55,7 @@
         %>
     <div id="gestione-prodotti-offerta">
         <h1>Prodotti</h1>
-        <p>Seleziona i prodotti da eliminare</p>
+        <p>Seleziona i prodotti da eliminare dalla categoria</p>
         <div id="prodotti-categoria">
             <%for(Prodotto p : prodottiCategoria){%>
             <div>
@@ -67,7 +67,7 @@
         <button onclick="rimuoviProdottoCategoria()">Rimuovi Prodotti</button>
         <br>
 
-        <p>Seleziona i prodotti su cui applicare l'offerta</p>
+        <p>Seleziona i prodotti su cui applicare la categoria</p>
         <div id="prodotti-other">
             <%for(Prodotto p : prodottiAll){%>
             <%if(!prodottiCategoria.contains(p)){%>

@@ -371,7 +371,7 @@ ul#password-check-list{
         border-color: white;
         background-color: darkblue;
         color: white;
-        margin: 15%;
+        display: block;
     }
 
     div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
@@ -382,29 +382,7 @@ ul#password-check-list{
         height: 5em;
     }
 
-    div#gestioneProdotto{
-        background-image: url("../asset/immagineProdotti.jpg");
-        opacity: 0.6;
-        background-size: 50%;
-    }
 
-    div#gestioneOfferte{
-        background-image: url("../asset/immagineOfferte.jpg");
-        opacity: 0.6;
-        background-size: 40%;
-    }
-
-    div#gestioneCategorie{
-        background-image: url("../asset/immagineCategorie.jpg");
-        opacity: 0.6;
-        background-size: 30%;
-    }
-
-    div#utentiOrdini{
-        background-image: url("../asset/immagineAcquisti.jpg");
-        opacity: 0.6;
-        background-size: 30%;
-    }
 
 }
 
