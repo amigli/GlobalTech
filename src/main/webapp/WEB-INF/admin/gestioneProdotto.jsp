@@ -27,7 +27,7 @@
     %>
 
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
-        <h2>Dettagli prodotto ${prodotto.id}</h2>
+        <h1>Dettagli prodotto ${prodotto.id}</h1>
         <%
             if(errorPar != null){
                 String txt = errorPar.get(0);
@@ -39,6 +39,7 @@
             Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
         </div>
         <%}%>
+        <div id="modificareProdotto">
         <form action="modifica-prodotto"  id="modifica-prodotto" method="post">
             <input type="hidden" name="id_prod" value="${prodotto.id}">
             <fieldset>
@@ -143,6 +144,7 @@
             </fieldset>
             <input type="submit" id="modifica-prodotto-submit" value="Modifica" style="display: none" disabled>
         </form>
+        </div>
         <button onclick="effettuaModificaProdotto()" id="effettua-modifica-prodotto-button">Effettua Modifica</button>
 
 
@@ -150,19 +152,16 @@
             <input type="hidden" name="id_prod" value="${prodotto.id}">
             <input type="submit" value="Elimina prodotto">
         </form>
-        <p>Altre azioni :</p>
-        <ul>
-            <li>
-                <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}">Gestioni foto prodotto ${prodotto.id}</a>
-            </li>
-            <li>
-                <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}">Gestioni categorie prodotto</a>
-            </li>
-            <li>
-                <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}">Gestione offerte sul prodotto</a>
-            </li>
-        </ul>
 
+        <h3>Altre azioni :</h3>
+    <div id="altreAzioniProdotto">
+        <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}" class="gestioneProdotto">Gestioni foto prodotto ${prodotto.id}</a>
+
+        <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}" class="gestioneProdotto">Gestioni categorie prodotto</a>
+
+        <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}" class="gestioneProdotto">Gestione offerte sul prodotto</a>
+
+    </div>
     <script type="text/javascript" src="script/gestioneProdotto.js"></script>
     </body>
 </html>

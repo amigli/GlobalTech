@@ -19,10 +19,10 @@ Utente u = (Utente) request.getAttribute("utenteId");
 <%!
 ArrayList<String> datiMancanti = new ArrayList<>();
 %>
-
+<br>
 <div id="modificaUtente">
     <form action="modifica-utente" method="get">
-        <h2>ID utente: <%=u.getId()%></h2>
+        <h1>ID utente: <%=u.getId()%></h1>
         <%
             if (u.getEmail()!=null){
         %>
@@ -45,7 +45,7 @@ ArrayList<String> datiMancanti = new ArrayList<>();
             if (u.getDataNascita()!=null){
         %>
         <label for="dataNascitaUtente">Data di nascita:</label>
-        <input type="date" id="dataNascitaUtente" name="dataNascitaUtente" value="<%=u.getDataNascita()%>">
+        <input type="date" id="dataNascitaUtente" name="dataNascitaUtente" value="<%=u.getDataNascita()%>" disabled>
         <%}%>
         <%
             if (u.getVia()!=null){
@@ -88,7 +88,6 @@ ArrayList<String> datiMancanti = new ArrayList<>();
         <input type="submit" id="adminUtente" name="aggiungiAdmin" value="Aggiungi come admin" style="width: 40%; height: 7%">
         <%}%>
         <input type="hidden" name="id" value="<%=u.getId()%>">
-        <br>
         <br>
         <input type="submit" value="Salva">
     </form>

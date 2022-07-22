@@ -100,7 +100,7 @@
             </div>
             <div>
                 <label for="descrizione">Descrizione</label><br>
-                <textarea rows="8" cols="30" name="descrizione" id="descrizione"></textarea><br>
+                <textarea rows="8" name="descrizione" id="descrizione"></textarea><br>
             </div>
         </fieldset>
         <br>

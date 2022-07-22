@@ -18,6 +18,7 @@
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
+    <div id="caricareOfferta">
     <form method="post" action="carica-offerta" onsubmit=" return validateFormOfferta()">
         <%  GregorianCalendar inizio = (new GregorianCalendar());
             inizio.add(Calendar.DATE, 1);
@@ -61,7 +62,7 @@
 
         <input type="submit" value="Invia" id="carica-offerta">
     </form>
-
+    </div>
     <script type="text/javascript" src="script/caricamentoOfferta.js"></script>
 </body>
 </html>

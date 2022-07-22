@@ -1,3 +1,7 @@
+h3{
+    color: darkblue;
+}
+
 /*navbar.jsp*/
 nav{
     background-color: darkblue;
@@ -30,10 +34,10 @@ input[type=submit] {
     color: white;
     font-size: 20px;
     padding: 10px 20px;
-    margin: 5px 0;
+    margin-top: 1em;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 60%;
 }
 
 input[type=submit]:hover {
@@ -192,52 +196,90 @@ ul#menu-items-list{
     background-color: transparent;
 }
 
+/*formCaricamentoProdotto.jsp
+formCaricamentoOfferta.jsp
+gestioneCategorieProdotto.jsp
+*/
+div#caricareProdotto, div#modificareProdotto, div#caricareOfferta, div#inserireCategoria, div#modificaUtente, div#caricaFoto, div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria, div#modificareCategoria, div#gestione-prodotti-offerta{
+    border-radius: 5px;
+    background-color: #fff8dc;
+    padding: 1em;
+}
+textarea#descrizione, textarea#descrizioneCategoria{
+    width: 90%;
+}
+
+/*gestioneCategorieProdotto.jsp*/
+button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2, button#aggiungiCategoria{
+    background-color: white;
+    color: darkblue;
+    border: 2px solid blue;
+    height: 2em;
+    margin-top: 1em;
+}
+
+/*gestioneProdotto.jsp
+gestioneCategorieProdotto.jsp
+*/
+button#effettua-modifica-prodotto-button, button#rimuoviProdottoDaCategoria, button#rimuoviOfferte, button#rimuoviOfferta2, button#rimuoviProdotti{
+    background-color: white;
+    color: darkblue;
+    border: 2px solid red;
+    height: 2em;
+    margin-top: 1em;
+}
+a.gestioneProdotto{
+    border-style:groove;
+    border-radius: 8px;
+    border-color: white;
+    background-color: darkblue;
+    color: white;
+    display: block;
+}
+div#altreAzioniProdotto{
+    border: 1px solid darkblue;
+    padding: 3%;
+}
+
 /*HomeAdmin.jsp*/
 a.gestioneAdmin{
     border-style: groove;
     border-radius: 8px;
-    padding:2%;
     border-color: white;
     background-color: darkblue;
     color: white;
-    margin: 4%;
-    display: block;
 }
-
 div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
     margin:5%;
     text-align: center;
     border: 5px solid darkblue;
     padding: 5%;
 }
-
 div#gestioneProdotto{
     background-image: url("../asset/immagineProdotti.jpg");
     opacity: 0.6;
     background-size: 50%;
 }
-
 div#gestioneOfferte{
     background-image: url("../asset/immagineOfferte.jpg");
     opacity: 0.6;
     background-size: 40%;
 }
-
 div#gestioneCategorie{
     background-image: url("../asset/immagineCategorie.jpg");
     opacity: 0.6;
     background-size: 30%;
 }
-
 div#utentiOrdini{
     background-image: url("../asset/immagineAcquisti.jpg");
     opacity: 0.6;
     background-size: 30%;
 }
-
 section#serviziAdmin h1{
     margin-left: 4rem;
 }
+
+
 
 #accesso {
     border-radius: 5px;
@@ -306,18 +348,23 @@ table td, table th {
  visualizzaUtenti.jsp
  visualizzaOrdiniCliente.jsp
  visualizzaProdotti.jsp*/
-#categorie tr:nth-child(even), #prodotti tr:nth-child(even), #offerte tr:nth-child(even), #utenti tr:nth-child(even), #ordini tr:nth-child(even){
+#categorie tr:nth-child(even), #prodotti tr:nth-child(even), #offerte tr:nth-child(even), #utenti tr:nth-child(even), #ordini tr:nth-child(even), #ordiniCliente tr:nth-child(even){
     background-color: aliceblue;
 }
-#categorie tr:hover, #prodotti tr:hover, #offerte tr:hover, #utenti tr:hover, #ordini tr:hover {
-    background-color: lightblue;
+#categorie tr:hover, #prodotti tr:hover, #offerte tr:hover, #utenti tr:hover, #ordini tr:hover, #ordiniCliente tr:hover {
+    background-color: #faf0e6;
 }
-#categorie th, #prodotti th, #offerte th, #utenti th, #ordini th {
+#categorie th, #prodotti th, #offerte th, #utenti th, #ordini th, #ordiniCliente th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: darkblue;
     color: white;
+}
+
+/*visualizzaCategorie.jsp*/
+input[type="submit"]#modificaCategoriaButton, input[type="submit"]#rimuoviCategoriaButton{
+    width: 100%;
 }
 
 a{
@@ -376,54 +423,46 @@ ul#password-check-list{
 @media screen and (min-width: 320px) and (max-width: 480px) {
     /*HomeAdmin.jsp*/
     a.gestioneAdmin{
-        border-style: groove;
-        border-radius: 5px;
+        display: block;
         padding: 0;
-        border-color: white;
-        background-color: darkblue;
-        color: white;
         margin: 2% 7% 2% 7%;
 
     }
-
     div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
-        margin:1%;
-        text-align: center;
-        border: 3px solid darkblue;
-        padding: 3%;
+
+    }
+
+    /*gestioneProdotto.jsp*/
+    div#altreAzioniProdotto{
+        margin:2%;
         height: 5em;
     }
 
-    div#gestioneProdotto{
-        background-image: url("../asset/immagineProdotti.jpg");
-        opacity: 0.6;
-        background-size: 50%;
-    }
-
-    div#gestioneOfferte{
-        background-image: url("../asset/immagineOfferte.jpg");
-        opacity: 0.6;
-        background-size: 40%;
-    }
-
-    div#gestioneCategorie{
-        background-image: url("../asset/immagineCategorie.jpg");
-        opacity: 0.6;
-        background-size: 30%;
-    }
-
-    div#utentiOrdini{
-        background-image: url("../asset/immagineAcquisti.jpg");
-        opacity: 0.6;
-        background-size: 30%;
-    }
 
 }
 
+/*----------------------------------------*/
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
+    /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         display: block;
+        margin: 1%;
+        height: 40%;
     }
+    div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
+        margin:1%;
+        border: 3px solid darkblue;
+        padding: 3%;
+        height: 4em;
+    }
+
+    /*gestioneProdotto.jsp*/
+    div#altreAzioniProdotto{
+        margin:1%;
+        height: 5em;
+    }
+
 }
 
 /*Se la larghezza dello schermo è più di 769px*/
@@ -528,11 +567,33 @@ ul#password-check-list{
         color: blue;
     }
 
+    /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         display: inline;
         margin: 7%;
+        padding: 2%;
     }
 
+    /*formCaricamentoProdotto.jsp
+    formCaricamentoOfferta.jsp
+    */
+    div#caricareProdotto, div#caricareOfferta{
+        width: 60%;
+        margin: auto;
+    }
+
+    /*gestioneProdotto.jsp*/
+   div#altreAzioniProdotto{
+        margin:1%;
+        height: 1.5em;
+       text-align: center;
+    }
+    a.gestioneProdotto{
+        font-size: large;
+        display: inline;
+        margin: 0;
+        padding: 2%;
+    }
 
 }
 

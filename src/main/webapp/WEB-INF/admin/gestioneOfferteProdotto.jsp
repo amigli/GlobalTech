@@ -46,7 +46,7 @@
                 </div>
             <%}%>
         </section>
-        <button onclick="rimuoviOfferta('offerta-attiva-prodotto')">Rimuovi Offerte</button>
+        <button onclick="rimuoviOfferta('offerta-attiva-prodotto')" id="rimuoviOfferte">Rimuovi Offerte</button>
         <br>
 
         <section id="offerte-attive-other">
@@ -62,7 +62,7 @@
             <%}
             }%>
         </section>
-        <button onclick="aggiungiOfferta('offerta-attiva-other')">Attiva Offerte</button>
+        <button onclick="aggiungiOfferta('offerta-attiva-other')" id="attivaOfferta">Attiva Offerte</button>
 
 
         <h3>Offerte future</h3>
@@ -76,7 +76,7 @@
             </div>
             <%}%>
         </section>
-        <button onclick="rimuoviOfferta('offerta-futura-prodotto')">Rimuovi Offerte</button>
+        <button onclick="rimuoviOfferta('offerta-futura-prodotto')" id="rimuoviOfferta2">Rimuovi Offerte</button>
 
         <section id="offerte-future-other">
             <%for(Offerta o : offerteFutureList){
@@ -91,7 +91,7 @@
             <%}
             }%>
         </section>
-        <button onclick="aggiungiOfferta('offerta-futura-other')">Aggiungi Offerte</button>
+        <button onclick="aggiungiOfferta('offerta-futura-other')" id="attivaOfferta2">Aggiungi Offerte</button>
 
 
 

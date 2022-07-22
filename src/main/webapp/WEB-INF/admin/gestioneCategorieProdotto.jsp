@@ -20,7 +20,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/includes/navbar.jsp"%>
-<h4>Categorie del prodotto ${prodotto.id}</h4>
+<h1>Categorie del prodotto ${prodotto.id}</h1>
 
     <%
         List<Categoria>  categorie =  (List<Categoria>) application.getAttribute("categorie");
@@ -30,7 +30,8 @@
     %>
 
     <input type="hidden" id="id-prod" value = ${prodotto.id}>
-    <section id="categorie-prodotto">
+<div id="eliminaProdottoDaCategoria">
+<section id="categorie-prodotto">
         <p>Seleziona le categorie da cui vuoi eliminare il prodotto</p>
         <%for(Categoria c : categorieProd){%>
             <div>
@@ -39,8 +40,10 @@
             </div>
         <%}%>
     </section>
-    <br>
-    <button  onclick="rimuoviCategoria()">Elimina categorie</button>
+    <button  onclick="rimuoviCategoria()" id="rimuoviProdottoDaCategoria">Elimina categorie</button>
+</div>
+<br>
+<div id="aggiungiProdottoACategoria">
     <section id="altre-categorie">
         <p>Seleziona le categorie da cui vuoi eliminare il prodotto</p>
         <%for(Categoria c : categorie){%>
@@ -52,8 +55,7 @@
         <%}
         }%>
     </section>
-    <br>
-    <button onclick="aggiungiCategoria()">Aggiungi categorie</button>
-
+    <button onclick="aggiungiCategoria()" id="aggiungiProdottoCategoria">Aggiungi categorie</button>
+</div>
 </body>
 </html>

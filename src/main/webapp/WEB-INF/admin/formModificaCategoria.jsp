@@ -40,7 +40,7 @@
             <label for="nomeCategoria">Nome della categoria:</label>
             <input type="text" id="nomeCategoria" name="nomeCategoria" value="<%=categoria.getNome()%>" required>
             <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-            <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="65" required><%=categoria.getDescrizione()%>
+            <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" required><%=categoria.getDescrizione()%>
             </textarea>
             <input type="hidden" name="id" id="id_cat"value="<%=categoria.getId()%>">
             <br>
@@ -53,6 +53,7 @@
             List<Prodotto> prodottiAll =  (List<Prodotto>) request.getAttribute("prodotti");
             List<Prodotto> prodottiCategoria =  prodottiAll.stream().filter(p->categoria.contains(p)).collect(Collectors.toList());
         %>
+    <br>
     <div id="gestione-prodotti-offerta">
         <h1>Prodotti</h1>
         <p>Seleziona i prodotti da eliminare dalla categoria</p>
@@ -64,7 +65,7 @@
             </div>
             <%}%>
         </div>
-        <button onclick="rimuoviProdottoCategoria()">Rimuovi Prodotti</button>
+        <button onclick="rimuoviProdottoCategoria()" id="rimuoviProdotti">Rimuovi Prodotti</button>
         <br>
 
         <p>Seleziona i prodotti su cui applicare la categoria</p>
@@ -78,7 +79,7 @@
             <%}
             }%>
         </div>
-        <button onclick="aggiungiProdottoCategoria()">Aggiungi prodotti</button>
+        <button onclick="aggiungiProdottoCategoria()" id="aggiungiCategoria">Aggiungi prodotti</button>
     </div>
 
     <script src="script/caricamentoCategoria.js"></script>

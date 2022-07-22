@@ -42,13 +42,13 @@ To change this template use File | Settings | File Templates.
             <td>
                 <form action="gestisci-categoria" id="modificaCategoria" method="get">
                     <input type="hidden" name="id" value="<%=c.getId()%>">
-                    <input type="submit" value="Modifica">
+                    <input type="submit" value="Modifica" id="modificaCategoriaButton">
                 </form>
             </td>
             <td>
                 <form action="rimuovi-categoria" id="rimuoviCategoria" method="post">
                     <input type="hidden" name="id" value="<%=c.getId()%>">
-                    <input type="submit" value="Rimuovi">
+                    <input type="submit" value="Rimuovi" id="rimuoviCategoriaButton">
                 </form>
             </td>
         </tr>
