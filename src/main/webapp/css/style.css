@@ -168,11 +168,6 @@ ul#menu-items-list{
     padding-left: 0;
 }
 
-#search-box:focus-visible ~ #suggest{
-    display: block;
-}
-
-
 #result{
     margin-left: 0;
 }
@@ -371,7 +366,7 @@ ul#password-check-list{
     a.gestioneAdmin{
         border-style: groove;
         border-radius: 5px;
-        padding:2%;
+        padding: 1px;
         border-color: white;
         background-color: darkblue;
         color: white;
@@ -382,7 +377,7 @@ ul#password-check-list{
         margin:1%;
         text-align: center;
         border: 5px solid darkblue;
-        padding: 3%;
+        padding-top: 3%;
         height: 5em;
     }
 
