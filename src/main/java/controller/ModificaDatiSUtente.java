@@ -19,36 +19,61 @@ public class ModificaDatiSUtente extends HttpServlet {
             Utente u = (Utente) session.getAttribute("utente");
 
             String  address = "/WEB-INF/result/modificaDatiUtente.jsp";
-            UtenteDAO service = new UtenteDAO();
             ArrayList<String> errPar = new ArrayList<>();
 
             if(u!=null) {
                 String via = request.getParameter("indirizzo");
-                if (via != null)
-                    u.setVia(via);
+                String civicoString  = request.getParameter("civico");
+                String citta = request.getParameter("citta");
+                String capString = request.getParameter("cap");
 
-                String civico = request.getParameter("civico");
-                try {
-                    int c = Integer.parseInt(civico);
-                    u.setNumCivico(c);
-                } catch (NumberFormatException e) {
-                    errPar.add("civico");
+                if(via ==  null || !via.matches("^[A-Za-z]{3,30}"))
+                    errPar.add("Via");
+
+                int numeroCivico = 0;
+
+                if(civicoString != null){
+                    try {
+                        numeroCivico = Integer.parseInt(civicoString);
+
+                    } catch (NumberFormatException e) {
+                        errPar.add("Numero civico");
+                    }
+                }else{
+                    errPar.add("Numero civico");
                 }
 
-                String citta = request.getParameter("citta");
-                if (citta != null)
-                    u.setCitta(citta);
+                if(citta ==  null || !citta.matches("^[A-Za-z]{3,30}"))
+                    errPar.add("Citta");
 
-                String cap = request.getParameter("cap");
-                try {
-                    int CAP = Integer.parseInt(cap);
-                    u.setCap(CAP);
-                } catch (NumberFormatException e) {
+                int cap = 0;
+
+
+                if(capString != null){
+                    try {
+                        cap = Integer.parseInt(capString);
+
+                    } catch (NumberFormatException e) {
+                        errPar.add("CAP");
+                    }
+                }else{
                     errPar.add("CAP");
                 }
 
-                service.aggiornaUtente(u);
-                session.setAttribute("utente", u);
+                if(errPar.isEmpty()){
+                    u.setVia(via);
+                    u.setCitta(citta);
+                    u.setCap(cap);
+                    u.setNumCivico(numeroCivico);
+
+                    UtenteDAO service = new UtenteDAO();
+                    service.aggiornaUtente(u);
+                    session.setAttribute("utente", u);
+                }else{
+                    request.setAttribute("error-parameter", errPar);
+                    address ="/WEB-INF/utente/datiSpedizione.jsp";
+                }
+
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher(address);
                 dispatcher.forward(request, response);

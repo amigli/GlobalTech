@@ -8,6 +8,7 @@ import model.UtenteDAO;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ModificaDatiPUtente", value = "/modifica-datiPUtente")
@@ -18,33 +19,53 @@ public class ModificaDatiPUtente extends HttpServlet {
 
         synchronized (session){
             Utente u = (Utente) session.getAttribute("utente");
-
-            String  address = "/WEB-INF/result/modificaDatiUtente.jsp";
-            UtenteDAO service = new UtenteDAO();
-            ArrayList<String> errPar = new ArrayList<>();
-
             if(u!=null){
+                String  address = "/WEB-INF/result/modificaDatiUtente.jsp";
+                ArrayList<String> errPar = new ArrayList<>();
+
                 String nome = request.getParameter("nome");
-                if(nome!=null)
-                    u.setNome(nome);
-
                 String cognome = request.getParameter("cognome");
-                if(cognome!=null)
-                    u.setCognome(cognome);
+                String numTelefono = request.getParameter("telefono");
+                String dataNascitaString = request.getParameter("dataNascita");
 
-                LocalDate dataNascita = LocalDate.parse(request.getParameter("dataNascita"));
-                if(dataNascita!=null)
+                if(nome ==  null || nome.length() < 3 || !nome.matches("^[A-Za-z]{3,30}$"))
+                    errPar.add("Nome");
+
+                if(cognome ==  null || cognome.length() < 3 || !cognome.matches("^[A-Za-z]{3,30}$"))
+                    errPar.add("Cognome");
+
+                if(numTelefono ==  null || numTelefono.length() < 9 || !nome.matches("^[0-9]{9,10}$"))
+                    errPar.add("Numero telefono");
+
+                LocalDate dataNascita = null;
+
+                if(dataNascitaString != null){
+                    try {
+                        dataNascita = LocalDate.parse(dataNascitaString);
+                    }catch (DateTimeParseException e){
+                        errPar.add("Data Nascita");
+                    }
+                }else {
+                    errPar.add("Data Nascita");
+                }
+
+                if(errPar.isEmpty()){
+                    u.setNome(nome);
+                    u.setCognome(cognome);
                     u.setDataNascita(dataNascita);
 
-                String numTelefono = request.getParameter("telefono");
-                if(numTelefono!=null)
-                    u.setNumTelefono(numTelefono);
+                    UtenteDAO service = new UtenteDAO();
+                    service.aggiornaUtente(u);
+                    session.setAttribute("utente", u);
+                }else{
+                    request.setAttribute("error-parameter", errPar);
+                    address = "/WEB-INF/utente/datiPersonali.jsp";
+                }
 
-                service.aggiornaUtente(u);
-                session.setAttribute("utente", u);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher(address);
                 dispatcher.forward(request, response);
+
             }else{
                 response.sendRedirect("login-page");
         }

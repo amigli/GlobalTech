@@ -1,28 +1,21 @@
 function validateDatiCUtente(){
     let numeroCarta = document.getElementById("numCarta");
-    if(numeroCarta==null){
+    let state = true;
+    if(!/^[0-9]{13,16}$/.test(numeroCarta.value)){
         errorInput(numeroCarta);
-        return false;
+        state = false;
     }else{
         correctInput(numeroCarta);
-        return true;
     }
 
     let cvv = document.getElementById("cvv");
-    if(cvv==null){
+    if(!/^[0-9]{3}/.test(cvv.value)){
         errorInput(cvv);
-        return false;
+        state = false;
     }else{
         correctInput(cvv);
-        return true;
     }
 
-    let dataScadenza = document.getElementById("dataCarta");
-    if(dataScadenza==null){
-        errorInput(dataScadenza);
-        return false;
-    }else{
-        correctInput(dataScadenza);
-        return true;
-    }
+
+    return state;
 }

@@ -1,19 +1,20 @@
 function validateFormDatiSUtente(){
     let indirizzo = document.getElementById("indirizzo");
-    if(indirizzo==null || !(/^[A-Z\s]{1,30}$/i.test(indirizzo.value))){
+    let state = true;
+    if(indirizzo.value.length < 3 || !(/^[A-Z\s]{3,30}$/i.test(indirizzo.value))){
         errorInput(indirizzo);
-        return false;
+        state = false;
     }else{
         correctInput(indirizzo);
-        return true;
     }
 
     let citta = document.getElementById("citta");
-    if(citta==null) {
+    if(citta.value.length < 3 || !(/^[A-Z\s]{1,30}$/i.test(citta.value))) {
         errorInput(citta);
-        return false;
+        state = false;
     }else{
         correctInput(citta);
-        return true;
     }
+
+    return state;
 }

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Annalaura
   Date: 20/07/2022
@@ -7,54 +7,64 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Modifica dati di spedizione</title>
-    <%@include file="../includes/links.html"%>
-</head>
-<body>
-<%@include file="../includes/navbar.jsp"%>
-<%
-    Utente u = (Utente) session.getAttribute("utente");
-%>
-
-<form action="modifica-datiSUtente" onsubmit="return validateFormDatiSUtente()">
-    Indirizzo:
-    <input type="text" id="indirizzo" name="indirizzo"
+    <head>
+        <title>Modifica dati di spedizione</title>
+        <%@include file="../includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="../includes/navbar.jsp"%>
         <%
-        if(u.getVia()!=null){
-        %>
-           value="<%=u.getVia()%>"
-        <%}%>
-    >
+            Utente u =  (Utente) session.getAttribute("utente");
+            List<String> errorPar = (List<String>) request.getAttribute("error-parameter");
+            if(errorPar != null){
+                String txt = errorPar.get(0);
 
-    Numero civico:
-    <input type="text" id="civico" name="civico" maxlength="3"
-        <%
-        if(u.getNumCivico()>0){
+                for(int i =  1; i < errorPar.size(); i++)
+                    txt += ", " + errorPar.get(i);
         %>
-           value="<%=u.getNumCivico()%>"
+        <div id="error-message">
+            Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
+        </div>
         <%}%>
-    >
 
-    Citt&agrave:
-    <input type="text" id="citta" name="citta" maxlength="30"
-        <%
-        if(u.getCitta()!=null){
-        %>
-           value="<%=u.getCitta()%>"
-        <%}%>
-    >
+        <form action="modifica-datiSUtente" onsubmit="return validateFormDatiSUtente()">
+            <label>Via:</label>
+            <input type="text" id="indirizzo" name="indirizzo"
+                <%
+                if(u.getVia()!=null){
+                %>
+                   value="<%=u.getVia()%>"
+                <%}%>
+            >
 
-    CAP:
-    <input type="text" id="cap" name="cap" maxlength="5"
-        <%
-        if(u.getCap()>0){
-        %>
-           value="<%=u.getCap()%>"
-        <%}%>
-    >
-    <input type="submit" value="Salva">
-</form>
-<script type="text/javascript" src="script/datiSpedizione.js"></script>
-</body>
+            <label>Numero civico:</label>
+            <input type="text" id="civico" name="civico" maxlength="3"
+                <%
+                if(u.getNumCivico()>0){
+                %>
+                   value="<%=u.getNumCivico()%>"
+                <%}%>
+            >
+
+            <label>Città:</label>
+            <input type="text" id="citta" name="citta" maxlength="30"
+                <%
+                if(u.getCitta()!=null){
+                %>
+                   value="<%=u.getCitta()%>"
+                <%}%>
+            >
+
+            <label>CAP:</label>
+            <input type="text" id="cap" name="cap" maxlength="5"
+                <%
+                if(u.getCap()>0){
+                %>
+                   value="<%=u.getCap()%>"
+                <%}%>
+            >
+            <input type="submit" value="Salva">
+        </form>
+        <script type="text/javascript" src="script/datiSpedizione.js"></script>
+    </body>
 </html>
