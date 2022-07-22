@@ -20,8 +20,8 @@
        </div>
         <ul class="nav">
                 <li id="search-item">
-                    <form id="search-form" action=#>
-                        <input type="text" placeholder="Inizia a digitare..." name="keyword" id="search-box">
+                    <form id="search-form" action="ricerca">
+                        <input type="text" onkeyup="getSuggerimento()" placeholder="Inizia a digitare..." name="key" id="search-box">
                         <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
                         <div id="suggest">
 

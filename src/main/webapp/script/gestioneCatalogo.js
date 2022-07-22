@@ -77,7 +77,6 @@ function filtraProdotti(){
     }
 
     xhttp.open("GET", "filtra-prodotti?categoria="+categoria +"&marca=" + marca);
-
     xhttp.send();
 
 

@@ -169,7 +169,8 @@ ul#menu-items-list{
 }
 
 #result{
-    margin-left: 0;
+    padding-left: 0;
+
 }
 #result li{
     padding: 1px;
@@ -178,8 +179,17 @@ ul#menu-items-list{
     float: none;
 }
 
-#result li:hover{
-    background-color: rgba(0,0,0,0.2);
+#result li:hover {
+   background-color: rgba(0, 0, 0, 0.2);
+}
+
+#result li a{
+    background-color: transparent;
+    color: darkblue;
+}
+
+#result li a:hover{
+    background-color: transparent;
 }
 
 /*HomeAdmin.jsp*/
@@ -191,6 +201,7 @@ a.gestioneAdmin{
     background-color: darkblue;
     color: white;
     margin: 4%;
+    display: block;
 }
 
 div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
@@ -371,7 +382,8 @@ ul#password-check-list{
         border-color: white;
         background-color: darkblue;
         color: white;
-        margin: 15%;
+        margin: 2% 7% 2% 7%;
+
     }
 
     div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
@@ -409,7 +421,9 @@ ul#password-check-list{
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-
+    a.gestioneAdmin{
+        display: block;
+    }
 }
 
 /*Se la larghezza dello schermo è più di 769px*/
@@ -512,6 +526,11 @@ ul#password-check-list{
 
     ul#account-box-list li a{
         color: blue;
+    }
+
+    a.gestioneAdmin{
+        display: inline;
+        margin: 7%;
     }
 
 

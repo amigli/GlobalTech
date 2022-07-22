@@ -10,7 +10,7 @@ import model.ProdottoDAO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "SuggerimentiRicercaServlet", value = "/SuggerimentiRicercaServlet")
+@WebServlet(name = "SuggerimentiRicercaServlet", value = "/search-suggest")
 public class SuggerimentiRicercaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +23,9 @@ public class SuggerimentiRicercaServlet extends HttpServlet {
 
         ProdottoDAO service =  new ProdottoDAO();
 
-        List<Prodotto> list =  service.doRetrieveByNameOrMarca(searchKey);
+        List<Prodotto> listAll =  service.doRetrieveByNameOrMarca(searchKey);
+
+        List<Prodotto> list = listAll.subList(0, Math.min(listAll.size(), 5));
 
         Gson converter = new Gson();
         String json =  converter.toJson(list);
