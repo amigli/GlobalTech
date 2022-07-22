@@ -363,21 +363,22 @@ ul#password-check-list{
 
 /*----------------------------------------*/
 @media screen and (min-width: 320px) and (max-width: 480px) {
+    /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         border-style: groove;
         border-radius: 5px;
-        padding: 1px;
+        padding: 0;
         border-color: white;
         background-color: darkblue;
         color: white;
-        margin: 10%;
+        margin: 15%;
     }
 
     div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
         margin:1%;
         text-align: center;
-        border: 5px solid darkblue;
-        padding-top: 3%;
+        border: 3px solid darkblue;
+        padding: 3%;
         height: 5em;
     }
 
