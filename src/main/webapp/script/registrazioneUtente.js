@@ -5,7 +5,7 @@ function validatePassword(id){
 
     let password =  document.getElementById(id).value;
 
-    let error = true;
+    let state = true;
 
     let liLenght = document.getElementById("min-lenght");
     let iconLenght = document.querySelector("li#min-lenght > i");
@@ -14,7 +14,7 @@ function validatePassword(id){
         correctField(liLenght, iconLenght);
     else{
         errorField(liLenght, iconLenght);
-        error = false;
+        state = false;
     }
 
 
@@ -25,7 +25,7 @@ function validatePassword(id){
         correctField(liSymbol, iconSymbol);
     else{
         errorField(liSymbol, iconSymbol);
-        error = false;
+        state = false;
     }
 
 
@@ -36,7 +36,7 @@ function validatePassword(id){
         correctField(liLetter, iconLetter);
     else {
         errorField(liLetter, iconLetter);
-        error = false;
+        state = false;
     }
 
     let liNumber = document.getElementById("min-number");
@@ -46,10 +46,47 @@ function validatePassword(id){
         correctField(liNumber, iconNumber);
     else {
         errorField(liNumber, iconNumber);
-        error = false;
+        state = false;
     }
 
-    return error;
+    return state;
 }
 
+
+function validateFormRegistrazione(){
+    let state = true;
+
+    let nome =  document.getElementById("nome");
+
+    if(nome.value.length < 3 || !/^[A-Z]{3,3}0/i.test(nome.value)){
+        errorInput(nome);
+        state = false;
+    }else{
+        correctInput(nome);
+    }
+
+    let cognome =  document.getElementById("cognome");
+
+    if(nome.value.length < 3 || !/^[A-Z]{3,3}0/i.test(nome.value)){
+        errorInput(cognome);
+        state = false;
+    }else{
+        correctInput(cognome);
+    }
+
+    let password =  document.getElementById("password");
+
+    if(!validatePassword('pass')) {
+        errorInput(nome);
+        state = false;
+    }else{
+        correctInput(nome);
+    }
+
+
+    return state;
+
+
+
+}
 

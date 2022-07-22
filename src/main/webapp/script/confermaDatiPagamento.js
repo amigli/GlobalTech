@@ -16,3 +16,4 @@ function activeFormPagamento(){
     let modificaButton =  document.getElementById("modifica-button");
     modificaButton.parentNode.removeChild(modificaButton);
 }
+

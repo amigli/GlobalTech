@@ -32,8 +32,8 @@
         <%}%>
         <form method="post" action="conferma-pagamento" id="form-dati-pagamento">
             <div>
-                <label for="numerocc">Numero Carta</label>
-                <input type="text" name="numerocc" id="numerocc" required disabled
+                <label for="numCarta">Numero Carta</label>
+                <input type="text" name="numerocc" id="numCarta" required disabled
                     <%if(u.getNumeroCarta() != null){%>
                        value="<%=u.getNumeroCarta()%>"
                     <%}%>
@@ -88,18 +88,19 @@
                 <button type="submit">Avanti</button>
             </form>
         <%}else{%>
-        <script>
-            $(document).ready(function (){
-                let form =  document.forms["form-dati-pagamento"];
-                for(let input of form){
-                    input.removeAttribute("disabled");
-                }
-                let submit = document.getElementById("continua");
-                submit.style.display = "block";
-            })
-        </script>
+            <script>
+                $(document).ready(function (){
+                    let form =  document.forms["form-dati-pagamento"];
+                    for(let input of form){
+                        input.removeAttribute("disabled");
+                    }
+                    let submit = document.getElementById("continua");
+                    submit.style.display = "block";
+                })
+            </script>
         <%}%>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
         <script type="text/javascript" src="script/confermaDatiPagamento.js"></script>
+        <script type="text/javascript" src="script/datiCarta.js"></script>
     </body>
 </html>

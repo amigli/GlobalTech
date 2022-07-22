@@ -30,7 +30,7 @@
         </div>
         <%}%>
 
-        <form id="dati-spedizione" method="post" action="salva-dati-spedizione">
+        <form id="dati-spedizione" method="post" onsubmit="return validateFormDatiSpedizione()" action="salva-dati-spedizione">
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" required
@@ -60,7 +60,7 @@
             </div>
             <div>
                 <label for="civico">Civico</label>
-                <input type="text" name="civico" id="civico" required
+                <input type="number" name="civico" id="civico" required
                     <%if(u.getNumCivico() != 0){%>
                        value="<%=u.getNumCivico()%>"
                        disabled

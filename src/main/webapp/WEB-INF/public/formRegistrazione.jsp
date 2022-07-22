@@ -18,10 +18,16 @@
     <body>
         <%@ include file="/WEB-INF/includes/navbar.jsp"%>
         <br>
-        <form action="registra-utente" id="registrazione-form" method="post">
+        <form action="registra-utente" id="registrazione-form" onsubmit="return validateFormRegistrazione()" method="post">
             <%
                 ArrayList<String> errList =  (ArrayList<String>) request.getAttribute("error_parameter");
+                String message = (String) request.getAttribute("message");
             %>
+            <%if(message != null){%>
+                <div class="error-message">
+                    <%=message%>
+                </div>
+            <%}%>
             <h2>Crea un account</h2>
             <fieldset>
                 <legend> Dati di accesso</legend>
