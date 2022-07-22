@@ -237,7 +237,6 @@ public class UtenteDAO {
             }else{
                 stmt.close();
                 con.close();
-
             }
 
 
@@ -245,5 +244,32 @@ public class UtenteDAO {
             throw new RuntimeException();
         }
     }
+    public Utente doRetrieveByEmail(String email){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM utente WHERE email = ?");
+
+            stmt.setString(1,email);
+
+            ResultSet res = stmt.executeQuery();
+
+            if(res.next()) {
+                Utente u = creaUtente(res);
+
+                stmt.close();
+                con.close();
+
+                return u;
+            }else{
+                stmt.close();
+                con.close();
+
+                return  null;
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 }

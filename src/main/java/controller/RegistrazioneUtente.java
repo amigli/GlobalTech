@@ -27,7 +27,7 @@ public class RegistrazioneUtente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<String> errorPar =  new ArrayList<>();
         UtenteDAO service = new UtenteDAO();
-        String address=null;
+        String address="/WEB-INF/result/registrazioneResult.jsp";
 
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
@@ -35,7 +35,6 @@ public class RegistrazioneUtente extends HttpServlet {
         String cognome = request.getParameter("cognome");
         String dataNascitaString = request.getParameter("data_nascita");
 
-        //aggiungere controlli con regex
         if (email==null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$")))
             errorPar.add("email_registrazione");
 
@@ -63,25 +62,31 @@ public class RegistrazioneUtente extends HttpServlet {
         }
 
         if (errorPar.isEmpty()){
-            Utente u = new Utente();
-            u.setEmail(email);
-            u.setPassword(password);
-            u.setNome(nome);
-            u.setCognome(cognome);
-            u.setDataNascita(dataNascita);
-            u.setAdmin(false);
-            u.setNumAcquisti(0);
+            Utente tmp =  service.doRetrieveByEmail(email);
 
-            int id = service.registraUtente(u);
+            if(tmp ==  null){
 
-            u.setId(id);
+                Utente u = new Utente();
+                u.setEmail(email);
+                u.setPassword(password);
+                u.setNome(nome);
+                u.setCognome(cognome);
+                u.setDataNascita(dataNascita);
+                u.setAdmin(false);
+                u.setNumAcquisti(0);
 
-            request.setAttribute("utente", u);
+                int id = service.registraUtente(u);
 
-            address="/WEB-INF/result/registrazioneResult.jsp";
+                u.setId(id);
 
-        }
-        else{
+                request.setAttribute("utente", u);
+
+
+            }else{
+                address = "/WEB-INF/public/formRegistrazione.jsp";
+                request.setAttribute("message", "Esiste già un account con questa email");
+            }
+        }else{
             request.setAttribute("error_parameter", errorPar);
             //aggiungere un messaggio al formRegistrazione in questo caso
             address = "/WEB-INF/public/formRegistrazione.jsp";
