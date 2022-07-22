@@ -80,7 +80,7 @@ public class CaricaProdottoServlet extends HttpServlet {
                         if (!ramTipo.matches("^DDR[3-5]$")) {
                             errorPar.add("ram_tipo");
                         } else {
-                            if (request.getParameter("ram_quantita") != null) { //ram_quantita
+                            if (request.getParameter("ram_quantita") != null) {
                                 try {
                                     ramQuantita = Integer.parseInt(request.getParameter("ram_quantita"));
                                 } catch (NumberFormatException e) {

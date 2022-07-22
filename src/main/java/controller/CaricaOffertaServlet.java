@@ -84,7 +84,6 @@ public class CaricaOffertaServlet extends HttpServlet {
                         //inserisci l'offerta
                         Offerta offerta = new Offerta();
 
-
                         offerta.setNome(nome);
                         offerta.setPercentuale(sconto);
                         offerta.setDataInizio(dataInizio);

@@ -106,6 +106,7 @@
         <br>
         <fieldset>
             <legend>Dati tecnici</legend>
+            <br>
             <div>
                 <label>Stai inserendo un prodotto con batteria?</label>
                 <input type="radio" name="batteria" id="batteria_true" value="true" required>
@@ -113,6 +114,7 @@
                 <input type="radio" name="batteria" id="batteria_false" value="false" required>
                 <label for="batteria_false">No</label>
             </div>
+            <br>
             <div>
                 <label for="ram_tipo" >Tipologia RAM</label><br>
                 <select name="ram_tipo" onchange="activeRam(value)" id="ram_tipo">
@@ -165,7 +167,7 @@
                 </select>
                 <%if(list != null && list.contains("sistema_operativo")){%>
                     <div class="error-message">
-                        Inserire uno tipo din RAM dalla selezione multipla
+                        Inserire un tipo di sistema operativo
                     </div>
                 <%}%>
             </div>
