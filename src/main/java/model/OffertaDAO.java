@@ -71,9 +71,10 @@ public class OffertaDAO {
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM offerta WHERE id="+id);
             if (rs.next()){
+                Offerta offerta = this.creaOfferta(rs);
+
                 stmt.close();
                 con.close();
-                Offerta offerta = this.creaOfferta(rs);
                 return offerta;
             }else {
                 stmt.close();
