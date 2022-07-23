@@ -38,7 +38,7 @@
             <%
                 GregorianCalendar today = new GregorianCalendar();
             %>
-            <input type="date" name="data-inizio" id="data-inizio" min="<%=today.toZonedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))%>" value="${offerta.dataInizio}" disabled onchange="setDataFine()" required>
+            <input type="date" onchange="setDataFine()" name="data-inizio" id="data-inizio" min="<%=today.toZonedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))%>" value="${offerta.dataInizio}" disabled onchange="setDataFine()" required>
         </div>
         <div>
             <label for="data-fine">Data Fine</label><br>
@@ -88,8 +88,6 @@
             }%>
         </div>
         <button onclick="aggiungiProdotto()" id="aggiungi-prodotto">Aggiungi prodotti</button>
-
-
     </div>
     </div>
     <%@include file="/WEB-INF/includes/footer.jsp"%>
