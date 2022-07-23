@@ -64,7 +64,7 @@ function activeRam(value){
         elem.removeAttribute("disabled");
         unit.removeAttribute("disabled")
     }else{
-        elem.setAttribute("disabled", "disabled");
+        unit.setAttribute("disabled", "disabled");
         elem.setAttribute("disabled", "disabled");
         elem.value = "";
     }

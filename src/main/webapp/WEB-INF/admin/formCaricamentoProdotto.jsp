@@ -140,7 +140,7 @@
                        value="<%=request.getParameter("ram_quantita")%>"
                     <%}%>
                        disabled>
-                <select name="ram_unit">
+                <select name="ram_unit" id="ram_unit" disabled>
                     <option value="kb">KB</option>
                     <option value="mb">MB</option>
                     <option value="gb">GB</option>
@@ -154,6 +154,9 @@
             <div>
                 <label for="cpu_nome">Nome CPU</label><br>
                 <input type="text" name="cpu_nome" id="cpu_nome" required>
+                <div class="error" id="err_cpu_nome">
+
+                </div>
             </div>
             <div>
                 <label for="sistema_operativo">Sistema Operativo</label>
