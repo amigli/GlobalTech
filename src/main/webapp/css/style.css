@@ -493,6 +493,44 @@ figure.prodotto-figure:hover {
 }
 
 
+/*Dettaglio prodotto*/
+
+main#dettaglio-prodotto{
+    margin: 2rem;
+}
+
+div#gallery-product > img{
+    width: 23rem;
+    height: 23rem;
+    object-fit: contain;
+}
+
+a#left-row, a#right-row{
+    position: relative;
+    display: block;
+    width: 1rem;
+    margin-top: 12rem;
+
+}
+a#left-row{
+    float: left;
+    margin: -13rem 23rem 1rem 0rem;
+}
+a#right-row{
+    float: right;
+    margin: -13rem 0 16rem 23rem;
+}
+
+a#left-row i:hover, a#right-row i:hover{
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+
 
 
 
@@ -608,6 +646,11 @@ figure.prodotto-figure:hover {
         height: 15rem;
         object-fit: contain;
     }
+
+
+    /* Dettaglio prodotto */
+
+
 }
 
 
@@ -751,7 +794,6 @@ figure.prodotto-figure:hover {
        text-align: center;
     }
     a.gestioneProdotto{
-        font-size: large;
         display: inline;
         margin: 0;
         padding: 2%;
@@ -763,17 +805,53 @@ figure.prodotto-figure:hover {
         float : left;
     }
 
+    /*Dettaglio Prodotto*/
+    div#gallery-product{
+        width: 43%;
+        float: left;
+        margin: 1em;
+    }
+
+    section#dettaglio-prodotto > div#description{
+        width: 48%;
+        margin: 2rem;
+    }
+
+    div#box-per-acquisto{
+        width: 50%;
+        float: left;
+    }
+
+    section#scheda-tecnica{
+        clear: left;
+    }
+
+
+
 
 }
 
 @media screen and (min-width : 1180px) {
+
+    /*Catalogo*/
     figure.prodotto-figure{
         width: 24%;
         margin: 0.5em;
     }
 
+    figure.prodotto-figure div#descrizione{
+        height: 5rem;
+    }
+    /*Dettaglio Prodotto*/
+
     section#prodotti-catalogo{
         margin: 3rem 0.8rem;
+    }
+
+    div#gallery-product > img{
+        width: 30rem;
+        height: 25rem;
+        object-fit: contain;
     }
 }
 

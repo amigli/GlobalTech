@@ -13,7 +13,7 @@
     <title>Area Riservata</title>
     <%@include file="/WEB-INF/includes/links.html"%>
 </head>
-<body>
+<body style="position: relative; z-index: -2">
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <section id="serviziAdmin">
     <h1>Scegli un servizio:</h1>
