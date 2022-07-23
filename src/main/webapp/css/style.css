@@ -33,7 +33,10 @@ input[type="radio"], input[type="checkbox"] {
     width: auto;
 }
 
-input[type=submit] {
+input[type=submit],button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2,
+button#aggiungiCategoria,button#effettua-modifica-prodotto-button, button#rimuoviProdottoDaCategoria,
+button#rimuoviOfferte, button#rimuoviOfferta2, button#rimuoviProdotti,
+button#effettua-modifica, button#rimuovi-prodotto, button#aggiungi-prodotto {
     background-color: mediumblue;
     color: white;
     font-size: 20px;
@@ -207,34 +210,35 @@ gestioneCategorieProdotto.jsp
 div#caricareProdotto, div#modificareProdotto, div#caricareOfferta,
 div#inserireCategoria, div#modificaUtente, div#caricaFoto,
 div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria,
-div#modificareCategoria, div#gestione-prodotti-offerta{
+div#modificareCategoria, div#gestione-prodotti-offerta, div#offerta{
     border-radius: 5px;
     background-color: #fff8dc;
     padding: 1em;
 }
+
 textarea#descrizione, textarea#descrizioneCategoria{
     width: 90%;
 }
 
-/*gestioneCategorieProdotto.jsp*/
-button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2, button#aggiungiCategoria{
+/*gestioneCategorieProdotto.jsp
+{
     background-color: white;
     color: darkblue;
     border: 2px solid blue;
     height: 2em;
     margin-top: 1em;
-}
+}*/
 
 /*gestioneProdotto.jsp
 gestioneCategorieProdotto.jsp
-*/
-button#effettua-modifica-prodotto-button, button#rimuoviProdottoDaCategoria, button#rimuoviOfferte, button#rimuoviOfferta2, button#rimuoviProdotti{
+
+{
     background-color: white;
     color: darkblue;
     border: 2px solid red;
     height: 2em;
     margin-top: 1em;
-}
+}*/
 a.gestioneProdotto{
     border-style:groove;
     border-radius: 8px;

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP - Hello World</title>
+        <title>Home</title>
         <%@include file="/WEB-INF/includes/links.html"%>
         <script src="script/gestione-carousel.js" defer></script>
         <meta charset="UTF-8">

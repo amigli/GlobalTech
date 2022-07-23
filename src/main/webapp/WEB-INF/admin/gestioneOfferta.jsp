@@ -24,6 +24,9 @@
   </head>
   <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
+    <br>
+    <div id="gestione-offerta">
+    <div id="offerta">
     <form method="post" id="form-modifica" action="modifica-offerta" onsubmit="return validateFormOfferta()">
         <input type="hidden" name="id_offer"  id="id_offer" value="${offerta.id}">
         <div>
@@ -50,7 +53,8 @@
         <input type="submit" value="Salva Modifica" id="salva-modifica" style="display: none">
     </form>
     <button onclick="effettuaModifica()" id="effettua-modifica">Effettua Modifica</button>
-
+    </div>
+    <br>
 
     <%
         Offerta offerta =  (Offerta) request.getAttribute("offerta");
@@ -69,7 +73,7 @@
             </div>
             <%}%>
         </div>
-        <button onclick="rimuoviProdotto()">Rimuovi Prodotti</button>
+        <button onclick="rimuoviProdotto()" id="rimuovi-prodotto">Rimuovi Prodotti</button>
         <br>
 
         <p>Seleziona i prodotti su cui applicare l'offerta</p>
@@ -83,11 +87,11 @@
             <%}
             }%>
         </div>
-        <button onclick="aggiungiProdotto()">Aggiungi prodotti</button>
+        <button onclick="aggiungiProdotto()" id="aggiungi-prodotto">Aggiungi prodotti</button>
 
 
     </div>
-
+    </div>
     <%@include file="/WEB-INF/includes/footer.jsp"%>
   </body>
 </html>

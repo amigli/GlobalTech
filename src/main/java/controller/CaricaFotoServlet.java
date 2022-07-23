@@ -46,7 +46,6 @@ public class CaricaFotoServlet extends HttpServlet {
                                 String[] tmp = {"jpg", "jpeg", "png", "gif", "bmp"};
                                 List<String> extensions = Arrays.asList(tmp);
 
-
                                 List<Part> parts =  (List<Part>) request.getParts();
                                 List<Part> foto = parts.stream().filter(p -> p.getName().equals("foto")).collect(Collectors.toList());
 

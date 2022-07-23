@@ -40,13 +40,13 @@
                 <p>Il prodotto non ha immagini, per la visualizzazione verrà utilizzata l'immagine di default</p>
                 <p>Puoi caricare una immagine con il form qui in basso</p>
             <%}%>
-<div id="caricaFoto">
+    <div id="caricaFoto">
         <form action="carica-foto" enctype="multipart/form-data" method="post">
             <input type="hidden" name="id"  value=${prodotto.id}>
             <input type="file" name="foto" accept="image/*" multiple>
             <input type="submit" value="Carica immagini">
         </form>
-        </div>
+    </div>
     <script type="text/javascript" src="script/gestioneImmagini.js"></script>
     </body>
 </html>
