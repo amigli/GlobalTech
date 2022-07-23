@@ -375,23 +375,29 @@ input[type="submit"]#modificaCategoriaButton, input[type="submit"]#rimuoviCatego
 
 a{
     color: darkblue;
-    font-size: 20px;
+    /*font-size: 20px;*/
     text-decoration: none;
 }
 
 /*footer.jsp*/
 footer{
     background-color: darkblue;
-    height: 25%;
+    height: 14rem;
     color : white;
-    width : 99%;
-    position: absolute;
-    margin-top: 10rem;
+    width : 100%;
+    position: relative;
+    display: inline-block;
+    bottom: 0;
+    clear: both;
+    margin: 2rem 0em 0 0em ;
+
+
+
 }
 div#footer-content{
     width: 95%;
-    height: 70%;
-    padding-left: 4em;
+    height: 9rem;
+    padding-left: 2em;
 }
 footer a{
     text-decoration: none;
@@ -404,10 +410,16 @@ div.information{
 }
 div.information > ul{
     margin-left: 0;
-    padding-left: 0;
+    padding: 0;
+    list-style-type: none;
 }
+
+div.information > ul li{
+    margin-bottom: 1em;
+}
+
 div#author{
-    height: 30%;
+    height: 4rem;
     width: 95%;
     text-align: center;
 }
@@ -524,6 +536,49 @@ a#right-row{
 a#left-row i:hover, a#right-row i:hover{
     font-size: 1.5rem;
 }
+
+
+/*Carrello*/
+
+main#carrello{
+    margin:2rem;
+}
+div#empty-cart{
+    min-height: 11rem;
+}
+
+div.prodotto-carrello{
+    width: 98%;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin: 1rem 0;
+    padding: 1em;
+}
+
+div.prodotto-carrello > img{
+    height : 12rem;
+    width :12rem;
+    object-fit: contain;
+    float: left;
+}
+
+div.dettagli-prodotto{
+    width: 50%;
+}
+
+span#totale{
+    float: left;
+    width: 50%;
+}
+
+span#totale-numero{
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+
+
 
 
 
@@ -840,7 +895,7 @@ a#left-row i:hover, a#right-row i:hover{
     }
 
     figure.prodotto-figure div#descrizione{
-        height: 5rem;
+        height: 9rem;
     }
     /*Dettaglio Prodotto*/
 

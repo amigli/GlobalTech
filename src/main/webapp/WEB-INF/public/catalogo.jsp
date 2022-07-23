@@ -78,6 +78,7 @@
                 </figure>
                 <%}%>
             </section>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
 
         <script type="text/javascript" src="script/gestioneCatalogo.js"></script>
     </body>

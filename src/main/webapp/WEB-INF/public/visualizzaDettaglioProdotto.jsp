@@ -52,6 +52,7 @@
                         <%if(item.getPrezzo() != item.getProdotto().getPrezzoListino()){
                         %>  <s><%=item.getProdotto().getPrezzoListino()%>€</s> <%=item.getPrezzo()%>€
                         <%}else{%>
+                            <%=item.getPrezzo()%>€
                         <%}%>
                     </h1>
                     <form method="post" action="aggiungi-carrello">
