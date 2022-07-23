@@ -38,10 +38,10 @@
             <p>Il prodotto è stato caricato con successo. Ora puoi:</p>
             <ul>
                 <li>
-                    <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}>Aggiungere delle immagini al prodotto</a>
+                    <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}">Aggiungere delle immagini al prodotto</a>
                 </li>
                 <li>
-                    <a hhref="gestione-categoria-prodotto?id_prod=${prodotto.id}>Aggiungere il prodotto a uno o più categorie</a>
+                    <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}">Aggiungere il prodotto a uno o più categorie</a>
                 </li>
                 <li>
                     <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}">Applicare delle offerte al prodotto</a>

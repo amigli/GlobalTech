@@ -25,5 +25,7 @@
                     <li><%=f.getDirectory()%></li>
             <%}%>
         </ul>
+
+        <p>Ritorna alla <a href="visualizza-prodotti">gestione prodotti</a></p>
     </body>
 </html>

@@ -91,7 +91,7 @@
             <%}
             }%>
         </section>
-        <button onclick="aggiungiOfferta('offerta-futura-other')" id="attivaOfferta2">Aggiungi Offerte</button>
+        <button onclick="aggiungiOfferta('offerta-futura-other')" id="attivaOfferta2">Attiva Offerte</button>
 
 
 

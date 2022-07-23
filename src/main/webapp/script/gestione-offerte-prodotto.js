@@ -50,7 +50,7 @@ function rimuoviOfferta(elementName){
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(parameters + "&id=" + id)
     } else {
-        window.alert("Selezionare almeno una categoria da rimuovere!")
+        window.alert("Selezionare almeno un'offerta da rimuovere!")
     }
 
 
@@ -105,7 +105,7 @@ function aggiungiOfferta(elementName){
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(parameters + "&id=" + id)
     } else {
-        window.alert("Selezionare almeno una categoria da rimuovere!")
+        window.alert("Selezionare almeno un' offerta da applicare!")
     }
 
 
