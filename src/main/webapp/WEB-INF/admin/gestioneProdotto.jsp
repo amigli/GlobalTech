@@ -102,23 +102,23 @@
                     </select>
                 </div>
                 <div>
-                    <%
-                        if(p.getTipoRam() != null){
-                            String[] ramQuantita = p.getQuantitaRam().split(" ");
+                    <%String[] ramQuantita = null;
+                        if(p.getTipoRam() != null) {
+                            ramQuantita = p.getQuantitaRam().split(" ");
+                        }
                     %>
                     <label for="ram_quantita">Quanità RAM</label><br>
-                    <input type="number"  min="1" max="1024" name="ram_quantita" value="<%=ramQuantita[0]%>" id="ram_quantita"
+                    <input type="number"  min="1" max="1024" name="ram_quantita" <%if(p.getTipoRam() != null){%>value="<%=ramQuantita[0]%>"<%}%> id="ram_quantita"
                            disabled>
                     <select name="ram_unit" disabled>
-                        <option <%if(ramQuantita[1].equalsIgnoreCase("kb")){%>selected<%}%>
+                        <option <%if(p.getTipoRam() != null && ramQuantita[1].equalsIgnoreCase("kb")){%>selected<%}%>
                                 value="kb">KB</option>
-                        <option <%if(ramQuantita[1].equalsIgnoreCase("mb")){%>selected<%}%>
+                        <option <%if(p.getTipoRam() != null && ramQuantita[1].equalsIgnoreCase("mb")){%>selected<%}%>
                                 value="mb">MB</option>
-                        <option <%if(ramQuantita[1].equalsIgnoreCase("gb")){%>selected<%}%>
+                        <option <%if( p.getTipoRam() != null && ramQuantita[1].equalsIgnoreCase("gb")){%>selected<%}%>
                                 value="gb">GB</option>
                     </select>
                 </div>
-                <%}%>
                 <div>
                     <label for="cpu_nome">Nome CPU</label><br>
                     <input id="cpu_nome" name="cpu_nome" value="${prodotto.cpuNome}" disabled>
