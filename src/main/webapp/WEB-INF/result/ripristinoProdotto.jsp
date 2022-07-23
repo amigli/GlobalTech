@@ -15,7 +15,7 @@
 </head>
     <body>
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
-        <p>Il prodotto è stato ripristinato con successo!</p>
+    <p>Il prodotto è stato ripristinato con successo!</p>
     <p>Puoi ritornare alla tua area admin da questo <a href="index.html">link</a></p>
     <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>

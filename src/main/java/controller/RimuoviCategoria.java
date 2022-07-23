@@ -17,44 +17,52 @@ import java.util.ArrayList;
 @WebServlet(name = "RimuoviCategoriaServlet", value = "/rimuovi-categoria")
 public class RimuoviCategoria extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-        Utente u = (Utente) session.getAttribute("Utente");
 
-        if(u != null ){
-            if( u.isAdmin()){
-                String idstring =  request.getParameter("id");
-                String address = "/WEB-INF/result/removeCategoriaResult.jsp";
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-                if(idstring != null){
-                    try{
-                        int id = Integer.parseInt(idstring);
+            if(u != null ){
+                if( u.isAdmin()){
+                    String idstring =  request.getParameter("id");
+                    if(idstring != null){
+                        try{
+                            int id = Integer.parseInt(idstring);
 
-                        CategoriaDAO service = new CategoriaDAO();
+                            CategoriaDAO service = new CategoriaDAO();
 
-                        Categoria cat = service.doRetrieveById(id);
+                            Categoria cat = service.doRetrieveById(id);
 
-                        if(cat != null){
-                            service.doRemoveCategoria(id);
-                            request.setAttribute("deleted_cat", cat);
+                            if(cat != null){
+                                service.doRemoveCategoria(id);
+                                request.setAttribute("deleted_cat", cat);
+
+                                String address = "/WEB-INF/result/removeCategoriaResult.jsp";
+                                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                                dispatcher.forward(request, response);
+                            }else{
+                                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                            }
+                        }catch (NumberFormatException e){
+                            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         }
-                    }catch (NumberFormatException e){
-                        response.setStatus(500);
+                    }else{
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                     }
                 }else{
-                    response.setStatus(404);
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-                dispatcher.forward(request, response);
+            }else{
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
+
+
         }
 
 

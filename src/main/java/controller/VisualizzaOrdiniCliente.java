@@ -15,38 +15,45 @@ import java.util.List;
 public class VisualizzaOrdiniCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idUtenteString = request.getParameter("idCliente");
-        Utente u = (Utente) request.getSession().getAttribute("utente");
-        List<String> errorPar = new ArrayList<>();
-        String address="/WEB-INF/admin/visualizzaOrdiniCliente.jsp";
+        HttpSession session = request.getSession();
 
-        if (u!=null){
-            if (u.isAdmin()){
-                if (idUtenteString!=null){
-                    int idUtente = Integer.parseInt(idUtenteString);
-                    OrdineDAO service = new OrdineDAO();
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-                    List<Ordine>ordiniById = service.doRetrieveByUtenteId(idUtente);
 
-                    request.setAttribute("ordini", ordiniById);
+            if (u!=null){
+                if (u.isAdmin()){
+                    String idUtenteString = request.getParameter("idCliente");
+                    if (idUtenteString != null){
+                        try{
+
+                            int idUtente = Integer.parseInt(idUtenteString);
+                            OrdineDAO service = new OrdineDAO();
+
+                            List<Ordine>ordiniById = service.doRetrieveByUtenteId(idUtente);
+
+                            request.setAttribute("ordini", ordiniById);
+
+                            RequestDispatcher dispatcher = request.getRequestDispatcher( "/WEB-INF/admin/visualizzaOrdini.jsp");
+                            dispatcher.forward(request, response);
+                        }catch (NumberFormatException e){
+                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                        }
+
+                    }else{
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                    }
                 }else{
-                    errorPar.add("idUtente");
-                    request.setAttribute("erroriParametri", errorPar);
-                    address = "gestioneUtente.jsp";
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
             }else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

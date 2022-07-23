@@ -15,29 +15,31 @@ import java.util.List;
 public class VisualizzaOrdini extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utente u = (Utente) request.getSession().getAttribute("utente");
-        List<String> errorPar = new ArrayList<>();
-        String address="/WEB-INF/admin/visualizzaOrdiniCliente.jsp";
+        HttpSession session = request.getSession();
 
-        if (u!=null){
-            if (u.isAdmin()){
-                OrdineDAO service = new OrdineDAO();
+        synchronized (session){
+            Utente u = (Utente) request.getSession().getAttribute("utente");
+            List<String> errorPar = new ArrayList<>();
 
-                List<Ordine>ordiniAll = service.doRetrieveAll();
+            if (u!=null){
+                if (u.isAdmin()){
+                    OrdineDAO service = new OrdineDAO();
 
-                if (ordiniAll!=null){
+                    List<Ordine>ordiniAll = service.doRetrieveAll();
+
                     request.setAttribute("ordini", ordiniAll);
+
+
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/visualizzaOrdini.jsp");
+                    dispatcher.forward(request, response);
+
                 }else{
-                    errorPar.add("lista vuota");
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
             }else{
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
 
     }
 
