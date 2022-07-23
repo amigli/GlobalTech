@@ -568,6 +568,8 @@ div.prodotto-carrello > img{
 
 div.dettagli-prodotto{
     width: 50%;
+    float: right;
+    text-align: right;
 }
 
 span#totale{

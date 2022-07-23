@@ -46,13 +46,11 @@
                     <div class="dettagli-prodotto">
                         <h2 class="prezzo">€<%=item.getPrezzo()%></h2>
                         <h2>Quantita :  <%=item.getQuantita()%></h2>
-
-                        <form method="post" action="rimuovi-prodotto-carrello">
-                            <input type="hidden" name="id_prod" value="<%=item.getProdotto().getId()%>">
-                            <input type="submit" value="Elimina Prodotto">
-                        </form>
-
                     </div>
+                    <form method="post" action="rimuovi-prodotto-carrello">
+                        <input type="hidden" name="id_prod" value="<%=item.getProdotto().getId()%>">
+                        <input type="submit" value="Elimina Prodotto">
+                    </form>
 
                 </div>
                 <%}%>
