@@ -21,39 +21,50 @@
             Carrello cart = (Carrello) request.getAttribute("carrello");
         %>
 
-        <section id="carrello">
+        <main id="carrello">
             <h1>Carrello</h1>
 
             <section id="messages">
             </section>
+
             <%if(cart.isEmpty()){%>
-                <p>Il carrello è vuoto!</p>
-            <p>Sfoglia il nostro ricco <a href="catalogo">catalogo</a> e riempilo</p>
-            <%}else{
-                for(ItemCart item : cart.getProdotti()){%>
-                <div class="prodotto" id="prodotto-<%=item.getProdotto().getId()%>">
+                <div id="empty-cart">
+                    <p>Il carrello è vuoto!</p>
+                    <p>Sfoglia il nostro ricco <a href="catalogo">catalogo</a> e riempilo</p>
+                </div>
+
+            <%}else{%>
+            <section id="prodotti">
+                <%for(ItemCart item : cart.getProdotti()){%>
+                <div class="prodotto-carrello" id="prodotto-<%=item.getProdotto().getId()%>">
                     <h1><%=item.getProdotto().getMarca() + "-" + item.getProdotto().getNome()%></h1>
                     <%if(item.getProdotto().getImmagini().size() > 0){%>
                     <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
                     <%}else{%>
                     <img src="./asset/default.png">
                     <%}%>
-                    <p class="prezzo">€<%=item.getPrezzo()%></p>
-                    <p>Quantita :  <%=item.getQuantita()%></p>
+                    <div class="dettagli-prodotto">
+                        <h2 class="prezzo">€<%=item.getPrezzo()%></h2>
+                        <h2>Quantita :  <%=item.getQuantita()%></h2>
 
-                    <form method="post" action="rimuovi-prodotto-carrello">
-                        <input type="hidden" name="id_prod" value="<%=item.getProdotto().getId()%>">
-                        <input type="submit" value="Elimina Prodotto">
-                    </form>
+                        <form method="post" action="rimuovi-prodotto-carrello">
+                            <input type="hidden" name="id_prod" value="<%=item.getProdotto().getId()%>">
+                            <input type="submit" value="Elimina Prodotto">
+                        </form>
+
+                    </div>
+
                 </div>
-            <%}%>
-            <p id="totale-carrello"><b>TOTALE <%=cart.getTotale()%></b></p>
-            <form method="post" action="completa-ordine">
-                <input type="submit" value="Conferma Ordine">
-            </form>
-            <%}%>
+                <%}%>
+                <h1 id="totale-carrello"><span id="totale">TOTALE</span> <span id="totale-numero"><%=cart.getTotale()%>€</span></h1>
+                <form method="post" action="completa-ordine">
+                    <input type="submit" value="Conferma Ordine">
+                </form>
+                <%}%>
+            </section>
 
-        </section>
+
+        </main>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>
 </html>

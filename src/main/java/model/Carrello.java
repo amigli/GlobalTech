@@ -13,7 +13,7 @@ public class Carrello {
 
 
     public float getTotale() {
-        return prodotti.stream().map(ItemCart::getPrezzo).reduce(0F, Float::sum);
+        return prodotti.stream().map(p->p.getPrezzo()*p.getQuantita()).reduce(0F, Float::sum);
     }
 
     public void addProdotto (ItemCart prodotto){
