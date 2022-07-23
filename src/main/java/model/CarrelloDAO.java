@@ -68,16 +68,12 @@ public class CarrelloDAO {
     public void doUpdateQuantityProduct(Utente u, ItemCart item){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement stmt =
-                    con.prepareStatement("UPDATE carrello set quantita = " +
-                            "(SELECT quantita FROM carrello WHERE id_utente = ? AND id_prodotto = ?) + ?" +
-                            "WHERE id_utente = ? AND id_prodotto = ? ");
+                    con.prepareStatement("UPDATE carrello set quantita = ? WHERE id_utente = ? AND id_prodotto = ? ");
 
 
-            stmt.setInt(1, u.getId());
-            stmt.setInt(2, item.getProdotto().getId());
-            stmt.setInt(3, item.getQuantita());
-            stmt.setInt(4, u.getId());
-            stmt.setInt( 5,item.getProdotto().getId());
+            stmt.setInt(1, item.getQuantita());
+            stmt.setInt(2, u.getId());
+            stmt.setInt( 3,item.getProdotto().getId());
 
             if(stmt.executeUpdate() == 0)
                 throw new RuntimeException();
@@ -113,7 +109,7 @@ public class CarrelloDAO {
                     con.prepareStatement("DELETE FROM carrello WHERE id_utente = ? AND id_prodotto = ?");
 
             stmt.setInt(1, u.getId());
-            stmt.setInt(2, u.getId());
+            stmt.setInt(2, prodotto.getId());
 
 
             stmt.executeUpdate();

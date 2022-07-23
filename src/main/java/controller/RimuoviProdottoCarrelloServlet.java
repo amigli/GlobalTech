@@ -11,7 +11,7 @@ import java.io.IOException;
 public class RimuoviProdottoCarrelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
@@ -32,7 +32,6 @@ public class RimuoviProdottoCarrelloServlet extends HttpServlet {
 
                         if(prodotto != null){
                             ItemCart deleted = cart.rimuoviProdotto(prodotto);
-
 
                             if(deleted != null){
                                 Utente u = (Utente) session.getAttribute("utente");

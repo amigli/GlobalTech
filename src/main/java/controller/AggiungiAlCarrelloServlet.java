@@ -62,7 +62,11 @@ public class AggiungiAlCarrelloServlet extends HttpServlet {
                             CarrelloDAO serviceCarrello = new CarrelloDAO();
 
                             if(cart.getProdotti().stream().anyMatch(i->i.getProdotto().equals(p))){
-                                serviceCarrello.doUpdateQuantityProduct(u,item);
+                                List<ItemCart> itemList = cart.getProdotti().stream().filter(i->i.getProdotto().equals(p)).collect(Collectors.toList());
+
+                                ItemCart tmp = itemList.get(0);
+
+                                serviceCarrello.doUpdateQuantityProduct(u,tmp);
                             }else{
                                 serviceCarrello.doAggiungiProdotto(u, item);
                             }
