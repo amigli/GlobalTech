@@ -26,6 +26,18 @@
         inputError(color, "colore")
     }
 
+     let cpu = form["cpu_nome"];
+
+     if((/^[\w\s]{4,30}$/i).test(cpu.value)){
+         inputCorrect(cpu,"cpu_nome")
+     }else{
+         result=false;
+         inputError(cpu, "cpu_nome")
+     }
+
+    if(!result){
+        window.alert("Inserire parametri validi!");
+    }
     return result;
 }
 
