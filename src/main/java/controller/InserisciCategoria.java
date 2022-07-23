@@ -40,7 +40,7 @@ public class InserisciCategoria extends HttpServlet {
                 if (nome==null || nome.length()<3)
                     errorPar.add("nome");
 
-                if (descrizione==null || descrizione.length()<3)
+                if (descrizione == null)
                     errorPar.add("descrizione");
 
                 if (errorPar.isEmpty()){
