@@ -37,6 +37,8 @@
         <br>
         <a href="registrazione">Sei un nuovo cliente? Registrati!</a>
     </form>
+
 </div>
+<%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>
