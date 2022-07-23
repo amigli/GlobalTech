@@ -163,7 +163,7 @@
                     <option value="macOS">MacOS</option>
                     <option value="Android">Android</option>
                     <option value="iOS">iOS</option>
-                    <option value="Propietario">Propietario</option>
+                    <option value="Proprietario">Propietario</option>
                 </select>
                 <%if(list != null && list.contains("sistema_operativo")){%>
                     <div class="error-message">

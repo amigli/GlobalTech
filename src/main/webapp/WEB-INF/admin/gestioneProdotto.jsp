@@ -103,7 +103,8 @@
                 </div>
                 <div>
                     <%
-                        String[] ramQuantita = p.getQuantitaRam().split(" ");
+                        if(p.getTipoRam() != null){
+                            String[] ramQuantita = p.getQuantitaRam().split(" ");
                     %>
                     <label for="ram_quantita">Quanità RAM</label><br>
                     <input type="number"  min="1" max="1024" name="ram_quantita" value="<%=ramQuantita[0]%>" id="ram_quantita"
@@ -117,6 +118,7 @@
                                 value="gb">GB</option>
                     </select>
                 </div>
+                <%}%>
                 <div>
                     <label for="cpu_nome">Nome CPU</label><br>
                     <input id="cpu_nome" name="cpu_nome" value="${prodotto.cpuNome}" disabled>
@@ -137,7 +139,7 @@
                                 value="Android">Android</option>
                         <option <%if(sistemaOperativo.equalsIgnoreCase("iOS")){%>selected<%}%>
                                 value="iOS">iOS</option>
-                        <option <%if(sistemaOperativo.equalsIgnoreCase("Propietario")){%>selected<%}%>
+                        <option <%if(sistemaOperativo.equalsIgnoreCase("Proprietario")){%>selected<%}%>
                                 value="Propietario">Propietario</option>
                     </select>
                 </div>
