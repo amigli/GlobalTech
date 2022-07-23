@@ -166,7 +166,8 @@
         <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}" class="gestioneProdotto">Gestione offerte sul prodotto</a>
 
     </div>
+
     <script type="text/javascript" src="script/gestioneProdotto.js"></script>
-    <scipt type="text/javascript" src="script/CaricamentoProdotti.js"></scipt>
+    <script type="text/javascript" src="script/CaricamentoProdotti.js"></script>
     </body>
 </html>
