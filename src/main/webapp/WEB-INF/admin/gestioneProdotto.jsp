@@ -40,7 +40,7 @@
         </div>
         <%}%>
         <div id="modificareProdotto">
-        <form action="modifica-prodotto"  id="modifica-prodotto" method="post">
+        <form action="modifica-prodotto"  onsubmit="return validateForm()" id="modifica-prodotto" method="post">
             <input type="hidden" name="id_prod" value="${prodotto.id}">
             <fieldset>
                 <legend>Dati generali</legend>
@@ -110,7 +110,7 @@
                     <label for="ram_quantita">Quanità RAM</label><br>
                     <input type="number"  min="1" max="1024" name="ram_quantita" <%if(p.getTipoRam() != null){%>value="<%=ramQuantita[0]%>"<%}%> id="ram_quantita"
                            disabled>
-                    <select name="ram_unit" disabled>
+                    <select name="ram_unit"  id="ram_unit" disabled>
                         <option <%if(p.getTipoRam() != null && ramQuantita[1].equalsIgnoreCase("kb")){%>selected<%}%>
                                 value="kb">KB</option>
                         <option <%if(p.getTipoRam() != null && ramQuantita[1].equalsIgnoreCase("mb")){%>selected<%}%>
@@ -165,5 +165,6 @@
 
     </div>
     <script type="text/javascript" src="script/gestioneProdotto.js"></script>
+    <scipt type="text/javascript" src="script/CaricamentoProdotti.js"></scipt>
     </body>
 </html>

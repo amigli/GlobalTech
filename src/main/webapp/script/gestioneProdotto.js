@@ -7,9 +7,11 @@ function effettuaModificaProdotto(){
 
     let ramTipo =  document.getElementById("ram_tipo");
 
-    if(ramTipo.value.length == 0){
+    if(ramTipo.value == "nessuna"){
         let ramQuantita =  document.getElementById("ram_quantita");
+        let ramUnit =  document.getElementById("ram_unit");
 
+        ramUnit.setAttribute("disabled", "disabled");
         ramQuantita.setAttribute("disabled", "disabled");
     }
 
