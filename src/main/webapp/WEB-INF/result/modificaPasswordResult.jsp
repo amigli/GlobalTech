@@ -9,9 +9,13 @@
 <html>
 <head>
     <title>Password modificata</title>
+    <%@include file="/WEB-INF/includes/links.html"%>
+
 </head>
 <body>
+    <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <p>La password è stata modificata correttamente</p>
     <p>Ritorna alla <a href="index.html">home</a></p>
+    <%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>

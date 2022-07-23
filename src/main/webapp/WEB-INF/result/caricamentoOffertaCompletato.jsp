@@ -9,26 +9,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <%@include file="/WEB-INF/includes/links.html"%>
-    <%
-        String modifica =  (String) request.getAttribute("operation");
-        boolean isModifica =  modifica != null && modifica.equalsIgnoreCase("modifica");
-    %>
-    <title>Offerta  <%=isModifica ? "modificata" : "caricata" %>con successo</title>
-</head>
-<body>
-    <%@include file="/WEB-INF/includes/navbar.jsp"%>
-    <div>
-        <p>Offerta <%=isModifica ? "modificata" : "caricata" %> con successo!</p>
-        <p>ID:${offerta.id}</p>
-        <p>Nome:${offerta.nome}</p>
-        <p>Data inizio:${offerta.dataInizio}</p>
-        <p>Data fine: ${offerta.dataFine}</p>
-        <p>Percentuale di sconto:${offerta.percentuale}%</p>
-    </div>
+    <head>
+        <%@include file="/WEB-INF/includes/links.html"%>
+        <%
+            String modifica =  (String) request.getAttribute("operation");
+            boolean isModifica =  modifica != null && modifica.equalsIgnoreCase("modifica");
+        %>
+        <title>Offerta  <%=isModifica ? "modificata" : "caricata" %>con successo</title>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <div>
+            <p>Offerta <%=isModifica ? "modificata" : "caricata" %> con successo!</p>
+            <p>ID:${offerta.id}</p>
+            <p>Nome:${offerta.nome}</p>
+            <p>Data inizio:${offerta.dataInizio}</p>
+            <p>Data fine: ${offerta.dataFine}</p>
+            <p>Percentuale di sconto:${offerta.percentuale}%</p>
+        </div>
 
-    <p>Ritorna alla <a href="index.html">home</a></p>
+        <p>Ritorna alla <a href="index.html">home</a></p>
 
-</body>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+
+    </body>
 </html>

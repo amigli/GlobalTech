@@ -88,6 +88,9 @@
 
                             <%}%>
                         </li>
+                        <li id="logout-item">
+                            <a href="logout">Logout</a>
+                        </li>
                     </ul>
                 </li>
         </ul>
@@ -97,9 +100,9 @@
             let  el  = document.getElementById("menu-items");
 
             if(window.innerWidth >= 769){
-                el.style.display = "block"
+                el.style.display = "block";
             }else{
-                el.style.display = "none"
+                el.style.display = "none";
             }
         })
     </script>

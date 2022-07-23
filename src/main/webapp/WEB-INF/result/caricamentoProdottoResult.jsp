@@ -48,5 +48,6 @@
                 </li>
             </ul>
         </div>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
 </html>

@@ -15,5 +15,6 @@
 <%@include file="/WEB-INF/includes/navbar.jsp"%>
 <p>L'utente è stato modificato correttamente</p>
 <p>Ritorna alla <a href="index.html">home</a></p>
+<%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>

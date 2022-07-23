@@ -12,6 +12,8 @@ nav{
     padding: 1rem 1rem 0.5rem 1rem;
     height: 6em;
     position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 input.error-parameter{
@@ -31,6 +33,18 @@ input, select{
 
 input[type="radio"], input[type="checkbox"] {
     width: auto;
+}
+
+#account-box{
+    z-index: 2;
+    position:absolute;
+    background-color: white;
+    display: none;
+    padding: 0;
+    right: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    margin-right: 0.05em;
+    text-shadow: none;
 }
 
 input[type=submit],button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2,
@@ -799,6 +813,9 @@ span#totale-numero{
         text-shadow: none;
     }
 
+    li#logout-item{
+        display: none;
+    }
     #login-item:hover #account-box{
         display: block;
     }

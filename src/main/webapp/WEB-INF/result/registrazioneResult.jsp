@@ -18,5 +18,6 @@
 
     <p>La registrazione è avvenuta correttamente.</p>
     <p>Puoi effettuare il login in alto a sinistra o al seguente <a href="login-page">link</a> </p>
+  <%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>

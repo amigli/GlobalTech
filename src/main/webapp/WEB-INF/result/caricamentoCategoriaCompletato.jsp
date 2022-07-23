@@ -9,13 +9,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Categoria Caricata</title>
-</head>
-<body>
-    <p>Categoria caricata correttamente</p>
-    <p>id:${categoria_inserita.id}</p>
-    <p>Ritorna alla <a href="index.html">home</a></p>
+    <head>
+        <title>Categoria Caricata</title>
+        <%@include file="/WEB-INF/includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <p>Categoria caricata correttamente</p>
+        <p>id:${categoria_inserita.id}</p>
+        <p>Ritorna alla <a href="index.html">home</a></p>
 
-</body>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+
+    </body>
 </html>

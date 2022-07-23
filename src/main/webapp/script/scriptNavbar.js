@@ -52,18 +52,7 @@ function getSuggerimento(){
                     li.appendChild(a);
                     ul.appendChild(li);
                 }
-                for(let p of products){
-                    let li = document.createElement("li");
-                    let a = document.createElement("a");
 
-                    a.setAttribute("href", "ricerca?key=" + p.marca);
-
-                    let txt =  document.createTextNode(p.marca);
-
-                    a.appendChild(txt);
-                    li.appendChild(a);
-                    ul.appendChild(li);
-                }
 
                 result.appendChild(ul);
                 result.style.display = "block";
