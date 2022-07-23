@@ -21,6 +21,7 @@
 <body>
 <%@include file="/WEB-INF/includes/navbar.jsp"%>
 <h1>Categorie del prodotto ${prodotto.id}</h1>
+<div id="gestione-categorie-prodotto">
 
     <%
         List<Categoria>  categorie =  (List<Categoria>) application.getAttribute("categorie");
@@ -42,10 +43,9 @@
     </section>
     <button  onclick="rimuoviCategoria()" id="rimuoviProdottoDaCategoria">Elimina categorie</button>
 </div>
-<br>
 <div id="aggiungiProdottoACategoria">
     <section id="altre-categorie">
-        <p>Seleziona le categorie da cui vuoi eliminare il prodotto</p>
+        <p>Seleziona le categorie in cui vuoi aggiungere il prodotto</p>
         <%for(Categoria c : categorie){%>
             <%if(!categorieProd.contains(c)){%>
                 <div>
@@ -56,6 +56,7 @@
         }%>
     </section>
     <button onclick="aggiungiCategoria()" id="aggiungiProdottoCategoria">Aggiungi categorie</button>
+    </div>
 </div>
 </body>
 </html>

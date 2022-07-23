@@ -227,6 +227,18 @@ select#ram_unit{
     width:30%;
 }
 
+div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria{
+    width: 40%;
+}
+
+div#eliminaProdottoDaCategoria{
+    float: left;
+}
+
+div#aggiungiProdottoACategoria{
+    float: right;
+}
+
 /*gestioneCategorieProdotto.jsp
 {
     background-color: white;
@@ -614,6 +626,7 @@ span#totale-numero{
 
 /*----------------------------------------*/
 @media screen and (min-width: 320px){
+
     /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         display: block;
@@ -657,6 +670,7 @@ span#totale-numero{
 /*----------------------------------------*/
 
 @media screen and (min-width: 481px){
+
     /*HomeAdmin.jsp*/
     a.gestioneAdmin{
         display: block;

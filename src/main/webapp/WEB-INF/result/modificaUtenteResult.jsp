@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Utente modificato correttamente</title>
+    <%@include file="../includes/links.html"%>
 </head>
 <body>
 <%@include file="/WEB-INF/includes/navbar.jsp"%>

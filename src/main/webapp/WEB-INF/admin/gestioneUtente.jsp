@@ -89,7 +89,6 @@ ArrayList<String> datiMancanti = new ArrayList<>();
         <%}%>
         <input type="hidden" name="id" value="<%=u.getId()%>">
         <br>
-        <input type="submit" value="Salva">
     </form>
     <br>
 </div>
@@ -98,6 +97,5 @@ ArrayList<String> datiMancanti = new ArrayList<>();
     <input type="submit" value="Vedi tutti gli ordini di questo utente">
 </form>
 <br>
-<a href="visualizzaUtenti.jsp">Indietro</a>
 </body>
 </html>

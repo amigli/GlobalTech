@@ -40,8 +40,7 @@
             <label for="nomeCategoria">Nome della categoria:</label>
             <input type="text" id="nomeCategoria" name="nomeCategoria" value="<%=categoria.getNome()%>" required>
             <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-            <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" required><%=categoria.getDescrizione()%>
-            </textarea>
+            <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" required><%=categoria.getDescrizione()%></textarea>
             <input type="hidden" name="id" id="id_cat"value="<%=categoria.getId()%>">
             <br>
             <br>

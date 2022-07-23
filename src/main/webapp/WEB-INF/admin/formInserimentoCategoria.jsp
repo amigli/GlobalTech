@@ -25,18 +25,11 @@
                         <%if(errorPar.contains("nome")){%>
                            class = "error-parameter"
                         <%}%>
-                       value="<%=request.getParameter("prezzo")%>"
+                       value="<%=request.getParameter("nome")%>"
                     <%}%> >
                 <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-                <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="40" required
-                        <%if(errorPar != null && errorPar.contains("descrizione")){%>
-                          class="error-parameter"
-                        <%}%>
-                >
-                    <%if(errorPar != null){%>
-                       <%=request.getParameter("prezzo")%>"
-                    <%}%>
-                </textarea>
+                <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="40" <%if(errorPar != null && errorPar.contains("nome")){%>
+                          class = "error-parameter"<%}%> required><%if(errorPar!=null){%><%=request.getParameter("descrizioneCategoria")%><%}%></textarea>
                 <br>
                 <input type="submit" value="Inserisci">
             </form>
