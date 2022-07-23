@@ -46,9 +46,13 @@ function inputCorrect(input, id){
 
 function activeRam(value){
     let elem =  document.getElementById("ram_quantita");
+    let unit = document.getElementById("ram_unit");
+
     if(value != "nessuna"){
         elem.removeAttribute("disabled");
+        unit.removeAttribute("disabled")
     }else{
+        elem.setAttribute("disabled", "disabled");
         elem.setAttribute("disabled", "disabled");
         elem.value = "";
     }

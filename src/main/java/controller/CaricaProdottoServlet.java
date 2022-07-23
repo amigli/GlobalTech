@@ -133,7 +133,13 @@ public class CaricaProdottoServlet extends HttpServlet {
                         prod.setDescrizione(descrizione);
                         prod.setSistemaOperativo(sistemaOperativo);
                         prod.setTipoRam(ramTipo);
-                        prod.setQuantitaRam(ramQuantityAndUnit);
+
+                        if(ramTipo == null){
+                            prod.setQuantitaRam(null);
+                        }else{
+                            prod.setQuantitaRam(ramQuantityAndUnit);
+                        }
+
                         prod.setCpuNome(nomeCpu);
                         prod.setBatteria(batteria);
                         prod.setDisponibilita(disponibilita);
