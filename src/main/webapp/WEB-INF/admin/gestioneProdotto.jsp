@@ -40,7 +40,7 @@
         </div>
         <%}%>
         <div id="modificareProdotto">
-        <form action="modifica-prodotto"  onsubmit="return validateForm()" id="modifica-prodotto" method="post">
+        <form action="modifica-prodotto"  onsubmit="return validateForm('modifica-prodotto')" id="modifica-prodotto" method="post">
             <input type="hidden" name="id_prod" value="${prodotto.id}">
             <fieldset>
                 <legend>Dati generali</legend>
@@ -122,6 +122,8 @@
                 <div>
                     <label for="cpu_nome">Nome CPU</label><br>
                     <input id="cpu_nome" name="cpu_nome" value="${prodotto.cpuNome}" disabled>
+                    <div class="error" id="err_cpu_nome">
+                    </div>
                 </div>
                 <div>
                     <%

@@ -25,7 +25,7 @@
         %>
 
 <br>
-    <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm()">
+    <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm('caricamento-prodotto')">
         <fieldset>
             <legend>Dati generali</legend>
             <div class="input-section">

@@ -1,5 +1,5 @@
- function validateForm(){
-    let form = document.forms["caricamento-prodotto"];
+ function validateForm(id){
+    let form = document.forms[id];
     let nome = form["nome"];
     let result = true;
     if((/^[\w\s]{3,45}$/i).test(nome.value)){
