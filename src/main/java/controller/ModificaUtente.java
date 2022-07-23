@@ -13,47 +13,59 @@ import java.util.ArrayList;
 public class ModificaUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utente u = (Utente) request.getSession().getAttribute("utente");
+        HttpSession session = request.getSession();
 
-        if (u!=null){
-            if (u.isAdmin()){
-                ArrayList<String> errorPar =  new ArrayList<>();
-                UtenteDAO service = new UtenteDAO();
+        synchronized (session){
+            Utente u = (Utente) request.getSession().getAttribute("utente");
 
-                String address = "/WEB-INF/result/modificaUtenteResult.jsp";
+            if (u!=null){
+                if (u.isAdmin()){
+                    UtenteDAO service = new UtenteDAO();
 
-                String rimuoviAdminButton = request.getParameter("rimuoviAdmin");
-                String aggiungiAdminButton = request.getParameter("aggiungiAdmin");
-                String idString = request.getParameter("id");
+                    String address = "/WEB-INF/result/modificaUtenteResult.jsp";
 
-                if (idString==null)
-                    errorPar.add("id");
+                    String rimuoviAdminButton = request.getParameter("rimuoviAdmin");
+                    String aggiungiAdminButton = request.getParameter("aggiungiAdmin");
+                    String idString = request.getParameter("id");
 
-                if (errorPar.isEmpty()){
-                    int id = Integer.parseInt(idString);
+                    if (idString != null){
+                        try{
+                            int id = Integer.parseInt(idString);
+                            Utente utente = service.doRetrieveById(id);
+                            if(utente != null){
+                                if (rimuoviAdminButton!=null ||aggiungiAdminButton!=null ) {
 
-                    if (rimuoviAdminButton!=null){
-                        service.setAdmin(0,id);
-                    }
-                    if(aggiungiAdminButton!=null){
-                        service.setAdmin(1,id);
+                                    if (rimuoviAdminButton != null) {
+                                        service.setAdmin(0, id);
+                                    }
+                                    if (aggiungiAdminButton != null) {
+                                        service.setAdmin(1, id);
+                                    }
+
+                                    RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                                    dispatcher.forward(request, response);
+                                }else{
+                                    response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                                }
+                            }else{
+                                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                            }
+
+                        }catch (NumberFormatException e){
+                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                        }
+                    }else {
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                     }
 
                 }else{
-                    request.setAttribute("error_parameter", errorPar);
-                    //aggiungere un messaggio al form in gestioneUtente.jsp in questo caso
-                    address = "gestioneUtente.jsp";
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
-
-                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-                dispatcher.forward(request, response);
             }else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
-        }
 
+        }
     }
 
     @Override
