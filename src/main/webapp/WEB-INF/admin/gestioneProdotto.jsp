@@ -93,11 +93,11 @@
                     <select name="ram_tipo" onchange="activeRam(value)" id="ram_tipo" disabled>
                         <option  <%if(p.getTipoRam() == null){%> selected <%}%>
                                                                  value="nessuna">Nessuna</option>
-                        <option <%if(p.getTipoRam().equalsIgnoreCase("DDR3")){%> selected <%}%>
+                        <option <%if(p.getTipoRam() != null && p.getTipoRam().equalsIgnoreCase("DDR3")){%> selected <%}%>
                                                                                  value="DDR3">DDR3</option>
-                        <option <%if(p.getTipoRam().equalsIgnoreCase("DDR4")){%> selected <%}%>
+                        <option <%if(p.getTipoRam() != null && p.getTipoRam().equalsIgnoreCase("DDR4")){%> selected <%}%>
                                                                                  value="DDR4">DDR4</option>
-                        <option <%if(p.getTipoRam().equalsIgnoreCase("DDR5")){%> selected <%}%>
+                        <option <%if( p.getTipoRam() != null && p.getTipoRam().equalsIgnoreCase("DDR5")){%> selected <%}%>
                                                                                  value="DDR5">DDR5</option>
                     </select>
                 </div>
