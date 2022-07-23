@@ -62,12 +62,12 @@
                     <figcaption>
                         <div id="title-prezzo">
                             <h1 id="marca-nome">
-                                <%=item.getProdotto().getMarca()%>-<%=item.getProdotto().getNome()%>
+                                <%=item.getProdotto().getMarca()%>-<%=item.getProdotto().getNome().substring(0,Math.min(item.getProdotto().getNome().length(), 30))%><%if(item.getProdotto().getNome().length() > 32){%>...<%}%>
                             </h1>
                             <h2 id="prezzo"><%=item.getPrezzo()%>€</h2>
                         </div>
                         <div id="descrizione">
-                            <%=item.getProdotto().getDescrizione().substring(0, 50)%>
+                            <%=item.getProdotto().getDescrizione().substring(0, Math.min(50, item.getProdotto().getDescrizione().length()))%>...
                         </div>
                         <form action="aggiungi-carrello" method="post">
                             <input type="hidden" name="quantita" value="1">

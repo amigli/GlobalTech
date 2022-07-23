@@ -521,9 +521,12 @@ figure.prodotto-figure > img{
     max-width: 90%;
     max-height: 60%;
 }
-
-h1#marca-nome, h2#prezzo{
-    width: 50%;
+h1#marca-nome{
+    width: 65%;
+    float: left;
+}
+h2#prezzo{
+    width: 35%;
     float: left;
 }
 
@@ -539,6 +542,9 @@ div#title-prezzo{
 
 figure.prodotto-figure:hover {
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+div#descrizione{
+    height: 6rem;
 }
 
 
@@ -726,6 +732,13 @@ span#totale-numero{
        font-size: 1.5em;
     }
 
+    figure.prodotto-figure div#descrizione{
+        height: 7rem;
+    }
+
+    h1#marca-nome{
+        overflow: hidden;
+    }
 
 
     div#title-prezzo{
@@ -754,6 +767,9 @@ span#totale-numero{
     input[type=submit].aggiungi-carrello-catalogo{
         font-size : 1rem;
     }
+
+
+
 }
 
 /*Se la larghezza dello schermo è più di 769px*/
@@ -928,24 +944,31 @@ span#totale-numero{
 
 
 
+
+
 }
 
 @media screen and (min-width : 1180px) {
 
     /*Catalogo*/
     figure.prodotto-figure{
-        width: 24%;
+        width: 23%;
         margin: 0.5em;
     }
 
     figure.prodotto-figure div#descrizione{
-        height: 9rem;
+        height: 7rem;
+        font-size: 1.1em;
     }
-    /*Dettaglio Prodotto*/
 
     section#prodotti-catalogo{
         margin: 3rem 0.8rem;
     }
+
+
+    /*Dettaglio Prodotto*/
+
+
 
     div#gallery-product > img{
         width: 30rem;

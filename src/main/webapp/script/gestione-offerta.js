@@ -1,5 +1,5 @@
 function rimuoviProdotto(){
-    let id = document.getElementById("id").value;
+    let id = document.getElementById("id_offer").value;
     const chekboxAll =  document.getElementsByName("prod-attivi");
     const checked = Array.from(chekboxAll).filter(c=>c.checked);
 
@@ -32,7 +32,7 @@ function rimuoviProdotto(){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(parameters + "&id=" + id)
     }else{
-        window.alert("Selezionare almeno un prodotto da aggiungere")
+        window.alert("Selezionare almeno un prodotto da rimuovere")
     }
 
 
@@ -72,7 +72,7 @@ function aggiungiProdotto(){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(parameters + "&id=" + id)
     }else{
-        window.alert("Selezionare almeno un prodotto da eliminare")
+        window.alert("Selezionare almeno un prodotto da aggiungere")
     }
 }
 
