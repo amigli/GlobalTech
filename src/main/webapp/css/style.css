@@ -488,6 +488,10 @@ div#title-prezzo{
     float: left;
 }
 
+figure.prodotto-figure:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 
 
 
@@ -595,7 +599,8 @@ div#title-prezzo{
     }
 
     section#prodotti-catalogo{
-        margin: 3rem;
+        margin: 3rem 1rem;
+
     }
 
     figure.prodotto-figure > img {
@@ -603,13 +608,13 @@ div#title-prezzo{
         height: 15rem;
         object-fit: contain;
     }
+}
 
 
-
-
-
-
-
+@media screen and (min-width:480px) and (max-width: 580px){
+    input[type=submit].aggiungi-carrello-catalogo{
+        font-size : 1rem;
+    }
 }
 
 /*Se la larghezza dello schermo è più di 769px*/
@@ -759,6 +764,17 @@ div#title-prezzo{
     }
 
 
+}
+
+@media screen and (min-width : 1180px) {
+    figure.prodotto-figure{
+        width: 24%;
+        margin: 0.5em;
+    }
+
+    section#prodotti-catalogo{
+        margin: 3rem 0.8rem;
+    }
 }
 
 

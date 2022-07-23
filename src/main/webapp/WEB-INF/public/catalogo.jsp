@@ -72,7 +72,7 @@
                         <form action="aggiungi-carrello" method="post">
                             <input type="hidden" name="quantita" value="1">
                             <input type="hidden" name="prodotto"  value="<%=item.getProdotto().getId()%>">
-                            <input type="submit" value="Aggiungi al carrello">
+                            <input type="submit" class="aggiungi-carrello-catalogo"value="Aggiungi al carrello">
                         </form>
                     </figcaption>
                 </figure>

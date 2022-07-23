@@ -15,7 +15,11 @@ function filtraProdotti(){
             if(prodottiList.length > 0){
                 for(let item of prodottiList){
                     let figure = document.createElement("figure");
+                    figure.setAttribute("class", "prodotto-figure");
+
                     let img = document.createElement("img");
+
+                    img.setAttribute("class", "prodotto-img");
 
                     if(item.prodotto.immagini.length > 0){
                         img.setAttribute( "src",
@@ -33,17 +37,26 @@ function filtraProdotti(){
                     let nameH1 = document.createElement("h1");
                     nameH1.setAttribute("id", "marca-nome");
                     nameH1.appendChild(document.createTextNode(item.prodotto.marca + "-" + item.prodotto.nome));
-                    figcaption.appendChild(nameH1);
+
+                    let div =  document.createElement("div");
+                    div.setAttribute("id", "title-prezzo");
+                    div.appendChild(nameH1);
+
+                    let prezzo = document.createElement("h2");
+                    prezzo.setAttribute("id","prezzo");
+                    prezzo.appendChild(document.createTextNode("€" + item.prezzo));
+
+                    div.appendChild(prezzo)
+
+                    figcaption.appendChild(div);
 
                     let description = document.createElement("div");
                     description.setAttribute("id", "descrizione");
                     description.appendChild(document.createTextNode(item.prodotto.descrizione.substring(0, 50)));
                     figcaption.appendChild(description);
 
-                    let prezzo = document.createElement("div");
-                    prezzo.setAttribute("id","prezzo");
-                    prezzo.appendChild(document.createTextNode("€" + item.prezzo));
-                    figcaption.appendChild(prezzo);
+
+
 
                     let form = document.createElement("form");
                     form.setAttribute("action", "aggiungi-carrello");
@@ -65,9 +78,14 @@ function filtraProdotti(){
                     let submit =  document.createElement("input");
                     submit.setAttribute("type", "submit");
                     submit.setAttribute("value", "Aggiungi al carrello");
+                    submit.setAttribute("class", "aggiungi-carrello-catalogo");
                     form.appendChild(submit)
 
                     figcaption.appendChild(form);
+
+                    figure.addEventListener("click",
+                        function(){location.href = 'dettaglio-prodotto?id=' + item.prodotto.id })
+
                     section.appendChild(figure)
                 }
             }else{
