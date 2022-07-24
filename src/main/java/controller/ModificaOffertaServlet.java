@@ -18,7 +18,7 @@ import java.util.List;
 public class ModificaOffertaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override

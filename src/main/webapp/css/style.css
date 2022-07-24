@@ -21,7 +21,7 @@ input.error-parameter{
     border: 2px dotted black;
 }
 
-input, select{
+input, select, button:not(#search-button){
     width: 100%;
     padding: 8px 10px;
     margin: 8px 0;
@@ -46,11 +46,14 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: 0.05em;
     text-shadow: none;
 }
+/*
+    button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2,
+    button#aggiungiCategoria,button#effettua-modifica-prodotto-button, button#rimuoviProdottoDaCategoria,
+    button#rimuoviOfferte, button#rimuoviOfferta2, button#rimuoviProdotti,
+    button#effettua-modifica, button#rimuovi-prodotto, button#aggiungi-prodotto
+*/
 
-input[type=submit],button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2,
-button#aggiungiCategoria,button#effettua-modifica-prodotto-button, button#rimuoviProdottoDaCategoria,
-button#rimuoviOfferte, button#rimuoviOfferta2, button#rimuoviProdotti,
-button#effettua-modifica, button#rimuovi-prodotto, button#aggiungi-prodotto {
+input[type=submit], button:not(#search-button){
     background-color: mediumblue;
     color: white;
     font-size: 20px;
@@ -61,7 +64,7 @@ button#effettua-modifica, button#rimuovi-prodotto, button#aggiungi-prodotto {
     width: 100%;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:not(#search-button):hover{
     background-color: darkblue;
 }
 
@@ -479,6 +482,10 @@ section#carrello{
 
 /* Catalogo.jsp */
 
+main#catalogo{
+    margin: 1rem;
+}
+
 div#filtri{
     margin: 2rem;
     position: relative;
@@ -620,7 +627,23 @@ span#totale-numero{
     text-align: right;
 }
 
+/* salvaDatiSpedizione.jsp e confermaDatiPagamento.jsp*/
+main#salva-dati-ordine{
+    margin: 2rem;
+}
 
+main#salva-dati-ordine button#avanti-button{
+    width: 48%;
+    float: right;
+
+}
+
+main#salva-dati-ordine button#modifica-button{
+    width: 48%;
+    float: left;
+    margin-right:  1rem;
+
+}
 
 
 
@@ -830,6 +853,11 @@ span#totale-numero{
     li#logout-item{
         display: none;
     }
+
+    li#ordini-item{
+        display: none;
+    }
+
     #login-item:hover #account-box{
         display: block;
     }
@@ -918,6 +946,17 @@ span#totale-numero{
         float : left;
     }
 
+    /* Carello */
+
+    main#carrello{
+        margin: 2rem 5rem;
+    }
+
+    div.prodotto-carrello > img {
+        height: 15rem;
+        width: 15rem;
+    }
+
     /*Dettaglio Prodotto*/
     div#gallery-product{
         width: 43%;
@@ -938,6 +977,12 @@ span#totale-numero{
     section#scheda-tecnica{
         clear: left;
     }
+
+    /* salvaDatiSpedizione.jsp e confermaDatiPagamento.jsp*/
+    main#salva-dati-ordine{
+        margin: 2rem 4rem;
+    }
+
 
 
 
@@ -973,6 +1018,17 @@ span#totale-numero{
         height: 25rem;
         object-fit: contain;
     }
+
+    /* Carrello */
+    main#carrello{
+        margin: 2rem 15rem;
+    }
+
+    /* salvaDatiSpedizione.jsp e confermaDatiPagamento.jsp*/
+    main#salva-dati-ordine{
+        margin: 2rem 8rem;
+    }
+
 }
 
 

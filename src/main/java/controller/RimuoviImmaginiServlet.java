@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class RimuoviImmaginiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
@@ -57,10 +57,8 @@ public class RimuoviImmaginiServlet extends HttpServlet {
                         }else{
                             response.sendError(HttpServletResponse.SC_NOT_FOUND);
                         }
-
-
                     }catch (NumberFormatException e){
-
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                     }
 
                 }else{

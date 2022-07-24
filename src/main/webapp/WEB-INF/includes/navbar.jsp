@@ -40,8 +40,8 @@
                         <li>
                             <a href="catalogo">Catalogo</a>
                         </li>
-                        <li>
-                            <a href="#">Offerte</a>
+                        <li id="ordini-item">
+                            <a href="ordini-effettuati">I miei ordini</a>
                         </li>
 
                         <li>

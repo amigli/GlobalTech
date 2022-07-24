@@ -36,7 +36,7 @@
             <%}else{%>
             <section id="prodotti">
                 <%for(ItemCart item : cart.getProdotti()){%>
-                <div class="prodotto-carrello" id="prodotto-<%=item.getProdotto().getId()%>">
+                <div onclick="location.href = 'dettaglio-prodotto?id=' + <%=item.getProdotto().getId()%>"class="prodotto-carrello" id="prodotto-<%=item.getProdotto().getId()%>">
                     <h1><%=item.getProdotto().getMarca() + "-" + item.getProdotto().getNome()%></h1>
                     <%if(item.getProdotto().getImmagini().size() > 0){%>
                     <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>">

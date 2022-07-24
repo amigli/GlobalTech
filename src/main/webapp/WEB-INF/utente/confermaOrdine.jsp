@@ -26,7 +26,7 @@
             <fieldset id="dati_spedizione">
                 <legend>Dati Spedizione</legend>
                 <p><%=u.getNome()%> <%=u.getCognome()%></p>
-                <p>Via<%=u.getVia()%>, <%=u.getNumCivico()%>,</p>
+                <p>Via <%=u.getVia()%>, <%=u.getNumCivico()%>,</p>
                 <p><%=u.getCap()%>, <%=u.getCitta()%> </p>
             </fieldset>
 
