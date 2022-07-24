@@ -35,6 +35,8 @@
                     offerteFutureList.stream().filter(o->o.contains(p)).collect(Collectors.toList());
 
         %>
+        <br>
+        <div id="offerteOra">
         <h3>Offerte attualmente attive</h3>
         <section id="offerte-attive-prodotto">
             <%for(Offerta o : offerteAttiveProdotto){%>
@@ -63,8 +65,8 @@
             }%>
         </section>
         <button onclick="aggiungiOfferta('offerta-attiva-other')" id="attivaOfferta">Attiva Offerte</button>
-
-
+        </div>
+        <div id="offerteFuture">
         <h3>Offerte future</h3>
         <section id="offerte-future-prodotto">
             <%for(Offerta o : offerteFutureProdotto){%>
@@ -92,7 +94,7 @@
             }%>
         </section>
         <button onclick="aggiungiOfferta('offerta-futura-other')" id="attivaOfferta2">Attiva Offerte</button>
-
+        </div>
 
 
     </body>

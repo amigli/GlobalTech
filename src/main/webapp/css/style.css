@@ -227,7 +227,8 @@ gestioneCategorieProdotto.jsp
 div#caricareProdotto, div#modificareProdotto, div#caricareOfferta,
 div#inserireCategoria, div#modificaUtente, div#caricaFoto,
 div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria,
-div#modificareCategoria, div#gestione-prodotti-offerta, div#offerta{
+div#modificareCategoria, div#gestione-prodotti-offerta, div#offerta,
+div#offerteOra, div#offerteFuture{
     border-radius: 5px;
     background-color: #fff8dc;
     padding: 1em;
@@ -244,15 +245,16 @@ select#ram_unit{
     width:30%;
 }
 
-div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria{
+div#eliminaProdottoDaCategoria, div#aggiungiProdottoACategoria,
+div#offerteOra, div#offerteFuture{
     width: 40%;
 }
 
-div#eliminaProdottoDaCategoria{
+div#eliminaProdottoDaCategoria, div#offerteOra{
     float: left;
 }
 
-div#aggiungiProdottoACategoria{
+div#aggiungiProdottoACategoria, div#offerteFuture{
     float: right;
 }
 
@@ -902,6 +904,8 @@ main#salva-dati-ordine button#modifica-button{
     ul#account-box-list li a{
         color: blue;
     }
+
+
 
     /*HomeAdmin.jsp*/
     a.gestioneAdmin{
