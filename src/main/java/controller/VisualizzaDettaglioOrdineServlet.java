@@ -34,7 +34,7 @@ public class VisualizzaDettaglioOrdineServlet extends HttpServlet {
                       request.setAttribute("ordine", o);
 
                        RequestDispatcher dispatcher =
-                               request.getRequestDispatcher("/WEB-INF/utente/dettagliOrdine.jsp");
+                               request.getRequestDispatcher("/WEB-INF/admin/dettagliOrdine.jsp");
 
                        dispatcher.forward(request, response);
                    }else {
@@ -49,7 +49,7 @@ public class VisualizzaDettaglioOrdineServlet extends HttpServlet {
                            request.setAttribute("ordine", o);
 
                            RequestDispatcher dispatcher =
-                                   request.getRequestDispatcher("/WEB-INF/utente/dettagliOrdine.jsp");
+                                   request.getRequestDispatcher("/WEB-INF/admin/dettagliOrdine.jsp");
 
                            dispatcher.forward(request, response);
                        } else {
