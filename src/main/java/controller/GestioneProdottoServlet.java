@@ -31,8 +31,6 @@ public class GestioneProdottoServlet extends HttpServlet {
                             request.setAttribute("prodotto", p);
                             String address =  "/WEB-INF/admin/gestioneProdotto.jsp";
 
-                            //TODO: qua poi mi spieghi che hai fatto
-
                             GregorianCalendar lastUpdateOffers = (GregorianCalendar)
                                     this.getServletContext().getAttribute("lastUpdateOffers");
                             OffertaDAO serviceOfferta = new OffertaDAO();

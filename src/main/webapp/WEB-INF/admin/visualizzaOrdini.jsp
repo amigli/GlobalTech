@@ -42,10 +42,12 @@
                     <td>
                     <form action="stato-spedizione">
                         <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">
+
+                        <%=o.getStatoString()%>
                         <%
                     if (o.getStato()==0){
                     %>
-                        <%=o.getStatoString()%>
+
                     <input type="submit" id="stato1" name="stato1" value="Conferma">
                     <%}%>
                     <%if (o.getStato()==1){
