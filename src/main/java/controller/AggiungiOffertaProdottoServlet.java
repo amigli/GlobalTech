@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class AggiungiOffertaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+            response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
@@ -53,15 +53,15 @@ public class AggiungiOffertaProdottoServlet extends HttpServlet {
                                         serviceOfferta.doSaveProdottoOfferta(offerta, prod);
                                     }
                                 }else{
-                                    response.sendError(401);
+                                    response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                                 }
 
                             }else{
-                                response.sendError(402);
+                                response.sendError(HttpServletResponse.SC_NOT_FOUND);
                             }
 
                         }catch (NumberFormatException e){
-                            response.sendError(404);
+                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                         }
                     }else{
                         response.sendError(HttpServletResponse.SC_BAD_REQUEST);

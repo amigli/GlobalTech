@@ -30,7 +30,7 @@
             <%if(cart.isEmpty()){%>
                 <div id="empty-cart">
                     <p>Il carrello è vuoto!</p>
-                    <p>Sfoglia il nostro ricco <a href="catalogo">catalogo</a> e riempilo</p>
+                    <p>Sfoglia il nostro <a href="catalogo">catalogo</a> e riempilo</p>
                 </div>
 
             <%}else{%>
@@ -60,8 +60,6 @@
                 </form>
                 <%}%>
             </section>
-
-
         </main>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>

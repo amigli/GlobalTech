@@ -20,35 +20,40 @@
             Ordine ordine = (Ordine) request.getAttribute("ordine");
         %>
         <%@include file="/WEB-INF/includes/navbar.jsp" %>
-        <section id="dati-utente">
-            <fieldset id="dati_spedizione">
-                <legend>Dati Spedizione</legend>
-                ${ordine.indirizzoSpedizione}
-            </fieldset>
-
-            <fieldset id="dati_pagamento">
-                <legend>Dettagli Pagamento</legend>
-                <p>Carta che termina con <%=ordine.getCcPagamento().substring(ordine.getCcPagamento().length() - 4)%></p>
-            </fieldset>
-        </section>
-        <section id="prodotti">
-            <fieldset>
-                <legend>Prodotti</legend>
+        <main id="ordine-dettaglio">
+            <h1>Dettagli ordine #<%=ordine.getId()%></h1>
+            <section id="dati-utente">
+                <fieldset id="dati_spedizione">
+                    <legend>Dati Spedizione</legend>
+                    ${ordine.indirizzoSpedizione}
+                </fieldset>
+                <br>
+                <fieldset id="dati_pagamento">
+                    <legend>Dettagli Pagamento</legend>
+                    <p>Carta che termina con <%=ordine.getCcPagamento().substring(ordine.getCcPagamento().length() - 4)%></p>
+                </fieldset>
+            </section>
+            <section id="prodotti">
                 <%for(ItemCart item : ordine.getProdotti()){%>
-                <div class="prodotto" id="prodotto-<%=item.getProdotto().getId()%>">
+                <div class="prodotto-ordine" id="prodotto-<%=item.getProdotto().getId()%>">
                     <h1><%=item.getProdotto().getMarca() + "-" + item.getProdotto().getNome()%></h1>
+
                     <%if(item.getProdotto().getImmagini().size() > 0){%>
-                    <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
+                    <img class="img-ordine" src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>">
                     <%}else{%>
-                    <img src="./asset/default.png">
+                    <img class="img-ordine" src="./asset/default.png">
                     <%}%>
-                    <p class="prezzo">€<%=item.getPrezzo()%></p>
-                    <p>Quantita :  <%=item.getQuantita()%></p>
+                    <div class="prezzo-quantita">
+                        <h2 class="prezzo">€<%=item.getPrezzo()%></h2>
+                        <h2>Quantita :  <%=item.getQuantita()%></h2>
+                    </div>
+
                 </div>
                 <%}%>
-                <p>Totale : <%=ordine.getPrezzoTotale()%></p>
-            </fieldset>
-        </section>
+                <h1><span id="totale">Totale</span> <span id="totale-numero"><%=ordine.getPrezzoTotale()%>€</span></h1>
+            </section>
+        </main>
+
 
         <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>

@@ -6,7 +6,10 @@ import jakarta.servlet.annotation.*;
 import model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "ProdottiPerCategoria", value = "/prodotti-per-categoria")
 public class ProdottiPerCategoria extends HttpServlet {
@@ -26,7 +29,36 @@ public class ProdottiPerCategoria extends HttpServlet {
 
                     List<Prodotto> prodottiCategoria = service.doRetrieveByCategoria(c);
 
-                    request.setAttribute("catalogo", prodottiCategoria);
+                    GregorianCalendar lastUpdateOffers =
+                            (GregorianCalendar) this.getServletContext().getAttribute("lastUpdateOffers");
+
+                    if(lastUpdateOffers.before(new GregorianCalendar())){
+                        OffertaDAO offertaService = new OffertaDAO();
+                        List<Offerta> activeOffers = offertaService.doRetrieveActive();
+
+                        getServletContext().setAttribute("offerte", activeOffers);
+                        getServletContext().setAttribute("lastUpdateOffers", new GregorianCalendar());
+                    }
+
+                    List<Offerta> offerte  = (List<Offerta>) getServletContext().getAttribute("offerte");
+                    List<Item> catalogo =  new ArrayList<>();
+
+                    for(Prodotto p : prodottiCategoria){
+                        List<Offerta> offerteProdotto =  offerte.stream().filter(o->o.contains(p)).collect(Collectors.toList());
+                        Item item = new Item();
+
+                        item.setProdotto(p);
+                        float prezzoTmp =  p.getPrezzoListino();
+
+                        for(Offerta o : offerteProdotto){
+                            prezzoTmp -= prezzoTmp * o.getPercentuale()/100;
+                        }
+
+                        item.setPrezzo(prezzoTmp);
+                        catalogo.add(item);
+                    }
+
+                    request.setAttribute("catalogo", catalogo);
 
                     RequestDispatcher dispatcher = request.getRequestDispatcher(address);
                     dispatcher.forward(request, response);

@@ -21,54 +21,49 @@
             Utente u = (Utente) session.getAttribute("utente");
             Carrello cart =  (Carrello) session.getAttribute("carrello");
         %>
+        <main id="ordine-dettaglio">
+            <section id="dati-utente">
+                <fieldset id="dati_spedizione">
+                    <legend>Dati Spedizione</legend>
+                    <p><%=u.getNome()%> <%=u.getCognome()%></p>
+                    <p>Via <%=u.getVia()%>, <%=u.getNumCivico()%>,</p>
+                    <p><%=u.getCap()%>, <%=u.getCitta()%> </p>
+                </fieldset>
 
-        <section id="dati-utente">
-            <fieldset id="dati_spedizione">
-                <legend>Dati Spedizione</legend>
-                <p><%=u.getNome()%> <%=u.getCognome()%></p>
-                <p>Via <%=u.getVia()%>, <%=u.getNumCivico()%>,</p>
-                <p><%=u.getCap()%>, <%=u.getCitta()%> </p>
-            </fieldset>
-
-            <fieldset id="dati_pagamento">
-                <legend>Dati Pagamento</legend>
-                <p>Numero Carta : <%=u.getNumeroCarta()%></p>
-                <p>CVV: <%=u.getCvvCarta()%></p>
-                <p>Data Scadenza : <%=u.getDataScadenzaCarta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></p>
-            </fieldset>
-        </section>
-        <section id="prodotti">
-            <fieldset>
-                <legend>Prodotti</legend>
-                <%for(ItemCart item : cart.getProdotti()){%>
-                    <div class="prodotto" id="prodotto-<%=item.getProdotto().getId()%>">
-                    <h1><%=item.getProdotto().getMarca() + "-" + item.getProdotto().getNome()%></h1>
+                <fieldset id="dati_pagamento">
+                    <legend>Dati Pagamento</legend>
+                    <p>Numero Carta : <%=u.getNumeroCarta()%></p>
+                    <p>CVV: <%=u.getCvvCarta()%></p>
+                    <p>Data Scadenza : <%=u.getDataScadenzaCarta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></p>
+                </fieldset>
+            </section>
+            <section id="prodotti">
+                    <%for(ItemCart item : cart.getProdotti()){%>
+                    <div class="prodotto-ordine" id="prodotto-<%=item.getProdotto().getId()%>">
+                        <h1><%=item.getProdotto().getMarca() + "-" + item.getProdotto().getNome()%></h1>
                         <%if(item.getProdotto().getImmagini().size() > 0){%>
-                    <img src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>"
+                        <img  class="img-ordine" src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>">
+
                         <%}else{%>
-                    <img src="./asset/default.png">
+                        <img src="./asset/default.png">
                         <%}%>
-                    <p class="prezzo">€<%=item.getPrezzo()%></p>
-                    <p>Quantita :  <%=item.getQuantita()%></p>
+                        <div class="prezzo-quantita">
+                            <h2 class="prezzo">€<%=item.getPrezzo()%></h2>
+                            <h2>Quantita :  <%=item.getQuantita()%></h2>
+                        </div>
                     </div>
-                <%}%>
-                    <p>Totale : <%=cart.getTotale()%></p>
-            </fieldset>
-            <form method="post" action="conferma-ordine">
-                <%
-                    int checkcode = (Integer) request.getAttribute("checkcode");
-                %>
+                    <%}%>
+                <h1><span id="totale">Totale</span><span id="totale-numero"><%=cart.getTotale()%>€</span></h1>
+                <form method="post" action="conferma-ordine">
+                    <%
+                        int checkcode = (Integer) request.getAttribute("checkcode");
+                    %>
 
-                <input type="hidden" name="checkcode" value="<%=checkcode%>">
-                <input type="submit" value="Conferma Ordine">
-            </form>
-
-        </section>
-
-
-
-
-
+                    <input type="hidden" name="checkcode" value="<%=checkcode%>">
+                    <input type="submit" value="Conferma Ordine">
+                </form>
+            </section>
+        </main>
     <%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>
 </html>

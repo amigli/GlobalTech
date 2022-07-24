@@ -26,6 +26,8 @@
 
             List<String> marche = catalogo.stream().map(p->p.getProdotto().getMarca()).distinct().collect(Collectors.toList());
             String operation = (String) request.getAttribute("operation");
+
+            Utente u =(Utente) session.getAttribute("utente");
         %>
         <%@include file="/WEB-INF/includes/navbar.jsp" %>
         <main id="catalogo">
@@ -77,11 +79,19 @@
                         <div id="descrizione">
                             <%=item.getProdotto().getDescrizione().substring(0, Math.min(50, item.getProdotto().getDescrizione().length()))%>...
                         </div>
-                        <form action="aggiungi-carrello" method="post">
-                            <input type="hidden" name="quantita" value="1">
-                            <input type="hidden" name="prodotto"  value="<%=item.getProdotto().getId()%>">
-                            <input type="submit" class="aggiungi-carrello-catalogo"value="Aggiungi al carrello">
-                        </form>
+
+                        <%if(u != null && u.isAdmin()){%>
+                            <form method="get" action="gestione-prodotto">
+                                <input type="hidden" name="id" value="<%=item.getProdotto().getId()%>">
+                                <input type="submit" value="Gestisci Prodotto">
+                            </form>
+                        <%}else{%>
+                            <form action="aggiungi-carrello" method="post">
+                                <input type="hidden" name="quantita" value="1">
+                                <input type="hidden" name="prodotto"  value="<%=item.getProdotto().getId()%>">
+                                <input type="submit" class="aggiungi-carrello-catalogo"value="Aggiungi al carrello">
+                            </form>
+                        <%}%>
                     </figcaption>
                 </figure>
                 <%}%>

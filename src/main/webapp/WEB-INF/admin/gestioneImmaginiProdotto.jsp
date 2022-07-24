@@ -43,7 +43,7 @@
     <div id="caricaFoto">
         <form action="carica-foto" enctype="multipart/form-data" method="post">
             <input type="hidden" name="id"  value=${prodotto.id}>
-            <input type="file" name="foto" accept="image/*" multiple>
+            <input type="file" name="foto" accept="image/*" required multiple>
             <input type="submit" value="Carica immagini">
         </form>
     </div>

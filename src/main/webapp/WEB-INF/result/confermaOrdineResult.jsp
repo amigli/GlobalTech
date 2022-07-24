@@ -10,14 +10,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ordine ${ordine.id}</title>
+    <title>Ordine #${ordine.id} completato</title>
     <%@include file="/WEB-INF/includes/links.html" %>
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
     <h1>Ordine Confermato!</h1>
     <p>
-        L'ordine  ${ordine.id} è stato completato con successo, controlla il suo stato quando vuoi nella scheda "Ordini"
+        L'ordine  #${ordine.id} è stato completato con successo, controlla il suo stato quando vuoi nella scheda "Ordini"
         del tuo account.
     </p>
 

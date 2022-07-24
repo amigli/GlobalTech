@@ -14,6 +14,7 @@
     <head>
         <%
             Item item = (Item) request.getAttribute("item");
+            Utente u = (Utente) session.getAttribute("utente");
         %>
         <title><%=item.getProdotto().getMarca()%>-<%=item.getProdotto().getNome()%></title>
         <%@include file="/WEB-INF/includes/links.html" %>
@@ -55,12 +56,20 @@
                             <%=item.getPrezzo()%>€
                         <%}%>
                     </h1>
+                    <%if(u != null && u.isAdmin()){%>
+                    <form method="get" action="gestione-prodotto">
+                        <input type="hidden" name="id" value="<%=item.getProdotto().getId()%>">
+                        <input type="submit" value="Gestisci Prodotto">
+                    </form>
+
+                    <%}else{%>
                     <form method="post" action="aggiungi-carrello">
                         <input type="hidden" name="prodotto" value="<%=item.getProdotto().getId()%>">
                         <label>Quantita</label>
                         <input type="number" name="quantita" max="<%=item.getProdotto().getDisponibilita()%>" min="1" value="1">
                         <input type="submit" value="Aggiungi Al Carrello">
                     </form>
+                    <%}%>
                 </div>
             </section>
             <section id="scheda-tecnica">

@@ -15,59 +15,58 @@ public class AggiungiCategoriaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-        Utente u = (Utente) session.getAttribute("utente");
 
-        if(u != null){
-            if(u.isAdmin()){
-                String idString = request.getParameter("id");
-                String[] idCategorieString =  request.getParameterValues("categoria");
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-                try{
-                    int id =  Integer.parseInt(idString);
-                    ArrayList<Integer> idCategorie =  new ArrayList<>();
+            if(u != null){
+                if(u.isAdmin()){
+                    String idString = request.getParameter("id");
+                    String[] idCategorieString =  request.getParameterValues("categoria");
 
-
-                    for(int i = 0; i < idCategorieString.length; i++){
-                        int tmp = Integer.parseInt(idCategorieString[i]);
-                        idCategorie.add(tmp);
-                    }
-
-                    ProdottoDAO service =  new ProdottoDAO();
-                    Prodotto prodotto =  service.doRetrieveById(id);
-
-                    if(prodotto != null){
-
-                        List<Categoria> allCategorie = (List<Categoria>) this.getServletContext().getAttribute("categorie");
-                        List<Categoria> categorieDaAggiungere =
-                                allCategorie.stream().filter(a->idCategorie.contains(a.getId())).collect(Collectors.toList());
+                    try{
+                        int id =  Integer.parseInt(idString);
+                        ArrayList<Integer> idCategorie =  new ArrayList<>();
 
 
-                        if(categorieDaAggiungere.stream().noneMatch(a -> a.contains(prodotto))){
-                            CategoriaDAO serviceCategoria =  new CategoriaDAO();
-                            for(Categoria c : categorieDaAggiungere){
-                                serviceCategoria.doSaveProdottoCategoria(c, prodotto);
-                            }
-
-                            List<Categoria> categoriaList = serviceCategoria.doRetrieveAll();
-                            getServletContext().setAttribute("categorie", categoriaList);
-                        }else{
-                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                        for(int i = 0; i < idCategorieString.length; i++){
+                            int tmp = Integer.parseInt(idCategorieString[i]);
+                            idCategorie.add(tmp);
                         }
-                    }else{
-                        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+
+                        ProdottoDAO service =  new ProdottoDAO();
+                        Prodotto prodotto =  service.doRetrieveById(id);
+
+                        if(prodotto != null){
+
+                            List<Categoria> allCategorie = (List<Categoria>) this.getServletContext().getAttribute("categorie");
+                            List<Categoria> categorieDaAggiungere =
+                                    allCategorie.stream().filter(a->idCategorie.contains(a.getId())).collect(Collectors.toList());
+
+
+                            if(categorieDaAggiungere.stream().noneMatch(a -> a.contains(prodotto))){
+                                CategoriaDAO serviceCategoria =  new CategoriaDAO();
+                                for(Categoria c : categorieDaAggiungere){
+                                    serviceCategoria.doSaveProdottoCategoria(c, prodotto);
+                                }
+
+                                List<Categoria> categoriaList = serviceCategoria.doRetrieveAll();
+                                getServletContext().setAttribute("categorie", categoriaList);
+                            }else{
+                                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                            }
+                        }else{
+                            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                        }
+                    }catch (NumberFormatException e){
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                     }
-
-
-
-
-                }catch (NumberFormatException e){
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                }else{
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
             }else{
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
         }
 
 
