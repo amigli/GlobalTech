@@ -324,8 +324,6 @@ section#serviziAdmin{
     margin : 3rem;
 }
 
-
-
 #accesso {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -897,7 +895,7 @@ span#totale-numero{
     /*formCaricamentoProdotto.jsp
     formCaricamentoOfferta.jsp
     */
-    div#caricareProdotto, div#caricareOfferta{
+    div#caricareProdotto, div#caricareOfferta, div#inserireCategoria{
         width: 60%;
         margin: auto;
     }

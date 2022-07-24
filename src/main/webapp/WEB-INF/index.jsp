@@ -13,20 +13,21 @@
 
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
 
-    <div id="offerteAttive">
-
-        <div class="slideshow-container">
+    <!--<div class="slideshow-container">
 
             <div class="mySlides">
-                <img src="#" style="width:100%">
+                <img src="../asset/informatica.jpeg" style="width:100%">
+                <div class="text">Informatica</div>
             </div>
 
             <div class="mySlides">
-                <img src="#" style="width:100%">
+                <img src="../asset/telefonia.jpeg" style="width:100%">
+                <div class="text">Telefonia</div>
             </div>
 
             <div class="mySlides">
-                <img src="#" style="width:100%">
+                <img src="../asset/accessori.jpeg" style="width:100%">
+                <div class="text">Accessori</div>
             </div>
         </div>
         <br>
@@ -35,9 +36,7 @@
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-
-    </div>
+        </div>-->
         <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
 </html>
