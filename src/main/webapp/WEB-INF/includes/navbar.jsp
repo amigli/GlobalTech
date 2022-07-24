@@ -99,8 +99,11 @@
         window.addEventListener("resize", function (){
             let  el  = document.getElementById("menu-items");
 
+            $('#burger').removeClass("active");
+
             if(window.innerWidth >= 769){
                 el.style.display = "block";
+
             }else{
                 el.style.display = "none";
             }
