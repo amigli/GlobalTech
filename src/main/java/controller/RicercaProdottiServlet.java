@@ -47,7 +47,7 @@ public class RicercaProdottiServlet extends HttpServlet {
             item.setPrezzo(prezzoTmp);
             catalogo.add(item);
         }
-
+        request.setAttribute("operation", "ricerca");
         request.setAttribute("catalogo", catalogo);
         String address = "/WEB-INF/public/catalogo.jsp" ;
 

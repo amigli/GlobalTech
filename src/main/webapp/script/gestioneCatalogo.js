@@ -94,7 +94,15 @@ function filtraProdotti(){
         }
     }
 
-    xhttp.open("GET", "filtra-prodotti?categoria="+categoria +"&marca=" + marca);
+    let ricerca = document.getElementById("ricerca");
+
+    if(ricerca != null){
+        xhttp.open("GET", "filtra-prodotti?categoria="+categoria +"&marca=" + marca + "&ricerca=" + ricerca.value);
+    }else{
+        xhttp.open("GET", "filtra-prodotti?categoria="+categoria +"&marca=" + marca);
+    }
+
+
     xhttp.send();
 
 

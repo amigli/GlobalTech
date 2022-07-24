@@ -25,8 +25,15 @@
             List<Categoria> categorieAll =  (List<Categoria>) application.getAttribute("categorie");
 
             List<String> marche = catalogo.stream().map(p->p.getProdotto().getMarca()).distinct().collect(Collectors.toList());
+            String operation = (String) request.getAttribute("operation");
         %>
         <%@include file="/WEB-INF/includes/navbar.jsp" %>
+            <%if(operation != null && operation.equalsIgnoreCase("ricerca")){%>
+                <h1>Risultati ricerca per "<%=request.getParameter("key")%>"</h1>
+                <input type="hidden" id="ricerca" value="<%=request.getParameter("key")%>">
+            <%}else{%>
+                <h1>Il nostro catalogo</h1>
+            <%}%>
             <div id="filtri">
                     <ul id="ul-filtri">
                         <li id="first">Filtra per </li>
