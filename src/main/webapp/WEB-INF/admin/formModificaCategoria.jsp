@@ -22,7 +22,8 @@
 
         Categoria categoria = (Categoria) request.getAttribute("categoria");
     %>
-    <br><br><br>
+    <main id="result">
+    <h1>Modifica categoria</h1>
     <div id="modificareCategoria">
         <%
             if(errorPar != null){
@@ -80,8 +81,9 @@
         </div>
         <button onclick="aggiungiProdottoCategoria()" id="aggiungiCategoria">Aggiungi prodotti</button>
     </div>
-
+    </main>
     <script src="script/caricamentoCategoria.js"></script>
     <script src="script/gestioneCategoria.js"></script>
+    <%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>

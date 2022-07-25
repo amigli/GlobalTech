@@ -27,6 +27,7 @@
     %>
 
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
+    <main id="result">
         <h1>Dettagli prodotto ${prodotto.id}</h1>
         <%
             if(errorPar != null){
@@ -166,7 +167,7 @@
         <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}" class="gestioneProdotto">Gestione offerte sul prodotto</a>
 
     </div>
-
+    </main>
     <script type="text/javascript" src="script/gestioneProdotto.js"></script>
     <script type="text/javascript" src="script/CaricamentoProdotti.js"></script>
     <%@include file="/WEB-INF/includes/footer.jsp" %>

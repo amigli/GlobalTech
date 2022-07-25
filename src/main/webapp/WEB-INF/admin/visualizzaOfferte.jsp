@@ -18,7 +18,8 @@
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
 <br>
-        <h1 style="margin-left: 1em">Visualizza tutte le offerte</h1>
+        <main id="result">
+        <h1>Visualizza tutte le offerte</h1>
         <table id="offerte">
             <tr>
                 <th>
@@ -66,6 +67,7 @@
                 </tr>
             </c:forEach>
         </table>
+        </main>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
      </body>
 </html>

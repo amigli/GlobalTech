@@ -26,7 +26,8 @@ To change this template use File | Settings | File Templates.
             List<Categoria> cat = (List<Categoria>) request.getAttribute("categorie");
         %>
         <br>
-        <h1 style="margin-left: 1em">Gestione categorie</h1>
+        <main id="result">
+        <h1>Gestione categorie</h1>
         <br>
         <table id="categorie">
            <tr>
@@ -56,6 +57,7 @@ To change this template use File | Settings | File Templates.
                 </tr>
             <% } %>
         </table>
+        </main>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>
 </html>

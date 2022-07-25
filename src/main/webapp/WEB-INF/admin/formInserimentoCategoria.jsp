@@ -14,7 +14,8 @@
     <body>
         <%@include file="../includes/navbar.jsp"%>
         <br>
-        <h1 style="margin-left: 1em">Inserire una nuova categoria</h1>
+        <main id="result">
+        <h1>Inserire una nuova categoria</h1>
         <div id="inserireCategoria">
             <%
                 List<String> errorPar = (List<String>) request.getAttribute("error_parmeter");
@@ -35,6 +36,7 @@
                 <input type="submit" value="Inserisci">
             </form>
         </div>
+        </main>
         <script type="text/javascript" src="script/caricamentoCategoria.js"></script>
         <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>

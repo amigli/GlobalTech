@@ -25,7 +25,8 @@
   <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
-    <h1 style="margin-left: 1em">Gestione offerta ${offerta.id}</h1>
+    <main id="result">
+    <h1>Gestione offerta ${offerta.id}</h1>
     <div id="gestione-offerta">
     <div id="offerta">
     <form method="post" id="form-modifica" action="modifica-offerta" onsubmit="return validateFormOfferta()">
@@ -91,6 +92,7 @@
         <button onclick="aggiungiProdotto()" id="aggiungi-prodotto">Aggiungi prodotti</button>
     </div>
     </div>
+    </main>
     <%@include file="/WEB-INF/includes/footer.jsp"%>
   </body>
 </html>
