@@ -59,7 +59,7 @@
                         <%
                             if(u.getDataScadenzaCarta() == null){
                         %>
-                        <option disabled selected value="">Seleziona Mese</option>
+                        <option disabled selected value="">Seleziona Anno</option>
                         <%}
                             GregorianCalendar today =  new GregorianCalendar();
                             for(int i = today.get(Calendar.YEAR); i < today.get(Calendar.YEAR) + 30; i++){%>

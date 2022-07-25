@@ -40,7 +40,6 @@ CREATE TABLE Appartenere(
     primary key (id_prodotto, id_categoria)
 );
 
-
 CREATE TABLE Utente (
     id int auto_increment primary key,
     email varchar (30) not null unique,

@@ -88,7 +88,6 @@ public class RegistrazioneUtente extends HttpServlet {
             }
         }else{
             request.setAttribute("error_parameter", errorPar);
-            //aggiungere un messaggio al formRegistrazione in questo caso
             address = "/WEB-INF/public/formRegistrazione.jsp";
         }
 

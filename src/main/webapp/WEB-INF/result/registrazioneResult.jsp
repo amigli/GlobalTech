@@ -17,7 +17,7 @@
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
         <main>
             <h1>La registrazione è avvenuta correttamente</h1>
-            <p>Puoi effettuare il login in alto a sinistra o al seguente <a href="login-page">link</a> </p>
+            <p>Puoi effettuare il login in alto a destra o al seguente <a href="login-page">link</a> </p>
         </main>
 
         <%@include file="/WEB-INF/includes/footer.jsp"%>
