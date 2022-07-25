@@ -62,7 +62,10 @@ public class ConfermaOrdineServlet extends HttpServlet {
                             ordine.setId(id);
 
                             UtenteDAO serviceUtente = new UtenteDAO();
-                            u =  serviceUtente.doRetrieveById(u.getId());
+                            u.setNumAcquisti((u.getNumAcquisti()) + 1);
+
+                            serviceUtente.doUpdateNumeroOrdini(u);
+
 
                             session.setAttribute("utente", u);
 

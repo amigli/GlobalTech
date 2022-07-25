@@ -270,6 +270,23 @@ public class UtenteDAO {
         }
     }
 
+    public void doUpdateNumeroOrdini (Utente u){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("UPDATE utente SET num_acquisti = ? WHERE id = ?");
+
+
+            stmt.setInt(1, u.getNumAcquisti());
+            stmt.setInt(2, u.getId());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
+
 
 
 }
