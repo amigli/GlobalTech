@@ -665,8 +665,8 @@ main#ordine-dettaglio{
 /* index.jsp */
 
 img.img-home{
-    height :  15rem;
-    width : 14rem;
+    height :  9rem;
+    width : 9rem;
     object-fit: contain;
     float: left;
 }
@@ -692,19 +692,30 @@ h1#sfoglia-catalogo{
 
 div.categoria{
     float: left;
-    width: 29%;
     height: 12rem;
     background-size: cover;
     background-repeat: no-repeat;
     margin: 2rem 1rem;
     border-radius: 6px;
     padding: 1rem;
-    opacity: 0.7;
+    cursor: pointer;
+    width: 87%;
 }
 
 div.categoria > h1{
-    opacity: 1;
+    text-align: center;
+    background-color: white;
+    border-radius: 6px;
 }
+
+
+h1#sfoglia-categorie{
+    text-align: right;
+    clear: both;
+    float: none;
+}
+
+
 
 div#categoria-informatica{
     background-image: url("../asset/informatica.jpeg");
@@ -734,6 +745,26 @@ div.error-form-field{
     color:red;
     text-decoration: underline;
     margin-bottom: 2em;
+}
+
+/* gestioneImmaginiProdotto.jsp */
+
+figure.gestioni-immagini{
+    border-radius: 5px;
+    margin : 1em;
+    border: 1px solid black;
+    float: left;
+    padding: 0.5em;
+}
+
+figure.gestioni-immagini > img{
+    width: 10rem;
+    height: 10rem;
+    object-fit: contain;
+}
+
+div#container-gestione-immagini{
+    display: flow-root;
 }
 
 
@@ -853,7 +884,7 @@ div.error-form-field{
         object-fit: contain;
     }
 
-
+    /* index.jsp */
     img.img-home{
         height :  12rem;
         width : 12rem;
@@ -1094,13 +1125,19 @@ div.error-form-field{
     /* index.jsp */
 
     main#home{
-        margin: 2rem 8rem;
+        margin: 2rem 4rem;
     }
 
     img.img-home{
-        height :  15rem;
-        width : 15rem;
+        height :  14rem;
+        width : 14rem;
     }
+
+    div.categoria{
+        width: 25%;
+        margin:0.6em
+    }
+
 
     /* File Result */
     main#result{
@@ -1108,9 +1145,11 @@ div.error-form-field{
     }
 
 
-
-
-
+    /* gestioniImmaginiProdotto */
+    figure.gestioni-immagini > img{
+        width: 12rem;
+        height: 12rem;
+    }
 
 
 
@@ -1164,10 +1203,22 @@ div.error-form-field{
         margin: 2rem 8rem;
     }
 
+    img.img-home{
+        height :  15rem;
+        width : 15rem;
+    }
+
+    div.categoria{
+        width: 27%;
+    }
+
+
     /* File Result */
     main#result{
         margin: 2rem 8rem;
     }
+
+
 
 }
 

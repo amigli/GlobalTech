@@ -28,36 +28,45 @@
             String operation = (String) request.getAttribute("operation");
 
             Utente u =(Utente) session.getAttribute("utente");
+
+            Categoria categoria = (Categoria) request.getAttribute("categoria");
         %>
         <%@include file="/WEB-INF/includes/navbar.jsp" %>
         <main id="catalogo">
             <%if(operation != null && operation.equalsIgnoreCase("ricerca")){%>
             <h1>Risultati ricerca per "<%=request.getParameter("key")%>"</h1>
             <input type="hidden" id="ricerca" value="<%=request.getParameter("key")%>">
-            <%}else{%>
-            <h1>Il nostro catalogo</h1>
+            <%}else{
+                if(categoria != null){%>
+                   <h1>Categoria "<%=categoria.getNome()%>"</h1>
+                    <p><%=categoria.getDescrizione()%></p>
+                <%}else{%>
+                    <h1>Il nostro catalogo</h1>
+            <%}
+            }%>
+            <%if(categoria == null){%>
+                <div id="filtri">
+                    <ul id="ul-filtri">
+                        <li id="first">Filtra per </li>
+                        <li>
+                            <select name="categoria" id="select-categoria" onchange="filtraProdotti()">
+                                <option value="-1">Categoria</option>
+                                <%for(Categoria c : categorieAll){%>
+                                <option value="<%=c.getId()%>"><%=c.getNome()%></option>
+                                <%}%>
+                            </select>
+                        </li>
+                        <li>
+                            <select name="marca"  id="select-marca" onchange="filtraProdotti()">
+                                <option value="-1">Marca</option>
+                                <%for(String m : marche){%>
+                                <option value="<%=m%>"><%=m%></option>
+                                <%}%>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
             <%}%>
-            <div id="filtri">
-                <ul id="ul-filtri">
-                    <li id="first">Filtra per </li>
-                    <li>
-                        <select name="categoria" id="select-categoria" onchange="filtraProdotti()">
-                            <option value="-1">Categoria</option>
-                            <%for(Categoria c : categorieAll){%>
-                            <option value="<%=c.getId()%>"><%=c.getNome()%></option>
-                            <%}%>
-                        </select>
-                    </li>
-                    <li>
-                        <select name="marca"  id="select-marca" onchange="filtraProdotti()">
-                            <option value="-1">Marca</option>
-                            <%for(String m : marche){%>
-                            <option value="<%=m%>"><%=m%></option>
-                            <%}%>
-                        </select>
-                    </li>
-                </ul>
-            </div>
             <br>
             <section id="prodotti-catalogo">
                 <%
@@ -96,8 +105,9 @@
                 </figure>
                 <%}%>
             </section>
-            <%@include file="/WEB-INF/includes/footer.jsp"%>
         </main>
+
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
         <script type="text/javascript" src="script/gestioneCatalogo.js"></script>
     </body>
 </html>

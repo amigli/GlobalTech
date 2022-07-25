@@ -19,34 +19,41 @@
 </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <main id="result">
+            <h1>Gestioni Immagini Prodotto ${prodotto.id}</h1>
+            <%
+                Prodotto prodotto = (Prodotto) request.getAttribute("prodotto");
+                List<Foto> immagini =  prodotto.getImmagini();
+            %>
 
-        <%
-            Prodotto prodotto = (Prodotto) request.getAttribute("prodotto");
-            List<Foto> immagini =  prodotto.getImmagini();
-        %>
-        <%
-            if(!immagini.isEmpty()){
-                for(Foto img : immagini){%>
-                    <figure>
-                        <img id="img-<%=img.getNumeroId()%>"src="<%=img.getDirectory()%>" alt="immagine prodotto${prodotto.nome}">
-                        <figcaption>
-                            <button onclick="rimuoviImmagini(<%=img.getNumeroId()%>, <%=img.getProdottoId()%>)">Rimuovi</button>
-                        </figcaption>
-                    </figure>
-
+            <div id="container-gestione-immagini">
+                <%
+                    if(!immagini.isEmpty()){
+                        for(Foto img : immagini){%>
+                <figure class="gestioni-immagini">
+                    <img id="img-<%=img.getNumeroId()%>"src="<%=img.getDirectory()%>" alt="immagine prodotto${prodotto.nome}">
+                    <figcaption>
+                        <button onclick="rimuoviImmagini(<%=img.getNumeroId()%>, <%=img.getProdottoId()%>)">Rimuovi</button>
+                    </figcaption>
+                </figure>
                 <%}%>
-                <p>Puoi caricare altre immagini con il form qui sotto</p>
+            </div>
+
+
+            <h2>Puoi caricare altre immagini con il form qui sotto</h2>
             <%}else{%>
-                <p>Il prodotto non ha immagini, per la visualizzazione verrà utilizzata l'immagine di default</p>
-                <p>Puoi caricare una immagine con il form qui in basso</p>
+            <p>Il prodotto non ha immagini, per la visualizzazione verrà utilizzata l'immagine di default</p>
+            <p>Puoi caricare una immagine con il form qui in basso</p>
             <%}%>
-    <div id="caricaFoto">
-        <form action="carica-foto" enctype="multipart/form-data" method="post">
-            <input type="hidden" name="id"  value=${prodotto.id}>
-            <input type="file" name="foto" accept="image/*" required multiple>
-            <input type="submit" value="Carica immagini">
-        </form>
-    </div>
+            <div id="caricaFoto">
+                <form action="carica-foto" enctype="multipart/form-data" method="post">
+                    <input type="hidden" name="id"  value=${prodotto.id}>
+                    <input type="file" name="foto" accept="image/*" required multiple>
+                    <input type="submit" value="Carica immagini">
+                </form>
+            </div>
+        </main>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
     <script type="text/javascript" src="script/gestioneImmagini.js"></script>
     </body>
 </html>

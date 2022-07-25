@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>GlobalTech</title>
         <%@include file="/WEB-INF/includes/links.html"%>
-        <script src="script/gestione-carousel.js" defer></script>
         <meta charset="UTF-8">
     </head>
     <body>
@@ -27,25 +26,33 @@
                     <img onclick="location.href = 'dettaglio-prodotto?id=' + <%=prodotti.get(i).getId()%>" src="<%=prodotti.get(i).getImmagini().get(0).getDirectory()%>" class="img-home">
                     <%}%>
                     <%}%>
+                    <a href="catalogo"><h1 id="sfoglia-catalogo" >Continua a sfogliare il nostro catalogo <i class="fa fa-arrow-right"></i></h1></a>
                 </div>
-                <a href="catalogo"><h1 id="sfoglia-catalogo" >Continua a sfogliare il nostro catalogo <i class="fa fa-arrow-right"></i></h1></a>
+
             </div>
             <section id="categorie">
-                <div class="categoria" id="categoria-informatica" onclick="location.href">
-                    <h1>
-                        Informatica
-                    </h1>
+                <div id="categorie-container">
+                    <div class="categoria" id="categoria-informatica" onclick="location.href = 'prodotti-per-categoria?id=1'">
+                        <h1>
+                            Informatica
+                        </h1>
+                    </div>
+                    <div class="categoria" id="categoria-telefonia" onclick="location.href = 'prodotti-per-categoria?id=2'">
+                        <h1>
+                            Telefonia
+                        </h1>
+                    </div>
+                    <div class="categoria" id="categoria-accessori" onclick="location.href = 'prodotti-per-categoria?id=3'">
+                        <h1>
+                            Accessori
+                        </h1>
+                    </div>
                 </div>
-                <div class="categoria" id="categoria-telefonia"  onclick="location.href">
-                    <h1>
-                        Telefonia
+                <a href="categoriePage.jsp">
+                    <h1 id="sfoglia-categorie">
+                        Tutte le categorie<i class="fa fa-arrow-right"></i>
                     </h1>
-                </div>
-                <div class="categoria" id="categoria-accessori" onclick="location.href">
-                    <h1>
-                        Accessori
-                    </h1>
-                </div>
+                </a>
             </section>
         </main>
 

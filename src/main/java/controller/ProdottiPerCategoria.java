@@ -24,44 +24,49 @@ public class ProdottiPerCategoria extends HttpServlet {
 
                     CategoriaDAO serviceCat = new CategoriaDAO();
                     Categoria c = serviceCat.doRetrieveById(id);
-                    ProdottoDAO service = new ProdottoDAO();
-                    String address = "/WEB-INF/public/catalogo.jsp";
+                    if(c != null){
+                        ProdottoDAO service = new ProdottoDAO();
+                        String address = "/WEB-INF/public/catalogo.jsp";
 
-                    List<Prodotto> prodottiCategoria = service.doRetrieveByCategoria(c);
+                        List<Prodotto> prodottiCategoria = service.doRetrieveByCategoria(c);
 
-                    GregorianCalendar lastUpdateOffers =
-                            (GregorianCalendar) this.getServletContext().getAttribute("lastUpdateOffers");
+                        GregorianCalendar lastUpdateOffers =
+                                (GregorianCalendar) this.getServletContext().getAttribute("lastUpdateOffers");
 
-                    if(lastUpdateOffers.before(new GregorianCalendar())){
-                        OffertaDAO offertaService = new OffertaDAO();
-                        List<Offerta> activeOffers = offertaService.doRetrieveActive();
+                        if(lastUpdateOffers.before(new GregorianCalendar())){
+                            OffertaDAO offertaService = new OffertaDAO();
+                            List<Offerta> activeOffers = offertaService.doRetrieveActive();
 
-                        getServletContext().setAttribute("offerte", activeOffers);
-                        getServletContext().setAttribute("lastUpdateOffers", new GregorianCalendar());
-                    }
-
-                    List<Offerta> offerte  = (List<Offerta>) getServletContext().getAttribute("offerte");
-                    List<Item> catalogo =  new ArrayList<>();
-
-                    for(Prodotto p : prodottiCategoria){
-                        List<Offerta> offerteProdotto =  offerte.stream().filter(o->o.contains(p)).collect(Collectors.toList());
-                        Item item = new Item();
-
-                        item.setProdotto(p);
-                        float prezzoTmp =  p.getPrezzoListino();
-
-                        for(Offerta o : offerteProdotto){
-                            prezzoTmp -= prezzoTmp * o.getPercentuale()/100;
+                            getServletContext().setAttribute("offerte", activeOffers);
+                            getServletContext().setAttribute("lastUpdateOffers", new GregorianCalendar());
                         }
 
-                        item.setPrezzo(prezzoTmp);
-                        catalogo.add(item);
+                        List<Offerta> offerte  = (List<Offerta>) getServletContext().getAttribute("offerte");
+                        List<Item> catalogo =  new ArrayList<>();
+
+                        for(Prodotto p : prodottiCategoria){
+                            List<Offerta> offerteProdotto =  offerte.stream().filter(o->o.contains(p)).collect(Collectors.toList());
+                            Item item = new Item();
+
+                            item.setProdotto(p);
+                            float prezzoTmp =  p.getPrezzoListino();
+
+                            for(Offerta o : offerteProdotto){
+                                prezzoTmp -= prezzoTmp * o.getPercentuale()/100;
+                            }
+
+                            item.setPrezzo(prezzoTmp);
+                            catalogo.add(item);
+                        }
+
+                        request.setAttribute("catalogo", catalogo);
+                        request.setAttribute("categoria", c);
+                        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                        dispatcher.forward(request, response);
+                    }else {
+                        response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     }
 
-                    request.setAttribute("catalogo", catalogo);
-
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-                    dispatcher.forward(request, response);
                 }catch (NumberFormatException e){
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                 }
@@ -72,6 +77,6 @@ public class ProdottiPerCategoria extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }
