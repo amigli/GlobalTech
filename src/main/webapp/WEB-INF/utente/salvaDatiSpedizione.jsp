@@ -81,7 +81,7 @@
 
                 <div>
                     <label for="cap">CAP</label>
-                    <input type="text" name="cap" id="cap" maxlength="5"
+                    <input type="text" name="cap" id="cap" maxlength="5" required
                         <%if(u.getCap()!= 0){%>
                            value="<%=u.getCap()%>"
                            disabled
@@ -98,7 +98,7 @@
                         <%}%>
                     >
                 </div>
-                <input type="submit" id="salva_button" value="salva" style="display: none" disabled>
+                <input type="submit" id="salva_button" value="Salva" style="display: none" disabled>
             </form>
 
             <%if((u.getNumCivico() != 0) && (u.getCap()!= 0) && (u.getCitta() != null)

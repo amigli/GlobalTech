@@ -39,14 +39,11 @@ public class AccessoUtente extends HttpServlet {
                     Carrello cart = (Carrello) session.getAttribute("carrello");
                     CarrelloDAO serviceCarrello =  new CarrelloDAO();
                     if(cart != null && !cart.isEmpty()){
-                        //cancello il carrello memorizzato nel database
                         serviceCarrello.doDelete(u.getId());
-                        //inserisco nel database un nuovo carrello con i prodotti inseriti più di recente
                         for(ItemCart item : cart.getProdotti()){
                             serviceCarrello.doAggiungiProdotto(u,item);
                         }
                     }else{
-                        //nella sessione non ho aggiunto altri prodotti
                         cart = serviceCarrello.doRetrieveByUtente(u);
                         session.setAttribute("carrello", cart);
                     }

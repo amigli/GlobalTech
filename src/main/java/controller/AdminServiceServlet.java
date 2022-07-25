@@ -29,7 +29,7 @@ public class AdminServiceServlet extends HttpServlet {
                         address += "formInserimentoCategoria.jsp";
                     break;
                     default:
-                        response.sendError(404);
+                        response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     break;
                 }
 
@@ -37,7 +37,7 @@ public class AdminServiceServlet extends HttpServlet {
 
                 dispatcher.forward(request, response);
             }else{
-                response.sendError(401);
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             }
         }else{
             response.sendRedirect("login-page");

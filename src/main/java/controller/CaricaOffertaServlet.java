@@ -81,7 +81,6 @@ public class CaricaOffertaServlet extends HttpServlet {
                     String address;
 
                     if(errPar.isEmpty()){
-                        //inserisci l'offerta
                         Offerta offerta = new Offerta();
 
                         offerta.setNome(nome);

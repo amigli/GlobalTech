@@ -1,9 +1,50 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 h3{
     color: darkblue;
 }
 
-*{
+h1{
+    color: darkblue;
+}
+
+textarea{
+    resize:none;
+}
+
+table{
     font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 1%;
+}
+
+table td, table th {
+    border: 1px solid darkblue;
+    padding: 8px;
+}
+
+table tr:nth-child(even){
+    background-color: aliceblue;
+}
+
+table tr:hover{
+    background-color: #faf0e6;
+}
+
+th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: darkblue;
+    color: white;
+}
+
+a{
+    color: darkblue;
+    text-decoration: none;
 }
 
 /*navbar.jsp*/
@@ -46,12 +87,6 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: 0.05em;
     text-shadow: none;
 }
-/*
-    button#aggiungiProdottoCategoria, button#attivaOfferta, button#attivaOfferta2,
-    button#aggiungiCategoria,button#effettua-modifica-prodotto-button, button#rimuoviProdottoDaCategoria,
-    button#rimuoviOfferte, button#rimuoviOfferta2, button#rimuoviProdotti,
-    button#effettua-modifica, button#rimuovi-prodotto, button#aggiungi-prodotto
-*/
 
 input[type=submit], button:not(#search-button){
     background-color: mediumblue;
@@ -67,7 +102,6 @@ input[type=submit], button:not(#search-button){
 input[type=submit]:hover, button:not(#search-button):hover{
     background-color: darkblue;
 }
-
 
 ul.nav {
     list-style-type: none;
@@ -104,9 +138,9 @@ ul.nav {
     border-radius: 10px;
 }
 
-
 #search-button:hover{
-    background-color: whitesmoke;
+    background-color: darkblue;
+    color: white;
 }
 
 #search-box{
@@ -133,10 +167,10 @@ ul.nav li > a:hover{
     background-color: white;
     color: darkblue;
 }
+
 #menu-items{
     display: none;
     margin-top: 1rem;
-
 }
 
 #burger {
@@ -170,6 +204,7 @@ li#menu-items.active{
 #burger.active .bar:nth-child(2) {
     opacity: 0;
 }
+
 #burger.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -200,6 +235,7 @@ ul#result{
     padding-left: 0;
 
 }
+
 ul#result li{
     padding: 1px;
     display: block;
@@ -236,11 +272,13 @@ div#offerteOra, div#offerteFuture{
 
 textarea#descrizione, textarea#descrizioneCategoria{
     width: 90%;
+    padding: 1em;
 }
 
 input[type="number"]{
     width: 30%;
 }
+
 select#ram_unit{
     width:30%;
 }
@@ -258,7 +296,6 @@ div#aggiungiProdottoACategoria, div#offerteFuture{
     float: right;
 }
 
-
 a.gestioneProdotto{
     border-style:groove;
     border-radius: 8px;
@@ -267,6 +304,7 @@ a.gestioneProdotto{
     color: white;
     display: block;
 }
+
 div#altreAzioniProdotto{
     border: 1px solid darkblue;
     padding: 3%;
@@ -280,27 +318,32 @@ a.gestioneAdmin{
     background-color: darkblue;
     color: white;
 }
+
 div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
     margin: 5%;
     text-align: center;
     border: 5px solid darkblue;
     padding: 5%;
 }
+
 div#gestioneProdotto{
     background-image: url("../asset/immagineProdotti.jpg");
     opacity: 0.6;
     background-size: 50%;
 }
+
 div#gestioneOfferte{
     background-image: url("../asset/immagineOfferte.jpg");
     opacity: 0.6;
     background-size: 40%;
 }
+
 div#gestioneCategorie{
     background-image: url("../asset/immagineCategorie.jpg");
     opacity: 0.6;
     background-size: 30%;
 }
+
 div#utentiOrdini{
     background-image: url("../asset/immagineAcquisti.jpg");
     opacity: 0.6;
@@ -345,53 +388,9 @@ div#dettagli-caricamento > p{
     width: 50%;
 }
 
-
-
-h1{
-    color: darkblue;
-}
-textarea{
-    resize:none;
-}
-table{
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-    margin-left: 1%;
-}
-table td, table th {
-    border: 1px solid darkblue;
-    padding: 8px;
-}
-
-/*visualizzaCategorie.jsp
- visualizzaOfferte.jsp
- visualizzaUtenti.jsp
- visualizzaOrdiniCliente.jsp
- visualizzaProdotti.jsp*/
-table tr:nth-child(even){
-    background-color: aliceblue;
-}
-table tr:hover{
-    background-color: #faf0e6;
-}
-th{
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: darkblue;
-    color: white;
-}
-
 /*visualizzaCategorie.jsp*/
 input[type="submit"]#modificaCategoriaButton, input[type="submit"]#rimuoviCategoriaButton{
     width: 100%;
-}
-
-a{
-    color: darkblue;
-    /*font-size: 20px;*/
-    text-decoration: none;
 }
 
 /*footer.jsp*/
@@ -405,24 +404,25 @@ footer{
     bottom: 0;
     clear: both;
     margin: 2rem 0em 0 0em ;
-
-
-
 }
+
 div#footer-content{
     width: 95%;
     height: 9rem;
     padding-left: 2em;
 }
+
 footer a{
     text-decoration: none;
     color : white;
 }
+
 div.information{
     float:left;
     margin-top: 8px;
     width: 30%;
 }
+
 div.information > ul{
     margin-left: 0;
     padding: 0;
@@ -438,6 +438,7 @@ div#author{
     width: 95%;
     text-align: center;
 }
+
 ul#social li{
     display: inline;
 }
@@ -452,7 +453,6 @@ ul#password-check-list{
 }
 
 /* Modifica Password */
-
 div#newPassword-check{
     display: none;
 }
@@ -462,13 +462,11 @@ ul#password-equals-list{
 }
 
 /* Carrello.jsp */
-
 section#carrello{
     margin : 2rem;
 }
 
 /* Catalogo.jsp */
-
 main#catalogo{
     margin: 1rem;
 }
@@ -491,7 +489,6 @@ ul#ul-filtri > li{
 
 ul#ul-filtri > li#first{
     padding : 1em;
-
 }
 
 section#prodotti-catalogo{
@@ -513,10 +510,12 @@ figure.prodotto-figure > img{
     max-width: 90%;
     max-height: 60%;
 }
+
 h1#marca-nome{
     width: 65%;
     float: left;
 }
+
 h2#prezzo{
     width: 35%;
     float: left;
@@ -535,13 +534,12 @@ div#title-prezzo{
 figure.prodotto-figure:hover {
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
 div#descrizione{
     height: 6rem;
 }
 
-
 /*Dettaglio prodotto*/
-
 main#dettaglio-prodotto{
     margin: 2rem;
 }
@@ -557,12 +555,13 @@ a#left-row, a#right-row{
     display: block;
     width: 1rem;
     margin-top: 12rem;
-
 }
+
 a#left-row{
     float: left;
     margin: -13rem 23rem 1rem 0rem;
 }
+
 a#right-row{
     float: right;
     margin: -13rem 0 16rem 23rem;
@@ -572,12 +571,11 @@ a#left-row i:hover, a#right-row i:hover{
     font-size: 1.5rem;
 }
 
-
 /*Carrello*/
-
 main#carrello{
     margin:2rem;
 }
+
 div#empty-cart{
     min-height: 11rem;
 }
@@ -614,7 +612,6 @@ span.totale-numero{
     text-align: right;
 }
 
-
 /* salvaDatiSpedizione.jsp e confermaDatiPagamento.jsp*/
 main#salva-dati-ordine{
     margin: 2rem;
@@ -623,18 +620,15 @@ main#salva-dati-ordine{
 main#salva-dati-ordine button#avanti-button{
     width: 48%;
     float: right;
-
 }
 
 main#salva-dati-ordine button#modifica-button{
     width: 48%;
     float: left;
     margin-right:  1rem;
-
 }
 
 /* confermaOrdine.jsp */
-
 img.img-ordine{
     height :  12rem;
     width : 12rem;
@@ -715,8 +709,6 @@ h1#sfoglia-categorie{
     float: none;
 }
 
-
-
 div#categoria-informatica{
     background-image: url("../asset/informatica.jpeg");
 }
@@ -730,7 +722,6 @@ div#categoria-accessori{
 
 
 /* File Result */
-
 div#prodotto-result-operation{
     clear: both;
     float: none;
@@ -768,9 +759,6 @@ div#container-gestione-immagini{
 }
 
 
-
-
-
 /*----------------------------------------*/
 @media screen and (min-width: 320px){
 
@@ -784,9 +772,6 @@ div#container-gestione-immagini{
 
     section#serviziAdmin > h1{
         margin-left : 0;
-    }
-    div#gestioneProdotto, div#gestioneOfferte, div#gestioneCategorie, div#utentiOrdini{
-
     }
 
     /*gestioneProdotto.jsp*/
@@ -802,17 +787,11 @@ div#container-gestione-immagini{
 
     figure.prodotto-figure{
         margin: 2em 0.5em ;
-
     }
 
     section#prodotti-catalogo{
         margin: 2em 0.5em;
-
     }
-
-
-
-
 }
 
 /*----------------------------------------*/
@@ -892,6 +871,7 @@ div#container-gestione-immagini{
 
 }
 
+/*----------------------------------------------------------*/
 
 @media screen and (min-width:480px) and (max-width: 580px){
     input[type=submit].aggiungi-carrello-catalogo{
@@ -899,7 +879,8 @@ div#container-gestione-immagini{
     }
 }
 
-/*Se la larghezza dello schermo è più di 769px*/
+/*-----------------------------------------------------------*/
+
 @media screen and (min-width : 769px) {
     nav{
         height: 4em;
@@ -1069,8 +1050,6 @@ div#container-gestione-immagini{
         height: 15rem;
         width: 15rem;
     }
-
-
 
     /*Dettaglio Prodotto*/
     div#gallery-product{
