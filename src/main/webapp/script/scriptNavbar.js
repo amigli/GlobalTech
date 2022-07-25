@@ -29,36 +29,39 @@ function getSuggerimento(){
     result.innerHTML = '';
 
     xhttp.onreadystatechange =  function (){
-        if(this.readyState == 4 && this.status == 200){
-            let response = xhttp.responseText;
-            let products = JSON.parse(response);
-            let ul = document.createElement("ul");
+        if(this.readyState == 4){
+            if(this.status == 200){
+                let response = xhttp.responseText;
+                let products = JSON.parse(response);
+                let ul = document.createElement("ul");
 
-            ul.setAttribute("id", "result");
+                ul.setAttribute("id", "result");
 
-            if(products.length > 0){
+                if(products.length > 0){
 
-                for(let p of products){
-                    let li = document.createElement("li");
-                    let a = document.createElement("a");
+                    for(let p of products){
+                        let li = document.createElement("li");
+                        let a = document.createElement("a");
 
-                    a.setAttribute("href", "ricerca?key=" + p.nome);
+                        a.setAttribute("href", "ricerca?key=" + p.nome);
 
-                    let txt =  document.createTextNode(p.nome);
+                        let txt =  document.createTextNode(p.nome);
 
-                    a.appendChild(txt);
-                    li.appendChild(a);
-                    ul.appendChild(li);
+                        a.appendChild(txt);
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    }
+
+
+                    result.appendChild(ul);
+                    result.style.display = "block";
+
+                }else{
+                    result.style.display = "none";
                 }
-
-
-                result.appendChild(ul);
-                result.style.display = "block";
-
-            }else{
-                result.style.display = "none";
+            }else {
+                window.alert("Si è verificato un errore, riprovare più tardi.")
             }
-
         }
     }
 

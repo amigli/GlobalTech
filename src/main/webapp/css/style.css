@@ -694,6 +694,13 @@ div.categoria{
     padding: 1rem;
     cursor: pointer;
     width: 87%;
+    transition: all 0.3s ease-in-out;
+
+
+}
+div.categoria:hover h1{
+   background-color: darkblue;
+    color: white;
 }
 
 div.categoria > h1{
@@ -701,7 +708,6 @@ div.categoria > h1{
     background-color: white;
     border-radius: 6px;
 }
-
 
 h1#sfoglia-categorie{
     text-align: right;
@@ -757,6 +763,7 @@ figure.gestioni-immagini > img{
 div#container-gestione-immagini{
     display: flow-root;
 }
+
 
 
 /*----------------------------------------*/
@@ -1196,9 +1203,6 @@ div#container-gestione-immagini{
     main#result{
         margin: 2rem 8rem;
     }
-
-
-
 }
 
 
