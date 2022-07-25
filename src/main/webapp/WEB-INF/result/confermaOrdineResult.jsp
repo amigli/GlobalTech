@@ -18,7 +18,7 @@
     <main id="result">
         <h1>Ordine Confermato!</h1>
         <p>
-            L'ordine  #${ordine.id} è stato completato con successo, controlla il suo stato quando vuoi nella scheda "Ordini"
+            L'ordine è stato completato con successo, controlla il suo stato quando vuoi nella scheda "Ordini"
             del tuo account.
         </p>
     </main>
