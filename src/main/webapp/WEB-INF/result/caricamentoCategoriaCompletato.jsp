@@ -15,9 +15,12 @@
     </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
-        <p>Categoria caricata correttamente</p>
-        <p>id:${categoria_inserita.id}</p>
-        <p>Ritorna alla <a href="index.html">home</a></p>
+
+        <main id="result">
+            <h1>Categoria caricata correttamente!</h1>
+            <p>Il suo id è ${categoria_inserita.id}</p>
+            <p>Ritorna alla <a href="index.html">home</a></p>
+        </main>
 
         <%@include file="/WEB-INF/includes/footer.jsp"%>
 

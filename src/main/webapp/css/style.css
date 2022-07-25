@@ -196,27 +196,27 @@ ul#menu-items-list{
     padding-left: 0;
 }
 
-#result{
+ul#result{
     padding-left: 0;
 
 }
-#result li{
+ul#result li{
     padding: 1px;
     display: block;
     list-style-type: none;
     float: none;
 }
 
-#result li:hover {
+ul#result li:hover {
    background-color: rgba(0, 0, 0, 0.2);
 }
 
-#result li a{
+ul#result li a{
     background-color: transparent;
     color: darkblue;
 }
 
-#result li a:hover{
+ul#result li a:hover{
     background-color: transparent;
 }
 
@@ -332,12 +332,12 @@ form#login-form > a{
     text-decoration: none;
     color: darkblue;
     font-size: 20px;
-    font-family: Arial;
 }
 
 div#dettagli-caricamento{
-    margin : 1em 5em;
-    width: 60%;
+    display: flow-root;
+    border: 1px solid black;
+    padding: 1em;
 }
 
 div#dettagli-caricamento > p{
@@ -604,6 +604,7 @@ span#totale-numero{
     text-align: right;
 }
 
+
 /* salvaDatiSpedizione.jsp e confermaDatiPagamento.jsp*/
 main#salva-dati-ordine{
     margin: 2rem;
@@ -620,6 +621,16 @@ main#salva-dati-ordine button#modifica-button{
     float: left;
     margin-right:  1rem;
 
+}
+
+/* confermaOrdine.jsp */
+
+img.img-ordine{
+    height :  12rem;
+    width : 12rem;
+    object-fit: contain;
+    float: left;
+    display: block;
 }
 
 div.prodotto-ordine {
@@ -697,7 +708,16 @@ div#categoria-accessori{
 }
 
 
+/* File Result */
 
+div#prodotto-result-operation{
+    clear: both;
+    float: none;
+}
+
+main#result{
+    margin: 1rem;
+}
 
 
 
@@ -743,6 +763,7 @@ div#categoria-accessori{
         margin: 2em 0.5em;
 
     }
+
 
 
 
@@ -823,10 +844,6 @@ div#categoria-accessori{
         width : 12rem;
     }
 
-
-    /* Dettaglio prodotto */
-
-
 }
 
 
@@ -834,9 +851,6 @@ div#categoria-accessori{
     input[type=submit].aggiungi-carrello-catalogo{
         font-size : 1rem;
     }
-
-
-
 }
 
 /*Se la larghezza dello schermo è più di 769px*/
@@ -1073,6 +1087,12 @@ div#categoria-accessori{
         width : 15rem;
     }
 
+    /* File Result */
+    main#result{
+        margin: 2rem 5rem;
+    }
+
+
 
 
 
@@ -1129,19 +1149,14 @@ div#categoria-accessori{
         margin: 2rem 8rem;
     }
 
-}
-
-
-/* confermaOrdine.jsp */
-
-img.img-ordine{
-    height :  12rem;
-    width : 12rem;
-    object-fit: contain;
-    float: left;
-    display: block;
-
+    /* File Result */
+    main#result{
+        margin: 2rem 8rem;
+    }
 
 }
+
+
+
 
 

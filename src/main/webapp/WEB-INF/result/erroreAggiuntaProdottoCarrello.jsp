@@ -15,7 +15,11 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp" %>
-    Uno o più prodotti che hai aggiunto nel carrello non sono più disponibili.
+    <main id="result">
+        <h1>Si è verificato un problema</h1>
+        <p>Uno o più prodotti che hai aggiunto nel carrello non sono più disponibili.</p>
+    </main>
+
 
     <%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>

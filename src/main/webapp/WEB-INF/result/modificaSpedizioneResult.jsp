@@ -13,10 +13,10 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
-
-    <p>Lo stato è stato cambiato correttamente</p>
-    <p>Ritorna alla <a href="visualizza-ordini">visualizzazione ordini</a></p>
-
+    <main id="result">
+        <h1>Lo stato è stato cambiato correttamente</h1>
+        <p>Ritorna alla <a href="visualizza-ordini">visualizzazione ordini</a></p>
+    </main>
     <%@include file="/WEB-INF/includes/footer.jsp"%>
 </body>
 </html>

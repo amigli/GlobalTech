@@ -10,7 +10,7 @@
     }
    let marca =  form["marca"];
 
-    if((/^[\w\s]{4,30}$/i).test(marca.value)){
+    if((/^[\w\s]{3,30}$/i).test(marca.value)){
         inputCorrect(marca, "marca" );
     }else{
         inputError(marca, "marca")
@@ -19,7 +19,7 @@
 
     let color = form["colore"];
 
-    if((/^[\w\s]{4,30}$/i).test(color.value)){
+    if((/^[\w\s]{3,30}$/i).test(color.value)){
         inputCorrect(color,"colore")
     }else{
         result=false;
@@ -62,11 +62,15 @@ function activeRam(value){
 
     if(value != "nessuna"){
         elem.removeAttribute("disabled");
-        unit.removeAttribute("disabled")
+        unit.removeAttribute("disabled");
+        elem.setAttribute("required", "required")
+        unit.setAttribute("required", "required")
     }else{
         unit.setAttribute("disabled", "disabled");
         elem.setAttribute("disabled", "disabled");
         elem.value = "";
+        elem.removeAttribute("required")
+        unit.removeAttribute("required")
     }
 
 }

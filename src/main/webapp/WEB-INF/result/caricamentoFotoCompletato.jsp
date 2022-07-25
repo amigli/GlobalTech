@@ -17,15 +17,20 @@
 </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
-        <p>Le seguenti foto sono state caricate con successo</p>
-        <ul>
-            <%
-                List<Foto> immagini =  (List<Foto>) request.getAttribute("immagini");
-                for(Foto f : immagini){%>
-                    <li><%=f.getDirectory()%></li>
-            <%}%>
-        </ul>
+        <main id="result">
+            <h1>Immagini caricate con successo</h1>
+            <p>Le foto sono state caricate con successo e sono state savlate nei seguenti percorsi</p>
+            <ul>
+                <%
+                    List<Foto> immagini =  (List<Foto>) request.getAttribute("immagini");
+                    for(Foto f : immagini){%>
+                <li><%=f.getDirectory()%></li>
+                <%}%>
+            </ul>
 
-        <p>Ritorna alla <a href="visualizza-prodotti">gestione prodotti</a></p>
+            <p>Ritorna alla <a href="visualizza-prodotti">gestione prodotti</a></p>
+        </main>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+
     </body>
 </html>

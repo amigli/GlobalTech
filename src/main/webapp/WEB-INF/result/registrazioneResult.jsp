@@ -9,15 +9,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Utente registrato</title>
-    <%@include file="/WEB-INF/includes/links.html"%>
-</head>
-<body>
-  <%@include file="/WEB-INF/includes/navbar.jsp"%>
+    <head>
+        <title>Utente registrato</title>
+        <%@include file="/WEB-INF/includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <main>
+            <h1>La registrazione è avvenuta correttamente</h1>
+            <p>Puoi effettuare il login in alto a sinistra o al seguente <a href="login-page">link</a> </p>
+        </main>
 
-    <p>La registrazione è avvenuta correttamente.</p>
-    <p>Puoi effettuare il login in alto a sinistra o al seguente <a href="login-page">link</a> </p>
-  <%@include file="/WEB-INF/includes/footer.jsp"%>
-</body>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+    </body>
 </html>

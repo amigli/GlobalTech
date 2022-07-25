@@ -18,36 +18,41 @@
     </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
-        <h2>Dettagli prodotto <%=modifica !=null && modifica ? "modifica" : "caricamento" %></h2>
-        <div id="dettagli-caricamento">
-            <p>ID:&emsp; ${prodotto.id}</p>
-            <p>Nome:&emsp;${prodotto.nome}</p>
-            <p>Marca:&emsp;${prodotto.marca}</p>
-            <p>Colore:&emsp;${prodotto.colore}</p>
-            <p>Prezzo:&emsp;${prodotto.prezzoListino}</p>
-            <p>Descrizione:&emsp;${prodotto.descrizione}</p>
-            <p>Sistema Operativo:&emsp;${prodotto.sistemaOperativo}</p>
-            <p>Tipo RAM:&emsp;${prodotto.tipoRam}</p>
-            <p>Quantita RAM&emsp;${prodotto.quantitaRam}</p>
-            <p>CPU:&emsp;${prodotto.cpuNome}</p>
-            <p>Batteria :&emsp;${prodotto.batteria ? "Si" : "No"} </p>
-            <p>Disponibilit&agrave:&emsp;${prodotto.disponibilita}</p>
-        </div>
+        <main id="result">
+            <h1>Dettagli prodotto <%=modifica !=null && modifica ? "modificato" : "caricato" %></h1>
 
-        <div>
-            <p>Il prodotto è stato caricato con successo. Ora puoi:</p>
-            <ul>
-                <li>
-                    <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}">Aggiungere delle immagini al prodotto</a>
-                </li>
-                <li>
-                    <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}">Aggiungere il prodotto a uno o più categorie</a>
-                </li>
-                <li>
-                    <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}">Applicare delle offerte al prodotto</a>
-                </li>
-            </ul>
-        </div>
+            <div id="dettagli-caricamento">
+                <p>ID:&emsp; ${prodotto.id}</p>
+                <p>Nome:&emsp;${prodotto.nome}</p>
+                <p>Marca:&emsp;${prodotto.marca}</p>
+                <p>Colore:&emsp;${prodotto.colore}</p>
+                <p>Prezzo:&emsp;${prodotto.prezzoListino}</p>
+                <p>Descrizione:&emsp;${prodotto.descrizione}</p>
+                <p>Sistema Operativo:&emsp;${prodotto.sistemaOperativo}</p>
+                <p>Tipo RAM:&emsp;${prodotto.tipoRam}</p>
+                <p>Quantita RAM&emsp;${prodotto.quantitaRam}</p>
+                <p>CPU:&emsp;${prodotto.cpuNome}</p>
+                <p>Batteria :&emsp;${prodotto.batteria ? "Si" : "No"} </p>
+                <p>Disponibilit&agrave:&emsp;${prodotto.disponibilita}</p>
+            </div>
+            <br>
+            <br>
+            <div id="prodotto-result-operation">
+                <p>Il prodotto è stato <%=modifica !=null && modifica ? "modificato" : "caricato" %> con successo. Ora puoi:</p>
+                <ul>
+                    <li>
+                        <a href="gestione-immagini-prodotto?id_prod=${prodotto.id}">Aggiungere delle immagini al prodotto</a>
+                    </li>
+                    <li>
+                        <a href="gestione-categoria-prodotto?id_prod=${prodotto.id}">Aggiungere il prodotto a uno o più categorie</a>
+                    </li>
+                    <li>
+                        <a href="gestione-offerte-prodotto?id_prod=${prodotto.id}">Applicare delle offerte al prodotto</a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
         <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
 </html>

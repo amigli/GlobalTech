@@ -19,16 +19,18 @@
     </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
-        <div>
-            <p>Offerta <%=isModifica ? "modificata" : "caricata" %> con successo!</p>
+        <main id="result">
+            <h1>Offerta <%=isModifica ? "modificata" : "caricata" %> con successo!</h1>
             <p>ID:${offerta.id}</p>
             <p>Nome:${offerta.nome}</p>
             <p>Data inizio:${offerta.dataInizio}</p>
             <p>Data fine: ${offerta.dataFine}</p>
             <p>Percentuale di sconto:${offerta.percentuale}%</p>
-        </div>
 
-        <p>Ritorna alla <a href="index.html">home</a></p>
+            <p>Ritorna alla <a href="index.html">home</a></p>
+        </main>
+
+
 
         <%@include file="/WEB-INF/includes/footer.jsp"%>
 

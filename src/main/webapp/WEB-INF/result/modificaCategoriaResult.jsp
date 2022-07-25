@@ -15,8 +15,11 @@
     </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
-        <p>La categoria è stata modificata correttamente</p>
-        <p>Ritorna alla <a href="index.html">home</a></p>
+        <main id="result">
+            <h1>La categoria è stata modificata correttamente</h1>
+            <p>Ritorna alla <a href="index.html">home</a></p>
+        </main>
+
         <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
 </html>

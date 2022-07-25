@@ -14,9 +14,12 @@
         <%@include file="/WEB-INF/includes/navbar.jsp"%>
     </head>
     <body>
-    <%@include file="/WEB-INF/includes/navbar.jsp"%>
-        <p>La categoria è stata rimossa con successo</p>
-        <p>Ritorna alla <a href="index.html">home</a></p>
-    <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <main id="result">
+            <h1>La categoria è stata rimossa con successo</h1>
+            <p>Ritorna alla <a href="index.html">home</a></p>
+        </main>
+
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
     </body>
 </html>
