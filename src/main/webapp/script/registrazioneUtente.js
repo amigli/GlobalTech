@@ -58,7 +58,7 @@ function validateFormRegistrazione(){
 
     let nome =  document.getElementById("nome");
 
-    if(nome.value.length < 3 || !/^[A-Z]{3,3}0/i.test(nome.value)){
+    if(nome.value.length < 3 || !/^[A-Z\s]{3,30}$/i.test(nome.value)){
         errorInput(nome);
         state = false;
     }else{
@@ -67,14 +67,13 @@ function validateFormRegistrazione(){
 
     let cognome =  document.getElementById("cognome");
 
-    if(nome.value.length < 3 || !/^[A-Z]{3,3}0/i.test(nome.value)){
+    if(come.value.length < 3 || !/^[A-Z\s]{3,30}$/i.test(cognome.value)){
         errorInput(cognome);
         state = false;
     }else{
         correctInput(cognome);
     }
 
-    let password =  document.getElementById("password");
 
     if(!validatePassword('pass')) {
         errorInput(nome);

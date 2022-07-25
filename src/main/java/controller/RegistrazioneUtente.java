@@ -43,10 +43,10 @@ public class RegistrazioneUtente extends HttpServlet {
         if (password==null || !matcher.matches())
             errorPar.add("password");
 
-        if (nome==null || nome.length()<3)
+        if (nome==null || nome.length()<3 || !nome.matches("^[A-Za-z\\s]{3,30}$"))
             errorPar.add("nome");
 
-        if (cognome==null || cognome.length()<3)
+        if (cognome==null || cognome.length()<3 || !cognome.matches("^[A-Za-z\\s]{3,30}$"))
             errorPar.add("cognome");
 
         LocalDate dataNascita = null;
