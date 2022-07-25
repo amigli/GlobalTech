@@ -18,7 +18,8 @@
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
-    <h1 style="margin-left: 2em">Inserire una nuova offerta</h1>
+    <main id="result">
+    <h1>Inserire una nuova offerta</h1>
     <div id="caricareOfferta">
     <form method="post" action="carica-offerta" onsubmit=" return validateFormOfferta()">
         <%  GregorianCalendar inizio = (new GregorianCalendar());
@@ -64,6 +65,7 @@
         <input type="submit" value="Invia" id="carica-offerta">
     </form>
     </div>
+    </main>
     <script type="text/javascript" src="script/caricamentoOfferta.js"></script>
     <%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>

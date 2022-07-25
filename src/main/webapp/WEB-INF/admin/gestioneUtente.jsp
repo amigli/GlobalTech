@@ -20,6 +20,7 @@
         ArrayList<String> datiMancanti = new ArrayList<>();
         %>
         <br>
+        <main id="result">
         <div id="modificaUtente">
             <h1>ID utente: <%=u.getId()%></h1>
             <%
@@ -97,6 +98,7 @@
             <input type="hidden" name="idCliente" id="idCliente" value="<%=u.getId()%>">
             <input type="submit" value="Vedi tutti gli ordini di questo utente">
         </form>
+        </main>
         <br>
         <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
