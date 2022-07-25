@@ -17,7 +17,7 @@
         <%
         List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
         %>
-        <h1>Gestione Ordini</h1>
+        <h1 style="margin-left: 1em">Gestione Ordini</h1>
         <%if(ordini != null && ordini.size() > 0){%>
             <table id="ordini">
                 <tr>
@@ -63,5 +63,6 @@
         <%}else{%>
             <p>Non risultano Ordini</p>
         <%}%>
+        <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>
 </html>

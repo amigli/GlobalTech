@@ -25,6 +25,7 @@
   <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
+    <h1 style="margin-left: 1em">Gestione offerta ${offerta.id}</h1>
     <div id="gestione-offerta">
     <div id="offerta">
     <form method="post" id="form-modifica" action="modifica-offerta" onsubmit="return validateFormOfferta()">

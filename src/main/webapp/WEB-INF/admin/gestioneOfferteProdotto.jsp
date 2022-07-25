@@ -96,6 +96,6 @@
         <button onclick="aggiungiOfferta('offerta-futura-other')" id="attivaOfferta2">Attiva Offerte</button>
         </div>
 
-
+        <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>
 </html>

@@ -18,6 +18,9 @@
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
+    <h1 style="margin-left: 1em;">
+        Elenco prodotti
+    </h1>
     <table id="prodotti">
         <tr>
             <th>ID</th>
@@ -46,6 +49,6 @@
         </c:forEach>
     </table>
 
-
+    <%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>
 </html>

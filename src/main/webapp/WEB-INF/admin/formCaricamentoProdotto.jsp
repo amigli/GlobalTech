@@ -18,12 +18,13 @@
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
     <br>
+
     <div id="caricareProdotto">
+        <h1>Inserire un nuovo prodotto</h1>
         <%
             ArrayList<String> list =
                     (ArrayList<String>) request.getAttribute("error_parameter");
         %>
-
 <br>
     <form action="carica-prodotto" id="caricamento-prodotto" method="post" onsubmit=" return validateForm('caricamento-prodotto')">
         <fieldset>
@@ -180,6 +181,6 @@
     </div>
     <script type="text/javascript" src="script/CaricamentoProdotti.js">
     </script>
-
+    <%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>
 </html>

@@ -60,5 +60,6 @@ List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
         <%}%>
     </tr>
 </table>
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>
 </html>

@@ -169,5 +169,6 @@
 
     <script type="text/javascript" src="script/gestioneProdotto.js"></script>
     <script type="text/javascript" src="script/CaricamentoProdotti.js"></script>
+    <%@include file="/WEB-INF/includes/footer.jsp" %>
     </body>
 </html>

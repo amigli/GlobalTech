@@ -18,6 +18,7 @@ List<Utente> u = (List<Utente>) request.getAttribute("utenti");
 Utente me = (Utente) session.getAttribute("utente");
 %>
 <br>
+<h1 style="margin-left: 1em">Visualizza tutti gli utenti</h1>
 <table id="utenti">
     <tr>
         <th>ID</th>
@@ -44,5 +45,6 @@ Utente me = (Utente) session.getAttribute("utente");
     } %>
 </table>
 <br>
+<%@include file="/WEB-INF/includes/footer.jsp" %>
 </body>
 </html>
