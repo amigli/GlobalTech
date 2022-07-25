@@ -14,17 +14,22 @@ function rimuoviProdotto(){
         const xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                let otherSection =  document.getElementById("prodotti-other");
+            if (this.readyState == 4) {
+                if(this.status == 200){
+                    let otherSection =  document.getElementById("prodotti-other");
 
-                for(let c of checked){
-                    c.checked = false;
-                    c.setAttribute("name", "prod-other" )
+                    for(let c of checked){
+                        c.checked = false;
+                        c.setAttribute("name", "prod-other" )
 
-                    let parent = c.parentNode;
-                    parent.parentNode.removeChild(parent);
-                    otherSection.appendChild(parent);
+                        let parent = c.parentNode;
+                        parent.parentNode.removeChild(parent);
+                        otherSection.appendChild(parent);
+                    }
+                }else{
+                    window.alert("Si è verificato un errore non previsto, riprovare più tardi")
                 }
+
             }
         }
 
@@ -54,16 +59,20 @@ function aggiungiProdotto(){
         const xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                let otherSection =  document.getElementById("prodotti-attivi");
+            if (this.readyState == 4) {
+                if(this.status == 200){
+                    let otherSection =  document.getElementById("prodotti-attivi");
 
-                for(let c of checked){
-                    c.checked = false;
-                    c.setAttribute("name", "prod-attivi" )
+                    for(let c of checked){
+                        c.checked = false;
+                        c.setAttribute("name", "prod-attivi" )
 
-                    let parent = c.parentNode;
-                    parent.parentNode.removeChild(parent);
-                    otherSection.appendChild(parent);
+                        let parent = c.parentNode;
+                        parent.parentNode.removeChild(parent);
+                        otherSection.appendChild(parent);
+                    }
+                }else{
+                    window.alert("Si è verificato un errore non previsto, riprovare più tardi")
                 }
             }
         }

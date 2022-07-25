@@ -21,17 +21,20 @@ function rimuoviCategoria(){
         const xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function (){
-            if(this.readyState == 4 && this.status == 200){
-                let otherSection = document.getElementById("altre-categorie");
+            if(this.readyState == 4 ){
+                if(this.status == 200){
+                    let otherSection = document.getElementById("altre-categorie");
 
-                for(let elem of checked){
-                    elem.setAttribute("name", "categoria-other");
-                    elem.checked = false;
+                    for(let elem of checked){
+                        elem.setAttribute("name", "categoria-other");
+                        elem.checked = false;
 
-                    let parent =  elem.parentNode;
-                    parent.parentNode.removeChild(parent);
-                    otherSection.appendChild(parent);
-
+                        let parent =  elem.parentNode;
+                        parent.parentNode.removeChild(parent);
+                        otherSection.appendChild(parent);
+                    }
+                }else{
+                    window.alert("Si è verificato un errore non previsto, riprovare più tardi");
                 }
             }
         };
@@ -71,17 +74,21 @@ function aggiungiCategoria(){
         const xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function (){
-            if(this.readyState == 4 && this.status == 200){
-                let otherSection = document.getElementById("categorie-prodotto");
+            if(this.readyState == 4){
+                if(this.status == 200){
+                    let otherSection = document.getElementById("categorie-prodotto");
 
-                for(let elem of checked){
-                    elem.setAttribute("name", "categoria-prod");
-                    elem.checked = false;
+                    for(let elem of checked){
+                        elem.setAttribute("name", "categoria-prod");
+                        elem.checked = false;
 
-                    let parent =  elem.parentNode;
-                    parent.parentNode.removeChild(parent);
-                    otherSection.appendChild(parent);
+                        let parent =  elem.parentNode;
+                        parent.parentNode.removeChild(parent);
+                        otherSection.appendChild(parent);
 
+                    }
+                }else{
+                    window.alert("Si è verificato un errore non previsto, riprovare più tardi")
                 }
             }
         };

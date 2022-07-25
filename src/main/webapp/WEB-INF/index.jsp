@@ -50,7 +50,7 @@
                 </div>
                 <a href="categoriePage.jsp">
                     <h1 id="sfoglia-categorie">
-                        Tutte le categorie<i class="fa fa-arrow-right"></i>
+                        Tutte le categorie <i class="fa fa-arrow-right"></i>
                     </h1>
                 </a>
             </section>

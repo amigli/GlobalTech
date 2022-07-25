@@ -203,11 +203,13 @@ public class OrdineDAO {
     private Ordine creaOrdine(ResultSet res) throws SQLException {
         int id = res.getInt(1);
         float prezzoTotale=res.getFloat(2);
+        String tracking = res.getString(3);
         Date data = res.getDate(4);
         float speseSpedizione = res.getFloat(5);
         String modalitaPagamento = res.getString(6);
         String indirizzoSpedizione =  res.getString(7);
         int stato=res.getInt(8);
+
 
         Ordine o = new Ordine();
         o.setId(id);
@@ -217,7 +219,7 @@ public class OrdineDAO {
         o.setCcPagamento(modalitaPagamento);
         o.setStato(stato);
         o.setIndirizzoSpedizione(indirizzoSpedizione);
-
+        o.setTracking(tracking);
         List<ItemCart> prodotti =  retrieveProdottiOrdine(id);
 
         o.setProdotti(prodotti);

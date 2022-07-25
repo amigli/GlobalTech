@@ -504,6 +504,7 @@ figure.prodotto-figure{
     box-sizing: border-box;
     margin: 1em;
     padding: 1em;
+    cursor: pointer;
 }
 
 figure.prodotto-figure > img{
@@ -593,6 +594,7 @@ div.prodotto-carrello > img{
     width :12rem;
     object-fit: contain;
     float: left;
+    cursor: pointer;
 }
 
 div.dettagli-prodotto{
@@ -635,6 +637,7 @@ img.img-ordine{
     object-fit: contain;
     float: left;
     display: block;
+    cursor: pointer;
 }
 
 div.prodotto-ordine {
@@ -658,13 +661,21 @@ main#ordine-dettaglio{
 
 /* index.jsp */
 
+
+
 img.img-home{
     height :  9rem;
     width : 9rem;
     object-fit: contain;
     float: left;
+    cursor: pointer;
+    opacity: 90%;
 }
 
+
+img.img-home:hover{
+    opacity: 100%;
+}
 
 div#prodotti-top h1{
     clear: both;
@@ -695,8 +706,6 @@ div.categoria{
     cursor: pointer;
     width: 87%;
     transition: all 0.3s ease-in-out;
-
-
 }
 div.categoria:hover h1{
    background-color: darkblue;

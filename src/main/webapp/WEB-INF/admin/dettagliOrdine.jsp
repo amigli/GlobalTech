@@ -25,7 +25,11 @@
             <section id="dati-utente">
                 <fieldset id="dati_spedizione">
                     <legend>Dati Spedizione</legend>
-                    ${ordine.indirizzoSpedizione}
+                    <p>${ordine.indirizzoSpedizione}</p>
+                    <%if(ordine.getStato() == Ordine.completato){%>
+                        <p>Codice per il tracciamento : <%=ordine.getTracking()%></p>
+                    <%}%>
+
                 </fieldset>
                 <br>
                 <fieldset id="dati_pagamento">

@@ -8,7 +8,7 @@ public class Ordine {
     public static final int inAttesaDiConferma=0, confermato=1, completato=2;
     private float prezzoTotale, speseSpedizione;
     private LocalDate data;
-    private String ccPagamento, indirizzoSpedizione;
+    private String ccPagamento, indirizzoSpedizione, tracking;
     private List<ItemCart> prodotti;
 
     public Ordine() {
@@ -90,6 +90,14 @@ public class Ordine {
 
 
         return risp;
+    }
+
+    public String getTracking() {
+        return tracking;
+    }
+
+    public void setTracking(String tracking) {
+        this.tracking = tracking;
     }
 
     public String getIndirizzoSpedizione() {

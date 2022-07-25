@@ -67,7 +67,7 @@ function validateFormRegistrazione(){
 
     let cognome =  document.getElementById("cognome");
 
-    if(come.value.length < 3 || !/^[A-Z\s]{3,30}$/i.test(cognome.value)){
+    if(cognome.value.length < 3 || !/^[A-Z\s]{3,30}$/i.test(cognome.value)){
         errorInput(cognome);
         state = false;
     }else{
@@ -76,10 +76,7 @@ function validateFormRegistrazione(){
 
 
     if(!validatePassword('pass')) {
-        errorInput(nome);
         state = false;
-    }else{
-        correctInput(nome);
     }
 
 

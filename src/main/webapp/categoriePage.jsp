@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Le nostre categorie</title>
     <%@include file="/WEB-INF/includes/links.html" %>
 </head>
 <body>
@@ -24,7 +24,7 @@
         <h1>Le Nostre Categorie</h1>
         <ul>
             <%for(Categoria c : allCategorie){%>
-            <li><h2><a href="prodotti-per-categoria?id=" +<%=c.getId()%>><%=c.getNome()%></a></h2></li>
+            <li><h2><a href="prodotti-per-categoria?id=<%=c.getId()%>"><%=c.getNome()%></a></h2></li>
             <%}%>
         </ul>
     </main>

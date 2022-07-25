@@ -22,10 +22,11 @@ function rimuoviOfferta(elementName){
         const xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    let elementId =
-                        elementName == "offerta-attiva-prodotto" ?
-                            "offerte-attive-other" : "offerte-future-other";
+                if (this.readyState == 4) {
+                    if(this.status == 200){
+                        let elementId =
+                            elementName == "offerta-attiva-prodotto" ?
+                                "offerte-attive-other" : "offerte-future-other";
 
                         let otherSection = document.getElementById(elementId);
 
@@ -42,7 +43,10 @@ function rimuoviOfferta(elementName){
                             otherSection.appendChild(parent);
 
                         }
+                    }else{
+                        window.alert("Si è verificato un errore non previsto, riprovare più tardi")
                     }
+                }
 
             }
 

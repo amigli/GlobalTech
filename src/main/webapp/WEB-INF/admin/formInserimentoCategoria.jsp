@@ -18,20 +18,24 @@
         <h1>Inserire una nuova categoria</h1>
         <div id="inserireCategoria">
             <%
-                List<String> errorPar = (List<String>) request.getAttribute("error_parmeter");
+                List<String> errorPar = (List<String>) request.getAttribute("error_parameter");
             %>
             <form action="inserisci-categoria" id="inserisciCategoria" onsubmit="return validateFormCategoria()" method="post">
-                <label for="nomeCategoria">Nome della categoria:</label>
-                <input type="text" id="nomeCategoria" name="nomeCategoria" required
-                    <%if(errorPar != null){%>
+                <div>
+                    <label for="nomeCategoria">Nome della categoria:</label>
+                    <input type="text" id="nomeCategoria" name="nomeCategoria" required
+                        <%if(errorPar != null){%>
                         <%if(errorPar.contains("nome")){%>
                            class = "error-parameter"
                         <%}%>
-                       value="<%=request.getParameter("nome")%>"
-                    <%}%> >
-                <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
-                <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="40" <%if(errorPar != null && errorPar.contains("nome")){%>
-                          class = "error-parameter"<%}%> required><%if(errorPar!=null){%><%=request.getParameter("descrizioneCategoria")%><%}%></textarea>
+                           value="<%=request.getParameter("nomeCategoria")%>"
+                        <%}%> >
+                </div>
+                <div>
+                    <label for="descrizioneCategoria">Descrizione della categoria:</label><br>
+                    <textarea id="descrizioneCategoria" name="descrizioneCategoria" rows="5" cols="40" <%if(errorPar != null && errorPar.contains("nome")){%>
+                              class = "error-parameter"<%}%> required><%if(errorPar!=null){%><%=request.getParameter("descrizioneCategoria")%><%}%></textarea>
+                </div>
                 <br>
                 <input type="submit" value="Inserisci">
             </form>

@@ -65,9 +65,10 @@ public class ConfermaOrdineServlet extends HttpServlet {
                             u.setNumAcquisti((u.getNumAcquisti()) + 1);
 
                             serviceUtente.doUpdateNumeroOrdini(u);
+                            Utente tmp = serviceUtente.doRetrieveById(u.getId());
 
-
-                            session.setAttribute("utente", u);
+                            session.setAttribute("utente", tmp);
+                            session.removeAttribute("checkcode");
 
                             request.setAttribute("ordine", ordine);
 

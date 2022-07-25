@@ -39,7 +39,7 @@ public class InserisciCategoria extends HttpServlet {
                     String nome = request.getParameter("nomeCategoria");
                     String descrizione = request.getParameter("descrizioneCategoria");
 
-                    if (nome == null || nome.length()<3 || nome.matches("^[A-Za-z0-9\\s]{3,45}"))
+                    if (nome == null || nome.length()<3 || !nome.matches("^[\\wèàùòé\\s]{3,45}$"))
                         errorPar.add("nome");
 
                     if (descrizione == null)

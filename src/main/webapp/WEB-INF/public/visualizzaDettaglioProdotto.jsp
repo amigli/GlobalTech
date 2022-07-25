@@ -62,14 +62,18 @@
                         <input type="submit" value="Gestisci Prodotto">
                     </form>
 
+                    <%}else{
+                        if(item.getProdotto().getDisponibilita() >=1){%>
+                            <form method="post" action="aggiungi-carrello">
+                                <input type="hidden" name="prodotto" value="<%=item.getProdotto().getId()%>">
+                                <label>Quantita</label>
+                                <input type="number" name="quantita" max="<%=item.getProdotto().getDisponibilita()%>" min="1" value="1">
+                                <input type="submit" value="Aggiungi Al Carrello">
+                            </form>
                     <%}else{%>
-                    <form method="post" action="aggiungi-carrello">
-                        <input type="hidden" name="prodotto" value="<%=item.getProdotto().getId()%>">
-                        <label>Quantita</label>
-                        <input type="number" name="quantita" max="<%=item.getProdotto().getDisponibilita()%>" min="1" value="1">
-                        <input type="submit" value="Aggiungi Al Carrello">
-                    </form>
-                    <%}%>
+                            <h2>Impossibile aggiungere il prodotto al carrello</h2>
+                    <%}
+                    }%>
                 </div>
             </section>
             <section id="scheda-tecnica">

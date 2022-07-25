@@ -59,14 +59,14 @@
                 <legend>Dati personali</legend>
                 <div>
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome">
+                    <input type="text" name="nome" id="nome" required>
                     <%if(errList != null && errList.contains("nome")){%>
                     <p>Inserire nome valido</p>
                     <%}%>
                 </div>
                 <div>
                     <label for="cognome">Cognome</label>
-                    <input type="text" name="cognome" id="cognome">
+                    <input type="text" name="cognome" id="cognome" required>
                     <%if(errList != null && errList.contains("cognome")){%>
                     <p>Inserire cognome valido</p>
                     <%}%>
@@ -80,7 +80,7 @@
                                 new GregorianCalendar(today.get(Calendar.YEAR) - 18, today.get(Calendar.MONTH),
                                         today.get(Calendar.DAY_OF_MONTH));
                     %>
-                    <input type="date" name="data_nascita" id="data_nascita"
+                    <input type="date" name="data_nascita" id="data_nascita" required
                            max="<%=dataCalculate.toZonedDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))%>">
                     <%if(errList != null && errList.contains("dataNascita")){%>
                         <p>Inserire data valida</p>

@@ -15,7 +15,7 @@
     </head>
     <body>
         <%@include file="/WEB-INF/includes/navbar.jsp" %>
-        <main>
+        <main id="result">
             <h2>Dettagli prodotto eliminato</h2>
 
             <div id="dettagli-caricamento">
