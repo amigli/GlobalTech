@@ -15,6 +15,11 @@ import java.util.ArrayList;
 public class ModificaDatiPUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         synchronized (session){
@@ -68,13 +73,8 @@ public class ModificaDatiPUtente extends HttpServlet {
 
             }else{
                 response.sendRedirect("login-page");
-        }
+            }
 
         }
- }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

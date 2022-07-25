@@ -12,48 +12,53 @@ import java.io.IOException;
 public class GestioneUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utente u = (Utente) request.getSession().getAttribute("utente");
+        HttpSession session = request.getSession();
 
-        if (u!=null){
-            if (u.isAdmin()){
-                String idString = request.getParameter("id");
-                if (idString!=null){
-                    try{
-                        int id = Integer.parseInt(idString);
-                        UtenteDAO service = new UtenteDAO();
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-                        Utente uId = service.doRetrieveById(id);
+            if (u!=null){
+                if (u.isAdmin()){
+                    String idString = request.getParameter("id");
+                    if (idString!=null){
+                        try{
+                            int id = Integer.parseInt(idString);
+                            UtenteDAO service = new UtenteDAO();
 
-                        if (uId!=null){
-                            request.setAttribute("utenteId", uId);
-                            String address =  "/WEB-INF/admin/gestioneUtente.jsp";
+                            Utente uId = service.doRetrieveById(id);
 
-                            RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+                            if (uId!=null){
+                                request.setAttribute("utenteId", uId);
+                                String address =  "/WEB-INF/admin/gestioneUtente.jsp";
 
-                            dispatcher.forward(request, response);
+                                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+
+                                dispatcher.forward(request, response);
+                            }
+                            else{
+                                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                            }
+                        }catch (NumberFormatException e){
+                            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                         }
-                        else{
-                            response.sendError(HttpServletResponse.SC_NOT_FOUND);
-                        }
-                    }catch (NumberFormatException e){
+                    }
+                    else{
                         response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                     }
                 }
                 else{
-                    response.sendError(400);
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
             }
             else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
         }
-        else{
-            response.sendRedirect("login-page");
-        }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

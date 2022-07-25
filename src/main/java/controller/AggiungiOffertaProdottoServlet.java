@@ -66,8 +66,6 @@ public class AggiungiOffertaProdottoServlet extends HttpServlet {
                     }else{
                         response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                     }
-
-
                 }else{
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }

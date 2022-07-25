@@ -17,8 +17,7 @@
         <%
         List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
         %>
-        <br>
-
+        <h1>Gestione Ordini</h1>
         <%if(ordini != null && ordini.size() > 0){%>
             <table id="ordini">
                 <tr>
@@ -33,40 +32,33 @@
                 <%
                 for (Ordine o : ordini){
                 %>
-                <tr>
-                    <td><%=o.getId()%></td>
-                    <td><%=o.getPrezzoTotale()%></td>
-                    <td><%=o.getData()%></td>
-                    <td><%=o.getCcPagamento()%></td>
-                    <td><%=o.getIndirizzoSpedizione()%></td>
-                    <td>
-                    <form action="stato-spedizione">
-                        <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">
-
-                        <%=o.getStatoString()%>
-                        <%
-                    if (o.getStato()==0){
-                    %>
-
-                    <input type="submit" id="stato1" name="stato1" value="Conferma">
-                    <%}%>
-                    <%if (o.getStato()==1){
-                    %>
-                        <input type="text" id="numTracking" name="numTracking" placeholder="Numero di tracking" required>
-                        <input type="submit" id="stato2" name="stato2" value="Spedisci">
-
-                        <%}%>
-                    </form>
-                    </td>
-                    <td>
-                        <form action="dettaglio-ordine" method="get">
-                            <input type="hidden" name="id" value="<%=o.getId()%>">
-                            <button type="submit"><i class="fa fa-external-link"></i></button>
-                        </form>
-                    </td>
-                    <%}%>
-
-                </tr>
+                    <tr>
+                        <td><%=o.getId()%></td>
+                        <td><%=o.getPrezzoTotale()%></td>
+                        <td><%=o.getData()%></td>
+                        <td><%=o.getCcPagamento()%></td>
+                        <td><%=o.getIndirizzoSpedizione()%></td>
+                        <td>
+                            <form action="stato-spedizione"  method="post">
+                                <input type="hidden" id="idOrdine" name="idOrdine" value="<%=o.getId()%>">
+                                <%=o.getStatoString()%>
+                                <%if (o.getStato()==0){%>
+                                    <input type="submit" id="stato1" name="stato1" value="Conferma">
+                                <%}%>
+                                <%if (o.getStato()==1){%>
+                                    <input type="text" id="numTracking" name="numTracking" placeholder="Numero di tracking (Lettere e numeri)" pattern="[A-Za-z0-9]{3,15}" required>
+                                    <input type="submit" id="stato2" name="stato2" value="Spedisci">
+                                <%}%>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="dettaglio-ordine" method="get">
+                                <input type="hidden" name="id" value="<%=o.getId()%>">
+                                <button type="submit"><i class="fa fa-external-link"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <%}%>
             </table>
         <%}else{%>
             <p>Non risultano Ordini</p>

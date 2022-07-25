@@ -22,60 +22,59 @@ public class ModificaCategoria extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-        Utente u =  (Utente) session.getAttribute("utente");
+        synchronized (session){
+            Utente u =  (Utente) session.getAttribute("utente");
 
-        if(u != null){
-            if(u.isAdmin()){
-                ArrayList<String> errorPar =  new ArrayList<>();
-                CategoriaDAO service = new CategoriaDAO();
-                String  address = "/WEB-INF/result/modificaCategoriaResult.jsp";
+            if(u != null){
+                if(u.isAdmin()){
+                    ArrayList<String> errorPar =  new ArrayList<>();
+                    CategoriaDAO service = new CategoriaDAO();
+                    String  address = "/WEB-INF/result/modificaCategoriaResult.jsp";
 
-                String nome = request.getParameter("nomeCategoria");
-                String descrizione = request.getParameter("descrizioneCategoria");
-                int id ;
+                    String nome = request.getParameter("nomeCategoria");
+                    String descrizione = request.getParameter("descrizioneCategoria");
+                    int id ;
 
-                if(request.getParameter("id") != null){
-                    try{
-                        id =  Integer.parseInt(request.getParameter("id"));
-                    }catch (NumberFormatException e){
+                    if(request.getParameter("id") != null){
+                        try{
+                            id =  Integer.parseInt(request.getParameter("id"));
+                        }catch (NumberFormatException e){
+                            id = -1;
+                        }
+                    }else{
                         id = -1;
                     }
-                }else{
-                    id = -1;
-                }
 
-                if(id < 0)
-                    response.setStatus(404);
-                else {
-                    if (nome == null || nome.length() < 3)
-                        errorPar.add("nome");
+                    if(id < 0)
+                        response.setStatus(404);
+                    else {
+                        if (nome == null || nome.length() < 3)
+                            errorPar.add("nome");
 
-                    if (descrizione == null || descrizione.length() < 3)
-                        errorPar.add("descrizione");
+                        if (descrizione == null || descrizione.length() < 3)
+                            errorPar.add("descrizione");
 
-                    if (errorPar.isEmpty()) {
-                        Categoria c = new Categoria();
+                        if (errorPar.isEmpty()) {
+                            Categoria c = new Categoria();
 
-                        c.setNome(nome);
-                        c.setDescrizione(descrizione);
-                        c.setId(id);
-                        service.doUpdateCategoria(c);
-                    } else {
-                        request.setAttribute("error_parameter", errorPar);
+                            c.setNome(nome);
+                            c.setDescrizione(descrizione);
+                            c.setId(id);
+                            service.doUpdateCategoria(c);
+                        } else {
+                            request.setAttribute("error_parameter", errorPar);
 
-                        address = "/WEB-INF/admin/formModificaCategoria.jsp";
+                            address = "/WEB-INF/admin/formModificaCategoria.jsp";
+                        }
                     }
+                    RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+                    dispatcher.forward(request, response);
+                }else{
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
-                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-                dispatcher.forward(request, response);
             }else{
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
         }
-
-
-
     }
 }

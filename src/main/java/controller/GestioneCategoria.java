@@ -39,7 +39,7 @@ public class GestioneCategoria extends HttpServlet {
 
 
                     if (id < 1){
-                        response.sendError(404);
+                        response.sendError(response.SC_NOT_FOUND);
                     }else{
                         CategoriaDAO service = new CategoriaDAO();
                         Categoria c = service.doRetrieveById(id);
@@ -69,6 +69,6 @@ public class GestioneCategoria extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+            response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

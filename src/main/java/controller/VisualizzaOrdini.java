@@ -29,7 +29,6 @@ public class VisualizzaOrdini extends HttpServlet {
 
                     request.setAttribute("ordini", ordiniAll);
 
-
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/visualizzaOrdini.jsp");
                     dispatcher.forward(request, response);
 
@@ -45,6 +44,7 @@ public class VisualizzaOrdini extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 
     }
 }

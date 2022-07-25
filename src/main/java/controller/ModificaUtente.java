@@ -13,6 +13,12 @@ import java.util.ArrayList;
 public class ModificaUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession();
 
         synchronized (session){
@@ -20,10 +26,6 @@ public class ModificaUtente extends HttpServlet {
 
             if (u!=null){
                 if (u.isAdmin()){
-                    UtenteDAO service = new UtenteDAO();
-
-                    String address = "/WEB-INF/result/modificaUtenteResult.jsp";
-
                     String rimuoviAdminButton = request.getParameter("rimuoviAdmin");
                     String aggiungiAdminButton = request.getParameter("aggiungiAdmin");
                     String idString = request.getParameter("id");
@@ -31,21 +33,26 @@ public class ModificaUtente extends HttpServlet {
                     if (idString != null){
                         try{
                             int id = Integer.parseInt(idString);
+
+                            UtenteDAO service = new UtenteDAO();
+
+                            String address = "/WEB-INF/result/modificaUtenteResult.jsp";
+
                             Utente utente = service.doRetrieveById(id);
                             if(utente != null){
-                                if (rimuoviAdminButton!=null ||aggiungiAdminButton!=null ) {
+                                if ((rimuoviAdminButton != null && utente.isAdmin())
+                                        || (aggiungiAdminButton != null && !utente.isAdmin())) {
 
-                                    if (rimuoviAdminButton != null) {
+                                    if (rimuoviAdminButton != null && utente.isAdmin()) {
                                         service.setAdmin(0, id);
-                                    }
-                                    if (aggiungiAdminButton != null) {
+                                    }else{
                                         service.setAdmin(1, id);
                                     }
 
                                     RequestDispatcher dispatcher = request.getRequestDispatcher(address);
                                     dispatcher.forward(request, response);
                                 }else{
-                                    response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                                    response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
                                 }
                             }else{
                                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -66,10 +73,5 @@ public class ModificaUtente extends HttpServlet {
             }
 
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

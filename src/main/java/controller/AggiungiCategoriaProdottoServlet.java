@@ -14,6 +14,11 @@ import java.util.stream.Collectors;
 public class AggiungiCategoriaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
 
         synchronized (session){
@@ -69,11 +74,5 @@ public class AggiungiCategoriaProdottoServlet extends HttpServlet {
             }
         }
 
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
     }
 }

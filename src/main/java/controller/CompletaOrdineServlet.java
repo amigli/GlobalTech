@@ -50,9 +50,6 @@ public class CompletaOrdineServlet extends HttpServlet {
 
                         response.sendRedirect("errore-carrello");
                     }
-
-
-
                 }else{
                     response.sendRedirect("visualizza-carrello");
                 }

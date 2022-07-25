@@ -26,50 +26,50 @@ public class InserisciCategoria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-        Utente u = (Utente) session.getAttribute("utente");
 
-        if(u != null){
-            if(u.isAdmin()){
-                ArrayList<String> errorPar =  new ArrayList<>();
-                CategoriaDAO service = new CategoriaDAO();
-                String address;
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-                String nome = request.getParameter("nomeCategoria");
-                String descrizione = request.getParameter("descrizioneCategoria");
+            if(u != null){
+                if(u.isAdmin()){
+                    ArrayList<String> errorPar =  new ArrayList<>();
+                    CategoriaDAO service = new CategoriaDAO();
+                    String address;
 
-                if (nome==null || nome.length()<3)
-                    errorPar.add("nome");
+                    String nome = request.getParameter("nomeCategoria");
+                    String descrizione = request.getParameter("descrizioneCategoria");
 
-                if (descrizione == null)
-                    errorPar.add("descrizione");
+                    if (nome == null || nome.length()<3 || nome.matches("^[A-Za-z0-9\\s]{3,45}"))
+                        errorPar.add("nome");
 
-                if (errorPar.isEmpty()){
-                    Categoria c = new Categoria();
-                    c.setNome(nome);
-                    c.setDescrizione(descrizione);
+                    if (descrizione == null)
+                        errorPar.add("descrizione");
 
-                    int id = service.doSaveCategoria(c);
+                    if (errorPar.isEmpty()){
+                        Categoria c = new Categoria();
+                        c.setNome(nome);
+                        c.setDescrizione(descrizione);
 
-                    c.setId(id);
+                        int id = service.doSaveCategoria(c);
 
-                    request.setAttribute("categoria_inserita", c);
+                        c.setId(id);
 
-                    address="/WEB-INF/result/caricamentoCategoriaCompletato.jsp";
+                        request.setAttribute("categoria_inserita", c);
+
+                        address="/WEB-INF/result/caricamentoCategoriaCompletato.jsp";
+                    }
+                    else{
+                        request.setAttribute("error_parameter", errorPar);
+                        address = "/WEB-INF/admin/formInserimentoCategoria.jsp";
+                    }
+                    RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
+                    dispatcher.forward(request, response);
+                }else{
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
-                else{
-                    request.setAttribute("error_parameter", errorPar);
-                    address = "/WEB-INF/admin/formInserimentoCategoria.jsp";
-                }
-                RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
-                dispatcher.forward(request, response);
             }else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
-
-        }else{
-            response.sendRedirect("login-page");
         }
-
-
     }
 }

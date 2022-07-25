@@ -14,45 +14,47 @@ public class GestioneCategoriaProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
            HttpSession session =  request.getSession();
-           Utente u = (Utente) session.getAttribute("utente");
 
-           if( u != null){
-               if(u.isAdmin()){
-                   String idString =  request.getParameter("id_prod");
-                   try{
-                       Integer id =  Integer.parseInt(idString);
+           synchronized (session){
+               Utente u = (Utente) session.getAttribute("utente");
 
-                       ProdottoDAO service = new ProdottoDAO();
+               if( u != null){
+                   if(u.isAdmin()){
+                       String idString =  request.getParameter("id_prod");
+                       try{
+                           Integer id =  Integer.parseInt(idString);
 
-                       Prodotto prodotto = service.doRetrieveById(id);
+                           ProdottoDAO service = new ProdottoDAO();
 
-                       if(prodotto != null){
-                           String address =  "WEB-INF/admin/gestioneCategorieProdotto.jsp";
+                           Prodotto prodotto = service.doRetrieveById(id);
 
-                           request.setAttribute("prodotto", prodotto);
+                           if(prodotto != null){
+                               String address =  "WEB-INF/admin/gestioneCategorieProdotto.jsp";
 
-                           RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                               request.setAttribute("prodotto", prodotto);
 
-                           dispatcher.forward(request, response);
-                       }else{
-                           response.sendError(404);
+                               RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+
+                               dispatcher.forward(request, response);
+                           }else{
+                               response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                           }
+
+                       }catch (NumberFormatException e){
+                           response.sendError(HttpServletResponse.SC_BAD_REQUEST);
                        }
-
-                   }catch (NumberFormatException e){
-                       response.sendError(400);
+                   }else{
+                       response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                    }
+
+               }else{
+                   response.sendRedirect("login-page");
                }
-
-           }else{
-               response.sendRedirect("login-page");
            }
-
-
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

@@ -56,10 +56,6 @@ public class RimuoviCategorieProdottoServlet extends HttpServlet {
                     }else{
                         response.sendError(HttpServletResponse.SC_NOT_FOUND);
                     }
-
-
-
-
                 }catch (NumberFormatException e){
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Errore nell'invio della richiesta");
                 }

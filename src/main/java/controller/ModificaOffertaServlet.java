@@ -120,7 +120,7 @@ public class ModificaOffertaServlet extends HttpServlet {
 
                                 dispatcher.forward(request, response);
                             }else{
-
+                                response.sendError(HttpServletResponse.SC_NOT_FOUND);
                             }
                         }catch (NumberFormatException e){
                             response.sendError(HttpServletResponse.SC_BAD_REQUEST);

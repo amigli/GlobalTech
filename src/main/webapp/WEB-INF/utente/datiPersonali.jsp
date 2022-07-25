@@ -27,7 +27,7 @@
         </div>
         <%}%>
 
-        <form action="modifica-datiPUtente" onsubmit="return validateFormDatiPUtente()">
+        <form action="modifica-datiPUtente" method="post" onsubmit="return validateFormDatiPUtente()">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required
                 <%

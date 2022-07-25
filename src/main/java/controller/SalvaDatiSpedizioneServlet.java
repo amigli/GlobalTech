@@ -69,7 +69,6 @@ public class SalvaDatiSpedizioneServlet extends HttpServlet {
                         errorPar.add("telefono");
                     }
 
-                    String address;
 
                     if(errorPar.isEmpty()){
                         u.setNome(nome);

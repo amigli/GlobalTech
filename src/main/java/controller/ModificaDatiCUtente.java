@@ -15,6 +15,11 @@ import java.util.GregorianCalendar;
 public class ModificaDatiCUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         synchronized (session){
@@ -41,6 +46,7 @@ public class ModificaDatiCUtente extends HttpServlet {
                     errPar.add("CVV");
                 }
 
+
                 String scadenzaMeseString =  request.getParameter("month-scad-cc");
                 String scadenzaAnnoString = request.getParameter("year-scad-cc");
 
@@ -48,6 +54,9 @@ public class ModificaDatiCUtente extends HttpServlet {
 
                 try{
                     scadenzaMese = Integer.parseInt(scadenzaMeseString);
+                    if(scadenzaMese > 12 || scadenzaMese < 1){
+                        errPar.add("Mese scadenza carta");
+                    }
 
                 }catch (NumberFormatException e){
                     errPar.add("Mese scadenza carta");
@@ -58,28 +67,32 @@ public class ModificaDatiCUtente extends HttpServlet {
                 }catch (NumberFormatException e){
                     errPar.add("Anno scadenza carta");
                 }
-                int day = scadenzaMese == 2 ? 28 :
-                        scadenzaMese == 1 || scadenzaMese == 3 ||
-                                scadenzaMese == 5 || scadenzaMese == 7 ||
-                                scadenzaMese == 8 || scadenzaMese == 10 ||
-                                scadenzaMese == 12 ? 31 : 30;
 
-                GregorianCalendar today  = new GregorianCalendar();
-                GregorianCalendar scadenza = new GregorianCalendar(scadenzaAnno, scadenzaMese - 1, day);
+                if(!errPar.contains("Mese scadenza carta") && !errPar.contains("Anno scadenza carta")){
+                    int day = scadenzaMese == 2 ? 28 :
+                            scadenzaMese == 1 || scadenzaMese == 3 ||
+                                    scadenzaMese == 5 || scadenzaMese == 7 ||
+                                    scadenzaMese == 8 || scadenzaMese == 10 ||
+                                    scadenzaMese == 12 ? 31 : 30;
 
-                if(scadenza.before(today)){
-                    errPar.add("Scadenza Carta");
-                }
+                    GregorianCalendar today  = new GregorianCalendar();
+                    GregorianCalendar scadenza = new GregorianCalendar(scadenzaAnno, scadenzaMese - 1, day);
 
-                if(errPar.isEmpty()){
-                    u.setNumeroCarta(numCarta);
-                    u.setCvvCarta(cvv);
-                    u.setDataScadenzaCarta(scadenza.toZonedDateTime().toLocalDate());
+                    if(scadenza.before(today)){
+                        errPar.add("Scadenza Carta");
+                    }
 
-                    service.aggiornaUtente(u);
-                    session.setAttribute("utente", u);
+                    if(errPar.isEmpty()){
+                        u.setNumeroCarta(numCarta);
+                        u.setCvvCarta(cvv);
+                        u.setDataScadenzaCarta(scadenza.toZonedDateTime().toLocalDate());
 
-
+                        service.aggiornaUtente(u);
+                        session.setAttribute("utente", u);
+                    }else{
+                        request.setAttribute("error-parameter", errPar);
+                        address = "/WEB-INF/utente/datiCarta.jsp";
+                    }
                 }else{
                     request.setAttribute("error-parameter", errPar);
                     address = "/WEB-INF/utente/datiCarta.jsp";
@@ -88,15 +101,11 @@ public class ModificaDatiCUtente extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(address);
                 dispatcher.forward(request, response);
 
+
             }else{
                 response.sendRedirect("login-page");
             }
 
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

@@ -30,7 +30,6 @@ public class VisualizzaOrdiniEffettuatiServlet extends HttpServlet {
             }else{
                 response.sendRedirect("login-page");
             }
-
         }
     }
 

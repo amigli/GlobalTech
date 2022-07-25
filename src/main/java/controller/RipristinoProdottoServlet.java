@@ -13,15 +13,17 @@ import java.io.IOException;
 public class RipristinoProdottoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utente u =  (Utente) session.getAttribute("utente");
+
 
         synchronized (session){
+            Utente u =  (Utente) session.getAttribute("utente");
 
             if(u != null){
                 if(u.isAdmin()){

@@ -1,7 +1,6 @@
 
 
 $(document).ready(
-    $(document).ready(
         function (){
             $("#burger").click(
                 function () {
@@ -10,8 +9,7 @@ $(document).ready(
                 }
             )
         }
-    ),
-
+    ,
     $("search-box").focusout(
         function (){
             let result = document.querySelector("#suggest");

@@ -15,32 +15,31 @@ public class VisualizzaProdottiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-        Utente u = (Utente) session.getAttribute("utente");
 
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
             if(u != null){
-                 if(u.isAdmin()){
-                        ProdottoDAO service =  new ProdottoDAO();
+                if(u.isAdmin()){
+                    ProdottoDAO service =  new ProdottoDAO();
 
-                        List<Prodotto> list =  service.doRetrieveAll();
+                    List<Prodotto> list =  service.doRetrieveAll();
 
-                        request.setAttribute("prodotti", list);
-                        RequestDispatcher dispatcher =
-                                request.getRequestDispatcher("/WEB-INF/admin/visualizzaProdotti.jsp");
-                        dispatcher.forward(request, response);
-                    }else{
-                        response.sendError(401);
-                    }
+                    request.setAttribute("prodotti", list);
+                    RequestDispatcher dispatcher =
+                            request.getRequestDispatcher("/WEB-INF/admin/visualizzaProdotti.jsp");
+                    dispatcher.forward(request, response);
+                }else{
+                    response.sendError(401);
+                }
             }else{
                 response.sendRedirect("login-page");
             }
-
-
-
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

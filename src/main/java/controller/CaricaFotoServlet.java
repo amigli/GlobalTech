@@ -27,9 +27,11 @@ public class CaricaFotoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
-        Utente u = ((Utente) session.getAttribute("utente"));
+
 
         synchronized (session){
+            Utente u = ((Utente) session.getAttribute("utente"));
+
             if(u != null ){
                 if(u.isAdmin()){
                     String idString = request.getParameter("id");
@@ -77,7 +79,6 @@ public class CaricaFotoServlet extends HttpServlet {
 
                                     ArrayList<Foto> photos = new ArrayList<>();
 
-                                    FotoDAO serviceFoto =  new FotoDAO();
                                     Optional<Integer> maxNumber = prodotto.getImmagini().stream().map(Foto::getNumeroId).max(Integer::compareTo);
 
                                     int i = maxNumber.isPresent() ? maxNumber.get() + 1 : 1;

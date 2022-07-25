@@ -32,17 +32,17 @@ public class CaricaProdottoServlet extends HttpServlet {
 
                     String nome = request.getParameter("nome");
 
-                    if (nome == null || nome.length() < 3)
+                    if (nome == null || nome.length() < 3 || !nome.matches("^[A-Za-z0-9\\s]{3,40}$"))
                         errorPar.add("nome");
 
                     String marca = request.getParameter("marca");
 
-                    if (marca == null || marca.length() < 3)
+                    if (marca == null || marca.length() < 3 || !marca.matches("^[A-Za-z0-9\\s]{3,40}$"))
                         errorPar.add("marca");
 
                     String colore = request.getParameter("colore");
 
-                    if (colore == null || colore.length() < 3)
+                    if (colore == null || colore.length() < 3 || !colore.matches("^[A-Za-z0-9\\s]{3,40}$"))
                         errorPar.add("colore");
 
                     float prezzo;
@@ -163,7 +163,7 @@ public class CaricaProdottoServlet extends HttpServlet {
                     dispatcher.forward(request, response);
 
                 }else{
-                    response.sendError(401);
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 }
             }else{
                 response.sendRedirect("login-page");

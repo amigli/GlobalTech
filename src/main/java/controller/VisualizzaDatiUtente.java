@@ -14,15 +14,18 @@ public class VisualizzaDatiUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utente u = (Utente) session.getAttribute("utente");
 
-        String address="/WEB-INF/utente/modificaDati.jsp";
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-        if (u!=null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-            dispatcher.forward(request, response);
-        }else{
-            response.sendRedirect("login-page");
+            String address="/WEB-INF/utente/modificaDati.jsp";
+
+            if (u!=null){
+                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                dispatcher.forward(request, response);
+            }else{
+                response.sendRedirect("login-page");
+            }
         }
     }
 

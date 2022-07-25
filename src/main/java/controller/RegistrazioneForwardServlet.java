@@ -12,18 +12,20 @@ public class RegistrazioneForwardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
+        synchronized (session){
+            Utente utente = (Utente) session.getAttribute("utente");
 
-        Utente utente = (Utente) session.getAttribute("utente");
+            if(utente != null){
+                response.sendRedirect("/index.html");
+            }else{
+                String address = "/WEB-INF/public/formRegistrazione.jsp";
+                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 
-        if(utente != null){
-            response.sendRedirect("/index.hmtl");
-        }else{
-            String address = "/WEB-INF/public/formRegistrazione.jsp";
-            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                dispatcher.forward(request, response);
 
-            dispatcher.forward(request, response);
-
+            }
         }
+
 
 
     }

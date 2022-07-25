@@ -19,23 +19,33 @@ import java.util.List;
 public class VisualizzaUtenti extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utente u = (Utente) request.getSession().getAttribute("utente");
+        HttpSession session = request.getSession();
 
-        if(u!=null){
-            if(u.isAdmin()){
-                UtenteDAO service = new UtenteDAO();
-                String address="/WEB-INF/admin/visualizzaUtenti.jsp";
-                List <Utente> ut = service.doRetrieveAll();
 
-                request.setAttribute("utenti", ut);
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-                dispatcher.forward(request, response);
+            if(u!=null){
+                if(u.isAdmin()){
+                    UtenteDAO service = new UtenteDAO();
+                    String address="/WEB-INF/admin/visualizzaUtenti.jsp";
+                    List <Utente> ut = service.doRetrieveAll();
+
+                    request.setAttribute("utenti", ut);
+
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                    dispatcher.forward(request, response);
+                }else{
+                    response.sendError(401);
+                }
             }else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

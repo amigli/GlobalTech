@@ -38,35 +38,6 @@ public class ConfermaPagamentoServlet extends HttpServlet {
                     if(numeroCC == null || !numeroCC.matches("^[0-9]{13,16}$"))
                         errorPar.add("Numero Carta");
 
-                    int scadenzaMese = 0, scadenzaAnno = 0;
-
-                    try{
-                        scadenzaMese = Integer.parseInt(scadenzaMeseString);
-
-                    }catch (NumberFormatException e){
-                        errorPar.add("Mese scadenza carta");
-                    }
-
-                    try{
-                        scadenzaAnno = Integer.parseInt(scadenzaAnnoString);
-                    }catch (NumberFormatException e){
-                        errorPar.add("Anno scadenza carta");
-                    }
-                    int day = scadenzaMese == 2 ? 28 :
-                            scadenzaMese == 1 || scadenzaMese == 3 ||
-                                    scadenzaMese == 5 || scadenzaMese == 7 ||
-                                    scadenzaMese == 8 || scadenzaMese == 10 ||
-                                    scadenzaMese == 12 ? 31 : 30;
-                    GregorianCalendar today  = new GregorianCalendar();
-
-
-
-                    GregorianCalendar scadenza = new GregorianCalendar(scadenzaAnno, scadenzaMese - 1, day);
-
-                    if(scadenza.before(today)){
-                        errorPar.add("Scadenza Carta");
-                    }
-
                     int cvv = 0;
 
                     if(cvvString != null && cvvString.matches("^[0-9]{3}$")){
@@ -77,18 +48,58 @@ public class ConfermaPagamentoServlet extends HttpServlet {
 
                     boolean save = Boolean.parseBoolean(saveCheck);
 
-                    if(errorPar.isEmpty()){
-                        UtenteDAO service = new UtenteDAO();
+                    int scadenzaMese = 0, scadenzaAnno = 0;
 
-                        u.setNumeroCarta(numeroCC);
-                        u.setDataScadenzaCarta(scadenza.toZonedDateTime().toLocalDate());
-                        u.setCvvCarta(cvv);
+                    try{
+                        scadenzaMese = Integer.parseInt(scadenzaMeseString);
 
-                        if(save)
-                            service.aggiornaUtente(u);
+                        if(scadenzaMese > 12 || scadenzaMese < 1){
+                            errorPar.add("Mese scadenza carta");
+                        }
 
-                        session.setAttribute("utente", u);
-                        response.sendRedirect("conferma-ordine-page");
+                    }catch (NumberFormatException e){
+                        errorPar.add("Mese scadenza carta");
+                    }
+
+                    try{
+                        scadenzaAnno = Integer.parseInt(scadenzaAnnoString);
+                    }catch (NumberFormatException e){
+                        errorPar.add("Anno scadenza carta");
+                    }
+
+                    if(!errorPar.contains("Mese scadenza carta") && !errorPar.contains("Anno scadenza carta")){
+                        int day = scadenzaMese == 2 ? 28 :
+                                scadenzaMese == 1 || scadenzaMese == 3 ||
+                                        scadenzaMese == 5 || scadenzaMese == 7 ||
+                                        scadenzaMese == 8 || scadenzaMese == 10 ||
+                                        scadenzaMese == 12 ? 31 : 30;
+
+                        GregorianCalendar today  = new GregorianCalendar();
+                        GregorianCalendar scadenza = new GregorianCalendar(scadenzaAnno, scadenzaMese - 1, day);
+
+                        if(scadenza.before(today)){
+                            errorPar.add("Scadenza Carta");
+                        }
+
+                        if(errorPar.isEmpty()){
+                            UtenteDAO service = new UtenteDAO();
+
+                            u.setNumeroCarta(numeroCC);
+                            u.setDataScadenzaCarta(scadenza.toZonedDateTime().toLocalDate());
+                            u.setCvvCarta(cvv);
+
+                            if(save)
+                                service.aggiornaUtente(u);
+
+                            session.setAttribute("utente", u);
+                            response.sendRedirect("conferma-ordine-page");
+                        }else{
+                            request.setAttribute("error-parameter", errorPar);
+                            RequestDispatcher dispatcher =
+                                    request.getRequestDispatcher("/WEB-INF/utente/confermaDatiPagamento.jsp");
+
+                            dispatcher.forward(request, response);
+                        }
                     }else{
                         request.setAttribute("error-parameter", errorPar);
                         RequestDispatcher dispatcher =
@@ -96,6 +107,7 @@ public class ConfermaPagamentoServlet extends HttpServlet {
 
                         dispatcher.forward(request, response);
                     }
+
                 }else{
                     response.sendRedirect("conferma-ordine-page");
                 }

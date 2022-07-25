@@ -27,7 +27,7 @@
         </div>
         <%}%>
 
-        <form action="modifica-datiSUtente" onsubmit="return validateFormDatiSUtente()">
+        <form action="modifica-datiSUtente" method="post" onsubmit="return validateFormDatiSUtente()">
             <label>Via:</label>
             <input type="text" id="indirizzo" name="indirizzo"
                 <%

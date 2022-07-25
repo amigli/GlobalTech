@@ -20,9 +20,9 @@ public class EliminaProdottoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utente u =  (Utente) session.getAttribute("utente");
 
         synchronized (session){
+            Utente u =  (Utente) session.getAttribute("utente");
 
             if(u != null){
                 if(u.isAdmin()){

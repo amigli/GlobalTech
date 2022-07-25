@@ -28,7 +28,7 @@
             Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
         </div>
         <%}%>
-        <form action="modifica-datiCUtente" onsubmit="return validateFormDatiCUtente()">
+        <form action="modifica-datiCUtente" method="post" onsubmit="return validateFormDatiCUtente()">
 
             <label for="numCarta">Numero Carta</label>
             <input type="text" id="numCarta" name="numCarta" maxlength="16"

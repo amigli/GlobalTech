@@ -20,8 +20,7 @@ import java.util.zip.DataFormatException;
 public class CaricaOffertaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
@@ -38,6 +37,7 @@ public class CaricaOffertaServlet extends HttpServlet {
                     String nome = request.getParameter("nome");
                     String dataInzioString =  request.getParameter("data-inizio");
                     String dataFineString =  request.getParameter("data-fine");
+
                     float sconto;
                     try {
                         sconto = Float.parseFloat(request.getParameter("sconto"));
@@ -74,7 +74,7 @@ public class CaricaOffertaServlet extends HttpServlet {
                             errPar.add("data-fine");
                     }
 
-                    if(nome ==  null){
+                    if(nome ==  null && !nome.matches("^[A-Za-z0-9\\s]$")){
                         errPar.add("nome");
                     }
 
@@ -105,7 +105,7 @@ public class CaricaOffertaServlet extends HttpServlet {
                         address = "/WEB-INF/result/caricamentoOffertaCompletato.jsp";
 
                     }else{
-                        address = "formCaricamentoOfferta.jsp";
+                        address = "/WEB-INF/admin/formCaricamentoOfferta.jsp";
                         request.setAttribute("error_parameter", errPar);
                     }
 

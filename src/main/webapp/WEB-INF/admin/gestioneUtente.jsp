@@ -7,95 +7,97 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>GestioneUtente</title>
-    <%@include file="../includes/links.html"%>
-</head>
-<body>
-<%@include file="../includes/navbar.jsp"%>
-<%
-Utente u = (Utente) request.getAttribute("utenteId");
-%>
-<%!
-ArrayList<String> datiMancanti = new ArrayList<>();
-%>
-<br>
-<div id="modificaUtente">
-    <form action="modifica-utente" method="get">
-        <h1>ID utente: <%=u.getId()%></h1>
+    <head>
+        <title>GestioneUtente</title>
+        <%@include file="../includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="../includes/navbar.jsp"%>
         <%
-            if (u.getEmail()!=null){
+        Utente u = (Utente) request.getAttribute("utenteId");
         %>
-        <label for="emailUtente">Email utente:</label>
-        <input type="text" id="emailUtente" name="emailUtente" value="<%=u.getEmail()%>" disabled>
-        <%}%>
-        <%
-            if (u.getNome()!=null){
+        <%!
+        ArrayList<String> datiMancanti = new ArrayList<>();
         %>
-        <label for="nomeUtente">Nome:</label>
-        <input type="text" id="nomeUtente" name="nomeUtente" value="<%=u.getNome()%>" disabled>
-        <%}%>
-        <%
-            if (u.getCognome()!=null){
-        %>
-        <label for="cognomeUtente">Cognome:</label>
-        <input type="text" id="cognomeUtente" name="cognomeUtente" value="<%=u.getCognome()%>" disabled>
-        <%}%>
-        <%
-            if (u.getDataNascita()!=null){
-        %>
-        <label for="dataNascitaUtente">Data di nascita:</label>
-        <input type="date" id="dataNascitaUtente" name="dataNascitaUtente" value="<%=u.getDataNascita()%>" disabled>
-        <%}%>
-        <%
-            if (u.getVia()!=null){
-        %>
-        <label for="viaUtente">Indirizzo:</label>
-        <input type="text" id="viaUtente" name="viaUtente" value="<%=u.getVia()%>" disabled>
-        <%}%>
-        <%
-            if (u.getNumCivico()>0){
-        %>
-        <label for="civicoUtente">Numero civico:</label>
-        <input type="text" id="civicoUtente" name="civicoUtente" value="<%=u.getNumCivico()%>" disabled>
-        <%}%>
-        <%
-            if (u.getCitta()!=null){
-        %>
-        <label for="cittaUtente">Città:</label>
-        <input type="text" id="cittaUtente" name="cittaUtente" value="<%=u.getCitta()%>" disabled>
-        <%}%>
-        <%
-            if (u.getCap()!=0){
-        %>
-        <label for="capUtente">CAP:</label>
-        <input type="text" id="capUtente" name="capUtente" value="<%=u.getCap()%>" disabled>
-        <%}%>
-        <label for="numAcquistiUtente">Numero acquisti:</label>
-        <input type="text" id="numAcquistiUtente" name="numAcquistiUtente" value="<%=u.getNumAcquisti()%>" disabled>
-        <%
-            if (u.getNumTelefono()!=null){
-        %>
-        <label for="numTelefonoUtente">Numero di telefono:</label>
-        <input type="text" id="numTelefonoUtente" name="numTelefonoUtente" value="<%=u.getNumTelefono()%>" disabled>
-        <%}%>
-        <label for="adminUtente"> Admin: </label>
-        <%
-        if (u.isAdmin()){
-        %>
-        <input type="submit" id="adminUtente" name="rimuoviAdmin" value="Rimuovi da admin" style="width: 40%; height: 7%">
-        <%}else{%>
-        <input type="submit" id="adminUtente" name="aggiungiAdmin" value="Aggiungi come admin" style="width: 40%; height: 7%">
-        <%}%>
-        <input type="hidden" name="id" value="<%=u.getId()%>">
         <br>
-    </form>
-    <br>
-</div>
-<form action="visualizza-ordiniC">
-    <input type="hidden" name="idCliente" id="idCliente" value="<%=u.getId()%>">
-    <input type="submit" value="Vedi tutti gli ordini di questo utente">
-</form>
-<br>
-</body>
+        <div id="modificaUtente">
+            <h1>ID utente: <%=u.getId()%></h1>
+            <%
+                if (u.getEmail()!=null){
+            %>
+            <label for="emailUtente">Email utente:</label>
+            <input type="text" id="emailUtente" name="emailUtente" value="<%=u.getEmail()%>" disabled>
+            <%}%>
+            <%
+                if (u.getNome()!=null){
+            %>
+            <label for="nomeUtente">Nome:</label>
+            <input type="text" id="nomeUtente" name="nomeUtente" value="<%=u.getNome()%>" disabled>
+            <%}%>
+            <%
+                if (u.getCognome()!=null){
+            %>
+            <label for="cognomeUtente">Cognome:</label>
+            <input type="text" id="cognomeUtente" name="cognomeUtente" value="<%=u.getCognome()%>" disabled>
+            <%}%>
+            <%
+                if (u.getDataNascita()!=null){
+            %>
+            <label for="dataNascitaUtente">Data di nascita:</label>
+            <input type="date" id="dataNascitaUtente" name="dataNascitaUtente" value="<%=u.getDataNascita()%>" disabled>
+            <%}%>
+            <%
+                if (u.getVia()!=null){
+            %>
+            <label for="viaUtente">Indirizzo:</label>
+            <input type="text" id="viaUtente" name="viaUtente" value="<%=u.getVia()%>" disabled>
+            <%}%>
+            <%
+                if (u.getNumCivico()>0){
+            %>
+            <label for="civicoUtente">Numero civico:</label>
+            <input type="text" id="civicoUtente" name="civicoUtente" value="<%=u.getNumCivico()%>" disabled>
+            <%}%>
+            <%
+                if (u.getCitta()!=null){
+            %>
+            <label for="cittaUtente">Città:</label>
+            <input type="text" id="cittaUtente" name="cittaUtente" value="<%=u.getCitta()%>" disabled>
+            <%}%>
+            <%
+                if (u.getCap()!=0){
+            %>
+            <label for="capUtente">CAP:</label>
+            <input type="text" id="capUtente" name="capUtente" value="<%=u.getCap()%>" disabled>
+            <%}%>
+            <label for="numAcquistiUtente">Numero acquisti:</label>
+            <input type="text" id="numAcquistiUtente" name="numAcquistiUtente" value="<%=u.getNumAcquisti()%>" disabled>
+            <%
+                if (u.getNumTelefono()!=null){
+            %>
+            <label for="numTelefonoUtente">Numero di telefono:</label>
+            <input type="text" id="numTelefonoUtente" name="numTelefonoUtente" value="<%=u.getNumTelefono()%>" disabled>
+            <%}%>
+
+            <form action="modifica-utente" method="post">
+                <label for="adminUtente"> Admin: </label>
+                <%
+                if (u.isAdmin()){
+                %>
+                <input type="submit" id="adminUtente" name="rimuoviAdmin" value="Rimuovi da admin" style="width: 40%; height: 7%">
+                <%}else{%>
+                <input type="submit" id="adminUtente" name="aggiungiAdmin" value="Aggiungi come admin" style="width: 40%; height: 7%">
+                <%}%>
+                <input type="hidden" name="id" value="<%=u.getId()%>">
+                <br>
+            </form>
+            <br>
+        </div>
+        <form action="visualizza-ordiniC">
+            <input type="hidden" name="idCliente" id="idCliente" value="<%=u.getId()%>">
+            <input type="submit" value="Vedi tutti gli ordini di questo utente">
+        </form>
+        <br>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+    </body>
 </html>

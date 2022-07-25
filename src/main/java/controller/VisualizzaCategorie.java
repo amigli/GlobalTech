@@ -20,26 +20,27 @@ public class VisualizzaCategorie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utente u = (Utente) session.getAttribute("utente");
+
+        synchronized (session){
+            Utente u = (Utente) session.getAttribute("utente");
 
             if(u !=  null ){
                 if(u.isAdmin()){
-                CategoriaDAO service = new CategoriaDAO();
-                String address="/WEB-INF/admin/visualizzaCategorie.jsp";
-                List<Categoria> cat = service.doRetrieveAll();
+                    CategoriaDAO service = new CategoriaDAO();
+                    String address="/WEB-INF/admin/visualizzaCategorie.jsp";
+                    List<Categoria> cat = service.doRetrieveAll();
 
-                request.setAttribute("categorie", cat);
+                    request.setAttribute("categorie", cat);
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-                dispatcher.forward(request, response);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                    dispatcher.forward(request, response);
+                }else{
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                }
             }else{
-                response.sendError(401);
+                response.sendRedirect("login-page");
             }
-        }else{
-            response.sendRedirect("login-page");
         }
-
-
     }
 
     @Override
