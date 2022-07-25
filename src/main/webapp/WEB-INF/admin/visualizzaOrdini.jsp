@@ -16,10 +16,8 @@
         <%@include file="../includes/navbar.jsp"%>
         <%
             List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
-            Utente u =  (Utente) session.getAttribute("utente");
         %>
         <h1>Gestione Ordini</h1>
-        <h3>Hai effettuato <%=u.getNumAcquisti()%> ordini sul nostro sito.</h3>
         <%if(ordini != null && ordini.size() > 0){%>
             <table id="ordini">
                 <tr>
