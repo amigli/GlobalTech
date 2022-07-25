@@ -7,18 +7,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Contatti</title>
-    <%@include file="/WEB-INF/includes/links.html"%>
-</head>
-<body>
-    <%@include file="/WEB-INF/includes/navbar.jsp"%>
-    <h1>Chiamaci</h1>
-    <p>Contattaci al numero 02 29 38 10 39</p>
-    <p>Dal lunedì al sabato dalle 9.00 alle 18.00</p>
-    <p>I costi della chiamata dipendono dal tuo operatore telefonico</p>
-    <h1>Raggiungici in negozio</h1>
-    <p>Trova il negozio GlobalTech più vicino a te</p>
-    <%@include file="/WEB-INF/includes/footer.jsp"%>
-</body>
+    <head>
+        <title>Contatti</title>
+        <%@include file="/WEB-INF/includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <main id="result">
+            <h1>Chiamaci</h1>
+            <p>Contattaci al numero 02 29 38 10 39</p>
+            <p>Dal lunedì al sabato dalle 9.00 alle 18.00</p>
+            <p>I costi della chiamata dipendono dal tuo operatore telefonico</p>
+            <br>
+            <h1>Raggiungici in negozio</h1>
+            <p>Trova il negozio GlobalTech più vicino a te</p>
+            <p>...</p>
+        </main>
+
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+    </body>
 </html>

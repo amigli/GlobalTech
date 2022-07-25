@@ -16,38 +16,53 @@
 </head>
 <body>
     <%@include file="/WEB-INF/includes/navbar.jsp"%>
-    <h4>Si e' verificato un errore</h4>
+    <main id="result">
+        <h1>Si e' verificato un errore</h1>
 
-    <% switch(response.getStatus()){
-        case 400 :%>
+        <% switch(response.getStatus()){
+            case 400 :%>
         <p>
             La richiesta formulata non è corretta
         </p>
-    <%  break;
-        case 404 : %>
+        <%  break;
+            case 404 : %>
         <p>
             La risorsa cercata non esiste
         </p>
-    <%  break;
-        case 401 :%>
+        <%  break;
+            case 401 :%>
         <p>
             Sembra che tu non sia autorizzato ad eseguire il servizio richiesto.
             Se non è così contatta l'amministratore
         </p>
-    <%  break;
-        default:%>
+        <%  break;
+            case 405 :%>
+        <p>
+            Richiesta non ammissibile
+        </p>
+        <%  break;
+            case 412 :%>
+        <p>
+           Precondizioni fallite
+        </p>
+
+        <%  break;
+            default:%>
         <p>
             Si è verificato un errore non previsto.
         </p>
-    <%break;
-    }%>
+            <%break;
+        }%>
 
-    <%if (exception != null) { %>
+        <%if (exception != null) { %>
         <h5>For debug</h5>
         <p>
             <%=exception.getMessage()%>
             <%=exception.getStackTrace()%>
         </p>
-    <%}%>
+        <%}%>
+    </main>
+    <%@include file="/WEB-INF/includes/footer.jsp"%>
+
 </body>
 </html>

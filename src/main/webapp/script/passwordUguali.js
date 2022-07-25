@@ -1,5 +1,4 @@
 function validateEqualsPassword(){
-
         let check = document.getElementById("newPassword-check");
 
         check.style.display = "block";
@@ -20,5 +19,15 @@ function validateEqualsPassword(){
         }
 
         return error;
+}
+
+function validateFormCambiaPassword(){
+    return validatePassword('newPassword1') && validateEqualsPassword();
+}
+
+function activeOtherPassword(){
+    let p2 = document.getElementById("newPassword2");
+
+    p2.removeAttribute("disabled");
 }
 

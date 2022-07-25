@@ -21,16 +21,16 @@ function validateFormDatiSpedizione(){
 
     let nome = document.getElementById("nome");
 
-    if(nome.value.length < 3  || !/^[A-Z\s]{3,30}/i.test(nome.value)){
+    if(nome.value.length < 3  || !/^[\w\s]{3,30}$/i.test(nome.value)){
         errorInput(nome);
         state = false;
     }else{
         correctInput(nome);
     }
 
-    let cognome = document.getElementById("nome");
+    let cognome = document.getElementById("cognome");
 
-    if(cognome.value.length < 3  || !/^[A-Z\s]{3,30}/i.test(cognome.value)){
+    if(cognome.value.length < 3  || !/^[\w\s]{3,30}$/i.test(cognome.value)){
         errorInput(cognome);
         state = false;
     }else{
@@ -38,7 +38,7 @@ function validateFormDatiSpedizione(){
     }
     let via =  document.getElementById("via");
 
-    if(via.value.length < 3  || !/^[A-Z0-9\s]{3,30}/i.test(via.value)){
+    if(via.value.length < 3  || !/^[\w\s]{3,30}$/i.test(via.value)){
         errorInput(via);
         state = false;
     }else{
@@ -47,7 +47,7 @@ function validateFormDatiSpedizione(){
 
     let citta = document.getElementById("citta");
 
-    if(citta.value.length < 3  || !/^[A-Z\s]{3,30}/i.test(citta.value)){
+    if(citta.value.length < 3  || !/^[A-Z\s]{3,30}$/i.test(citta.value)){
         errorInput(citta);
         state = false;
     }else{
@@ -55,7 +55,7 @@ function validateFormDatiSpedizione(){
     }
     let cap = document.getElementById("cap");
 
-    if(/^[0-9]{5}/i.test(cap.value)){
+    if(!/^[0-9]{5}$/i.test(cap.value)){
         errorInput(cap);
         state = false;
     }else{

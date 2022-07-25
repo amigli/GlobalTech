@@ -81,7 +81,7 @@
 
                 <div>
                     <label for="cap">CAP</label>
-                    <input type="text" name="cap" id="cap"
+                    <input type="text" name="cap" id="cap" maxlength="5"
                         <%if(u.getCap()!= 0){%>
                            value="<%=u.getCap()%>"
                            disabled

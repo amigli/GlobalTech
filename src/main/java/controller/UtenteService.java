@@ -14,7 +14,6 @@ public class UtenteService extends HttpServlet {
         Utente u = (Utente) request.getSession().getAttribute("utente");
 
         if(u!=null){
-            if(!u.isAdmin()){
                 String p = request.getParameter("s");
                 String address = "WEB-INF/utente/";
 
@@ -42,13 +41,11 @@ public class UtenteService extends HttpServlet {
                 RequestDispatcher dispatcher =  request.getRequestDispatcher(address);
 
                 dispatcher.forward(request, response);
-            }else{
-                response.sendError(401);
-            }
-        }else{
+        } else {
             response.sendRedirect("login-page");
         }
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

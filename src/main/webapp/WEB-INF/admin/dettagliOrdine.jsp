@@ -50,7 +50,8 @@
 
                 </div>
                 <%}%>
-                <h1><span id="totale">Totale</span> <span id="totale-numero"><%=ordine.getPrezzoTotale()%>€</span></h1>
+                <h1><span class="totale">Spese spedizione</span> <span class="totale-numero"><%=ordine.getSpeseSpedizione()%>€</span></h1>
+                <h1><span class="totale">Totale</span> <span class="totale-numero"><%=ordine.getPrezzoTotale()%>€</span></h1>
             </section>
         </main>
 

@@ -33,13 +33,13 @@ public class ModificaDatiPUtente extends HttpServlet {
                 String numTelefono = request.getParameter("telefono");
                 String dataNascitaString = request.getParameter("dataNascita");
 
-                if(nome ==  null || nome.length() < 3 || !nome.matches("^[A-Za-z]{3,30}$"))
+                if(nome ==  null || nome.length() < 3 || !nome.matches("^[A-Za-z\\s]{3,30}$"))
                     errPar.add("Nome");
 
-                if(cognome ==  null || cognome.length() < 3 || !cognome.matches("^[A-Za-z]{3,30}$"))
+                if(cognome ==  null || cognome.length() < 3 || !cognome.matches("^[A-Za-z\\s]{3,30}$"))
                     errPar.add("Cognome");
 
-                if(numTelefono ==  null || numTelefono.length() < 9 || !nome.matches("^[0-9]{9,10}$"))
+                if(numTelefono ==  null || numTelefono.length() < 9 || !numTelefono.matches("^[0-9]{9,10}$"))
                     errPar.add("Numero telefono");
 
                 LocalDate dataNascita = null;

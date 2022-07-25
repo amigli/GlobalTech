@@ -16,5 +16,15 @@ function validateFormDatiSUtente(){
         correctInput(citta);
     }
 
+    let cap =  document.getElementById("cap")
+
+
+    if(cap.value.length < 3 || !(/^[0-9\s]{5}$/i.test(cap.value))) {
+        errorInput(cap);
+        state = false;
+    }else{
+        correctInput(cap);
+    }
+
     return state;
 }

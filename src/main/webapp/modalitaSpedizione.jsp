@@ -7,16 +7,26 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Modalità di spedizione</title>
-    <%@include file="/WEB-INF/includes/links.html"%>
-</head>
-<body>
-<%@include file="/WEB-INF/includes/navbar.jsp"%>
-<h1>Consegna standard</h1>
-<p>Prevista entro 2-3 giorni lavorativi (variabile in funzione del luogo di destinazione indicato dal Cliente) dalla ricezione della mail di conferma di spedizione nella quale è contenuto il codice di tracking. </p>
-<h1>Consegna standard superiore a 30kg</h1>
-<p>Prevista entro 6 - 9 Giorni dalla ricezione della mail di conferma di spedizione nella quale è contenuto il codice di tracking. (variabile in funzione del luogo di destinazione indicato dal Cliente).</p>
-<%@include file="/WEB-INF/includes/footer.jsp"%>
-</body>
+    <head>
+        <title>Modalità di spedizione</title>
+        <%@include file="/WEB-INF/includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <main id="result">
+            <h1>Consegna standard</h1>
+            <p>Prevista entro 2-3 giorni lavorativi (variabile in funzione del luogo di destinazione indicato dal Cliente)
+                dalla ricezione della mail di conferma di spedizione nella quale è contenuto il codice di tracking.
+            </p>
+            <br>
+            <h1>Consegna standard superiore a 30kg</h1>
+            <p>Prevista entro 6 - 9 Giorni dalla ricezione della mail di conferma di spedizione nella quale è contenuto
+                il codice di tracking. (variabile in funzione del luogo di destinazione indicato dal Cliente).
+            </p>
+            <br>
+            <br>
+            <h2>Consegna Gratuita per tutti gli ordini superiori a 100€</h2>
+        </main>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+    </body>
 </html>

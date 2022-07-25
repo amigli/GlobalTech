@@ -7,18 +7,22 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Modalità di pagamento</title>
-    <%@include file="/WEB-INF/includes/links.html"%>
-</head>
-<body>
-<%@include file="/WEB-INF/includes/navbar.jsp"%>
-<h1>Carta di credito</h1>
-<p>Su GlobalTech puoi acquistare con tutte le Carte di Credito dei circuiti Visa, Mastercard emesse in Italia. </p>
-<h1>PayPal</h1>
-<p>L'importo viene addebitato sul conto Paypal dopo la conferma dell'ordine da parte di GlobalTech.
-    Eventuali rimborsi sono effettuati da GlobalTech sempre sul conto PayPal.
-    Quando la transazione va a buon fine ricevi una email di conferma da PayPal.</p>
-<%@include file="/WEB-INF/includes/footer.jsp"%>
-</body>
+    <head>
+        <title>Modalità di pagamento</title>
+        <%@include file="/WEB-INF/includes/links.html"%>
+    </head>
+    <body>
+        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <main id="result">
+            <h1>Carta di credito</h1>
+            <p>Su GlobalTech puoi acquistare con tutte le Carte di Credito dei circuiti Visa, Mastercard emesse in Italia.</p>
+
+            <h1>PayPal (Prossimamente)</h1>
+            <p>L'importo viene addebitato sul conto Paypal dopo la conferma dell'ordine da parte di GlobalTech.
+                Eventuali rimborsi sono effettuati da GlobalTech sempre sul conto PayPal.
+                Quando la transazione va a buon fine ricevi una email di conferma da PayPal.
+            </p>
+        </main>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
+    </body>
 </html>

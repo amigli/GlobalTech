@@ -369,13 +369,13 @@ table td, table th {
  visualizzaUtenti.jsp
  visualizzaOrdiniCliente.jsp
  visualizzaProdotti.jsp*/
-#categorie tr:nth-child(even), #prodotti tr:nth-child(even), #offerte tr:nth-child(even), #utenti tr:nth-child(even), #ordini tr:nth-child(even), #ordiniCliente tr:nth-child(even){
+table tr:nth-child(even){
     background-color: aliceblue;
 }
-#categorie tr:hover, #prodotti tr:hover, #offerte tr:hover, #utenti tr:hover, #ordini tr:hover, #ordiniCliente tr:hover {
+table tr:hover{
     background-color: #faf0e6;
 }
-#categorie th, #prodotti th, #offerte th, #utenti th, #ordini th, #ordiniCliente th {
+th{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -448,6 +448,16 @@ div#password-check{
 }
 
 ul#password-check-list{
+    list-style-type: none;
+}
+
+/* Modifica Password */
+
+div#newPassword-check{
+    display: none;
+}
+
+ul#password-equals-list{
     list-style-type: none;
 }
 
@@ -593,12 +603,12 @@ div.dettagli-prodotto{
     text-align: right;
 }
 
-span#totale{
+span.totale{
     float: left;
     width: 50%;
 }
 
-span#totale-numero{
+span.totale-numero{
     float: right;
     width: 50%;
     text-align: right;
@@ -717,9 +727,14 @@ div#prodotto-result-operation{
 
 main#result{
     margin: 1rem;
+    min-height: 14rem;
 }
 
-
+div.error-form-field{
+    color:red;
+    text-decoration: underline;
+    margin-bottom: 2em;
+}
 
 
 

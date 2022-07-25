@@ -32,7 +32,7 @@ public class ModificaDatiSUtente extends HttpServlet {
                 String citta = request.getParameter("citta");
                 String capString = request.getParameter("cap");
 
-                if(via ==  null || !via.matches("^[A-Za-z]{3,30}"))
+                if(via ==  null || !via.matches("^[A-Za-z\\s]{3,30}"))
                     errPar.add("Via");
 
                 int numeroCivico = 0;
@@ -48,7 +48,7 @@ public class ModificaDatiSUtente extends HttpServlet {
                     errPar.add("Numero civico");
                 }
 
-                if(citta ==  null || !citta.matches("^[A-Za-z]{3,30}"))
+                if(citta ==  null || !citta.matches("^[A-Za-z\\s]{3,30}"))
                     errPar.add("Citta");
 
                 int cap = 0;

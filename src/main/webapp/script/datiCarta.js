@@ -9,7 +9,7 @@ function validateDatiCUtente(){
     }
 
     let cvv = document.getElementById("cvv");
-    if(!/^[0-9]{3}/.test(cvv.value)){
+    if(!/^[0-9]{3}$/.test(cvv.value)){
         errorInput(cvv);
         state = false;
     }else{

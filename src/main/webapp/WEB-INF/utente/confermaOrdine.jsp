@@ -22,6 +22,7 @@
             Carrello cart =  (Carrello) session.getAttribute("carrello");
         %>
         <main id="ordine-dettaglio">
+            <h1>Ci sei quasi! Conferma il tuo ordine!</h1>
             <section id="dati-utente">
                 <fieldset id="dati_spedizione">
                     <legend>Dati Spedizione</legend>
@@ -45,7 +46,7 @@
                         <img  class="img-ordine" src="<%=item.getProdotto().getImmagini().get(0).getDirectory()%>">
 
                         <%}else{%>
-                        <img src="./asset/default.png">
+                        <img class="img-ordine" src="./asset/default.png">
                         <%}%>
                         <div class="prezzo-quantita">
                             <h2 class="prezzo">€<%=item.getPrezzo()%></h2>
@@ -53,7 +54,10 @@
                         </div>
                     </div>
                     <%}%>
-                <h1><span id="totale">Totale</span><span id="totale-numero"><%=cart.getTotale()%>€</span></h1>
+
+                <%    int speseSpedizione =  cart.getTotale() >= 100 ? 0 : 5;%>
+                <h1><span class="totale">Spese spedizione</span><span class="totale-numero"><%=speseSpedizione%>€</span></h1>
+                <h1><span class="totale">Totale</span><span class="totale-numero"><%=cart.getTotale() + speseSpedizione%>€</span></h1>
                 <form method="post" action="conferma-ordine">
                     <%
                         int checkcode = (Integer) request.getAttribute("checkcode");

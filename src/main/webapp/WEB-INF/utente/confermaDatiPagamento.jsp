@@ -33,10 +33,10 @@
                 Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
             </div>
             <%}%>
-            <form method="post" action="conferma-pagamento" id="form-dati-pagamento">
+            <form method="post" action="conferma-pagamento" onsubmit="return validateDatiCUtente()" id="form-dati-pagamento">
                 <div>
                     <label for="numCarta">Numero Carta</label>
-                    <input type="text" name="numerocc" id="numCarta" required disabled
+                    <input type="text" name="numerocc" id="numCarta" required disabled maxlength="16"
                         <%if(u.getNumeroCarta() != null){%>
                            value="<%=u.getNumeroCarta()%>"
                         <%}%>
@@ -70,7 +70,7 @@
                 </div>
                 <div>
                     <label for="cvv">CVV</label>
-                    <input type="text" name="cvv" id="cvv" required disabled
+                    <input type="text" name="cvv" id="cvv" required disabled maxlength="3"
                         <%if(u.getCvvCarta() != 0){%>
                            value="<%=u.getCvvCarta()%>"
                         <%}%>

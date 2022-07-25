@@ -36,7 +36,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
                         if(checkcodeSession == checkcodeRequest){
                             GregorianCalendar today =  new GregorianCalendar();
                             List<ItemCart> prodotti =  cart.getProdotti();
-                            int spese_spedizione =  cart.getTotale() >= 100 ? 5 : 0;
+                            int spese_spedizione =  cart.getTotale() >= 100 ? 0 : 5;
                             float totale_ordine =  cart.getTotale() + spese_spedizione;
                             String indirizzo =  u.getNome() + " " +u.getCognome() + ", Via " +  u.getVia()
                                     + ", "  + u.getNumCivico() +", " + u.getCap() +", " + u.getCitta();
@@ -45,7 +45,7 @@ public class ConfermaOrdineServlet extends HttpServlet {
 
                             ordine.setProdotti(prodotti);
                             ordine.setSpeseSpedizione(spese_spedizione);
-                            ordine.setPrezzoTotale(totale_ordine);
+                            ordine.setPrezzoTotale(totale_ordine + spese_spedizione);
                             ordine.setCcPagamento(cc_pagamento);
                             ordine.setStato(Ordine.inAttesaDiConferma);
                             ordine.setData(today.toZonedDateTime().toLocalDate());

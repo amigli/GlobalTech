@@ -54,7 +54,7 @@
                                     <i class="fa fa-user"></i>
                                 </a>
                             <%}else{%>
-                                <a href="#">
+                                <a href="visualizza-datiUtente">
                                     <i class="fa fa-user"></i>
                                 </a>
                                 <div id="account-box">

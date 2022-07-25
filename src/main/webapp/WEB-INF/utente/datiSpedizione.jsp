@@ -13,58 +13,75 @@
     </head>
     <body>
         <%@include file="../includes/navbar.jsp"%>
-        <%
-            Utente u =  (Utente) session.getAttribute("utente");
-            List<String> errorPar = (List<String>) request.getAttribute("error-parameter");
-            if(errorPar != null){
-                String txt = errorPar.get(0);
+        <main id="result">
+            <%
+                Utente u =  (Utente) session.getAttribute("utente");
+                List<String> errorPar = (List<String>) request.getAttribute("error-parameter");
+                if(errorPar != null){
+                    String txt = errorPar.get(0);
 
-                for(int i =  1; i < errorPar.size(); i++)
-                    txt += ", " + errorPar.get(i);
-        %>
-        <div id="error-message">
-            Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
-        </div>
-        <%}%>
+                    for(int i =  1; i < errorPar.size(); i++)
+                        txt += ", " + errorPar.get(i);
+            %>
+            <div id="error-message">
+                Il server non ha accettato le modifiche dei seguenti parametri: <%=txt%>. Riprovare.
+            </div>
+            <%}%>
 
-        <form action="modifica-datiSUtente" method="post" onsubmit="return validateFormDatiSUtente()">
-            <label>Via:</label>
-            <input type="text" id="indirizzo" name="indirizzo"
-                <%
-                if(u.getVia()!=null){
-                %>
-                   value="<%=u.getVia()%>"
-                <%}%>
-            >
+            <h1>Dati per la spedizione</h1>
 
-            <label>Numero civico:</label>
-            <input type="text" id="civico" name="civico" maxlength="3"
-                <%
-                if(u.getNumCivico()>0){
-                %>
-                   value="<%=u.getNumCivico()%>"
-                <%}%>
-            >
+            <form action="modifica-datiSUtente" method="post" onsubmit="return validateFormDatiSUtente()">
+                <div>
+                    <label>Via:</label>
+                    <input type="text" id="indirizzo" name="indirizzo"
+                        <%
+                            if(u.getVia()!=null){
+                           %>
+                           value="<%=u.getVia()%>"
+                        <%}%>
+                    >
+                </div>
 
-            <label>Città:</label>
-            <input type="text" id="citta" name="citta" maxlength="30"
-                <%
-                if(u.getCitta()!=null){
-                %>
-                   value="<%=u.getCitta()%>"
-                <%}%>
-            >
+                <div>
+                    <label>Numero civico:</label>
+                    <input type="number" id="civico" name="civico"
+                        <%
+                        if(u.getNumCivico()>0){
+                        %>
+                           value="<%=u.getNumCivico()%>"
+                        <%}%>
+                    >
+                </div>
 
-            <label>CAP:</label>
-            <input type="text" id="cap" name="cap" maxlength="5"
-                <%
-                if(u.getCap()>0){
-                %>
-                   value="<%=u.getCap()%>"
-                <%}%>
-            >
-            <input type="submit" value="Salva">
-        </form>
+                <div>
+                    <label>Città:</label>
+                    <input type="text" id="citta" name="citta" maxlength="30"
+                        <%
+                            if(u.getCitta()!=null){
+                            %>
+                           value="<%=u.getCitta()%>"
+                        <%}%>
+                    >
+                </div>
+
+                <div>
+                    <label>CAP:</label>
+                    <input type="text" id="cap" name="cap" maxlength="5"
+                        <%
+                            if(u.getCap()>0){
+                            %>
+                           value="<%=u.getCap()%>"
+                        <%}%>
+                    >
+                </div>
+
+                <input type="submit" value="Salva">
+            </form>
+        </main>
+
+
+
+        <%@include file="/WEB-INF/includes/footer.jsp" %>
         <script type="text/javascript" src="script/datiSpedizione.js"></script>
     </body>
 </html>
