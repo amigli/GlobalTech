@@ -13,7 +13,7 @@ function setDataFine(){
 function validateFormOfferta(){
     let nome = document.getElementById("nome");
 
-    if(/^[\wèàùòé\'\s]{3,45}$/i.test(nome.value)){
+    if(/^[\wèàùòé'\s]{3,45}$/i.test(nome.value)){
         correctInput(nome);
 
         return true;
