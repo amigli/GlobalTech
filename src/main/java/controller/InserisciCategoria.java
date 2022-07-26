@@ -14,6 +14,7 @@ import model.UtenteDAO;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "InserisciCategoriaServlet", value = "/inserisci-categoria")
 public class InserisciCategoria extends HttpServlet {
@@ -53,6 +54,10 @@ public class InserisciCategoria extends HttpServlet {
                         int id = service.doSaveCategoria(c);
 
                         c.setId(id);
+
+                        List<Categoria> categorieAll = service.doRetrieveAll();
+
+                        getServletContext().setAttribute("categorie", categorieAll);
 
                         request.setAttribute("categoria_inserita", c);
 
