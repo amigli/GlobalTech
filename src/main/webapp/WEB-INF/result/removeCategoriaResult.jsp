@@ -20,6 +20,6 @@
             <p>Ritorna alla <a href="index.html">home</a></p>
         </main>
 
-        <%@include file="/WEB-INF/includes/navbar.jsp"%>
+        <%@include file="/WEB-INF/includes/footer.jsp"%>
     </body>
 </html>
