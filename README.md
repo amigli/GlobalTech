@@ -23,6 +23,10 @@ Dependencies:
 * [JQuery](https://jquery.com/)
 
 # Screenshot
+<img width="946" alt="image" src="https://github.com/frankzamma/GlobalTech/assets/65612000/a57794e7-6471-49a3-99ea-8798a82d0fc3">
+<img width="960" alt="image" src="https://github.com/frankzamma/GlobalTech/assets/65612000/05eb3cf5-338c-4592-903d-7b5e5339550b">
+<img width="949" alt="image" src="https://github.com/frankzamma/GlobalTech/assets/65612000/b352b88e-2fe4-430a-98da-9ec97e3f773d">
+
 
 ## Contributors
 <a href="https://github.com/frankzamma/globaltech/graphs/contributors">
